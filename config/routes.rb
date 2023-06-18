@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   root "home#index"
   resources :home
   resources :news
+  resources :team
+  resources :ticket
+  resources :membership
+  resources :club
 end
