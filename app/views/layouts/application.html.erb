@@ -9,50 +9,52 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" ></link>
+
   </head>
 
   <body>
   <div>
     <!-- Header one with sponsors -->
     <div class="p-2 content-end bg-[#F6F6F6] border-b-4 border-[#f4e721] hidden md:block">
+
       <ul class="flex justify-end gap-5 p-2 text-[#F6F6F6]">
       <li>
         <a target="_blank" rel="noreferrer" href="#">
-          <BsInstagram class="text-xl text-[#050505] hover:text-[#f4e721]" />
+         <p class="text-xl text-[#050505] hover:text-[#f4e721]">Instagram Icon</p>
         </a>
       </li>
-      <li>
+        <li>
         <a
           target="_blank"
           rel="noreferrer"
           href="https://twitter.com/Mseal_FC"
         >
-          <BsTwitter class="text-xl text-[#050505] hover:text-[#f4e721]" />
+          <p class="text-xl text-[#050505] hover:text-[#f4e721]" >Twitter Icon</p>
         </a>
       </li>
       <li>
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://www.facebook.com/msealfc/"
-        >
-          <BsFacebook class="text-xl text-[#050505] hover:text-[#f4e721]" />
+          href="https://www.facebook.com/msealfc/">
+          <p class="text-xl text-[#050505] hover:text-[#f4e721]" >Facebook</p>
+
         </a>
       </li>
       <li>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://www.youtube.com/@murangasealfc"
-        >
-          <BsYoutube class="text-xl text-[#050505] hover:text-[#f4e721]" />
+        <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@murangasealfc" >
+          <p class="text-xl text-[#050505] hover:text-[#f4e721]" >Youtube Icon</p>
         </a>
       </li>
       <li class="mr-10">
         <a target="_blank" rel="noreferrer" href="#">
-          <BsTiktok class="text-xl text-[#050505] hover:text-[#f4e721]" />
+          <p class="text-xl text-[#050505] hover:text-[#f4e721]" >Tiktok Icon</p>
         </a>
       </li>
+        <li>
+          <i class="fa-solid fa-a"></i>
+        </li>
 
       <li>
         <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
@@ -66,54 +68,38 @@
       </li>
       </ul>
     </div>
+
     <div class="bg-black w-full h-20 shadow-xl md:mt-0 z-[100] md:px-24 w-full h-20 z-[100] md:mt-0 md:px-24">
     <div class="flex justify-between md:justify-end items-center w-full md:mt-0 h-full  md:px-4 py-7 px-2 2xl:px-16 rounded">
-      <div class="md:hidden lg:hidden xl:hidden 2xl:hidden sm:flex md:top-0 bottom-0 left-2 xl:w-[180px] mt-5 md:mt-0 lg:w-[160px] md:w-[140px] sm:w-[120px] w-[120px]">
-        <NavLink exact="true" to="/">
-          <img src={logo} alt="Muranga seals logo" class="h-28" />
-        </NavLink>
-      </div>
       <div>
         <ul class="hidden items-center md:flex gap-5">
           <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
             <%= link_to "NEWS", news_index_path %>
           </li>
 
-          <NavLink exact="true" to="/team">
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              TEAM
-            </li>
-          </NavLink>
+          <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <%= link_to "TEAM", news_index_path %>
+          </li>
 
-          <NavLink exact="true" to="/ticket">
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              TICKETS
-            </li>
-          </NavLink>
-          <NavLink exact="true" to="/membership">
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              MEMBERSHIP
-            </li>
-          </NavLink>
-          <NavLink exact="true" to="/ourclub">
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              OUR CLUB
-            </li>
-          </NavLink>
-          <NavLink exact="true" to="/ourclub">
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              LOGIN
-            </li>
-          </NavLink>
-          <div class="hidden md:flex">
-            <div class="flex items-center">
-              <HiShoppingCart
-                size={40}
-                class="text-[#f4e721]  mr-3 mt-2"
-                />
-              <AiOutlineSearch size={40} class="text-[#f4e721]" />
-            </div>
-          </div>
+          <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <%= link_to "TICKETS", news_index_path %>
+          </li>
+          <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <%= link_to "MEMBERSHIP", news_index_path %>
+          </li>
+          <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <%= link_to "OUR CLUB", news_index_path %>
+          </li>
+          <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <%= link_to "LOGIN", news_index_path %>
+          </li>
+          <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <%= link_to "SHOPPING CART", news_index_path %>
+          </li>
+          <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <%= link_to "SEARCH", news_index_path %>
+          </li>
+
         </ul>
         <div
           class="md:hidden flex justify-between items-center w-full h-full"
@@ -136,24 +122,13 @@
           rel="noreferrer"
           href="https://www.ke.sportpesa.com/en/sports-betting/football-1/"
         >
-          <img
-            src={SportpesaLogo}
-            alt="Sportpesa Logo"
-            class="w-[100px] text-[#F6F6F6]"
-            />
+          <%= image_tag "SP_logo-01.png", class: "w-[100px] text-[#F6F6F6]" %>
+
         </a>
       </li>
       <li>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://www.ke.sportpesa.com/en/sports-betting/football-1/"
-        >
-          <img
-            src={FinixCasinoLogo}
-            alt="Sportpesa Logo"
-            class="w-[100px] text-[#F6F6F6]"
-            />
+        <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
+          <%= image_tag "finix-casino.png", class: "w-[100px] text-[#F6F6F6]" %>
         </a>
       </li>
       </ul>
@@ -161,20 +136,12 @@
 
     <div class=" md:hidden fixed left-0 top-0 w-full h-screen ">
     <div
-      class= "nav fixed left-0 top-0 w-[100%] sm:w-[60%] md:w-[45%]  h-screen bg-[#fff] text-white p-2 ease-in duration-500"
-    : "fixed left-[-100%] top-0  p-10 ease-in duration-500"
-    }
+      class= "nav fixed left-0 top-0 w-[100%] sm:w-[60%] md:w-[45%]  h-screen bg-[#fff] text-white p-2 ease-in duration-500 fixed left-[-100%] top-0  p-10 ease-in duration-500"
     >
     <div>
-      <div className="flex justify-between items-center w-full mt-3 px-3">
-        <div className="block md:hidden">
-          <NavLink exact="true" to="/">
-            <img
-              src={logo}
-              alt="Muranga seals logo"
-              className="h-36"
-              />
-          </NavLink>
+      <div class="flex justify-between items-center w-full mt-3 px-3">
+        <div class="block md:hidden">
+          <%= link_to(image_tag("logo.png"),root_path, class: "h-36", alt: "range seals logo") %>
         </div>
         <div
           onClick={handleNav}
@@ -198,12 +165,12 @@
             </li>
           </NavLink>
           <NavLink exact="true" to="/membership" onClick={handleNav}>
-            <li className="hover:underline text-[#000] underline-offset-8 hover:text-[#f4e721]">
+            <li class="hover:underline text-[#000] underline-offset-8 hover:text-[#f4e721]">
               MEMBERSHIP
             </li>
           </NavLink>
           <NavLink exact="true" to="/ourclub" onClick={handleNav}>
-            <li className="hover:underline text-[#000] underline-offset-8 hover:text-[#f4e721]">
+            <li class="hover:underline text-[#000] underline-offset-8 hover:text-[#f4e721]">
               OUR CLUB
             </li>
           </NavLink>
@@ -216,9 +183,8 @@
   </div>
   <div>
 
-    <div class="hidden md:flex md:top-0 bottom-0 left-2 md:absolute">
-      <%= link_to(image_tag("logo.png"), root_path, class: "md:flex xl:none lg:h-[200px] md:h-[140px] sm:h-[120px] h-[120px]") %>
-
+    <div class="sm:flex md:flex md:top-0 bottom-0 left-2 md:absolute">
+      <%= link_to(image_tag("logo.png"), root_path, class: "md:flex xl:none lg:h-[200px] md:h-[140px] sm:h-[120px]") %>
     </div>
   </div>
 
