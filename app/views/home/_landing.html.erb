@@ -18,26 +18,28 @@
 
 
 
+    <% @news.each do |news| %>
     <div class="flex flex-row  justify-between md:mr-[20px]">
 
-      <div class="flex flex-col-reverse justify-between mt-5 p-2  group hover:bg-[#FAE115]  hover:scale-105 transition-all duration-500 cursor-pointer">
-        <div class="flex-col">
-          <p class="font-bold text-sm">{item.title}</p>
-          <p class="text-sm">{item.description}</p>
-          <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
-            Latest News
-          </p>
-        </div>
-        <img class="" src={item.image} alt="" />
-      </div>
-      ))}
+          <div class="flex flex-col-reverse justify-between mt-5 p-2  group hover:bg-[#FAE115]  hover:scale-105 transition-all duration-500 cursor-pointer">
+            <div class="flex-col">
+              <p class="font-bold text-sm">{item.title}</p>
+              <p class="text-sm">{item.description}</p>
+              <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
+                Latest News
+              </p>
+            </div>
+            <img class="" src={item.image} alt="" />
+            <%= image_tag(news.image, class: "h-[10%] w-[10%]")  %>
+          </div>
     </div>
-  </div>
+      </div>
+
+    <% end %>
 
 
   <div class="bg-white  flex flex-col md:flex-row border-t-indigo-500">
     <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
-      {featuredNews.map((item) => (
       <div
         key={item.id}
         class="flex flex-col md:w-[303px] text-white bg-black"
@@ -46,7 +48,6 @@
         <p class=" text-xs p-2">Featured</p>
         <p class="text-xl p-4 font-bold w-[90%]">{item.title}</p>
       </div>
-      ))}
     </div>
   </div>
 </div>
