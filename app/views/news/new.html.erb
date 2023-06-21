@@ -1,22 +1,14 @@
-<%= form_with  model: @news, url: news_index_url, method: :post, data: { turbo: false }, local: true do |f| %>
-  <div>
+<%= form_with  model: @news, url: news_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
+
     <%= f.text_field :type_of_news, placeholder: 'Type of News' %>
-  </div>
 
-  <div >
     <%= f.text_field :header_news, placeholder: 'Header for news' %>
-  </div>
 
-  <div >
-    <%= f.text_field :body,  placeholder: 'Body Content to 400 words' %>
-  </div>
+    <%= f.text_area :body,  placeholder: 'Body Content to 400 words', row: "6" %>
 
-  <div >
     <%= f.file_field :image %>
-  </div>
 
-  <div >
-    <%= f.submit "Submit"%>
-  </div>
-  <%= button_tag "Submit " %>
+
+
+    <%= f.submit "Submit", class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"%>
 <% end %>
