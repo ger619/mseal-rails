@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
-
-  def news; end
+  def index
+    @news = News.all.order('created_at DESC').limit(1)
+  end
 end

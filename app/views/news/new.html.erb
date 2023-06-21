@@ -1,0 +1,22 @@
+<%= form_with  model: @news, url: news_index_url, method: :post, data: { turbo: false }, local: true do |f| %>
+  <div>
+    <%= f.text_field :type_of_news, placeholder: 'Type of News' %>
+  </div>
+
+  <div >
+    <%= f.text_field :header_news, placeholder: 'Header for news' %>
+  </div>
+
+  <div >
+    <%= f.text_field :body,  placeholder: 'Body Content to 400 words' %>
+  </div>
+
+  <div >
+    <%= f.file_field :image %>
+  </div>
+
+  <div >
+    <%= f.submit "Submit"%>
+  </div>
+  <%= button_tag "Submit " %>
+<% end %>
