@@ -1,26 +1,22 @@
 <%= form_with  model: @news, url: news_index_url, method: :post, data: { turbo: false }, local: true do |f| %>
-  <div class="form-group">
-    <br>
-    <%= f.text_field :type_of_news, class: "form-control", placeholder: 'Type of News' %>
+  <div>
+    <%= f.text_field :type_of_news, placeholder: 'Type of News' %>
   </div>
 
-  <div class="form-group">
-    <br>
-    <%= f.text_field :header_of_news, class: "form-control", placeholder: 'Name' %>
+  <div >
+    <%= f.text_field :header_news, placeholder: 'Header for news' %>
   </div>
 
-  <div class="form-group">
-    <br>
-    <%= f.text_field :body, class: "form-control", placeholder: 'Name' %>
+  <div >
+    <%= f.text_field :body,  placeholder: 'Body Content to 400 words' %>
   </div>
 
-  <div class="form-group">
-    <br>
-    <%= f.file_field :image, class: "form-control" %>
+  <div >
+    <%= f.file_field :image %>
   </div>
 
-  <div class="form-group">
-    <%= f.submit "Create Group", type:"button", class: "rounded-t-lg"%>
+  <div >
+    <%= f.submit "Submit"%>
   </div>
   <%= button_tag "Submit " %>
 <% end %>
