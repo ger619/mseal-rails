@@ -1,5 +1,24 @@
 <div>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <h1 class="p-8 bg-[#FAE115] font-bold uppercase text-5xl">Tickets</h1>
+  <div class="p-6">
+    <h1 class="text-3xl font-normal mb-3">Ticket availability</h1>
+    <button class="flex bg-[#FAE115] w-[317px] justify-between items-center">
+      <p class="ml-4">All</p>
+      <AiOutlineDown class="mr-4" size={35} />
+    </button>
+  </div>
+  <div class="bg-[#D9D9D9] grid grid-cols-2 gap-4 p-6">
+    <div>
+      <button>Features</button>
+    </div>
+    <div class="flex justify-between pr-10">
+      <button>On sale</button>
+      <button>Now selling</button>
+    </div>
+  </div>
+  <div class="bg-[#FAE115]">
+    <%= render 'ticket/singleticket' %>
+    <%= render 'ticket/singleticket' %>
+    <%= render 'ticket/singleticket' %>
+  </div>
 </div>

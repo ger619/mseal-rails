@@ -15,8 +15,9 @@
 
   <body>
     <%= render "layouts/navbar" %>
-    <main class="container mx-auto md:mt-[28px]">
+    <main class="md:container lg:max-w-full md:mx-auto lg:mt-0 md:mt-[28px] sm:mt-[12px] mt-[6px]">
       <%= yield %>
     </main>
+  <%= render "layouts/footer" %>
   </body>
 </html>
