@@ -1,7 +1,5 @@
 class MembershipController < ApplicationController
-
-  def index
-  end
+  def index; end
 
   def show
     @membership = Membership.find(params[:id])
