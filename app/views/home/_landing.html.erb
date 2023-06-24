@@ -44,7 +44,8 @@
         key={item.id}
         class="flex flex-col md:w-[303px] text-white bg-black"
       >
-        <img src={item.image} alt="" class="md:w-[300px]" />
+
+        <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
         <p class=" text-xs p-2">Featured</p>
         <p class="text-xl p-4 font-bold w-[90%]">{item.title}</p>
       </div>
