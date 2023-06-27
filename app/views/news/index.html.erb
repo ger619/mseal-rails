@@ -1,15 +1,15 @@
-
+<div class="p-8 bg-[#FAE115] font-bold uppercase text-5xl">
+  <h1>NEWS</h1>
+</div>
 <div class="flex-col">
 
-
 <% @news.each do |news| %>
-<div class="max-w-sm w-full lg:max-w-full lg:flex mt-6 ml-10 mb-2">
-
+<div class="max-w-sm w-full lg:max-w-full lg:flex mt-6 ml-10 mb-2 ">
 
     <div class="h-[200px] w-[300px] flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
       <%= image_tag(news.image, class: "h-[200px] w-[300px]") %>
     </div>
-    <div class="h-48 w-[80%] lg:h-auto border-r border-b border-l border-[#FAE115] lg:border-l-0 lg:border-t lg:border-[#FAE115] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    <div class="h-48 w-[60%] lg:h-auto border-r border-b border-l border-[#FAE115] lg:border-l-0 lg:border-t lg:border-[#FAE115] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
       <div class="">
         <p class="text-sm text-gray-600 flex items-center">
           <%= news.type_of_news %>
@@ -24,7 +24,6 @@
         </p>
       <% end %>
     </div>
-
 
 </div>
 <% end %>
