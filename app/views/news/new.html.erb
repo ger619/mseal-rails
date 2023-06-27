@@ -1,6 +1,6 @@
 <%= form_with  model: @news, url: news_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
 
-    <%= f.text_field :type_of_news, placeholder: 'Type of News' %>
+    <%= f.text_field :type_of_news, placeholder: 'Type of News', required: true %>
 
     <%= f.text_field :header_news, placeholder: 'Header for news' %>
 

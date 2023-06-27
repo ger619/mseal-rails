@@ -1,16 +1,18 @@
 <div class="flex flex-col md:flex-row gap-5  m-4">
   <div class="w-full">
 
-      <% @news.each do |news| %>
+      <% @news.limit(1).each do |news| %>
           <div class=" flex flex-col items-center bg-white border border-[#FAE115] rounded-lg shadow md:flex-row ">
 
             <%= image_tag(news.image, class: "object-cover w-full rounded-t-lg lg:w-[70%] md:h-[400px] md:w-[600px] sm:w-[200px] md:rounded-none md:rounded-l-lg hover:bg-[#FAE115]" ) %>
               <div class="flex flex-col justify-between leading-normal p-5">
-                <h5 class="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">A Win For Seals</h5>
+                <h5 class="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= news.header_news %></h5>
                 <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">Murang&rsquo;a Seals defeated Shaban FC 2-0</p>
-                <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
-                  Read More
-                </p>
+                <%= link_to news_path(news.id) do %>
+                  <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
+                    Read More
+                  </p>
+                <% end %>
               </div>
 
           </div>
@@ -18,33 +20,37 @@
 
 
 
-    <% @news.each do |news| %>
-    <div class="flex flex-row  justify-between md:mr-[20px]">
+    <% @news.limit(4).each do |news| %>
 
-          <div class="flex flex-col-reverse justify-between mt-5 p-2  group hover:bg-[#FAE115]  hover:scale-105 transition-all duration-500 cursor-pointer">
-            <div class="flex-col">
-              <p class="font-bold text-sm">{item.title}</p>
-              <p class="text-sm">{item.description}</p>
-              <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
-                Latest News
-              </p>
-            </div>
-            <img class="" src={item.image} alt="" />
-            <%= image_tag(news.image, class: "h-[10%] w-[10%]")  %>
-          </div>
-    </div>
-      </div>
+        <div class="inline-flex flex-row w-[200px] md:mr-[20px]">
 
+              <div class="flex flex-col-reverse justify-between mt-5 p-2  group hover:bg-[#FAE115]  hover:scale-105 transition-all duration-500 cursor-pointer">
+                <div class="flex-col">
+                  <p class="font-bold text-sm"><%= news.header_news %></p>
+                  <p class="text-sm"><%= news.header_news %></p>
+                  <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
+                    Latest News
+                  </p>
+                </div>
+                <%= image_tag(news.image)  %>
+              </div>
+        </div>
     <% end %>
+  </div>
 
 
-  <div class="bg-white  flex flex-col md:flex-row border-t-indigo-500">
+  <div class="bg-white flex-col md:flex-row border-t-indigo-500">
     <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
-      <div
-        key={item.id}
-        class="flex flex-col md:w-[303px] text-white bg-black"
-      >
+      <div class="flex flex-col md:w-[303px] text-white bg-black">
+        <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
+        <p class=" text-xs p-2">Featured</p>
+        <p class="text-xl p-4 font-bold w-[90%]">{item.title}</p>
+      </div>
+    </div>
 
+
+    <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
+      <div class="flex flex-col md:w-[303px] text-white bg-black">
         <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
         <p class=" text-xs p-2">Featured</p>
         <p class="text-xl p-4 font-bold w-[90%]">{item.title}</p>
