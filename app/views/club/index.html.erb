@@ -8,7 +8,7 @@
       <h1 class="md:text-4xl text-3xl uppercase mt-5 font-normal mb-8">
         <%= club.header %>
       </h1>
-      <p class="md:w-[928px] font-light text-xl">
+      <p class="md:w-[928px] font-light text-xl truncate">
         <%= club.body %>
       </p>
 
@@ -19,8 +19,8 @@
       <% end %>
     </div>
 
-    <div class="w-[400px]">
-      <%= image_tag(club.photo, class: "h-[400px] w-[400px]") %>
+    <div class="">
+      <%= image_tag(club.photo, class: "h-[400px] w-[600px]") %>
     </div>
   </div>
 
