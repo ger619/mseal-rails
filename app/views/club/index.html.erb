@@ -1,6 +1,6 @@
 
-  <div class="p-8 bg-[#FAE115] font-bold uppercase text-5xl">
-    CLUB & HISTORY| <%=link_to "Add Club History", new_club_path, class: "w-[290px] h-[53px] bg-[black] font-normal my-3 py-3 text-2xl text-white" %>
+  <div class="p-8 bg-[#FAE115] font-bold uppercase text-5xl flex justify-between">
+    CLUB & HISTORY| <%=link_to "Add Club & History", new_club_path, class: "normal-case h-[53px] border-2 border-[#fff] hover:bg-[#fff] font-normal text-2xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
   </div>
 <% @clubs.each do |club| %>
   <div class="flex flex-col gap-4 flex flex-row-reverse md:flex-row  items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-10">
