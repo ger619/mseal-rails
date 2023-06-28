@@ -32,5 +32,4 @@ class ClubController < ApplicationController
   def clubs_params
     params.permit(:header, :body, :photo)
   end
-
 end
