@@ -14,6 +14,7 @@ class NewsController < ApplicationController
 
   def create
     @news = News.new(news_params)
+    @news.user_id = current_user.id
 
     respond_to do |format|
       if @news.save
@@ -50,6 +51,6 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:type_of_news, :header_news, :body, :image)
+    params.require(:news).permit(:type_of_news, :header_news, :body, :image, :user_id)
   end
 end

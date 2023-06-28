@@ -1,6 +1,8 @@
 
   <div class="p-8 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-3xl sm:text-2xl flex justify-between">
-    CLUB & HISTORY | <%=link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
+    CLUB & HISTORY | <% if current_user %>
+      <%=link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
+      <% end %>
   </div>
 <% @clubs.each do |club| %>
   <div class="flex flex-col gap-4 flex odd:flex-row-reverse md:flex-row  items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-10">
@@ -18,10 +20,12 @@
             Read More
           </button>
         <% end %>
-        <%= link_to edit_club_path(club.id) do %>
-          <button class="w-[90px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl">
-            Edit
-          </button>
+        <% if current_user %>
+            <%= link_to edit_club_path(club.id) do %>
+              <button class="w-[90px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl">
+                Edit
+              </button>
+            <% end %>
         <% end %>
       </div>
     </div>
