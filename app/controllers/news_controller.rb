@@ -31,6 +31,8 @@ class NewsController < ApplicationController
     end
   end
 
+  def update
+
   private
 
   def news_params
