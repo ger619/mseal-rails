@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   def index
     @news = News.all.order('created_at DESC')
   end
