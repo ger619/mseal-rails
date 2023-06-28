@@ -23,11 +23,15 @@
       </p>
 
       <div class="text-gray-900 font-bold text-xl mb-2"><%= news.header_news %></div>
-      <p class="text-gray-700 text-base"><%= news.body %></p>
-      <p>edwrevrgr</p>
-      
+
+      <div class="flex">
       <div class="ml-10 bg-[#FAE115]">
         <%= link_to "Edit News", edit_news_path(news.id), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" %>
+      </div>
+          <div class="ml-10 bg-[#FAE115]">
+        <%= link_to "Edit News", edit_news_path(news.id), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" %>
+      </div>
+      </div>
       </div>
   
     </div>
