@@ -1,4 +1,6 @@
 class ClubController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+
   def index
     @clubs = Club.all.order('created_at DESC')
   end
