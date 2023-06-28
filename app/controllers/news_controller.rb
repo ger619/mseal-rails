@@ -31,6 +31,21 @@ class NewsController < ApplicationController
     end
   end
 
+  def edit
+    @news = News.find(params[:id])
+  end
+
+  def update
+    @news = News.find(params[:id])
+    respond_to do |format|
+      if @news.update(news_params)
+        format.html { redirect_to news_index_path(@news), notice: 'News was successfully updated.' }
+      else
+        format.html { redirect_to news_index_url, notice: 'Failure' }
+      end
+    end
+  end
+
   private
 
   def news_params

@@ -1,31 +1,39 @@
-<div class="p-8 bg-[#FAE115] font-bold uppercase text-5xl">
-  <h1>NEWS</h1>
+<div class="bg-[#FAE115]">
+<h1 class="text-4xl font-bold uppercase p-4">News</h1>
 </div>
-<div class="flex-col">
 
+<div class="bg-gray-300 flex text-3xl py-3 px-5 mx-10 gap-20">
+<p>Latest News</p>
+<p>Featured</p>
+</div>
+
+<div class="flex-col mt-10 ml-10">
+<%# getting the date %>
+
+<h1 class="font-bold text-2xl">APRIL,2023</h1>
 <% @news.each do |news| %>
-<div class="max-w-sm w-full lg:max-w-full lg:flex mt-6 ml-10 mb-2 ">
+<div class=" w-full lg:max-w-full mt-10 lg:flex mb-6 ">
+  <div class="h-28 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+    <%= image_tag(news.image, class: "h-48 w-48") %>
+  </div>
+  <div class="h-48 w-[80%] lg:h-auto border-r border-b border-l border-[#FAE115] lg:border-l-0 lg:border-t lg:border-[#FAE115] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    <div class="">
+      <p class="text-sm text-gray-600 flex items-center">
+        <%= news.type_of_news %>
+      </p>
 
-    <div class="h-[200px] w-[300px] flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
-      <%= image_tag(news.image, class: "h-[200px] w-[300px]") %>
-    </div>
-    <div class="h-48 w-[60%] lg:h-auto border-r border-b border-l border-[#FAE115] lg:border-l-0 lg:border-t lg:border-[#FAE115] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-      <div class="">
-        <p class="text-sm text-gray-600 flex items-center">
-          <%= news.type_of_news %>
-        </p>
-
-        <div class="text-gray-900 font-bold text-xl mb-2"><%= news.header_news %></div>
-        <p class="text-gray-700 text-base"><%= news.body %></p>
+      <div class="text-gray-900 font-bold text-xl mb-2"><%= news.header_news %></div>
+      <p class="text-gray-700 text-base"><%= news.body %></p>
+      <p>edwrevrgr</p>
+      
+      <div class="ml-10 bg-[#FAE115]">
+        <%= link_to "Edit News", edit_news_path(news.id), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" %>
       </div>
-      <%= link_to news_path(news.id) do %>
-        <p class="bg-[#FAE115] w-[100px] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold ">
-          Read More
-        </p>
-      <% end %>
+  
     </div>
-
+  </div>
 </div>
 <% end %>
+
 
 </div>
