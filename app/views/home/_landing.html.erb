@@ -2,12 +2,13 @@
   <div class="w-full">
 
       <% @news.limit(1).each do |news| %>
-          <div class=" flex flex-col items-center bg-white border border-[#FAE115] rounded-lg shadow md:flex-row ">
+          <div class=" flex flex-col items-start bg-white border border-[#FAE115] rounded-lg shadow md:flex-row ">
 
             <%= image_tag(news.image, class: "object-cover w-full rounded-t-lg lg:w-[70%] md:h-[400px] md:w-[600px] sm:w-[200px] md:rounded-none md:rounded-l-lg hover:bg-[#FAE115]" ) %>
-              <div class="flex flex-col justify-between leading-normal p-5">
-                <h5 class="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= news.header_news %></h5>
-                <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">Murang&rsquo;a Seals defeated Shaban FC 2-0</p>
+              <div class="flex flex-col justify-start leading-normal p-5">
+              <h1 class="text-gray-500">News</h1>
+              <h5 class="mb-6 text-4xl font-bold tracking-tight text-[#000] mt-5"><%= news.header_news %></h5>
+                <p class="mb-2 font-normal text-[#000]">Murang&rsquo;a Seals defeated Shaban FC 2-0</p>
                 <%= link_to news_path(news.id) do %>
                   <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
                     Read More
@@ -32,7 +33,9 @@
                     Latest News
                   </p>
                 </div>
+                <div class="h-[200px]">
                 <%= image_tag(news.image)  %>
+                </div>
               </div>
         </div>
     <% end %>
