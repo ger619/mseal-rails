@@ -21,19 +21,19 @@
 
 
 
-    <% @news.limit(4).each do |news| %>
+    <% @news.limit(3).each do |news| %>
 
         <div class="inline-flex flex-row w-[200px] md:mr-[20px]">
 
               <div class="flex flex-col-reverse justify-between mt-5 p-2  group hover:bg-[#FAE115]  hover:scale-105 transition-all duration-500 cursor-pointer">
                 <div class="flex-col">
-                  <p class="font-bold text-sm"><%= news.header_news %></p>
-                  <p class="text-sm"><%= news.header_news %></p>
+                  <p class="font-bold text-sm truncate ... w-[200px]"><%= news.header_news %></p>
+                  <p class="text-sm truncate ... w-[200px]"><%= news.header_news %></p>
                   <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center  rounded-lg font-semibold">
                     Latest News
                   </p>
                 </div>
-                <div class="h-[200px]">
+                <div class="h-[200px] h-[300px]">
                 <%= image_tag(news.image)  %>
                 </div>
               </div>

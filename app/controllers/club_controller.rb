@@ -11,6 +11,7 @@ class ClubController < ApplicationController
 
   def create
     @clubs = Club.new(clubs_params)
+    @clubs.user_id = current_user.id
 
     respond_to do |format|
       if @clubs.save
@@ -27,6 +28,7 @@ class ClubController < ApplicationController
 
   def update
     @clubs = Club.find(params[:id])
+    @clubs.user_id = current_user.id
     respond_to do |format|
       if @clubs.update(clubs_params)
         format.html { redirect_to club_index_path(@clubs), notice: 'Clubs was successfully updated.' }
@@ -38,7 +40,9 @@ class ClubController < ApplicationController
 
   def destroy
     @clubs = Club.find(params[:id])
+    @clubs.user_id = current_user.id
     @clubs.delete
+
     respond_to do |format|
       format.html { redirect_to club_index_path, notice: 'News was successfully deleted.' }
     end
@@ -47,6 +51,6 @@ class ClubController < ApplicationController
   private
 
   def clubs_params
-    params.permit(:header, :body, :photo)
+    params.permit(:header, :body, :photo, :user_id)
   end
 end
