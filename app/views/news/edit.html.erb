@@ -1,0 +1,24 @@
+<div class="max-w-md mx-auto mt-8">
+  <h1 class="text-2xl font-bold mb-4">Edit News</h1>
+
+  <%= form_with(model: @news, url: news_path(@news), method: :patch, class: "bg-white rounded shadow-md p-6") do |form| %>
+    <div class="mb-4">
+      <%= form.label :type_of_news, class: "block text-sm font-bold mb-2" %>
+      <%= form.text_field :type_of_news, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :header_news, class: "block text-sm font-bold mb-2" %>
+      <%= form.text_field :header_news, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :body, class: "block text-sm font-bold mb-2" %>
+      <%= form.text_area :body, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="flex justify-end">
+      <%= form.submit "Update News", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
+</div>
