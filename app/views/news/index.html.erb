@@ -8,15 +8,14 @@
 </div>
 
 <div class="flex-col mt-10 md:ml-10">
-  <%# getting the date %>
-  
+
   <h1 class="font-bold text-2xl">APRIL, 2023</h1>
   <div class="flex flex-col md:flex-row md:flex md:justify-between" >
-  <div class="md:w-[80%]">
+    <div class="md:w-[80%]">
     <% @news.each do |news| %>
-    <div class="mx-2 w-full lg:max-w-full mt-5 flex mb-6">
-      <div class="h-36 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
-        <%= image_tag(news.image, class: "h-48 w-48") %>
+      <div class="mx-2 w-full lg:max-w-full mt-5 flex mb-6">
+      <div class="h-40 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
+        <%= image_tag(news.image, class: "h-40 w-60") %>
       </div>
       <div class="h-36 md:w-[80%] shadow-2xl lg:h-auto border-r border-b border-l  lg:border-l-0 lg:border-t bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
         <div class="">
@@ -24,7 +23,9 @@
             <%= news.type_of_news %>
           </p>
   
-          <div class="text-gray-900 font-bold text-xl mb-2 truncate md:mt-3"><%= news.header_news %></div>
+          <div class="text-gray-900 font-bold text-xl mb-2 truncate md:mt-3">
+            <%= news.header_news %>
+          </div>
   
           <div class="flex flex-col md:flex-row gap-2">
             <div class="bg-[#FAE115] md:mt-3 md:p-3 rounded-lg">
@@ -40,9 +41,8 @@
       </div>
     </div>
     <% end %>
-
   </div >
-   <div class="bg-white flex-col md:flex-row border-t-indigo-500">
+    <div class="bg-white flex-col md:flex-row border-t-indigo-500">
     <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
       <div class="flex flex-col md:w-[303px] text-white bg-black">
         <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
@@ -59,5 +59,6 @@
         <p class="text-xl p-4 font-bold w-[90%]">Hello</p>
       </div>
     </div>
+  </div>
   </div>
 </div>
