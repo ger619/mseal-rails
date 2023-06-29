@@ -20,14 +20,11 @@
       <% end %>
 
     <% @news.limit(4).each do |news| %>
-      <div class="max-w-sm bg-white border border-[#FAE115] rounded-lg mt-[28px]">
-      <a href="#">
+      <div class="max-w-sm bg-white border border-[#FAE115] mt-[28px]">
         <%= image_tag(news.image, class: "rounded-t-lg")  %>
-      </a>
       <div class="p-5">
-        <a href="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate"><%= news.type_of_news %></h5>
-        </a>
+
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate"><%= news.header_news %>.</p>
         <%= link_to news_path(news.id) do %>
           <div class="inline-flex items-center px-3 py-2 text-sm font-semibold text-center text-black hover:text-[#FAE115] bg-[#FAE115] rounded-lg hover:bg-white hover:border-[#FAE115] border focus:ring-4 focus:outline-none focus:ring-blue-300">
