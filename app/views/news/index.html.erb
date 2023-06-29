@@ -1,48 +1,63 @@
 <div class="bg-[#FAE115]">
-<h1 class="text-4xl font-bold uppercase p-4">News</h1>
+  <h1 class="text-4xl font-bold uppercase p-4">News</h1>
 </div>
 
 <div class="bg-gray-300 flex text-3xl py-3 px-5 mx-10 gap-20">
-<p>Latest News</p>
-<p>Featured</p>
+  <p>Latest News</p>
+  <p>Featured</p>
 </div>
 
 <div class="flex-col mt-10 ml-10">
-<%# getting the date %>
-
-<h1 class="font-bold text-2xl">APRIL,2023</h1>
-<div>
-<% @news.each do |news| %>
-<div class=" w-full lg:max-w-full mt-10 lg:flex mb-6 ">
-  <div class="h-28 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
-    <%= image_tag(news.image, class: "h-48 w-48") %>
-  </div>
-  <div class="h-48 w-[80%] lg:h-auto border-r border-b border-l border-[#FAE115] lg:border-l-0 lg:border-t lg:border-[#FAE115] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
-    <div class="">
-      <p class="text-sm text-gray-600 flex items-center">
-        <%= news.type_of_news %>
-      </p>
-
-      <div class="text-gray-900 font-bold text-xl mb-2 truncate mt-3"><%= news.header_news %></div>
-
-      <div class="flex">
-      <div class=" bg-[#FAE115] mt-3 p-3 rounded-lg">
-        <%= link_to "Read More", news_path(news.id), class: " text-[#000] font-bold py-2 px-4 rounded mt-2" %>
-      </div>
-        <% if current_user %>
-        <div class="ml-10 mt-3 bg-[#FAE115]  p-3  rounded-lg">
-
-            <%= link_to "Edit News", edit_news_path(news.id), class: " text-[#000] font-bold py-2 px-4 rounded mt-2" %>
-
-      </div>
-        <% end %>
-      </div>
-      </div>
+  <%# getting the date %>
   
+  <h1 class="font-bold text-2xl">APRIL, 2023</h1>
+  <div class="flex justify-between" >
+  <div class="w-[80%]">
+    <% @news.each do |news| %>
+    <div class="w-full lg:max-w-full mt-5 lg:flex mb-6">
+      <div class="h-28 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+        <%= image_tag(news.image, class: "h-48 w-48") %>
+      </div>
+      <div class="h-48 w-[80%] shadow-2xl lg:h-auto border-r border-b border-l  lg:border-l-0 lg:border-t bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
+        <div class="">
+          <p class="text-sm text-gray-600 flex items-center">
+            <%= news.type_of_news %>
+          </p>
+  
+          <div class="text-gray-900 font-bold text-xl mb-2 truncate mt-3"><%= news.header_news %></div>
+  
+          <div class="flex">
+            <div class="bg-[#FAE115] mt-3 p-3 rounded-lg">
+              <%= link_to "Read More", news_path(news.id), class: "text-[#000] font-bold py-2 px-4 rounded mt-2" %>
+            </div>
+            <% if current_user %>
+              <div class="ml-10 mt-3 bg-[#FAE115] p-3 rounded-lg">
+                <%= link_to "Edit News", edit_news_path(news.id), class: "text-[#000] font-bold py-2 px-4 rounded mt-2" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  </div >
+   <div class="bg-white flex-col md:flex-row border-t-indigo-500">
+    <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
+      <div class="flex flex-col md:w-[303px] text-white bg-black">
+        <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
+        <p class=" text-xs p-2">Featured</p>
+        <p class="text-xl p-4 font-bold w-[90%]">Hello</p>
+      </div>
+    </div>
+
+
+    <div class="flex flex-col md:items-end gap-5 sm:flex mt-10 ">
+      <div class="flex flex-col md:w-[303px] text-white bg-black">
+        <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
+        <p class=" text-xs p-2">Featured</p>
+        <p class="text-xl p-4 font-bold w-[90%]">Hello</p>
+      </div>
     </div>
   </div>
-</div>
-<% end %>
-
-
 </div>
