@@ -1,8 +1,12 @@
+<div class="shadow-md">
 <div class="p-8 bg-[#FAE115] font-bold uppercase text-3xl">
   <p>NEWS | <%= @news.header_news %></p>
 </div>
+
 <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
   <%= render "news/image_show" %>
-  <%= @news.type_of_news %>
-  <%= @news.body %>
+  <h2 class="text-2xl font-bold mt-4"><%= @news.type_of_news %></h2>
+  <h3 class="text-xl font-semibold"><%= @news.header_news %></h3>
+  <p class="text-lg mt-2"><%= @news.body %></p>
+</div>
 </div>

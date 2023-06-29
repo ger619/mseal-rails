@@ -2,20 +2,58 @@
   <h1>SHOP</h1>
 </div>
 
-<div class="flex ">
-  <div class="container border-[#f4e721]">
-    <%= image_tag "msealskit.png", class: "w-[400px] " %>
-
+<div class="flex items-center gap-10 mx-auto w-[70%]">
+  <div class="w-[400px]  border-[#f4e721]">
+    <%= image_tag "msealskit.png", class: "" %>
   </div>
+  
   <div>
-    <h1>AUTHENTIC HOME SHIRT</h1>
-    <p>Color: Yellow with Black and White strips</p>
-    <p>Size: S, M, L, XL</p>
-    <p>Price: $50</p>
-    <p>Quantity: 1</p>
-    <button class="bg-[#FAE115] font-bold uppercase text-5xl m">Add to Cart</button>
+    <h1 class="text-4xl font-bold">AUTHENTIC HOME SHIRT</h1>
+    <p class="mt-2">Color: Yellow with Black and White stripes</p>
+    <p class="mt-2">Size: S, M, L, XL</p>
+    <p class="mt-2">Price: $50</p>
+    
+    <div class="mt-2">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" min="1" value="1">
+    </div>
+    
+    <div id="price" class="mt-2">Price: $50</div>
+    
+    <button id="buyButton" class="bg-[#FAE115] p-3 rounded-lg mt-2">Buy Now</button>
   </div>
-
-
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const quantityInput = document.getElementById("quantity");
+    const priceElement = document.getElementById("price");
+    const buyButton = document.getElementById("buyButton");
+
+    // Update price based on quantity
+    quantityInput.addEventListener("input", () => {
+      const quantity = quantityInput.value;
+      const price = 50 * quantity; // Assuming price is $50 per item
+      priceElement.textContent = `Price: $${price}`;
+    });
+
+    // Send email with details on button click
+    buyButton.addEventListener("click", () => {
+      const quantity = quantityInput.value;
+      const price = 50 * quantity; // Assuming price is $50 per item
+      
+      // Send an AJAX request to your server to send the email
+      // You can use libraries like Axios or jQuery to simplify the AJAX call
+      // Example using Axios:
+      axios.post("/send_email", { quantity, price })
+        .then(() => {
+          // Email sent successfully, perform any additional actions or show a confirmation message
+          console.log("Email sent successfully");
+        })
+        .catch((error) => {
+          // Handle error, show an error message, or perform any necessary actions
+          console.error("Error sending email:", error);
+        });
+    });
+  });
+</script>
