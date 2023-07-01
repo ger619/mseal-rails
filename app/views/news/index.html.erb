@@ -7,17 +7,20 @@
 <p>Featured</p>
 </div>
 
-<div class="flex-col mt-10 ml-10">
+
 <%# getting the date %>
 
 <h1 class="font-bold text-2xl">APRIL,2023</h1>
-<div>
+
+<div class="grid grid-cols-3 gap-4 p-10">
+
+
 <% @news.each do |news| %>
 <div class=" w-full lg:max-w-full mt-10 lg:flex mb-6 ">
   <div class="h-28 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
-    <%= image_tag(news.image, class: "h-48 w-48") %>
+    <%= image_tag(news.image, class: "h-[200px] object-fit w-[300px]") %>
   </div>
-  <div class="h-48 w-[80%] lg:h-auto border-r border-b border-l border-[#FAE115] lg:border-l-0 lg:border-t lg:border-[#FAE115] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
+  <div class="h-48 w-[80%] lg:h-auto  shadow-xl shadow-gray-200 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
     <div class="">
       <p class="text-sm text-gray-600 flex items-center">
         <%= news.type_of_news %>
@@ -45,4 +48,13 @@
 <% end %>
 
 
+
+
+
+
+<div class="w-[20%] text-red-500">
+cvgbhnjmk,label
 </div>
+
+</div>
+
