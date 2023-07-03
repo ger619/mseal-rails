@@ -64,12 +64,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_210908) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string "name"
+    t.string "product_name"
+    t.string "description"
     t.string "size"
-    t.string "gender"
+    t.string "quantity"
     t.string "price"
     t.string "photo"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

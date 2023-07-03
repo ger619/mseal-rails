@@ -1,4 +1,4 @@
-<%= form_with  model: @clubs, url: club_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
+<%= form_with  model: @clubs, url: club_index_path, method: :club, data: { turbo: false }, local: true do |f| %>
 
     <div class="md:w-[1280px] flex flex-col gap-4 md:my-12 md:mx-auto bg-[#F7F3ED] md:p-4">
       <h1 class="md:text-5xl text-2xl ">
@@ -18,7 +18,7 @@
 
       </div>
 
-      <%= f.text_area :body, class: "bg-[#F7F3ED] w-[100%] p-2 border-b border-black focus:outline-none row-6" ,placeholder: "Add the details to 600 words  *", required: true%>
+      <%= f.text_area :body, class: "bg-[#F7F3ED] w-[100%] p-2 border-b border-black focus:outline-none", size: "70x20" ,placeholder: "Add the details to 600 words  *", required: true%>
 
       <%= f.submit "POST", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black" %>
     </div>

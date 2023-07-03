@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   before_action :update_allowed_parameters, if: :devise_controller?
 

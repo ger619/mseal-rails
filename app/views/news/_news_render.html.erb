@@ -1,0 +1,31 @@
+<% @news.each do |news| %>
+
+    <div class="sm:mx-2 mt-5 flex mb-6 h-28 md:w-[100%] md:h-40 hover:shadow-lg hover:shadow-[#FAE115] lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t">
+    <div class="h-40 sm:h-30 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
+      <%= image_tag(news.image, class: "lg:h-40 lg:w-60 h-28 md:h-40 sm:w-30") %>
+    </div>
+    <div class="md:w-[800px] sm:w-[300px] w-[200px] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
+      <div class="">
+        <p class="text-sm text-gray-600 flex items-center">
+          <%= news.type_of_news %>
+        </p>
+
+        <div class="text-gray-900 font-bold text-xl mb-2 md:mt-3 sm:text-sm md:text-xl truncate ">
+          <%= news.header_news %>
+        </div>
+
+        <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
+          <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+            <%= link_to "Read More", news_path(news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+          </div>
+          <% if current_user %>
+            <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+              <%= link_to "Edit News", edit_news_path(news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
