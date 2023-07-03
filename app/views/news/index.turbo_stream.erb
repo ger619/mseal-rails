@@ -1,0 +1,9 @@
+<%= turbo_stream.append :news do %>
+  <%= render @news %>
+<% end %>
+
+<%= turbo_stream.replace :pagination do %>
+  <% if @pagy.next.present? %>
+    <%= turbo_frame_tag :pagination, loading: :lazy, src: news_path(format: :turbo_stream, page: @pagy.next) %>
+  <% end %>
+<% end %>

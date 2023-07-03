@@ -78,3 +78,6 @@ gem 'font-awesome-sass', '~> 6.4.0'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
 gem 'cancancan'
+
+gem "faker", "~> 3.2"
+gem "pagy", "~> 6.0"
