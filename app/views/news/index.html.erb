@@ -1,7 +1,8 @@
-<div class="bg-[#FAE115]">
-  <h1 class="text-4xl font-bold uppercase p-4">News</h1>
+<div class="p-6 bg-[#FAE115] font-bold uppercase text-5xl flex justify-between">
+  NEWS  <% if current_user %>
+    <%=link_to "Add News", new_news_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
+  <% end %>
 </div>
-
 <div class="bg-gray-300 flex text-3xl py-3 px-5 md:mx-10 md:gap-20">
   <p>Latest News</p>
   <p>Featured</p>
@@ -20,15 +21,7 @@
       <% end %>
     </div >
 
-    <div class="bg-white flex-col md:flex-row border-[#FAE115]">
-    <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
-      <div class="flex flex-col lg:w-[303px] md:w-[203px] text-white bg-black">
-        <%= image_tag 'featured1.png', class: "lg:w-[300px] md:w-[200px] "%>
-        <p class=" text-xs p-2">Featured</p>
-        <p class="text-xl p-4 font-bold w-[90%]">Hello</p>
-      </div>
-    </div>
+    <%= render 'news/adverts' %>
 
-  </div>
   </div>
 </div>
