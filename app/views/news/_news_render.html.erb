@@ -1,9 +1,10 @@
 <% @news.each do |news| %>
-  <div class="sm:mx-2 mt-5 flex mb-6 h-28 md:w-[100%] md:h-40">
+
+    <div class="sm:mx-2 mt-5 flex mb-6 h-28 md:w-[100%] md:h-40 hover:shadow-lg hover:shadow-[#FAE115] lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t">
     <div class="h-40 sm:h-30 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
       <%= image_tag(news.image, class: "lg:h-40 lg:w-60 h-28 md:h-40 sm:w-30") %>
     </div>
-    <div class="md:w-[800px] sm:w-[300px] w-[200px] hover:shadow-lg hover:shadow-[#FAE115] lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
+    <div class="md:w-[800px] sm:w-[300px] w-[200px] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
       <div class="">
         <p class="text-sm text-gray-600 flex items-center">
           <%= news.type_of_news %>
@@ -26,4 +27,5 @@
       </div>
     </div>
   </div>
+
 <% end %>
