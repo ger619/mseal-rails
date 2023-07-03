@@ -3,8 +3,7 @@ class ShopController < ApplicationController
 
   def index; end
 
-
-  def show;
+  def show
     @shop = Shop.find(params[:id])
   end
 
@@ -38,5 +37,4 @@ class ShopController < ApplicationController
   def shop_params
     params.require(:shop).permit(:product_name, :description, :size, :quantity, :price, :photo)
   end
-
 end
