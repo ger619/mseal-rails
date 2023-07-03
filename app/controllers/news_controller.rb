@@ -22,7 +22,7 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       if @news.save
-        format.html { redirect_to news_index_path(@news), notice: 'News was successfully created.' }
+        format.html { redirect_to news_url(@news), notice: 'News was successfully created.' }
       else
         format.html { redirect_to news_index_url, notice: 'Failure' }
       end
