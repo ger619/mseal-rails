@@ -20,7 +20,7 @@
       <% end %>
 
     <% @news.limit(3).each do |news| %>
-      <div class="inline-flex mr-2 lg:w-[450px] md:max-w-[32%] sm:w-[100%]">
+      <div class="inline-flex mr-2 md:max-w-[32%] md:min-w-[270px] sm:w-[100%]">
 
         <div class="bg-white border border-[#FAE115] mt-[28px]">
           <%= image_tag(news.image)  %>
