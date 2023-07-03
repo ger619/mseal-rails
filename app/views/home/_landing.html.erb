@@ -1,4 +1,4 @@
-<div class="flex flex-col md:flex-row gap-5   m-[5%]">
+<div class="flex flex-col md:flex-row gap-5   m-[4%]">
   <div class="container">
 
       <% @news.limit(1).each do |news| %>
@@ -19,11 +19,11 @@
           </div>
       <% end %>
 
-    <% @news.limit(4).each do |news| %>
-      <div class="inline-flex">
+    <% @news.limit(3).each do |news| %>
+      <div class="inline-flex mr-2 lg:w-[450px] md:max-w-[32%] sm:w-[100%]">
 
-        <div class="max-w-sm bg-white border border-[#FAE115] mt-[28px]">
-          <%= image_tag(news.image, size: "300x300")  %>
+        <div class="bg-white border border-[#FAE115] mt-[28px]">
+          <%= image_tag(news.image)  %>
           <div class="p-5">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate">
                 <%= news.type_of_news %>
@@ -45,7 +45,16 @@
   </div>
 
 
-  <div class="bg-white flex-col md:flex-row border-t-indigo-500">
+  <div class="bg-white flex-col md:flex-row border-t-indigo-500 ">
+    <div class="flex flex-col md:items-end gap-5 hidden sm:flex mb-8">
+      <div class="flex flex-col md:w-[303px] text-white bg-black">
+        <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
+        <p class=" text-xs p-2">Featured</p>
+        <p class="text-xl p-4 font-bold w-[90%]">{item.title}</p>
+      </div>
+    </div>
+
+
     <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
       <div class="flex flex-col md:w-[303px] text-white bg-black">
         <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
@@ -54,13 +63,6 @@
       </div>
     </div>
 
-
-    <div class="flex flex-col md:items-end gap-5 sm:flex ">
-      <div class="flex flex-col md:w-[303px] text-white bg-black">
-        <%= image_tag 'featured1.png', class: "md:w-[300px]"%>
-        <p class=" text-xs p-2">Featured</p>
-        <p class="text-xl p-4 font-bold w-[90%]">{item.title}</p>
-      </div>
-    </div>
   </div>
+
 </div>
