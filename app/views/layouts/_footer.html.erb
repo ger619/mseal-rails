@@ -1,62 +1,63 @@
 
 <div class="bg-[#000] hidden md:block  p-8  text-white">
-  <div class="mx-auto py-8 w-[80%] flex flex-col md:flex-row justify-between">
+  <div class="mx-auto py-8 w-[80%] flex flex-col md:flex-row justify-between border-b-4 border-[#f4e721]">
     <h1>Murangaseals@gmail.com</h1>
     <h1>+2547 000 000 000</h1>
-    <div class="flex gap-4 justify-between">
-      <AiFillInstagram size={40} />
-      <BsTwitter size={35} />
-      <ImFacebook size={35} />
-      <AiOutlineSearch size={35} className="block md:block" />
+    <div>
+      <a target="_blank" rel="noreferrer" href="#">
+        <i class="fa-brands fa-instagram text-[#fff] text-3xl hover:text-[#f4e721] mr-10"></i>
+      </a>
+      <a target="_blank" rel="noreferrer" href="https://twitter.com/Mseal_FC">
+        <i class="fa-brands fa-twitter  text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
+      </a>
+      <a target="_blank" rel="noreferrer" href="https://www.facebook.com/msealfc/">
+        <i class="fa-brands fa-facebook-f text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
+      </a>
+      <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@murangasealfc" >
+        <i class="fa-brands fa-youtube text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
+      </a>
+      <a target="_blank" rel="noreferrer" href="#">
+        <i class="fa-brands fa-tiktok text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
+      </a>
+
     </div>
-    <AiOutlineSearch size={35} className="hidden md:block" />
+
   </div>
 
   <div class="w-[80%] my-8 mx-auto flex justify-between">
     <div class="flex flex-col gap-2">
-      <h5 class="text-[#fae115]">News</h5>
-      <ul>
-        <li>Home Jersey</li>
-        <li>Season Jersey</li>
-        <li>News trophy</li>
-        <li>room</li>
-      </ul>
+      <h5 class="text-[#fae115]">
+        <%= link_to "NEWS", news_index_path %>
+      </h5>
     </div>
     <div class="flex flex-col gap-2">
-      <h5 class="text-[#fae115]">Tickets</h5>
-      <ul>
-        <li>Home Jersey</li>
-        <li>Season Jersey</li>
-        <li>News trophy</li>
-        <li>room</li>
-      </ul>
+      <h5 class="text-[#fae115]">
+        <%= link_to "TEAM", team_index_path %>
+      </h5>
     </div>
     <div class="flex flex-col gap-2">
-      <h5 class="text-[#fae115]">Teams</h5>
-      <ul>
-        <li>Home Jersey</li>
-        <li>Season Jersey</li>
-        <li>News trophy</li>
-        <li>room</li>
-      </ul>
+      <h5 class="text-[#fae115]">
+        <%= link_to "FIXTURES", fixture_index_path %>
+      </h5>
     </div>
     <div class="flex flex-col gap-2">
-      <h5 class="text-[#fae115]">Memberships</h5>
-      <ul>
-        <li>Home Jersey</li>
-        <li>Season Jersey</li>
-        <li>News trophy</li>
-        <li>room</li>
-      </ul>
+      <h5 class="text-[#fae115]">
+        <%= link_to "MEMBERSHIP", membership_index_path %>
+      </h5>
+
     </div>
     <div class="flex flex-col gap-2">
-      <h5 class="text-[#fae115]">Club & History</h5>
-      <ul>
+      <h5 class="text-[#fae115]">
+        <%= link_to "OUR CLUB", club_index_path %>
+      </h5>
+      <!--
+       <ul>
         <li>Home Jersey</li>
         <li>Season Jersey</li>
         <li>News trophy</li>
         <li>room</li>
       </ul>
+      -->
     </div>
   </div>
   <div class="w-[80%] mx-auto  flex  flex-col gap-2">
