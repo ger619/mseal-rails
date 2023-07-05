@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :news
   resources :club
   resources :team
-  resources :ticket
+  resources :fixture
   resources :membership
 end
