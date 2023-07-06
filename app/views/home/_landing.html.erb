@@ -10,13 +10,17 @@
 
 
 
-          <div class=" flex flex-col items-start border border-[#FAE115] mt-3 shadow md:flex-row ">
+          <div class=" flex flex-col items-start border-t-4 border border-[#FAE115] mt-3 shadow md:flex-row ">
 
             <%= image_tag(news.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]" ) %>
               <div class="flex flex-col justify-start leading-normal p-5">
               <h1 class="text-gray-500">News</h1>
-              <h5 class="mb-6 text-4xl font-bold tracking-tight text-[#000] mt-5 "><%= news.type_of_news %></h5>
-                <p class="mb-2 font-normal text-[#000] truncate max-w-[200px]"><%= news.header_news %></p>
+              <h5 class="mb-6 text-4xl font-bold tracking-tight text-[#000] mt-5 uppercase">
+                <%= news.type_of_news %>
+              </h5>
+                <p class="mb-2 font-normal text-[#000] truncate max-w-[200px]">
+                  <%= news.header_news %>
+                </p>
                 <%= link_to news_path(news.id) do %>
                   <p class="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold">
                     Read More
@@ -30,10 +34,10 @@
     <% @news.limit(3).each do |news| %>
       <div class="inline-flex  md:max-w-[31%] md:min-w-[200px] sm:w-[100%] mr-2">
 
-        <div class="bg-white border border-[#FAE115] mt-[28px] mr-2">
+        <div class="bg-white border border-[#FAE115] border-t-4 mt-[28px] mr-2 ">
           <%= image_tag(news.image, class:"xl:h-[180px]  min-h-[150px] lg:w-[250px] min-w-[200px]")  %>
           <div class="p-5">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
                 <%= news.type_of_news %>
               </h5>
               <p class="mb-3 font-normal text-gray-700 truncate ... min-w-[200px] md:w-[150px]">
