@@ -72,37 +72,63 @@
         </div>
     </div>
 
-      <!-- Mobile menu -->
-
-      <div class="content-end bg-black block md:hidden ">
-        <ul class="flex justify-end gap-5 pt-4 bg-black">
-          <li class="absolute top-0 left-0 ">
-            <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-              <%= image_tag "logo.png", class: "w-[80px] text-[#F6F6F6]" %>
-            </a>
-          </li>
-          <li class="grid mr-3">
-              <i class="fa-sharp fa-solid fa-bars fa-flip-horizontal fa-xl mr-3 pb-4" style="color: #ffffff;"></i>
-            <span class="text-white shadow-xl">Menu</span>
-          </li>
-        </ul>
-
-        <ul class="flex justify-end gap-5 p-2 text-[#F6F6F6] bg-[#f4e721]">
-          <li>
-            <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-              <%= image_tag "SP_logo-01.png", class: "w-[100px] text-[#F6F6F6]" %>
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-              <%= image_tag "finix-casino.png", class: "w-[100px] text-[#F6F6F6]" %>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-<div>
-
     <div class="hidden md:flex md:top-0 bottom-0 left-2 md:absolute md:h-[140px] sm:h-[120px]">
         <%= link_to(image_tag("logo.png"), root_path, class: "md:flex xl:none lg:h-[200px] md:h-[140px] sm:h-[120px] ") %>
     </div>
+
+
+ <!-- Mobile menu -->
+
+ <div class="content-end bg-black block md:hidden ">
+   <ul class="flex justify-end gap-5 pt-4 bg-black">
+     <li class="absolute top-0 left-0 ">
+       <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
+         <%= image_tag "logo.png", class: "w-[80px] text-[#F6F6F6]" %>
+       </a>
+     </li>
+     <li id="open" class="grid mr-3">
+       <i class="fa-sharp fa-solid fa-bars fa-flip-horizontal fa-xl mr-3 pb-4" style="color: #ffffff;"></i>
+       <span class="text-white shadow-xl">Menu</span>
+     </li>
+     <li id="close" class="grid mr-3">
+       <i class="fa-sharp fa-solid fa-bars fa-flip-horizontal fa-xl mr-3 pb-4" style="color: #ffffff;"></i>
+       <span class="text-white shadow-xl">X</span>
+     </li>
+
+   </ul>
+
+   <ul class="flex justify-end gap-5 p-2 text-[#F6F6F6] bg-[#f4e721]">
+     <li>
+       <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
+         <%= image_tag "SP_logo-01.png", class: "w-[100px] text-[#F6F6F6]" %>
+       </a>
+     </li>
+     <li>
+       <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
+         <%= image_tag "finix-casino.png", class: "w-[100px] text-[#F6F6F6]" %>
+       </a>
+     </li>
+   </ul>
+ </div>
+ <script>
+   const menu = document.getElementById('menu');
+   const closeMenu = document.getElementById('close');
+    const openMenu = document.getElementById('open');
+
+   function show() {
+       menu.style.display = 'block';
+       menu.style.top = '0';
+       openMenu.style.display = 'none';
+       closeMenu.style.display = 'block';
+   }
+
+   function close() {
+       closeMenu.style.top = '-100vh';
+       closeMenu.style.display = 'none';
+       openMenu.style.display = 'block';
+   }
+
+   closeMenu.addEventListener('click', close);
+   openMenu.addEventListener('click', show);
+
+ </script>
