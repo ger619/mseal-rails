@@ -35,8 +35,8 @@
     <% @news.limit(3).each do |news| %>
       <div class="inline-flex  lg:max-w-[31%] md:max-w-[25%] sm:w-[100%] ml-2">
 
-        <div class="bg-white border border-[#FAE115] border-t-4 mt-[28px] ml-2 ">
-          <%= image_tag(news.image, class:"lg:w-[250px] md:max-w-full")  %>
+        <div class="bg-white border border-[#FAE115] border-t-4 mt-[28px] ml-2 group">
+          <%= image_tag(news.image, class:"lg:w-[250px] md:max-w-full ")  %>
           <div class="p-5">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
                 <%= news.type_of_news %>
