@@ -1,16 +1,5 @@
-<%= turbo_stream.append :news do %>
-  <%= render @news %>
-  <% (1..12).each do |month| %>
-    <%= link_to Date::MONTHNAMES[month], news_path(month: month) %>
-  <% end %>
-<% end %>
-
 <%= turbo_stream.replace :pagination do %>
   <% if @pagy.next.present? %>
     <%= turbo_frame_tag :pagination, loading: :lazy, src: news_path(format: :turbo_stream, page: @pagy.next) %>
   <% end %>
-<% end %>
-
-<% (1..12).each do |month| %>
-  <%= link_to Date::MONTHNAMES[month], news_path(month: month) %>
 <% end %>
