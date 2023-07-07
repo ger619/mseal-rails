@@ -11,12 +11,28 @@ class ShopController < ApplicationController
     @shop = Shop.new
   end
 
+  def edit
+    @shop = Shop.find(params[:id])
+  end
+
   def create
     @shop = Shop.new(shop_params)
     @shop.user = current_user
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to shop_index_path(@shop), notice: 'Shop was successfully created.' }
+        format.html { redirect_to shop_index_url(@shop), notice: 'Shop was successfully created.' }
+      else
+        format.html { redirect_to shop_index_url, notice: 'Failure' }
+      end
+    end
+  end
+
+  def update
+    @shop = Shop.find(params[:id])
+    @shop.user = current_user
+    respond_to do |format|
+      if @shop.update(shop_params)
+        format.html { redirect_to shop_index_path(@shop), notice: 'Shop was successfully updated.' }
       else
         format.html { redirect_to shop_index_url, notice: 'Failure' }
       end
