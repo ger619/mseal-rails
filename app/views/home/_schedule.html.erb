@@ -56,9 +56,7 @@
         10% Discount off On membership
       </p>
       <p class="mb-5 text-[#867A7A]">Medium</p>
-      <button class="bg-[#FAE115]  flex justify-center text-black font-bold p-2 w-[80%] ">
-        Buy Now
-      </button>
+      <%= link_to "<button>Buy Now</button>".html_safe, shop_index_path, class: "bg-[#FAE115]  flex justify-center text-black font-bold p-2 w-[80%] uppercase" %>
     </div>
     <%= image_tag "msealskit.png", alt: "Mseal Logo kit", class: "w-[50%]"%>
 
