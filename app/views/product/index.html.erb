@@ -20,12 +20,16 @@
         <td><%= image_tag(product.photo_product) %></td>
         <td><%= product.price %></td>
         <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
-
-<%= link_to 'New Product', new_product_path %>
+  <% if current_user %>
+    <%= link_to 'New Product', new_product_path %>
+  <% end %>
 
 </table>
