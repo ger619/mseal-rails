@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :team
   resources :fixture
   resources :membership
+  resources :product
 end
