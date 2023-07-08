@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'cart', to: 'cart#show'
+  post 'cart/add'
+  post 'cart/remove'
   get 'shop/index'
   root "home#index"
   resources :home
