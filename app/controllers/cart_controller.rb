@@ -1,5 +1,5 @@
 class CartController < ApplicationController
   def show
-      @render_cart = false
+    @render_cart = false
   end
 end
