@@ -5,5 +5,4 @@ class Orderable < ApplicationRecord
   def total
     product.price * quantity
   end
-
 end
