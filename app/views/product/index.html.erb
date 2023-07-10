@@ -1,0 +1,11 @@
+<div class="p-6 bg-[#FAE115] font-bold uppercase text-5xl flex justify-between">
+  PRODUCT
+
+    <%= render partial: "cart/cart" if @render_cart %>
+
+  <% if current_user %>
+    <%=link_to "Add Product", new_product_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 mb-2" %>
+  <% end %>
+</div>
+
+<%= render 'product/production' %>
