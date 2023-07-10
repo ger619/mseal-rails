@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
 
-  enum role: [:user, :moderator, :admin]
-  after_initialize :set_default_role, :if => :new_record?
+  enum role: %i[user moderator admin]
+  after_initialize :set_default_role, if: :new_record?
 
-    def set_default_role
-      self.role ||= :user
-    end
+  def set_default_role
+    self.role ||= :user
+  end
 
   has_many :news, foreign_key: :user_id, class_name: 'News', dependent: :destroy
   has_many :clubs, foreign_key: :user_id, class_name: 'Club', dependent: :destroy
