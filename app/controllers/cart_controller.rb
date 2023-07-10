@@ -1,5 +1,5 @@
 class CartController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show add]
+  before_action :authenticate_user!, except: %i[index show add remove]
 
   def show
     @render_cart = false
