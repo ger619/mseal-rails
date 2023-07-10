@@ -2,7 +2,7 @@
   <% product = orderable.product %>
   <%= product.description %>
   <%= product.size %>
-
+  <%= orderable.size %>
 
   <%= form_with(url: cart_add_path) do |f| %>
     <%= f.hidden_field :product_id, value: product.id %>
@@ -15,6 +15,7 @@
     <%= f.submit "X" %>
   <% end %>
 
-  <%= orderable.total %>
+
+
 
 <% end %>
