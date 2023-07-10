@@ -1,7 +1,6 @@
 <% @cart.orderables.each do |orderable| %>
   <% product = orderable.product %>
   <%= product.description %>
-  <%= product.size %>
   <%= orderable.size %>
 
   <%= form_with(url: cart_add_path) do |f| %>
