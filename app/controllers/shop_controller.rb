@@ -1,5 +1,5 @@
 class ShopController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index; end
 
@@ -51,6 +51,6 @@ class ShopController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:product_name, :description, :size, :quantity, :price, :photo)
+    params.require(:shop).permit(:product_name, :description, :size, :quantity, :price, :photo, :user_id)
   end
 end
