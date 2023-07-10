@@ -8,6 +8,7 @@
       <%= image_tag(@product.photo_product) %>
       <%= @product.price  %>
     </div>
+    <%= button_to "Destroy this product", @product, method: :delete %>
 
 
   </div>
