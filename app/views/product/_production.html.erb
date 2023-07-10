@@ -12,19 +12,19 @@
       <h1 class="text-2xl md:text-5xl font-bold uppercase"><%= product.description %></h1>
 
       <p class="mt-2"><%= product.name %>Color: Yellow with Black and White stripes</p>
-      <div class="mt-2 gap-3  grid grid-cols-4">
-        <p class="border-[#FAE115] border-2 p-2 md:p-4 size-option uppercase" data-size="Small"><%= product.size %></p>
-      </div>
 
+      <div id="price" class="mt-2 mb-2">Price: <%= product.price %></div>
 
-      <div id="price" class="mt-2">Price: <%= product.price %></div>
       <%= form_with(url: cart_add_path) do |f| %>
         <%= f.hidden_field :product_id, value: product.id %>
+        <%= f.select :size, ['SMALL', 'MEDIUM', 'LARGE'], prompt: 'Size of The Shirt', class: "border-[#FAE115] border-2 p-2 md:p-4 size-option uppercase" %>
+        <br/><br/>
         <%= f.number_field :quantity, value: 1, min: 1, id: "quantity", class: "bg-[#FAE115] border-none" %>
+        <br/>
         <%= f.submit "Add to cart", class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
         <% end %>
+        <br/>
 
-        <button id="buyButton" class="bg-[#FAE115] p-3 rounded-lg mt-2">Buy Now</button>
         <% if current_user %>
           <%= link_to 'Edit', edit_product_path(product), class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
         <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
