@@ -1,0 +1,12 @@
+<div class="m-2">
+  <%= form_with model: @adverts, url: advert_index_url, method: :post, data: { turbo: false }, local: true do |f| %>
+    <%= f.file_field :mobile_image %>
+    <%= f.file_field :desk_image %>
+
+    <%= f.text_area :type_of_advert %>
+    <%= f.text_area :header_advert %>
+    <%= f.submit %>
+  <% end %>
+
+
+</div>

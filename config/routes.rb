@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'cart', to: 'cart#show'
   post 'cart/add'
   post 'cart/remove'
-  get 'shop/index'
   root "home#index"
   resources :home
   devise_for :users
@@ -17,4 +16,5 @@ Rails.application.routes.draw do
   resources :fixture
   resources :membership
   resources :product
+  resources :advert
 end

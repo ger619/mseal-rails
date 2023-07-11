@@ -57,17 +57,26 @@
     <% end %>
   </div>
 
-
+  <% @advert.limit(1).each do |advert| %>
   <div class="bg-white md:flex-col md:flex-row border-t-indigo-500 ">
 
     <div class="flex flex-col md:items-end gap-5 hidden sm:flex ">
       <div class="flex flex-col lg:w-[303px] md:w-[250px] text-white bg-black">
-        <%= image_tag 'featured1.png', class: "lg:max-w-[300px] md:max-w-[250px]"%>
+        <%= image_tag(advert.desk_image, class: "lg:max-w-[300px] md:max-w-[250px]") %>
         <p class=" text-xs p-2">Featured</p>
-        <p class="text-sm p-4 font-semibold w-[90%]">Welcome to ST. Sebastian Park</p>
+        <p class="text-sm p-4 font-semibold w-[90%]">Welcome to ST. Sebastian Park Great</p>
+      </div>
+    </div>
+
+    <div class="sm:flex flex-col md:items-end gap-5 md:hidden lg:hidden xl:hidden ">
+      <div class="flex flex-col w-[90%] h-[100px] text-white bg-black">
+        <%= image_tag(advert.mobile_image, class: "w-[90%] h-[100px] ") %>
+        <p class=" text-xs p-2">Featured Mobile</p>
+        <p class="text-sm p-4 font-semibold w-[90%]">Mobile</p>
       </div>
     </div>
 
   </div>
+    <% end %>
 
 </div>
