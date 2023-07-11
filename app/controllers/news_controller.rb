@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   def index
-    @pagy, @news = pagy_countless(News.all.order('created_at DESC'), items: 10)
+    @pagy, @news = pagy_countless(News.all.order('created_at DESC'), items: 1)
     respond_to do |format|
       format.html
       format.turbo_stream
