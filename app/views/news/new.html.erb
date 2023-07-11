@@ -1,26 +1,40 @@
-<div class="flex flex-col items-center justify-center h-screen">
-  <h1 class="text-4xl font-bold uppercase p-4 text-center">Add News</h1>
-  <div class="max-w-md mx-auto bg-white p-8 rounded-md shadow-md grid grid-cols-1 gap-4">
-    <%= form_with model: @news, url: news_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
-      <div class="col-span-1">
-        <%= f.select :type_of_news, ['Match', 'Transfer', 'Injury'], prompt: 'Select Type of News', required: true, class: 'w-full p-2 border border-gray-300 rounded' %>
+<%= form_with  model: @news, url: news_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
+
+  <div class="md:p-0">
+    <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+      ADD NEWS PAGE
+    </div>
+    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8">
+      <h1 class="md:text-5xl text-2xl ">
+        ADD NEWS TO THE WEBSITE
+      </h1>
+      <p class="text-xl font-light mt-5">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+        volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing
+        elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+        aliquam erat volutpat. Ut wisi
+      </p>
+      <div>
+        <label htmlFor="">
+          Type of membership interested in
+          <span class="text-red-500">*</span>
+        </label>
       </div>
-      
-      <div class="col-span-1 mt-5">
-        <%= f.text_field :header_news, placeholder: 'Header for news', class: 'w-full p-2 border border-gray-300 rounded' %>
+
+      <div class="flex  justify-between">
+        <%= f.select :type_of_news, ['Match', 'Transfer', 'Injury'], prompt: 'Select Type of News', required: true, class: 'h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none' %>
+        <%= f.text_field :header_news, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" ,placeholder: "Header of News"%>
+
       </div>
-      
-      <div class="col-span-1 mt-10">
-        <%= f.text_area :body, placeholder: 'Body Content up to 400 words', rows: "6", class: 'w-full p-2 border border-gray-300 rounded' %>
-      </div>
-      
-      <div class="col-span-1 ">
+      <div class="flex justify-between">
         <%= f.file_field :image, class: 'w-full' %>
+
       </div>
-      
-      <div class="col-span-1">
-        <%= f.submit "Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded" %>
-      </div>
-    <% end %>
+
+      <%= f.text_area :body, class: "bg-[#F7F3ED] w-[100%] p-2 border-b border-black focus:outline-none", rows: "12" ,placeholder: "Body and Content  *" %>
+
+      <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
+    </div>
   </div>
-</div>
+<% end %>

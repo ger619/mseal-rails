@@ -2,10 +2,7 @@
   NEWS
   <div>
     <% if current_user %>
-      <% if current_user.moderator? or current_user.admin?  %>
         <%=link_to "Add News", new_news_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
-      <% end %>
-      <%= current_user.role %>
   <% end %>
   </div>
 </div>

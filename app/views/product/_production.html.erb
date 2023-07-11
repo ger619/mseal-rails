@@ -17,9 +17,9 @@
 
       <%= form_with(url: cart_add_path) do |f| %>
         <%= f.hidden_field :product_id, value: product.id %>
-        <%= f.select :size, ['SMALL', 'MEDIUM', 'LARGE'], prompt: 'Size of The Shirt', class: "border-[#FAE115] border-2 p-2 md:p-4 size-option uppercase" %>
+        <%= f.select :size, ['SMALL', 'MEDIUM', 'LARGE'], class: "border-[#FAE115] border-2 p-2 md:p-4 size-option uppercase", required: true %>
         <br/><br/>
-        <%= f.number_field :quantity, value: 1, min: 1, id: "quantity", class: "bg-[#FAE115] border-none" %>
+        <%= f.number_field :quantity, value: 1, min: 1, id: "quantity", class: "bg-[#FAE115] border-none", required: true %>
         <br/>
         <%= f.submit "Add to cart", class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
         <% end %>
