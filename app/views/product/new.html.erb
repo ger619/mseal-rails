@@ -1,19 +1,26 @@
-<%= form_with model: @product, url: product_index_path, method: :post, data: { turbo: false }, local: true do |f|  %>
+<%= form_with  model: @product, url: product_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="md:p-0">
+    <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+      ADD a Product
+    </div>
+    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8">
+      <h1 class="md:text-5xl text-2xl ">
+        ADD A PRODUCT
+      </h1>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+      <div class="flex  justify-between">
+        <%= f.text_field :name, class: "h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Name of the Product"%>
+        <%= f.number_field :price, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" ,placeholder: "Price: "%>
 
-  <%= f.label :price %>
-  <%= f.number_field :price %>
+      </div>
+      <div class="flex justify-between">
+        <%= f.file_field :photo_product, class: "h-[50px] w-[45%] bg-[#F7F3ED] p-2 border-black focus:outline-none" ,placeholder: "Upload Photo"%>
+      </div>
 
-  <%= f.label :photo %>
-  <%= f.file_field :photo_product %>
+      <%= f.text_area :description, class: "bg-[#F7F3ED] w-[100%] p-2 border-b border-black focus:outline-none", row: "12" ,placeholder: "Product Description  *"%>
 
-  <%= f.submit %>
-
-
-
+      <%= f.submit "CREATE PRODUCT", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black font-semibold" %>
+    </div>
+  </div>
 <% end %>
