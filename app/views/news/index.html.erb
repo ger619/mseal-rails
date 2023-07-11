@@ -9,26 +9,29 @@
   <% end %>
   </div>
 </div>
-<div class="bg-gray-300 flex text-3xl py-3 px-5 md:mx-10 md:gap-20">
-  <p>Latest News</p>
-  <p>Featured</p>
-</div>
+
 
 <div class="flex-col mt-10 md:ml-10">
-  <div class="flex justify-self-center gap-60">
-    <h1 class="font-bold text-2xl">APRIL, 2023</h1>
-    <div class="justify-self-center inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
-      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-    </div>
-  </div>
   <div class="flex flex-col md:flex-row md:flex md:justify-between" >
-    <div class="ml-4 sm:w-[300px] md:w-[800px] lg:w-[600px] w-[380px] xl:w-[800px] 2xl:w-[1024px] hover:border-[#FAE115] mb-10">
+    <div class="ml-4 sm:w-[300px] md:w-[800px] w-[350px] hover:border-[#FAE115] mb-10">
       <%= turbo_frame_tag :news do %>
         <%= render 'news/news_render' %>
       <% end %>
+      <div class="flex ml-7 md:ml-60 gap-10">
+  <% if @pagy.prev %>
+    <%= link_to "Previous", url_for(page: @pagy.prev), class: "inline-flex items-center px-4 py-2 text-sm font-medium text-[#FAE115]  border border-gray-300 rounded-lg bg-[#000] hover:bg-[#FAE115] uppercase hover:text-[#000] hover:border-[#FAE115]" %>
+  <% end %>
+  <% if @pagy.next %>
+    <%= link_to "Next ", url_for(page: @pagy.next), class: "inline-flex items-center px-4 py-2 text-sm font-medium text-[#000] border border-gray-300 rounded-lg hover:bg-[#000] bg-[#FAE115] uppercase hover:text-[#FAE115] hover:border-[#FAE115]" %>
+  <% end %>
+    
+  </div>
     </div >
 
     <%= render 'news/adverts' %>
 
+    
+
   </div>
+  
 </div>
