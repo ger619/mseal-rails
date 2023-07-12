@@ -1,7 +1,7 @@
 <% @cart.orderables.each do |orderable| %>
   <% product = orderable.product %>
-  < class="orderable-item">
     <%= product.description %>
+  <%= image_tag(product.photo_product) %>
     <%= orderable.size %>
     <%= orderable.quantity %>
     <%= form_with(url: cart_remove_path) do |f| %>

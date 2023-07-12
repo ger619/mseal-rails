@@ -18,7 +18,7 @@ class AdvertController < ApplicationController
     @advert.user_id = current_user.id
     respond_to do |format|
       if @advert.save
-        format.html { redirect_to advert_url(@advert), notice: 'Advert was successfully created.' }
+        format.html { redirect_to advert_index_path(@advert), notice: 'Advert was successfully created.' }
       else
         format.html { redirect_to advert_index_url, notice: 'Failure' }
       end
