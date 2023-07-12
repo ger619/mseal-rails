@@ -1,12 +1,42 @@
-<div class="m-2">
-  <%= form_with model: @adverts, url: advert_index_url, method: :post, data: { turbo: false }, local: true do |f| %>
-    <%= f.file_field :mobile_image %>
-    <%= f.file_field :desk_image %>
+<%= form_with  model: @adverts, url: advert_index_url, method: :post, data: { turbo: false }, local: true do |f| %>
 
-    <%= f.text_area :type_of_advert %>
-    <%= f.text_area :header_advert %>
-    <%= f.submit %>
-  <% end %>
+  <div class="md:p-0">
+    <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+      Add a new advert
+    </div>
+    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8">
+      <h1 class="text-4xl text-2xl ">
+        ADD A MOBILE PHOTO AND A DESKTOP PHOTO
+      </h1>
+      <div class="flex  justify-between">
+        <div>
+          <label class="uppercase">
+            Mobile Photo
+            <span class="text-red-500">*</span>
+          </label>
+          <div>
+            <%= f.file_field :mobile_image, class: "h-[50px] w-[450px] p-2 focus:outline-none" ,placeholder: "Mobile Photo", required: true %>
+          </div>
+        </div>
+        <div>
+          <label class="uppercase">
+            Desktop Photo
+            <span class="text-red-500" >*</span>
+          </label>
+          <div>
+            <%= f.file_field :desk_image, class: "h-[50px] w-[500px] p-2 focus:outline-none" ,placeholder: "Desktop Photo", required: true %>
+          </div>
+        </div>
+
+      </div>
 
 
-</div>
+      <div class="flex justify-between">
+        <%= f.text_field :type_of_advert, class: "h-60 w-[48%] bg-[#F7F3ED] p-2 border-b border-black focus:outline-none" ,placeholder: "Type of Advert*"%>
+        <%= f.text_field :header_advert, class: "h-60 flex bg-[#F7F3ED] items-center p-2 w-[48%] border-b border-black focus:outline-none" ,placeholder: "Header of Advert*"%>
+
+      </div>
+      <%= f.submit "POST ADVERT", class: "font-semibold w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black" %>
+    </div>
+  </div>
+<% end %>
