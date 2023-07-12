@@ -32,7 +32,11 @@
           </div>
       <% end %>
 
-    <% @news.limit(3).each do |news| %>
+    <% @news.limit(4).each_with_index do |news, index| %>
+      <% if index == 0 %>
+        <%# Handle the last item separately %>
+      <% else %>
+        <% @news.length - index %>
       <div class="inline-flex  lg:max-w-[31%] md:max-w-[25%] sm:w-[100%] ml-2">
 
         <div class="bg-white border border-[#FAE115] border-t-4 mt-[28px] ml-2 group">
@@ -54,6 +58,7 @@
         </div>
       </div>
 
+    <% end %>
     <% end %>
   </div>
 
