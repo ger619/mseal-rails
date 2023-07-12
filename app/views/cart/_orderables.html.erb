@@ -1,12 +1,12 @@
 <% @cart.orderables.each do |orderable| %>
   <% product = orderable.product %>
-  <div class="orderable-item bg-gray-100 p-4 mb-4">
-    <p class="font-bold"><%= product.description %></p>
-    <p class="text-gray-500"><%= orderable.size %></p>
-    <p class="text-gray-500"><%= orderable.quantity %></p>
-    <%= form_with(url: cart_remove_path, method: :delete, local: true) do |f| %>
+  < class="orderable-item">
+    <%= product.description %>
+    <%= orderable.size %>
+    <%= orderable.quantity %>
+    <%= form_with(url: cart_remove_path) do |f| %>
       <%= f.hidden_field :id, value: orderable.id %>
-      <%= f.submit "X", class: "text-red-500 ml-2" %>
+      <%= f.submit "X" %>
     <% end %>
   </div>
 <% end %>
