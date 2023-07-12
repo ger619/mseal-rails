@@ -1,5 +1,13 @@
-
-<div>
-  <h1 class="font-bold text-4xl">Cart#show</h1>
-  <p>Find me in app/views/cart/show.html.erb</p>
+<div class="">
+<div class="bg-[#FAE115] p-5">
+  <h1 class="font-extrabold text-5xl mb-4 text-center  uppercase">Cart</h1>
+</div>
+  <% if @cart.orderables.count > 0 %>
+    <div class="grid grid-cols-1 gap-4">
+      <%= render "cart/orderables" %>
+    </div>
+    <p class="text-white mt-4">Total: <%= @cart.total_price %></p>
+  <% else %>
+    <p class="text-white mt-4">Cart Is Empty</p>
+  <% end %>
 </div>
