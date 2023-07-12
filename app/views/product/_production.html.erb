@@ -1,8 +1,6 @@
-
-  <% @products.each do |product| %>
-
-  <div class="flex flex-col md:flex-row md:items-center gap-10 ">
-    <div class="md:w-[40%]  border-[#000] md:p-16 p-3 border-2">
+<% @products.each do |product| %>
+  <div class="flex flex-col md:flex-row mt-5 mb-5 md:items-center gap-10">
+    <div class="md:w-[40%] border-[#000] md:p-16 p-3 border-2">
       <%= link_to product_path(product.id) do %>
         <%= image_tag(product.photo_product, class: "w-[100%]") %>
       <% end %>
@@ -22,14 +20,13 @@
         <%= f.number_field :quantity, value: 1, min: 1, id: "quantity", class: "bg-[#FAE115] border-none", required: true %>
         <br/>
         <%= f.submit "Add to cart", class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-        <% end %>
-        <br/>
+      <% end %>
+      <br/>
 
-        <% if current_user %>
-          <%= link_to 'Edit', edit_product_path(product), class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
+      <% if current_user %>
+        <%= link_to 'Edit', edit_product_path(product), class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
         <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-        <% end %>
+      <% end %>
     </div>
   </div>
-
-  <% end %>
+<% end %>

@@ -1,20 +1,12 @@
 <% @cart.orderables.each do |orderable| %>
   <% product = orderable.product %>
-  <%= product.description %>
-  <%= orderable.size %>
-
-  <%= form_with(url: cart_add_path) do |f| %>
-    <%= f.hidden_field :product_id, value: product.id %>
-    <%= f.number_field :quantity, value: 1, id: "quantity", class: "bg-[#FAE115] border-none" , required: true%>
-    <%= f.submit "Add to cart", class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-  <% end %>
-
-  <%= form_with(url: cart_remove_path) do |f| %>
-    <%= f.hidden_field :id, value: orderable.id %>
-    <%= f.submit "X" %>
-  <% end %>
-
-
-
-
+  <div class="orderable-item bg-gray-100 p-4 mb-4">
+    <p class="font-bold"><%= product.description %></p>
+    <p class="text-gray-500"><%= orderable.size %></p>
+    <p class="text-gray-500"><%= orderable.quantity %></p>
+    <%= form_with(url: cart_remove_path, method: :delete, local: true) do |f| %>
+      <%= f.hidden_field :id, value: orderable.id %>
+      <%= f.submit "X", class: "text-red-500 ml-2" %>
+    <% end %>
+  </div>
 <% end %>
