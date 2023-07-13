@@ -1,13 +1,95 @@
 <div class="">
-<div class="bg-[#FAE115] p-5">
-  <h1 class="font-extrabold text-5xl mb-4 text-center  uppercase">Cart</h1>
-</div>
-  <% if @cart.orderables.count > 0 %>
-    <div class="grid grid-cols-1 gap-4">
-      <%= render "cart/orderables" %>
+  <div class="bg-[#FAE115] p-5 flex justify-between">
+    <h1 class="font-extrabold text-5xl mb-4 text-center uppercase">Cart</h1>
+    <div class="text-sm border-white flex">
+      <a href="<%= cart_path %>" class="text-[#000] relative">
+        <i class="fas fa-shopping-cart text-4xl mt-3 mr-3"></i>
+        <span
+          class="absolute top-[0] right-0 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full text-xs"
+        >
+          <%= @cart.orderables.sum(:quantity) %>
+        </span>
+      </a>
     </div>
-    <p class="text-white mt-4">Total: <%= @cart.total_price %></p>
-  <% else %>
-    <p class="text-white mt-4">Cart Is Empty</p>
-  <% end %>
+  </div>
+  <div class="flex">
+    <div class="w-[70%]">
+      <div
+        class="border-b-2 border-[#000] justify-between flex p-5 mx-20 items-center"
+      >
+        <h1 class="font-bold text-3xl">Shopping cart</h1>
+        <p class="font-bold text-3xl"><%= @cart.orderables.count %> Items</p>
+      </div>
+      <div>
+        <table class="table w-[80%] mx-auto mt-10">
+          <thead>
+            <tr>
+              <th class="text-center">Image</th>
+              <th class="text-center">Product</th>
+
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart.orderables.each do |orderable| %>
+            <tr>
+              <td class="text-center h-20 w-20">
+                <%= image_tag(orderable.product.photo_product) %>
+              </td>
+              <td class="text-center"><%= orderable.product.description %></td>
+
+              <td class="text-center"><%= orderable.quantity %></td>
+              <td class="text-center"><%= orderable.product.price %></td>
+              <td class="text-center">
+                <%= form_with(url: cart_remove_path) do |f| %> <%=
+                f.hidden_field :id, value: orderable.id %> <%= f.submit "X" %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="w-[30%] bg-[#F5F3E1] p-5">
+      <h1 class="text-center font-bold text-3xl border-b border-gray-500">
+        Order summary
+      </h1>
+      <div>
+        <div
+          class="flex justify-between mx-5 text-gray-500 font-medium mt-[1px]"
+        >
+          <p>Items total (<%= @cart.orderables.count %>)</p>
+          <p><%= @cart.total_price %></p>
+        </div>
+        <div class="flex bg-[#d9d9d9] items-center px-4 mx-4 mt-10">
+          <p>Phone Number:</p>
+          <input
+            type="text"
+            class="bg-[#d9d9d9] p-2 w-1/2 rounded-md outline-none border-none focus:ring-0"
+          />
+        </div>
+        <div class="flex justify-between mx-5 text-gray-500 font-medium mt-5">
+          <p>Items(<%= @cart.orderables.count %>)</p>
+          <p><%= @cart.total_price %></p>
+        </div>
+        <div class="flex justify-between mx-5 text-gray-500 font-medium mt-5">
+          <p>Delivery fee</p>
+          <p>0</p>
+        </div>
+
+        <div class="flex justify-between mx-5 text-[#000] font-bold mt-5">
+          <p>TOTAL</p>
+          <p><%= @cart.total_price %></p>
+        </div>
+        <button
+          class="bg-[#fae115] text-[#000] font-bold p-3 mt-5 rounded-md text-center ml-36"
+        >
+          Confirm Order
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
