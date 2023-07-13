@@ -1,11 +1,10 @@
 <%= turbo_frame_tag "cart" do %>
   <div class="text-sm border-white flex">
-    <a href="<%= cart_path %>" class="text-white">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21h6m1-5h5m1-5H4a2 2 0 00-2 2v1a2 2 0 002 2h18a2 2 0 002-2v-1a2 2 0 00-2-2H3V6a2 2 0 012-2h18a2 2 0 012 2v1a2 2 0 01-2 2h-5m-7 9l-1-7m10 7l1-7"></path>
-      </svg>
-      Cart: <%= @cart.orderables.sum(:quantity) %>
-    </a>
-
-  </div>
+  <a href="<%= cart_path %>" class="text-[#000] relative">
+    <i class="fas fa-shopping-cart text-4xl mt-3 mr-3"></i>
+    <span class="absolute top-[0] right-0 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full text-xs">
+      <%= @cart.orderables.sum(:quantity) %>
+    </span>
+  </a>
+</div>
 <% end %>

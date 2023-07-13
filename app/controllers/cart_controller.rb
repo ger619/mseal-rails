@@ -31,7 +31,7 @@ class CartController < ApplicationController
   def remove
     Orderable.find_by(id: params[:id]).destroy
     respond_to do |format|
-      format.html { redirect_to product_index_path(@product), notice: 'Product was deleted.' }
+      format.html { redirect_to cart_path, notice: 'Product was successfully removed from cart.' }
       format.turbo_stream do
         render turbo_stream: [turbo_stream.replace('cart',
                                                    partial: 'cart/cart',
