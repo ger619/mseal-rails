@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_124426) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_222935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_124426) do
     t.index ["user_id"], name: "index_clubs_on_user_id"
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.string "type_of_membership"
+    t.string "title"
+    t.string "country"
+    t.date "date_of_birth"
+    t.string "email"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string "type_of_news"
     t.string "header_news"
@@ -93,7 +104,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_124426) do
   create_table "products", force: :cascade do |t|
     t.text "name"
     t.string "description"
-    t.string "size"
     t.integer "price"
     t.string "photo_product"
     t.datetime "created_at", null: false
@@ -127,6 +137,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_124426) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

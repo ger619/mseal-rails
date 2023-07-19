@@ -19,7 +19,8 @@
               <h5 class="mb-6 text-4xl font-bold tracking-tight text-[#000] mt-5 uppercase">
                 <%= news.type_of_news %>
               </h5>
-                <p class="mb-2 font-normal text-[#000] truncate max-w-[200px]">
+
+                <p class="mb-2 font-normal text-[#000] truncate max-w-[200px] md:w-full lg:w-[300px]">
                   <%= news.header_news %>
                 </p>
                 <%= link_to news_path(news.id) do %>
@@ -32,30 +33,35 @@
           </div>
       <% end %>
 
-    <% @news.limit(4).each_with_index do |news, index| %>
-      <% if index == 0 %>
-        <%# Handle the last item separately %>
-      <% else %>
-        <% @news.length - index %>
-      <div class="inline-flex  lg:max-w-[31%] md:max-w-[25%] sm:w-[100%] ml-2">
+      <div class="md:grid grid-cols-3 md:grid-cols-3 gap-5 mt-[28px] 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
 
-        <div class="bg-white border border-[#FAE115] border-t-4 mt-[28px] ml-2 group">
-          <%= image_tag(news.image, class: "w-[300px] h-[200px]")  %>
-          <div class="p-5">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
-                <%= news.type_of_news %>
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 truncate ... min-w-[100px] md:w-[150px]">
-                <%= news.header_news %>.
-              </p>
-            <%= link_to news_path(news.id) do %>
-              <div class="inline-flex items-center px-3 py-2 text-sm font-semibold text-center text-black hover:text-[#FAE115] bg-[#FAE115] uppercase hover:bg-white hover:border-[#FAE115] border focus:ring-4 focus:outline-none focus:ring-blue-300">
-                Read More
-                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        <% @news.limit(4).each_with_index do |news, index| %>
+          <% if index == 0 %>
+            <%# Handle the last item separately %>
+          <% else %>
+            <% @news.length - index %>
+            <div class="">
+
+              <div class="bg-white border border-[#FAE115] border-t-4 flex flex-col mt-2 hover:scale-105">
+                <%= image_tag(news.image, class: "h-[200px] w-full")  %>
+                <div class="p-5">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
+                    <%= news.type_of_news %>
+                  </h5>
+                  <p class="mb-3 font-normal text-gray-700 truncate ...">
+                    <%= news.header_news %>.
+                  </p>
+                  <%= link_to news_path(news.id) do %>
+                    <div class="inline-flex items-center px-3 py-2 text-sm font-semibold text-center text-black hover:text-[#FAE115] bg-[#FAE115] uppercase hover:bg-white hover:border-[#FAE115] border focus:ring-4 focus:outline-none focus:ring-blue-300">
+                      Read More
+                      <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </div>
+                  <% end %>
+                </div>
               </div>
-            <% end %>
-          </div>
-        </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
 
     <% end %>
@@ -65,10 +71,11 @@
         <div class="bg-white md:flex-col md:flex-row border-t-indigo-500 ">
           <% @advert.limit(2).each do |advert| %>
 
-            <div class="flex flex-col md:items-end gap-5 mb-2 hidden sm:flex ">
+            <div class="flex flex-col md:items-end gap-5 mb-2 hidden sm:flex  ">
               <div class="flex flex-col lg:w-[303px] md:w-[250px] text-white bg-black">
                 <%= image_tag(advert.desk_image, class: "lg:max-w-[300px] md:max-w-[250px]") %>
               </div>
+              <p>Desktop</p>
             </div>
           <% end %>
           <% @advert.limit(1).each do |advert| %>
