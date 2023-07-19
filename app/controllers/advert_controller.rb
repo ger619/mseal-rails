@@ -36,6 +36,6 @@ class AdvertController < ApplicationController
   private
 
   def advert_params
-    params.permit(:type_of_advert, :header_advert, :mobile_image, :desk_image, :user_id)
+    params.require(:advert).permit(:type_of_advert, :header_advert, :mobile_image, :desk_image, :user_id)
   end
 end

@@ -1,5 +1,5 @@
 class MembershipController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show , :new, :create]
 
   def index; end
 
@@ -33,6 +33,6 @@ class MembershipController < ApplicationController
   private
 
   def membership_params
-    params.permit(:type_of_membership, :title, :country, :date_of_birth, :email, :phone_number, :photo)
+    params.permit(:type_of_membership, :title, :country, :date_of_birth, :email, :phone_number)
   end
 end

@@ -19,7 +19,7 @@
               <h5 class="mb-6 text-4xl font-bold tracking-tight text-[#000] mt-5 uppercase">
                 <%= news.type_of_news %>
               </h5>
-                <p class="mb-2 font-normal text-[#000] truncate max-w-[200px] md:w-full">
+                <p class="mb-2 font-normal text-[#000] truncate max-w-[200px] md:w-full lg:w-[300px]">
                   <%= news.header_news %>
                 </p>
                 <%= link_to news_path(news.id) do %>
@@ -34,7 +34,7 @@
 
 
 
-      <div class="md:grid grid-cols-3 md:grid-cols-3 gap-3 mt-[28px] 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
+      <div class="md:grid grid-cols-3 md:grid-cols-3 gap-5 mt-[28px] 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
 
         <% @news.limit(4).each_with_index do |news, index| %>
           <% if index == 0 %>
@@ -44,7 +44,7 @@
             <div class="">
 
               <div class="bg-white border border-[#FAE115] border-t-4 flex flex-col mt-2 hover:scale-105">
-                <%= image_tag(news.image, class: "md:w-[300px] h-[200px] w-full")  %>
+                <%= image_tag(news.image, class: "h-[200px] w-full")  %>
                 <div class="p-5">
                   <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
                     <%= news.type_of_news %>
@@ -63,8 +63,9 @@
             </div>
           <% end %>
         <% end %>
+      </div>
 
-  </div>
+
 
 
   </div>

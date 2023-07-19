@@ -15,7 +15,7 @@
   <div class="flex">
     <div class="w-[70%]">
       <div class="border-b-2 border-[#000] justify-between flex p-5 mx-20 items-center">
-        <h1 class="font-bold text-3xl">Shopping cart</h1>
+        <h1 class="font-bold text-3xl">Items Loaded</h1>
         <p class="font-bold text-3xl"><%= @cart.orderables.count %> Items</p>
       </div>
       <div>
@@ -41,22 +41,10 @@
               <td class="text-center"><%= orderable.quantity %></td>
               <td class="text-center"><%= orderable.product.price %></td>
               <td class="text-center">
-                <%= form_with(url: cart_remove_path) do |f| %> <%=
-                f.hidden_field :id, value: orderable.id %>
 
+                <%= form_with(url: cart_remove_path) do |f| %>
+                  <%= f.hidden_field :id, value: orderable.id %>
                   <%= f.submit "X" %>
-
-
-                  <%= f.submit do |name| %>
-                  <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                    <span class="sr-only">Close menu</span>
-                    <!-- Heroicon name: outline/x -->
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-
-                    <% end %>
 
                 <% end %>
               </td>

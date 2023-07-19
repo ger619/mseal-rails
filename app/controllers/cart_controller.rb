@@ -2,7 +2,7 @@ class CartController < ApplicationController
   before_action :authenticate_user!, except: %i[show add remove]
 
   def show
-    @render_cart = false
+    @render_cart = true
   end
 
   def add

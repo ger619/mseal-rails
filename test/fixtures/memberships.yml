@@ -4,16 +4,14 @@ one:
   type_of_membership: MyString
   title: MyString
   country: MyString
-  date_of_birth: MyString
+  data_of_birth: 2023-07-20
   email: MyString
-  phone_number: MyString
-  photo: MyString
+  phone_number: 1
 
 two:
   type_of_membership: MyString
   title: MyString
   country: MyString
-  date_of_birth: MyString
+  data_of_birth: 2023-07-20
   email: MyString
-  phone_number: MyString
-  photo: MyString
+  phone_number: 1
