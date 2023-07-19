@@ -1,5 +1,5 @@
 class MembershipController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show , :new, :create]
+  before_action :authenticate_user!, except: %i[index show new create]
 
   def index; end
 
