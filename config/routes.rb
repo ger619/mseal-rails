@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :news
   resources :club
   resources :team
+  get "team#index"
   resources :fixture
   resources :membership
   resources :product
