@@ -8,6 +8,12 @@
     </div>
 
     <div class="mb-4">
+      <%= form.label :image, class: "block text-sm font-bold mb-2" %>
+      <%= image_tag form.object.image if form.object.image.present? %>
+      <%= form.file_field :image, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="mb-4">
       <%= form.label :header_news, class: "block text-sm font-bold mb-2" %>
       <%= form.text_field :header_news, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
     </div>
