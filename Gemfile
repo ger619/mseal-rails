@@ -81,3 +81,5 @@ gem 'cancancan'
 
 gem 'faker', '~> 3.2'
 gem 'pagy', '~> 6.0'
+gem 'motor-admin'
+gem 'tinymce-rails'
