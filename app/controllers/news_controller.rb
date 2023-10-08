@@ -45,7 +45,7 @@ class NewsController < ApplicationController
     @news = News.find(params[:id])
     respond_to do |format|
       if @news.update(news_params)
-        format.html { redirect_to news_url(@news), notice: 'News was successfully updated.' }
+        format.html { redirect_to news_url(@news.id), notice: 'News was successfully updated.' }
       else
         format.html { redirect_to news_index_url, notice: 'Failure' }
       end
