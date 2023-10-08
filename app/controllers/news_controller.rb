@@ -6,6 +6,7 @@ class NewsController < ApplicationController
       format.html
       format.turbo_stream
     end
+    @advert = Advert.all.order('created_at DESC')
   end
 
   def show
