@@ -1,4 +1,6 @@
-<% @news.each do |news| %>
+
+
+  <% @news.each do |news| %>
 <a href="<%= news_path(news) %>">
     <div class=" mt-5 flex mb-6 h-28 md:w-[100%] md:h-40 hover:shadow-lg hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t">
     <div class=" h-28 md:h-40  sm:h-30 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
@@ -28,3 +30,4 @@
 </a>
 
 <% end %>
+
