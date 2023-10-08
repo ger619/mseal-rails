@@ -84,4 +84,4 @@ gem 'motor-admin'
 gem 'pagy', '~> 6.0'
 gem 'tinymce-rails'
 
-gem "hotwire-rails", "~> 0.1.3"
+gem 'hotwire-rails', '~> 0.1.3'
