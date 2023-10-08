@@ -83,3 +83,5 @@ gem 'faker', '~> 3.2'
 gem 'motor-admin'
 gem 'pagy', '~> 6.0'
 gem 'tinymce-rails'
+
+gem "hotwire-rails", "~> 0.1.3"
