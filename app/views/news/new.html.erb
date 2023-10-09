@@ -16,14 +16,14 @@
         aliquam erat volutpat. Ut wisi
       </p>
       <div>
-        <label htmlFor="">
+        <label htmlFor="header text">
           Type of membership interested in
           <span class="text-red-500">*</span>
         </label>
       </div>
 
       <div class="flex  justify-between">
-        <%= f.select :type_of_news, ['Match', 'Transfer', 'Injury'], prompt: 'Select Type of News', required: true, class: 'h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none' %>
+        <%= f.select :type_of_news, ['Match', 'Transfer', 'Injury', 'FKF PREMIER LEAGUE'], prompt: 'Select Type of News', required: true, class: 'h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none' %>
         <%= f.text_field :header_news, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" ,placeholder: "Header of News"%>
 
       </div>
