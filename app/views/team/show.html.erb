@@ -1,0 +1,14 @@
+<div class="shadow-md">
+  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between truncate ...">
+    <p>Muranga Seal | <%= @team.first_name %></p>
+  </div>
+
+  <%= @team.first_name %>
+  <%= @team.second_name  %>
+  <%= @team.last_name %>
+  <%= @team.position %>
+  <%= @team.jersey_number%>
+  <%= @team.image %>
+  <%= image_tag(@team.image, class: "w-[50%]") %>
+  <%= raw @team.about%>
+</div>
