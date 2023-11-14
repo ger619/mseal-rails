@@ -2,17 +2,25 @@
   <h1 class="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Goalkeepers</h1>
   <hr class="ml-4 sm:w-[6%] md:w-[12%] lg:w-[12%] xl:w-[8%] w-[18%]  bg-[#FAE115] h-[10px] mb-2">
   <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 flex-col text-center p-2">
+    <% @teams.each do |team| %>
+      <% if team.position === "Goalkeeper" %>
+        <%= link_to team_path(team.id) do %>
+          <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
+            <% if team.image.attached? %>
+            <%= image_tag(team.image) %>
+            <% end %>
+            <div class="flex justify-between">
+              <div class="flex flex-col">
+                <h1 class="self-start"><%= team.first_name %></h1>
+                <h1 class="font-semibold text-2xl"><%= team.last_name %></h1>
+              </div>
+              <h1 class="text-gray-400 text-5xl">0<%= team.jersey_number %></h1>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
 
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "wilsongk.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Wilson</h1>
-          <h1 class="font-semibold text-2xl">Mwangi</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">01</h1>
-      </div>
-    </div>
 
     <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
       <%= image_tag "goalkeeper2.png" %>

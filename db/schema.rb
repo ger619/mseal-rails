@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_100918) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -317,6 +317,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_100918) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "first_name"
+    t.string "second_name"
+    t.string "last_name"
+    t.string "position"
+    t.string "image"
+    t.integer "jersey_number"
+    t.string "about"
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_teams_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -352,4 +366,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_100918) do
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
   add_foreign_key "products", "users"
+  add_foreign_key "teams", "users"
 end
