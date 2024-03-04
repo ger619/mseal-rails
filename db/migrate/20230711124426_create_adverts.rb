@@ -1,6 +1,6 @@
 class CreateAdverts < ActiveRecord::Migration[7.0]
   def change
-    create_table :adverts do |t|
+    create_table :adverts, id: :uuid do |t|
       t.string :type_of_advert
       t.string :header_advert
       t.string :mobile_image
