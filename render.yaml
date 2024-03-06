@@ -21,5 +21,4 @@ services:
         plan: free
         maxmemoryPolicy: noeviction
       - fromGroup: cronjob-env
-        key: CRONJOB_ENV_VAR
-        sync: false
+
