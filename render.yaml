@@ -1,6 +1,6 @@
 databases:
   - name: postgres
-    ipAllowlist: []
+    ipAllowList: []
     #databaseName: mysite
     #user: mysite
     #plan: free
@@ -25,6 +25,6 @@ services:
         value: 2 # sensible default
       - key: redis
         name: redis
-        ipAllowlist: []
+        ipAllowList: []
         plan: free
         maxmemoryPolicy: noeviction
