@@ -2,7 +2,6 @@ databases:
   - name: postgres
     ipAllowList: []
 
-
 services:
   - type: web
     name: rails
@@ -21,3 +20,6 @@ services:
         ipAllowList: []
         plan: free
         maxmemoryPolicy: noeviction
+      - fromGroup: cronjob-env
+        key: CRONJOB_ENV_VAR
+        sync: false
