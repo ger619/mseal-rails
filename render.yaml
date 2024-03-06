@@ -1,6 +1,6 @@
 databases:
-  - name: muranga_seel
-    databaseName: postgres
+  - name: mysite
+    databaseName: mysite
     user: mysite
     plan: free
 
