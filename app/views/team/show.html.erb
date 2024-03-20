@@ -2,13 +2,13 @@
   <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between truncate ...">
     <p>Muranga Seal | <%= @team.first_name %></p>
   </div>
-  <div>
-    <div class="flex flex-col items-start h-16 bg-[#FAE115] border border-[#FAE115] shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
-      <h1 class="text-white font-bold uppercase text-base md:text-2xl lg:text-3xl pl-4 pt-4 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] truncate w-[330px]">
+  <div class="align-baseline ml-[20%] mt-[4%]">
+    <div class="flex flex-col items-start h-16 border-t-4 border-[#FAE115] shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
+      <h1 class="text-[#FAE115] font-bold uppercase text-base md:text-2xl lg:text-3xl pl-4 pt-4 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] truncate w-[330px]">
         <%= @team.first_name %>
       </h1>
     </div>
-    <div class=" flex flex-col content-center  border-t-4 border border-[#FAE115] mt-3  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
+    <div class=" flex flex-col content-center  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
       <div>
         <%= image_tag(@team.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]" ) %>
       </div>
