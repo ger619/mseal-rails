@@ -14,5 +14,6 @@
 
     <h3 class="text-xl font-semibold m-4"><%= @news.header_news %></h3>
     <h3 class="text-base font-light m-4"><%= raw @news.body %></h3>
+    <%= button_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
   </div>
 </div>

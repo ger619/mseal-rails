@@ -1,6 +1,6 @@
 <div class="shadow-md">
-  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between ">
-    <p class="md:w-full w-[90%] truncate ...">NEWS | <%= @team.first_name %></p>
+  <div class="p-6 bg-[#FAE115] font-bold capitalize lg:text-3xl md:text-3xl text-2xl flex justify-between ">
+    <p class="md:w-full w-[90%] truncate ...">NEWS | <%= @team.first_name %> <%= @team.last_name %></p>
   </div>
 
 
@@ -20,5 +20,11 @@
       <%= @team.jersey_number %>
       <%= raw @team.about %>
     </h3>
+
+    <% if current_user %>
+      <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
+    <% end %>
   </div>
+
 </div>
+
