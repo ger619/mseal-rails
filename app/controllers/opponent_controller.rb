@@ -1,5 +1,5 @@
 class OpponentController < ApplicationController
-  skip_before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
   def index
     @opponent = Opponent.all
   end
