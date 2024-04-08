@@ -65,6 +65,9 @@
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
                       <%= link_to "SHOP", product_index_path %>
                     </li>
+                  <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
+                    <%= link_to "HALL OF FAME", hall_of_fames_path %>
+                  </li>
                     <% if current_user %>
                       <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <%= button_to "LOGOUT",  destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
@@ -110,6 +113,9 @@
     </li>
     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
       <%= link_to "SHOP", product_index_path %>
+    </li>
+    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
+      <%= link_to "HALL OF FAME", hall_of_fames_path %>
     </li>
   </ul>
 </div>

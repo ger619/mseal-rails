@@ -26,6 +26,8 @@ class Team < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  validates :jersey_number, presence: true, uniqueness: true
+
   def name
     "#{first_name} #{second_name} #{last_name}"
   end

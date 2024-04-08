@@ -21,7 +21,7 @@ class TeamController < ApplicationController
       if @team.save
         format.html { redirect_to team_url(@team), notice: 'Team was successfully created.' }
       else
-        format.html { redirect_to team_url, notice: 'Failure' }
+        format.html { render :new, status: :unprocessable_entity, notice: 'Failure' }
       end
     end
   end
