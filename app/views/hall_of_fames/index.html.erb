@@ -5,7 +5,9 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Hall of fames</h1>
+    <% if current_user %>
     <%= link_to "New hall of fame", new_hall_of_fame_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end %>
   </div>
 
   <div id="hall_of_fames" class="min-w-full">

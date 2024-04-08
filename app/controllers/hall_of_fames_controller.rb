@@ -1,4 +1,5 @@
 class HallOfFamesController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_hall_of_fame, only: %i[show edit update destroy]
 
   # GET /hall_of_fames or /hall_of_fames.json

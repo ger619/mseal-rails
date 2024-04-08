@@ -12,7 +12,9 @@
 
   <% if action_name != "show" %>
     <%= link_to "Show this hall of fame", hall_of_fame, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this hall of fame", edit_hall_of_fame_path(hall_of_fame), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% if current_user %>
+      <%= link_to "Edit this hall of fame", edit_hall_of_fame_path(hall_of_fame), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% end %>
     <hr class="mt-6">
   <% end %>
 </div>
