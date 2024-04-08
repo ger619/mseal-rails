@@ -15,7 +15,7 @@
 #
 #  fk_rails_...  (team_id => teams.id)
 #
-require "test_helper"
+require 'test_helper'
 
 class HallOfFameTest < ActiveSupport::TestCase
   # test "the truth" do

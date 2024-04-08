@@ -10,6 +10,7 @@
 #
 class OpponentTeam < ApplicationRecord
   has_one_attached :team_badge
+  has_many :opponent, dependent: :destroy
 
   validates :name, presence: true
   validates :team_badge, presence: true

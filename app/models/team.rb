@@ -26,9 +26,7 @@ class Team < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-
-
   def name
-    "#{self.first_name} #{self.second_name} #{self.last_name}"
+    "#{first_name} #{second_name} #{last_name}"
   end
 end

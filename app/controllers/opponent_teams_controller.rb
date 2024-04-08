@@ -1,5 +1,5 @@
 class OpponentTeamsController < ApplicationController
-  before_action :set_opponent_team, only: %i[ show edit update destroy ]
+  before_action :set_opponent_team, only: %i[show edit update destroy]
 
   # GET /opponent_teams or /opponent_teams.json
   def index
@@ -7,8 +7,7 @@ class OpponentTeamsController < ApplicationController
   end
 
   # GET /opponent_teams/1 or /opponent_teams/1.json
-  def show
-  end
+  def show; end
 
   # GET /opponent_teams/new
   def new
@@ -16,8 +15,7 @@ class OpponentTeamsController < ApplicationController
   end
 
   # GET /opponent_teams/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /opponent_teams or /opponent_teams.json
   def create
@@ -25,7 +23,7 @@ class OpponentTeamsController < ApplicationController
 
     respond_to do |format|
       if @opponent_team.save
-        format.html { redirect_to opponent_team_url(@opponent_team), notice: "Opponent team was successfully created." }
+        format.html { redirect_to opponent_team_url(@opponent_team), notice: 'Opponent team was successfully created.' }
         format.json { render :show, status: :created, location: @opponent_team }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class OpponentTeamsController < ApplicationController
   def update
     respond_to do |format|
       if @opponent_team.update(opponent_team_params)
-        format.html { redirect_to opponent_team_url(@opponent_team), notice: "Opponent team was successfully updated." }
+        format.html { redirect_to opponent_team_url(@opponent_team), notice: 'Opponent team was successfully updated.' }
         format.json { render :show, status: :ok, location: @opponent_team }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class OpponentTeamsController < ApplicationController
     @opponent_team.destroy
 
     respond_to do |format|
-      format.html { redirect_to opponent_teams_url, notice: "Opponent team was successfully destroyed." }
+      format.html { redirect_to opponent_teams_url, notice: 'Opponent team was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opponent_team
-      @opponent_team = OpponentTeam.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def opponent_team_params
-      params.require(:opponent_team).permit(:name, :team_url, :team_badge)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opponent_team
+    @opponent_team = OpponentTeam.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def opponent_team_params
+    params.require(:opponent_team).permit(:name, :team_url, :team_badge)
+  end
 end
