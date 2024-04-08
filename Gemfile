@@ -80,6 +80,7 @@ gem 'font-awesome-sass', '~> 6.4.0'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
 gem 'cancancan'
+gem 'cloudinary', '~> 1.29.0'
 
 gem 'faker', '~> 3.2'
 gem 'motor-admin'

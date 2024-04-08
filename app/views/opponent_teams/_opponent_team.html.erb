@@ -1,0 +1,22 @@
+<div id="<%= dom_id opponent_team %>">
+
+  <% if opponent_team.team_badge.attached?  %>
+    <%= image_tag(opponent_team.team_badge), class: "" %>
+  <% end %>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= opponent_team.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Team url:</strong>
+    <%= opponent_team.team_url %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this opponent team", opponent_team, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this opponent team", edit_opponent_team_path(opponent_team), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

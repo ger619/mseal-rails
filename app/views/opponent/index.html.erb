@@ -27,8 +27,8 @@
         </div>
         <div class="flex flex-col justify-center mb-10 text-5xl ml-10">vs</div>
         <div class="align-center hidden md:flex flex-col ml-10">
-          <%= image_tag "wazitologo", class: " w-40"  %>
-          <p class="ml-10">Wazito FC</p>
+          <%= image_tag (opp.opponent_team.team_badge), class: " w-40"  %>
+          <p class="ml-10"><%= opp.opponent_team.name %></p>
         </div>
       </div>
     </div>

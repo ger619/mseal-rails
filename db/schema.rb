@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_28_104522) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_08_073524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -67,6 +67,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_104522) do
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_clubs_on_user_id"
+  end
+
+  create_table "hall_of_fames", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_hall_of_fames_on_team_id"
   end
 
   create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -284,17 +291,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_104522) do
     t.index ["user_id"], name: "index_news_on_user_id"
   end
 
+  create_table "opponent_teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "team_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "opponents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "match_date"
     t.time "match_time"
     t.string "venue"
     t.string "tournament"
-    t.string "opponent"
     t.integer "score_one"
     t.integer "score_two"
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "opponent_team_id"
+    t.index ["opponent_team_id"], name: "index_opponents_on_opponent_team_id"
     t.index ["user_id"], name: "index_opponents_on_user_id"
   end
 
@@ -371,12 +386,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_104522) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "adverts", "users"
   add_foreign_key "clubs", "users"
+  add_foreign_key "hall_of_fames", "teams"
   add_foreign_key "motor_alert_locks", "motor_alerts", column: "alert_id"
   add_foreign_key "motor_alerts", "motor_queries", column: "query_id"
   add_foreign_key "motor_note_tag_tags", "motor_note_tags", column: "tag_id"
   add_foreign_key "motor_note_tag_tags", "motor_notes", column: "note_id"
   add_foreign_key "motor_taggable_tags", "motor_tags", column: "tag_id"
   add_foreign_key "news", "users"
+  add_foreign_key "opponents", "opponent_teams"
   add_foreign_key "opponents", "users"
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
