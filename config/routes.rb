@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :hall_of_fames
-  resources :opponent_teams
+
   mount Motor::Admin => '/motor_admin'
   get 'cart', to: 'cart#show'
   post 'cart/add'
@@ -20,4 +19,6 @@ Rails.application.routes.draw do
   resources :membership
   resources :product
   resources :advert
+  resources :hall_of_fames
+  resources :opponent_teams
 end

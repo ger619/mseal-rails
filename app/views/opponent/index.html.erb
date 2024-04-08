@@ -1,7 +1,15 @@
 <div>
-  <h1 class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
     FIXTURES
-  </h1>
+    <div>
+      <% if current_user %>
+        <%=link_to "Add Opponent", new_opponent_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
+        <%=link_to "Add Opponent Team", new_opponent_team_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
+
+      <% end %>
+    </div>
+  </div>
+
   <% @opponent.each do |opp| %>
     <div class="flex flex-col justify-center md:flex-row pb-2 pt-2 gap-5 bg-[#e6e6e6]">
     <div class="bg-[#FFF] border-[#FAE115] border-t-4 pb-2 justify-between">

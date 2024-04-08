@@ -1,4 +1,5 @@
 class OpponentTeamsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_opponent_team, only: %i[show edit update destroy]
 
   # GET /opponent_teams or /opponent_teams.json
