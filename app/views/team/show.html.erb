@@ -1,30 +1,33 @@
 <div class="shadow-md">
-  <div class="p-6 bg-[#FAE115] font-bold capitalize lg:text-3xl md:text-3xl text-2xl flex justify-between ">
-    <p class="md:w-full w-[90%] truncate ...">NEWS | <%= @team.first_name %> <%= @team.last_name %></p>
-  </div>
-
+  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between ">
+    <p class="md:w-full w-[90%] truncate ...">TEAM | <%= @team.first_name %> <%= @team.last_name %></p>  </div>
 
   <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
-    <div class="md:w-full w-[92%]">
-      <%= image_tag(@team.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[600px] lg:w-[400px] lg:h-[600px] md:h-[600px] md:w-[600px] sm:w-[200px]" ) %>
-    </div>
 
-    <h2 class="text-2xl font-bold mt-4 mr-3 m-4 flex justify-between uppercase"> <p class="text-xs mt-2 "></p>
+    <h2 class="text-2xl font-bold mt-4 mr-3 m-4 flex justify-start uppercase">
+      <%= @team.second_name  %>
+      <p class="text-2xl ml-2 ">
+        <%= @team.last_name %>
+      </p>
     </h2>
 
-    <h3 class="text-xl font-semibold m-4"></h3>
-    <h3 class="text-base font-light m-4"> <%= @team.first_name %>
-      <%= @team.second_name  %>
-      <%= @team.last_name %>
-      <%= @team.position %>
-      <%= @team.jersey_number %>
-      <%= raw @team.about %>
-    </h3>
+    <div class="md:w-full w-[92%] h-[60%] ">
+      <%= image_tag(@team.image, class: 'rounded') %>
+    </div>
 
-    <% if current_user %>
-      <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-    <% end %>
+    <h2 class="text-xl font-bold mt-4 flex justify-start gap-12 uppercase">
+        <%= @team.position %>
+      <p class="text-xl ml-2 ">
+        <%= @team.jersey_number %>
+      </p>
+    </h2>
+
+    <h3 class="text-base font-light"><%= raw @team.about %></h3>
+    <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
   </div>
-
 </div>
+
+
+
+
 

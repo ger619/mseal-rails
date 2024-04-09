@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  require 'mini_magick'
   def index
     @pagy, @news = pagy_countless(News.all.order('created_at DESC'), items: 10)
     respond_to do |format|
@@ -20,6 +21,11 @@ class NewsController < ApplicationController
   def create
     @news = News.new(news_params)
     @news.user_id = current_user.id
+
+    params[:news][:image] do |image|
+      mini_image = MiniMagick::Image.new(image.tempfile.path)
+      mini_image.resize '800x400'
+    end
 
     respond_to do |format|
       if @news.save

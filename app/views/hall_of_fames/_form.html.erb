@@ -13,7 +13,13 @@
 
   <div class="my-5">
     <%= form.label :team_id %>
-    <%= form.collection_select :team_id, Team.all, :id, :name, { prompt: "Select Player" }, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-full" %>
+    <%= form.collection_select :team_id, Team.all, :id, :name, { prompt: "Select Player" }, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-full mb-4" %>
+    <%= form.label :Goals %>
+    <%= form.text_field :goals, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-[25%]" , placeholder: 'goals' %>
+    <%= form.label :Blocks %>
+    <%= form.text_field :blocks, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-[25%]", placeholder: 'blocks' %>
+    <%= form.label :Saves %>
+    <%= form.text_field :saves, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-[25%]", placeholder: 'saves' %>
   </div>
 
   <div class="inline">

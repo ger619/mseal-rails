@@ -16,6 +16,11 @@ class ProductController < ApplicationController
     @product = Product.new(product_params)
     @product.user_id = current_user.id
 
+    params[:product][:images] do |image|
+      mini_image = MiniMagick::Image.new(image.tempfile.path)
+      mini_image.resize '640x480'
+    end
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to product_index_path(@product), notice: 'Product was successfully created.' }

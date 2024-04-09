@@ -3,6 +3,9 @@
 # Table name: hall_of_fames
 #
 #  id         :uuid             not null, primary key
+#  blocks     :string
+#  goals      :string
+#  saves      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  team_id    :uuid             not null

@@ -1,20 +1,41 @@
-<div id="<%= dom_id hall_of_fame %>">
+<div class="shadow-md" id="<%= dom_id hall_of_fame %>">
 
-  <% if hall_of_fame.team.image.attached? %>
-   <%= image_tag hall_of_fame.team.image, class: "rounded-full w-40" %>
-  <% end %>
+  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
+
+    <div class="md:w-full w-[92%] h-[60%]">
+      <% if hall_of_fame.team.image.attached? %>
+        <%= image_tag hall_of_fame.team.image, class: "rounded w-40" %>
+      <% end %>
+    </div>
+
+    <div class="lg:w-[90%] w-[300px] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
+      <div class="">
+        <p class="text-sm text-black flex items-center uppercase">
+          <%= hall_of_fame.goals %>
+        </p>
+
+        <div class="text-black font-bold text-xl mb-2 md:mt-3 sm:text-sm md:text-xl truncate ">
+          <%= hall_of_fame.goals %>
+        </div>
+      </div>
+    </div>
 
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Team:</strong>
-    <%= hall_of_fame.team.name %>
-  </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this hall of fame", hall_of_fame, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <% if current_user %>
-      <%= link_to "Edit this hall of fame", edit_hall_of_fame_path(hall_of_fame), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% if current_user && action_name != "show" %>
+      <%= link_to "Show this hall of fame", hall_of_fame, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <% if current_user %>
+        <%= link_to "Edit this hall of fame", edit_hall_of_fame_path(hall_of_fame), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <% end %>
+      <hr class="mt-6">
     <% end %>
-    <hr class="mt-6">
-  <% end %>
+
+
+
+  </div>
 </div>
+
+
+
+
+

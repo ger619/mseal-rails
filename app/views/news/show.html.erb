@@ -5,15 +5,26 @@
 
 
   <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
-    <div class="md:w-full w-[92%]">
+
+    <h2 class="text-2xl font-bold mt-4 mr-3 m-4 flex justify-between uppercase">
+      <%= @news.type_of_news %>
+      <p class="text-xs mt-2 ">
+        <%= @news.created_at.strftime("%d.%m.%Y") %>
+      </p>
+    </h2>
+
+    <div class="md:w-full w-[92%] h-[60%]">
       <%= render "news/image_show" %>
     </div>
 
-    <h2 class="text-2xl font-bold mt-4 mr-3 m-4 flex justify-between uppercase"><%= @news.type_of_news %>  <p class="text-xs mt-2 "><%= @news.created_at.strftime("%d.%m.%Y") %></p>
-    </h2>
+
 
     <h3 class="text-xl font-semibold m-4"><%= @news.header_news %></h3>
     <h3 class="text-base font-light m-4"><%= raw @news.body %></h3>
     <%= button_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
   </div>
 </div>
+
+
+
+
