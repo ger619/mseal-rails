@@ -25,7 +25,7 @@
 
       <% if current_user %>
         <%= link_to 'Edit', edit_product_path(product), class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-        <%= button_to 'Destroy', product, method: :delete, data: { turbo_method: :delet }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
+        <%= button_to 'Destroy', product, method: :delete, data: { turbo_method: :delete }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
     <% end %>
     </div>
   </div>
