@@ -65,6 +65,6 @@ class HallOfFamesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def hall_of_fame_params
-    params.require(:hall_of_fame).permit(:team_id)
+    params.require(:hall_of_fame).permit(:team_id, :goals, :saves, :blocks)
   end
 end
