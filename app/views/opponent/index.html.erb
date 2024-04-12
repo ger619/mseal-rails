@@ -25,28 +25,28 @@
         </p>
         <p class="p-2"><%= opp.tournament %></p>
       </div>
-      <div class="flex gap-5 m-10">
-        <div class=" align-center hidden md:flex flex-col">
-          <%= image_tag("logo.png", class: " w-40") %>
-          <p>
+      <div class="flex md:gap-5 m-10">
+        <div class="align-center md:flex flex-col">
+          <%= image_tag("logo.png", class: "w-40") %>
+          <p class="text-center md:text-2xl font-bold">
 
             Murang'a Seals
           </p>
         </div>
-        <div class="flex flex-col justify-center mb-10 text-5xl ml-10">
+        <div class="md:flex md:flex-col w-40 justify-center content-center text-center md:mb-10 md:text-5xl text-xl md:ml-10">
           <%= opp.score_one %>
           vs
           <%= opp.score_two %>
 
         </div>
-        <div class="align-center hidden md:flex flex-col ml-10">
+        <div class="align-center md:flex flex-col md:ml-10">
 
 
           <% if opp.opponent_team.team_badge.attached? %>
-            <%= image_tag (opp.opponent_team.team_badge), class: " w-40"  %>
+            <%= image_tag (opp.opponent_team.team_badge), class: "w-40"  %>
           <% end %>
 
-          <p class="ml-10"><%= opp.opponent_team.name %></p>
+          <p class="text-center md:text-2xl font-bold"><%= opp.opponent_team.name %></p>
 
         </div>
       </div>
