@@ -1,6 +1,6 @@
 <div class="p-4 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
     CLUB & HISTORY
-  <% if current_user && current_user.role === 'moderator' || current_user.role === 'admin'  %>
+  <% if current_user && current_user.role === 'moderator'  %>
       <%=link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
   <% end %>
 </div>
@@ -20,7 +20,7 @@
             Read More
           </button>
         <% end %>
-        <% if current_user && current_user.role === 'moderator' || current_user.role === 'admin'  %>
+        <% if current_user && current_user.role === 'moderator'   %>
             <%= link_to edit_club_path(club.id) do %>
               <button class="w-[90px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl">
                 Edit
