@@ -1,8 +1,7 @@
 <div class="p-4 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-    CLUB & HISTORY
-  <% if current_user && current_user.role === 'moderator'  %>
+    CLUB & HISTORY  <% if current_user %>
       <%=link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-  <% end %>
+      <% end %>
 </div>
 <% @club.each do |club| %>
   <div class="flex flex-col gap-4 flex odd:flex-row-reverse md:flex-row  items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-10">
@@ -16,18 +15,18 @@
 
       <div class="flex">
         <%= link_to club_path(club.id) do %>
-          <button class="w-[290px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3">
+          <button class="p-4 h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3 rounded">
             Read More
           </button>
         <% end %>
-        <% if current_user && current_user.role === 'moderator'   %>
+        <% if current_user %>
             <%= link_to edit_club_path(club.id) do %>
-              <button class="w-[90px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl">
+              <button class="p-4 bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3 rounded">
                 Edit
               </button>
             <% end %>
 
-          <%= button_to 'Destroy', club, method: :delete, data: { turbo_method: :delete }, class: "w-[90px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl" %>
+          <%= button_to 'Destroy', club, method: :delete, data: { turbo_method: :delete }, class: "p-4 bg-[#F4E721] font-normal my-3 py-3 text-2xl rounded" %>
 
       <% end %>
       </div>
