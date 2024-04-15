@@ -1,4 +1,5 @@
 class AdvertController < ApplicationController
+  load_and_authorize_resource except: %i[index show]
   before_action :authenticate_user!
   def index
     @adverts = Advert.all

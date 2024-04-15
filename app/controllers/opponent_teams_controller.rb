@@ -1,4 +1,5 @@
 class OpponentTeamsController < ApplicationController
+  load_and_authorize_resource except: %i[index show]
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_opponent_team, only: %i[show edit update destroy]
 
