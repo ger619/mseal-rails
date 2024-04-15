@@ -2,13 +2,13 @@ class Ability
   include CanCan::Ability
   def initialize(user)
     user ||= User.new
-    if user.admin?
-      can :manage, :all
-    elsif user.moderator?
+    if user.role == 'admin'
+      can :manage, Motor::Admin, all
+    elsif user.role == 'moderator'
       can :manage, [Advert, Club, HallOfFame, News, Opponent, OpponentTeam, Product, Team], :all
-      can :access, :motor_admin
 
     else
+      user.role
       can :read, :all
     end
   end
