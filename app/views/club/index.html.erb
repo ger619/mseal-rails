@@ -15,18 +15,18 @@
 
       <div class="flex">
         <%= link_to club_path(club.id) do %>
-          <button class="p-4 h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3 rounded">
+          <button class="p-4 bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3 rounded uppercase">
             Read More
           </button>
         <% end %>
         <% if current_user && current_user.role === 'moderator' %>
             <%= link_to edit_club_path(club.id) do %>
-              <button class="p-4 bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3 rounded">
+              <button class="p-4 bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3 rounded uppercase" >
                 Edit
               </button>
             <% end %>
 
-          <%= button_to 'Delete', club, method: :delete, data: { turbo_method: :delete }, class: "p-4 bg-[#F4E721] font-normal my-3 py-3 text-2xl rounded" %>
+          <%= button_to 'Delete', club, method: :delete, data: { turbo_method: :delete }, class: "p-4 bg-[#F4E721] font-normal my-3 py-3 text-2xl rounded uppercase" %>
 
       <% end %>
       </div>
