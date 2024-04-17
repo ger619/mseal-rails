@@ -3,7 +3,7 @@ class TeamController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @teams = Team.all
+    @teams = Team.all.order('jersey_number ASC')
   end
 
   def show
