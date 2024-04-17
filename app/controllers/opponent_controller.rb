@@ -1,6 +1,6 @@
 class OpponentController < ApplicationController
-  load_and_authorize_resource except: :index
-  before_action :authenticate_user!, except: :index
+  load_and_authorize_resource
+  before_action :authenticate_user!
   def index
     @opponent = Opponent.all
   end
