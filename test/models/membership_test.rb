@@ -6,6 +6,7 @@
 #  country            :string
 #  date_of_birth      :date
 #  email              :string
+#  name               :string
 #  phone_number       :integer
 #  title              :string
 #  type_of_membership :string
