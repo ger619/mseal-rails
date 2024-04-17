@@ -23,7 +23,13 @@
     </h2>
 
     <h3 class="text-base font-light"><%= raw @team.about %></h3>
-    <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
+    <div class="flex inline-flex gap-2">
+    <% if current_user && current_user.role === 'moderator' %>
+      <%= link_to "Edit", edit_team_path(@team.id), class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+
+      <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
