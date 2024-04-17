@@ -15,7 +15,7 @@ class TeamController < ApplicationController
   end
 
   def create
-    @team = Team.new(news_params)
+    @team = Team.new(team_params)
     @team.user_id = current_user.id
 
     respond_to do |format|
@@ -42,7 +42,7 @@ class TeamController < ApplicationController
   def update
     @team = Team.find(params[:id])
     respond_to do |format|
-      if @team.update(news_params)
+      if @team.update(team_params)
         format.html { redirect_to team_url(@team.id), notice: 'Team was successfully updated.' }
       else
         format.html { redirect_to team_index_url, notice: 'Failure' }
@@ -52,7 +52,7 @@ class TeamController < ApplicationController
 
   private
 
-  def news_params
+  def team_params
     params.require(:team).permit(:first_name, :second_name, :last_name, :position, :image, :jersey_number, :about,
                                  :user_id)
   end
