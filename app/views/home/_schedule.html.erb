@@ -2,6 +2,8 @@
 <div class="bg-black text-white px-4 py-8">
 <h1 class="uppercase">Match Schedule</h1>
 <div class="flex flex-col md:flex-row justify-between ">
+
+  <!-- Match Schedule -->
   <div class=" text-center md:border-r  flex flex-col gap-2 md:border-white">
     <div class="flex gap-4 mt-8 items-center ">
       <div class="flex ml-4 mr-12  flex-col ">
@@ -21,31 +23,50 @@
     <button class="bg-[#FAE115] text-black mt-5 font-bold p-2 w-[40%] mx-auto">
       Buy Ticket
     </button>
+
+
   </div>
 
-  <div class=" text-center md:border-r  flex flex-col gap-2 md:border-white">
-    <div class="flex gap-4 mt-8 items-center ">
+  <!-- Scores -->
+  <% @opponent.limit(1).each do |opp| %>
+      <div class="md:border-r  flex flex-col gap-2 md:border-white">
+        <h1 class="text-center uppercase">Next Match</h1>
+    <div class="flex gap-3 mt-8 items-center ">
       <div class="flex ml-4 mr-12  flex-col ">
-        <%= image_tag "wazitologo.png", alt: "wazitologo" %>
+        <%= image_tag "msealslogo.png" , alt: "M-seals logo"%>
 
-        <h1 class="mt-3">Wazito FC</h1>
+        <h1 class="mt-3">Murang'a Seal</h1>
       </div>
       <p>VS</p>
       <div class="flex flex-col ml-10">
-        <%= image_tag "msealslogo.png" , alt: "M-seals logo"%>
-        <h1 class="mt-3">Murang&apos;a Seals</h1>
+        <% if opp.opponent_team.team_badge.attached? %>
+          <%= image_tag (opp.opponent_team.team_badge), class: "w-40 justify-center content-center p-4"  %>
+        <% end %>
+        <h1 class="mt-3"><%= opp.opponent_team.name %></h1>
       </div>
     </div>
-    <h1 class="text-center w-[70%] mt-5 mx-auto text-[#867A7A]">
-      Murang&apos;a stadium , Email muranga seals to book a ticket today
-    </h1>
-    <p class="text-[#867A7A]">29/April/2023</p>
+        <div class="flex justify-between mt-5">
+
+          <h1 class="text-center w-[80%]  text-white">
+            <%= opp.match_date.strftime("%d of %b, %Y") %>
+            at
+            <%= opp.match_time.strftime("%I:%M %p") %>
+          </h1>
+
+          <h1 class="text-center w-[70%] text-white">
+            <%= opp.venue %>
+          </h1>
+        </div>
+
+
     <button
       class="bg-[#FAE115] text-black mt-5 font-bold p-2 w-[40%] mx-auto">
     Buy Ticket
     </button>
   </div>
+    <% end %>
 
+  <!-- Buy a Tshirt -->
   <div class="flex justify-between p-4 ">
     <div class="flex flex-col gap-2">
       <p class="mb-4">AUTHENTIC HOME SHIRT</p>
