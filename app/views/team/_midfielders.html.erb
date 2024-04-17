@@ -6,7 +6,7 @@
     <% @teams.each do |team| %>
       <% if team.position === "Midfielder" %>
         <%= link_to team_path(team.id) do %>
-          <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
+          <div class="w-[300px] h-[200px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
             <% if team.image.attached? %>
               <%= image_tag(team.image) %>
             <% end %>
