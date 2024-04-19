@@ -22,6 +22,7 @@ class OpponentTeamsController < ApplicationController
   # POST /opponent_teams or /opponent_teams.json
   def create
     @opponent_team = OpponentTeam.new(opponent_team_params)
+    @opponent_team.user = current_user
 
     respond_to do |format|
       if @opponent_team.save
@@ -66,6 +67,6 @@ class OpponentTeamsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def opponent_team_params
-    params.require(:opponent_team).permit(:name, :team_url, :team_badge)
+    params.require(:opponent_team).permit(:name, :team_url, :team_badge, :user_id)
   end
 end

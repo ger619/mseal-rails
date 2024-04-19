@@ -16,6 +16,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  role                   :integer          default("user"), not null
+#  sign_in_count          :integer          default(0), not null
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -30,7 +31,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
   # Include default devise modules. Others available are:
 
@@ -44,5 +45,6 @@ class User < ApplicationRecord
   has_many :news, foreign_key: :user_id, class_name: 'News', dependent: :destroy
   has_many :clubs, foreign_key: :user_id, class_name: 'Club', dependent: :destroy
   has_many :adverts, foreign_key: :user_id, class_name: 'Advert', dependent: :destroy
-  has_many :fixtures, foreign_key: :user_id, class_name: 'Fixture', dependent: :destroy
+  has_many :opponents, foreign_key: :user_id, class_name: 'Opponent', dependent: :destroy
+  has_many :opponent_teams, foreign_key: :user_id, class_name: 'OpponentTeam', dependent: :destroy
 end
