@@ -11,4 +11,3 @@
 
 # Update all user sign_in_count to 0
 
-user = User.update_all(sign_in_count: '10')
