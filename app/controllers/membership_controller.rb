@@ -1,16 +1,12 @@
 class MembershipController < ApplicationController
   before_action :authenticate_user!, except: %i[index show new create]
-
   def index; end
-
   def show
     @membership = Membership.find(params[:id])
   end
-
   def new
     @membership = Membership.new
   end
-
   def create
     @membership = Membership.new(membership_params)
     respond_to do |format|
@@ -21,7 +17,6 @@ class MembershipController < ApplicationController
       end
     end
   end
-
   def destroy
     @membership = Membership.find(params[:id])
     @membership.delete
@@ -31,7 +26,6 @@ class MembershipController < ApplicationController
   end
 
   private
-
   def membership_params
     params.permit(:type_of_membership, :title, :country, :date_of_birth, :email, :phone_number)
   end
