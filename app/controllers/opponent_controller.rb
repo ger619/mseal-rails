@@ -2,7 +2,8 @@ class OpponentController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!, except: :index
   def index
-    @opponent = Opponent.all
+    @opponent = Opponent.order('match_date ASC')
+    # @opponent = Opponent.where('match_date <= ?', Date.today).where.not(score_one: nil).where.not(score_two: nil).last
   end
 
   def show
