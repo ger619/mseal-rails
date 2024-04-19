@@ -10,5 +10,3 @@
 # Seed to add o to all users role field that is null
 
 # Update all user sign_in_count to 0
-
-user = User.update_all(sign_in_count: '2', current_sign_in_at: '2024-04-19 11:55:46.900403000 -0500', current_sign_in_ip: '1', last_sign_in_ip: '1', last_sign_in_at: '1')
