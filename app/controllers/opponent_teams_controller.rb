@@ -22,7 +22,7 @@ class OpponentTeamsController < ApplicationController
   # POST /opponent_teams or /opponent_teams.json
   def create
     @opponent_team = OpponentTeam.new(opponent_team_params)
-    @opponent_team.user = current_user
+    @opponent_team.user_id = current_user.id
 
     respond_to do |format|
       if @opponent_team.save
