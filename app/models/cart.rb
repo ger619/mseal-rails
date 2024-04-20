@@ -7,8 +7,8 @@
 #  updated_at :datetime         not null
 #
 class Cart < ApplicationRecord
-  has_many :orderables
-  has_many :products, through: :orderables
+  has_many :orderables, dependent: :destroy
+  has_many :products, through: :orderables, dependent: :destroy
   def total_price
     orderables.to_a.sum(&:total)
   end
