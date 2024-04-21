@@ -14,7 +14,8 @@
  *= require_self
  */
 
-p {
+p,
+li {
   font-family: 'Space Grotesk', serif;
   font-size: 18px;
 }
