@@ -24,10 +24,13 @@
           <%= opp.score_two %>
         </div>
         <div class="justify-center  md:flex flex-col">
+          <a href="<%= opp.opponent_team.team_url %>" target = "_blank">
           <% if opp.opponent_team.team_badge.attached? %>
             <%= image_tag (opp.opponent_team.team_badge), class: "w-40 justify-center content-center p-4"  %>
           <% end %>
+
           <p class="text-center md:text-xl font-semibold capitalize"><%= opp.opponent_team.name %></p>
+          </a>
         </div>
       </div>
       <% if current_user && current_user.role === 'moderator' %>
