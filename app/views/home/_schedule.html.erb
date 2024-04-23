@@ -5,39 +5,39 @@
   <!-- Match Schedule -->
   <% @opponent2.limit(1).each do |opp| %>
 
-      <div class=" text-center md:border-r  flex flex-col gap-2 md:border-[#FAE115] ">
-        <p class="text-left uppercase">Previous Match</p>
+      <div class="md:border-r  flex flex-col gap-2 md:border-[#FAE115] place-content-center">
+        <p class="uppercase md:text-center">Previous Match</p>
 
-        <div class="flex gap-4 mt-8 items-center ">
-      <div class="flex ml-2 mr-6  flex-col ">
-        <%= image_tag "msealslogo.png" , alt: "M-seals logo"%>
-        <p class="mt-3">Murang&apos;a Seals</p>
-      </div>
-      <p class="text-3xl font-bold">
-        <%= opp.score_one %>
-      </p>
-          <p class="font-extralight">
-            VS
-          </p>
-          <p class="text-3xl font-bold">
-            <%= opp.score_two %>
-          </p>
-      <div class="flex flex-col ml-6 mr-5">
-        <% if opp.opponent_team.team_badge.attached? %>
-          <%= image_tag (opp.opponent_team.team_badge), class: "w-40 justify-center content-center p-4"  %>
-        <% end %>
-        <p class="mt-3"><%= opp.opponent_team.name %></p>
-      </div>
-    </div>
-  <div class="flex justify-between mt-5">
+        <div class="flex gap-4 mt-8 items-center content-center justify-center">
+            <div class="flex justify-items-center flex-col ">
+              <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "w-24"%>
+              <p class="mt-3 text-center">Murang&apos;a Seals</p>
+            </div>
+              <p class="text-3xl font-bold">
+                <%= opp.score_one %>
+              </p>
+                  <p class="font-extralight">
+                  VS
+                </p>
+              <p class="text-3xl font-bold">
+                <%= opp.score_two %>
+              </p>
+            <div class="flex justify-center  flex-col">
+              <% if opp.opponent_team.team_badge.attached? %>
+                <%= image_tag (opp.opponent_team.team_badge), class: "w-24"  %>
+              <% end %>
+              <p class="mt-3 text-center"><%= opp.opponent_team.name %></p>
+            </div>
+        </div>
+  <div class="flex text-center mt-5">
 
-    <p class="text-left text-white text-sm w-full">
+    <p class="text-white text-sm w-full">
       <%= opp.match_date.strftime("%d of %b, %Y") %>
       at
       <%= opp.match_time.strftime("%I:%M %p") %>
     </p>
 
-    <p class="text-left text-white text-sm w-full">
+    <p class="text-white text-sm w-full">
       <%= opp.venue %>
     </p>
   </div>
@@ -47,31 +47,30 @@
 
   <!-- Scores -->
   <% @opponent1.limit(1).each do |opp| %>
-      <div class="md:border-r  flex flex-col gap-2 md:border-[#FAE115] mt-6">
-        <p class="text-left uppercase">Next Match</p>
-    <div class="flex gap-3 mt-8 items-center ">
-      <div class="flex ml-4 mr-12  flex-col ">
-        <%= image_tag "msealslogo.png" , alt: "M-seals logo"%>
-
-        <p class="mt-3">Murang&apos;a Seal</p>
-      </div>
-      <p>VS</p>
-      <div class="flex flex-col ml-10">
-        <% if opp.opponent_team.team_badge.attached? %>
-          <%= image_tag (opp.opponent_team.team_badge), class: "w-40 justify-center content-center p-4"  %>
-        <% end %>
-        <p class="mt-3"><%= opp.opponent_team.name %></p>
-      </div>
+      <div class="text-center md:border-r  flex flex-col gap-2 md:border-[#FAE115] place-content-center">
+        <p class="uppercase md:text-center">Next Match</p>
+        <div class="flex gap-4 mt-8 items-center content-center justify-center">
+          <div class="flex justify-items-center flex-col ">
+            <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "w-24"%>
+            <p class="mt-3 text-center">Murang&apos;a Seals</p>
+          </div>
+              <p>VS</p>
+          <div class="flex flex-col ml-10">
+            <% if opp.opponent_team.team_badge.attached? %>
+              <%= image_tag (opp.opponent_team.team_badge), class: "w-24"  %>
+            <% end %>
+            <p class="mt-3 text-center"><%= opp.opponent_team.name %></p>
+          </div>
     </div>
-        <div class="flex justify-between mt-5">
+        <div class="flex text-center mt-5">
 
-          <p class="text-left text-white text-sm w-full">
+          <p class="text-white text-center text-sm w-full">
             <%= opp.match_date.strftime("%d of %b, %Y") %>
             at
             <%= opp.match_time.strftime("%I:%M %p") %>
           </p>
 
-          <p class="text-left text-white text-sm w-full">
+          <p class="text-white text-sm w-full">
             <%= opp.venue %>
           </p>
         </div>
@@ -80,7 +79,7 @@
       <% end %>
 
   <!-- Buy a Tshirt -->
-  <div class="flex justify-between p-4 mt-6">
+  <div class="flex justify-between p-4 mt-6 md:mt-0">
     <div class="flex flex-col gap-2">
       <p class="mb-4">AUTHENTIC HOME SHIRT</p>
       <p class="text-[#867A7A] mb-5">Team jersey</p>
