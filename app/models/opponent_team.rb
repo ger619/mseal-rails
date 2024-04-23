@@ -22,6 +22,6 @@ class OpponentTeam < ApplicationRecord
   has_many :opponent, dependent: :destroy
   has_many :user, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :team_badge, presence: true
 end
