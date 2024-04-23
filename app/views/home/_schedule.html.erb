@@ -1,11 +1,11 @@
 
 <div class="bg-black text-white px-4 py-8">
-<div class="grid grid-flow-col auto-cols-max justify-evenly">
+<div class="grid md:grid-cols-3 grid-cols-1 auto-cols-max  justify-evenly">
 
   <!-- Match Schedule -->
   <% @opponent2.limit(1).each do |opp| %>
 
-      <div class=" text-center md:border-r  flex flex-col gap-2 md:border-[#FAE115]">
+      <div class=" text-center md:border-r  flex flex-col gap-2 md:border-[#FAE115] ">
         <p class="text-left uppercase">Previous Match</p>
 
         <div class="flex gap-4 mt-8 items-center ">
@@ -47,7 +47,7 @@
 
   <!-- Scores -->
   <% @opponent1.limit(1).each do |opp| %>
-      <div class="md:border-r  flex flex-col gap-2 md:border-[#FAE115]">
+      <div class="md:border-r  flex flex-col gap-2 md:border-[#FAE115] mt-6">
         <p class="text-left uppercase">Next Match</p>
     <div class="flex gap-3 mt-8 items-center ">
       <div class="flex ml-4 mr-12  flex-col ">
@@ -80,7 +80,7 @@
       <% end %>
 
   <!-- Buy a Tshirt -->
-  <div class="flex justify-between p-4 ">
+  <div class="flex justify-between p-4 mt-6">
     <div class="flex flex-col gap-2">
       <p class="mb-4">AUTHENTIC HOME SHIRT</p>
       <p class="text-[#867A7A] mb-5">Team jersey</p>
