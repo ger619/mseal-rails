@@ -1,6 +1,6 @@
 
 <div class="bg-black text-white px-4 py-8">
-<div class="flex flex-col md:flex-row justify-between ">
+<div class="grid grid-flow-col auto-cols-max justify-evenly">
 
   <!-- Match Schedule -->
   <% @opponent2.limit(1).each do |opp| %>
@@ -40,7 +40,7 @@
   <!-- Scores -->
   <% @opponent1.limit(1).each do |opp| %>
       <div class="md:border-r  flex flex-col gap-2 md:border-[#FAE115]">
-        <p class="text-center uppercase">Next Match</p>
+        <p class="text-left uppercase">Next Match</p>
     <div class="flex gap-3 mt-8 items-center ">
       <div class="flex ml-4 mr-12  flex-col ">
         <%= image_tag "msealslogo.png" , alt: "M-seals logo"%>
