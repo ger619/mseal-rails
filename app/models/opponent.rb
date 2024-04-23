@@ -27,13 +27,4 @@
 class Opponent < ApplicationRecord
   belongs_to :user
   belongs_to :opponent_team
-
-  def daily_opponent
-    Opponent.where('match_date >= ?', Date.today).order('match_date ASC')
-  end
-
-  def match_score
-    # Display last match where it has scores
-    Opponent.where('match_date <= ?', Date.today).where.not(score_one: nil).where.not(score_two: nil).last
-  end
 end
