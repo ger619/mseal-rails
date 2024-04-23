@@ -27,4 +27,7 @@
 class Opponent < ApplicationRecord
   belongs_to :user
   belongs_to :opponent_team
+
+  # Value  should be zero or more than zero should not be negative
+  validates :score_one, :score_two, numericality: { greater_than_or_equal_to: 0 }
 end
