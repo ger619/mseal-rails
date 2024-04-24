@@ -2,7 +2,6 @@
   <h1 class="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Forward</h1>
   <hr class="ml-4 w-[6%] bg-[#FAE115] h-[10px] mb-2">
   <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 flex-col text-center p-2">
-
     <% @teams.each do |team| %>
       <% if team.position === "Striker" %>
         <% unless (current_user.nil? || current_user === "user") && team.active ==! true%>
