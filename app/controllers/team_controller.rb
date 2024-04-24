@@ -54,6 +54,6 @@ class TeamController < ApplicationController
 
   def team_params
     params.require(:team).permit(:first_name, :second_name, :last_name, :position, :image, :jersey_number, :about,
-                                 :user_id)
+                                 :user_id, :active)
   end
 end

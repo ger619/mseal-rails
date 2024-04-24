@@ -24,11 +24,14 @@
       </div>
       <div class="flex justify-between pr-10">
 
-        <%= f.select :position, %w[Striker Midfielder Defender Goalkeeper Coach], prompt: 'Role/Position', required: true, class: 'h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none' %>
+        <%= f.select :position, %w[Striker Midfielder Defender Goalkeeper Coach], prompt: 'Role/Position', class: 'h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none', :required => :true %>
         <%= f.number_field :jersey_number, class: "h-[50px] w-[30%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Jersey Number", :required => :true %>
         <%= f.file_field :image, class: "h-[50px] w-[30%] p-2 focus:outline-none" ,placeholder: "Passport Photo of Player", :required => :true%>
-
       </div>
+      <div class="flex gap-2 pr-10">
+        <%= f.label :Active %>
+        <%= f.check_box :active, placeholder: "If Active", class: "mt-1"%>
+        </div>
 
       <%= f.text_area :about, class: "tinymce appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
       <%= tinymce %>
