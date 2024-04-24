@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_19_145510) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_24_094044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -352,6 +352,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_19_145510) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "statistics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "kpl_appearance"
+    t.integer "kpl_goal"
+    t.integer "kpl_yellow"
+    t.integer "kpl_redcard"
+    t.integer "fkfcup_appearance"
+    t.integer "fkfcup_goal"
+    t.integer "fkfcup_redcard"
+    t.integer "fkfcup_yellow"
+    t.uuid "team_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_statistics_on_team_id"
+    t.index ["user_id"], name: "index_statistics_on_user_id"
+  end
+
   create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name"
     t.string "second_name"
@@ -372,7 +389,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_19_145510) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
@@ -406,5 +423,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_19_145510) do
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
   add_foreign_key "products", "users"
+  add_foreign_key "statistics", "teams"
+  add_foreign_key "statistics", "users"
   add_foreign_key "teams", "users"
 end

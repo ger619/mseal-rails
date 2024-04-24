@@ -29,6 +29,6 @@ class Team < ApplicationRecord
   validates :jersey_number, presence: true, uniqueness: true
 
   def name
-    "#{first_name} #{second_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 end
