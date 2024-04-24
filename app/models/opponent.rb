@@ -27,6 +27,14 @@
 class Opponent < ApplicationRecord
   belongs_to :user
   belongs_to :opponent_team
+  before_validation :capitalize
+
+  validates :match_date, :match_time, :tournament, :venue, :opponent, presence: true
+
+  def capitalize
+    self.tournament = tournament.capitalize
+    self.venue = venue.capitalize
+  end
 
   # Value  should be zero or more than zero should not be negative
   validates :score_one, :score_two, numericality: { greater_than_or_equal_to: 0 }
