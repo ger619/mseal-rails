@@ -28,6 +28,7 @@ class Team < ApplicationRecord
   has_one_attached :image
 
   validates :jersey_number, presence: true, uniqueness: true
+  validates :active, inclusion: { in: [true, false], default: false }
 
   def name
     "#{first_name} #{last_name}"
