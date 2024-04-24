@@ -26,11 +26,18 @@
 class Team < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  before_validation :capitalize
 
   validates :jersey_number, presence: true, uniqueness: true
   validates :active, inclusion: { in: [true, false], default: false }
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def capitalize
+    self.first_name = first_name.capitalize
+    self.last_name = last_name.capitalize
+    self.second_name = second_name.capitalize
   end
 end
