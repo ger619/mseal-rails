@@ -19,7 +19,7 @@ class StatisticController < ApplicationController
 
     respond_to do |format|
       if @statistic.save
-        format.html { redirect_to statistic_url(@statistic), notice: 'Statistic was successfully created.' }
+        format.html { redirect_to statistic_index_path, notice: 'Statistic was successfully created.' }
       else
         format.html { redirect_to statistic_index_url, notice: 'Failure' }
       end
@@ -42,7 +42,7 @@ class StatisticController < ApplicationController
     @statistic = Statistic.find(params[:id])
     respond_to do |format|
       if @statistic.update(statistic_params)
-        format.html { redirect_to statistic_url(@statistic.id), notice: 'Statistic was successfully updated.' }
+        format.html { redirect_to statistic_index_path, notice: 'Statistic was successfully updated.' }
       else
         format.html { redirect_to statistic_index_url, notice: 'Failure' }
       end
