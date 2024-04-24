@@ -20,4 +20,5 @@
 #
 class HallOfFame < ApplicationRecord
   belongs_to :team
+  belongs_to :user, class_name: 'User', optional: true
 end

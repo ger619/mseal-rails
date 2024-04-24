@@ -25,10 +25,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Opponent < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, class_name: 'User', optional: true
   belongs_to :opponent_team
   before_validation :capitalize
-
   validates :match_date, :match_time, :tournament, :venue, :opponent, presence: true
 
   def capitalize

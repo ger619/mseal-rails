@@ -18,10 +18,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class OpponentTeam < ApplicationRecord
+  belongs_to :user, class_name: 'User', optional: true
   has_one_attached :team_badge
   has_many :opponent, dependent: :destroy
-  has_many :user, dependent: :destroy
-
   validates :name, presence: true, uniqueness: true
   validates :team_badge, presence: true
 end

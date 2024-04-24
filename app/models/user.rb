@@ -47,4 +47,6 @@ class User < ApplicationRecord
   has_many :adverts, foreign_key: :user_id, class_name: 'Advert', dependent: :destroy
   has_many :opponents, foreign_key: :user_id, class_name: 'Opponent', dependent: :destroy
   has_many :opponent_teams, foreign_key: :user_id, class_name: 'OpponentTeam', dependent: :destroy
+  has_many :statistics, foreign_key: :user_id, class_name: 'Statistic', dependent: :destroy
+  has_many :teams, foreign_key: :user_id, class_name: 'Team', dependent: :destroy
 end
