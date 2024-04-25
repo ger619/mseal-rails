@@ -7,7 +7,7 @@
       <% if team.position === "Defender" %>
         <% unless (current_user.nil? || current_user === "user") && team.active ==! true%>
         <%= link_to team_path(team.id) do %>
-          <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
+            <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 border border-[#f4e721] rounded">
             <% if team.image.attached? %>
               <%= image_tag(team.image, class: "[h-200px]") %>
             <% end %>
@@ -16,7 +16,7 @@
                 <h1 class="self-start"><%= team.first_name %></h1>
                 <h1 class="font-semibold text-2xl"><%= team.last_name %></h1>
               </div>
-              <h1 class="text-gray-400 text-5xl">0<%= team.jersey_number %></h1>
+              <h1 class="text-gray-400 text-5xl"><%= team.jersey_number %></h1>
             </div>
           </div>
         <% end %>
