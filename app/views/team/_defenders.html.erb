@@ -11,7 +11,7 @@
             <% if team.image.attached? %>
               <%= image_tag(team.image, class: "[h-200px]") %>
             <% end %>
-            <div class="flex justify-between">
+            <div class="flex justify-between p-3 bg-[#f3f3f3]">
               <div class="flex flex-col">
                 <h1 class="self-start"><%= team.first_name %></h1>
                 <h1 class="font-semibold text-2xl"><%= team.last_name %></h1>
