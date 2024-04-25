@@ -27,6 +27,7 @@ class Team < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   before_validation :capitalize
+  has_many :statistics, foreign_key: :team_id, class_name: 'Statistic', dependent: :destroy
 
   validates :jersey_number, presence: true, uniqueness: true
   validates :active, inclusion: { in: [true, false], default: false }

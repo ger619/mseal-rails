@@ -27,7 +27,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Statistic < ApplicationRecord
-  belongs_to :team
+  belongs_to :team, class_name: 'Team', optional: true, dependent: :destroy
   belongs_to :user, class_name: 'User', optional: true
 
   validates :fkfcup_appearance, :fkfcup_goal, :fkfcup_redcard, :fkfcup_yellow, :kpl_appearance, :kpl_goal,
