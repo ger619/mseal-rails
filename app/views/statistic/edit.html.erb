@@ -6,30 +6,30 @@
       <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8 justify-self-center">
         <div class="flex  justify-start">
           <%= f.label :Player_Name, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.collection_select :team_id, Team.all, :id, :name, {prompt: "Select Player"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.collection_select :team_id, Team.all, :id, :name, {prompt: "Select Player"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
         <div class="flex  justify-start">
           <%= f.label :FKF_PREMIERSHIP, class: "uppercase content-center p-4 font-bold underline"%>
         </div>
         <div class="flex  justify-start">
           <%= f.label :kpl_appearance, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :kpl_appearance, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :kpl_appearance, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
         <div class="flex  justify-start">
           <%= f.label :kpl_goal, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :kpl_goal, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :kpl_goal, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
         <div class="flex  justify-start">
           <%= f.label :kpl_goal, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :kpl_goal, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :kpl_goal, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
         <div class="flex  justify-start">
           <%= f.label :kpl_yellow, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :kpl_yellow, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :kpl_yellow, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
         <div class="flex  justify-start">
           <%= f.label :kpl_redcard, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :kpl_redcard, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :kpl_redcard, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
         <div class="flex  justify-start">
@@ -38,22 +38,22 @@
 
         <div class="flex  justify-start">
           <%= f.label :fkfcup_appearance, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :fkfcup_appearance, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :fkfcup_appearance, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
         <div class="flex  justify-start">
           <%= f.label :fkfcup_goal, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :fkfcup_goal, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :fkfcup_goal, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
         <div class="flex  justify-start">
           <%= f.label :fkfcup_yellow, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :fkfcup_yellow, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :fkfcup_yellow, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
         <div class="flex  justify-start">
           <%= f.label :fkfcup_redcard, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :fkfcup_redcard, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" %>
+          <%= f.number_field :fkfcup_redcard, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
         <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
