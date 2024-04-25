@@ -26,7 +26,7 @@
 
         <%= f.select :position, %w[Striker Midfielder Defender Goalkeeper Coach], prompt: 'Role/Position', class: 'h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none', :required => :true %>
         <%= f.number_field :jersey_number, class: "h-[50px] w-[30%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Jersey Number", :required => :true %>
-        <%= f.file_field :image, class: "h-[50px] w-[30%] p-2 focus:outline-none" ,placeholder: "Passport Photo of Player", :required => :true%>
+        <%= f.file_field :image, class: "h-[50px] w-[30%] p-2 focus:outline-none" ,placeholder: "Passport Photo of Player(Please ensure this is a landscape photo)", :required => :true%>
       </div>
       <div class="flex gap-2 pr-10">
         <%= f.label :Active %>
