@@ -6,7 +6,7 @@
               <%= news.header_news %>
             </h1>
           </div>
-          <div class=" flex flex-col content-center  border-t-4 border border-[#FAE115] mt-3  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
+          <div class=" flex flex-col content-center  border-t-4 border border-[#FAE115] mt-3  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] rounded">
             <div>
               <%= image_tag(news.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]" ) %>
             </div>
@@ -17,12 +17,12 @@
               <h5 class="mb-6 text-2xl mt-[30%] font-bold tracking-tight text-[#000] mt-5 uppercase max-w-[200px] truncate">
                 <%= news.header_news %>
               </h5>
-              <%= link_to "Read more", news_path(news.id),  class: "bg-[#FAE115] sm:p-2 flex hover:bg-white hover:text-[#fae115] border border-[#fae115] justify-center uppercase font-semibold"%>
+              <%= link_to "Read more", news_path(news.id),  class: "bg-[#FAE115] sm:p-2 flex hover:bg-white hover:text-[#fae115] border border-[#fae115] justify-center uppercase font-semibold rounded"%>
             </div>
           </div>
       <% end %>
 
-      <div class="md:grid grid-cols-3 md:grid-cols-3 gap-5 mt-[28px] 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
+      <div class="md:grid grid-cols-3 md:grid-cols-3 gap-5 mt-[28px] 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
         <!-- if the type_of_news is the same as the first one, then skip it -->
         <% @news.limit(4).each_with_index do |news, index| %>
           <% if index == 0 %>
@@ -30,7 +30,7 @@
           <% else %>
             <% @news.length - index %>
             <div class="">
-              <div class="bg-white border border-[#FAE115] border-t-4 flex flex-col mt-2 hover:scale-105">
+              <div class="bg-white border border-[#FAE115] border-t-4 flex flex-col mt-2 hover:scale-105 rounded">
                 <%= image_tag(news.image, class: "h-[200px] w-full")  %>
                 <div class="p-5 bg-white">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
