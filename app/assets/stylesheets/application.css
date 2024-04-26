@@ -15,7 +15,9 @@
  */
 
 p,
-li, td, th {
+li,
+td,
+th {
   font-family: 'Space Grotesk', serif;
   font-size: 18px;
 }
