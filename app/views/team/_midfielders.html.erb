@@ -4,7 +4,7 @@
   <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 flex-col text-center p-2">
     <% @teams.each do |team| %>
       <% if team.position === "Midfielder" %>
-        <% unless (current_user.nil? || current_user === "user") && team.active ==! true%>
+        <% unless (current_user.nil? || current_user === "user") && team.active ==! true %>
         <%= link_to team_path(team.id) do %>
             <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 border border-[#f4e721] rounded">
             <% if team.image.attached? %>

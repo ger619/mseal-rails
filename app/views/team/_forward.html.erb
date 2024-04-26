@@ -4,18 +4,18 @@
   <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 flex-col text-center p-2">
     <% @teams.each do |team| %>
       <% if team.position === "Striker" %>
-        <% unless (current_user.nil? || current_user === "user") && team.active ==! true%>
+        <% unless (current_user.nil? || current_user === "user") && team.active ==! true %>
         <%= link_to team_path(team.id) do %>
           <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 border border-[#f4e721] rounded">
             <% if team.image.attached? %>
               <%= image_tag(team.image, class: "[h-200px]") %>
             <% end %>
-            <div class="flex justify-between p-3 bg-[#ffffff]">
+            <div class="flex justify-between p-4 bg-[#ffffff]">
               <div class="flex flex-col">
-                <h1 class="self-start text-xl font-extralight"><%= team.first_name %></h1>
-                <h1 class="self-start font-semibold text-2xl"><%= team.last_name %></h1>
+                <p class="self-start text-xl font-extralight"><%= team.first_name %></p>
+                <p class="self-start font-semibold text-2xl"><%= team.last_name %></p>
               </div>
-              <h1 class="text-5xl"><%= team.jersey_number %></h1>
+              <p class="text-5xl font-extrabold"><%= team.jersey_number %></p>
             </div>
           </div>
         <% end %>
