@@ -13,16 +13,19 @@
 #  kpl_yellow        :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  season_id         :uuid             not null
 #  team_id           :uuid             not null
 #  user_id           :uuid             not null
 #
 # Indexes
 #
-#  index_statistics_on_team_id  (team_id)
-#  index_statistics_on_user_id  (user_id)
+#  index_statistics_on_season_id  (season_id)
+#  index_statistics_on_team_id    (team_id)
+#  index_statistics_on_user_id    (user_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (season_id => seasons.id)
 #  fk_rails_...  (team_id => teams.id)
 #  fk_rails_...  (user_id => users.id)
 #

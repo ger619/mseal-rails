@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_24_125456) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_26_201135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -341,6 +341,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_24_125456) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "seasons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_seasons_on_user_id"
+  end
+
   create_table "shops", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "product_name"
     t.string "description"
@@ -365,6 +375,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_24_125456) do
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "season_id", null: false
+    t.index ["season_id"], name: "index_statistics_on_season_id"
     t.index ["team_id"], name: "index_statistics_on_team_id"
     t.index ["user_id"], name: "index_statistics_on_user_id"
   end
@@ -424,6 +436,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_24_125456) do
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
   add_foreign_key "products", "users"
+  add_foreign_key "seasons", "users"
+  add_foreign_key "statistics", "seasons"
   add_foreign_key "statistics", "teams"
   add_foreign_key "statistics", "users"
   add_foreign_key "teams", "users"
