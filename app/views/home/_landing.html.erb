@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center md:flex-row gap-5  m-[4%]">
+<div class="flex flex-col justify-center md:flex-row gap-5  m-[4%] mx-auto">
   <div>
       <% @news.limit(1).each do |news| %>
           <div class="flex flex-col items-start h-16 bg-[#FAE115] border border-[#FAE115] shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
@@ -6,18 +6,22 @@
               <%= news.header_news %>
             </h1>
           </div>
-          <div class=" flex flex-col content-center  border-t-4 border border-[#FAE115] mt-3  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] rounded">
-            <div>
-              <%= image_tag(news.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]" ) %>
+          <div class="content-center  border-t-4 border border-[#FAE115] mt-3 rounded grid md:grid-cols-3 md:flex-row md:max-w-[1024px] ">
+            <div class="col-span-2">
+              <%= image_tag(news.image, class: "object-cover md:w-full w-[400px] hover:bg-[#fae115]" ) %>
             </div>
-            <div class="flex flex-col content-center leading-normal p-5 bg-white">
-              <h1 class="text-gray-500  uppercase">
-                <%= news.type_of_news %>
-              </h1>
-              <h5 class="mb-6 text-2xl mt-[30%] font-bold tracking-tight text-[#000] mt-5 uppercase max-w-[200px] truncate">
-                <%= news.header_news %>
-              </h5>
-              <%= link_to "Read more", news_path(news.id),  class: "bg-[#FAE115] sm:p-2 flex hover:bg-white hover:text-[#fae115] border border-[#fae115] justify-center uppercase font-semibold rounded"%>
+            <div class="col-span-1 leading-normal p-4 bg-white md:w-full w-[400px] ">
+              <div>
+                <p class="text-gray-500  uppercase">
+                  <%= news.type_of_news %>
+                </p>
+              </div>
+              <div>
+                <p class="md:mb-6 text-2xl md:mt-[20%] font-bold tracking-tight text-[#000] mt-5 uppercase max-w-[200px] truncate">
+                  <%= news.header_news %>
+                </p>
+                <%= link_to "Read more", news_path(news.id),  class: "bg-[#FAE115] sm:p-2 flex hover:bg-white hover:text-[#fae115] border border-[#fae115] justify-center uppercase font-semibold rounded"%>
+              </div>
             </div>
           </div>
       <% end %>
@@ -52,20 +56,5 @@
         <% end %>
       </div>
   </div>
-  <div class="bg-white md:flex-col md:flex-row border-t-indigo-500 h-[200px] ">
-    <% @advert.limit(2).each do |advert| %>
-      <div class="flex flex-col md:items-end gap-5 mb-2 hidden sm:flex  ">
-        <div class="flex flex-col lg:w-[303px] md:w-[250px] text-white">
-          <%= image_tag(advert.desk_image, class: "lg:max-w-[300px] md:max-w-[250px]") %>
-        </div>
-      </div>
-    <% end %>
-    <% @advert.limit(1).each do |advert| %>
-      <div class="sm:flex flex-col md:items-end m-[4%] md:hidden lg:hidden xl:hidden ">
-        <div class="flex flex-col w-[100%] h-[100px] text-white ">
-          <%= image_tag(advert.mobile_image, class: "w-[100%] h-[100px] ") %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render "news/adverts" %>
 </div>
