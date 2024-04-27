@@ -6,12 +6,14 @@
 
   <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
 
-    <h2 class="text-2xl font-bold mt-4 mr-3 m-4 flex justify-between uppercase">
-      <%= @news.type_of_news %>
-      <p class="text-xs mt-2 ">
+    <div class="mt-4 border-t-[8px] pt-6 pb-6 border-[#FAE115] flex gap-4 bg-[#FFF] justify-between">
+      <p class="text-2xl font-bold mt-4 mr-3 m-4 flex uppercase">
+          <%= @news.type_of_news %>
+      </p>
+      <p class="text-xs pl-4">
         <%= @news.created_at.strftime("%d.%m.%Y") %>
       </p>
-    </h2>
+  </div>
 
     <div class="md:w-full w-full h-[60%]">
       <%= render "news/image_show" %>
@@ -24,12 +26,8 @@
 
 
     <% if current_user && current_user.role === 'moderator' %>
-      <%= button_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-    <% end %>
-    <% if current_user && current_user.role === 'moderator' %>
       <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-        <%= link_to "Edit", edit_news_path(@news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
-
+        <%= link_to "Edit", edit_news_path(@news.id), class: "w-[50px] text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
       </div>
       <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
         <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
