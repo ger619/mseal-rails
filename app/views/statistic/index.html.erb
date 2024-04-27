@@ -7,7 +7,6 @@
           <% if current_user&.moderator? %>
             <%=link_to "Add Statistic", new_statistic_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
             <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-
         <% end %>
         </div>
     </div>
@@ -75,17 +74,17 @@
                   <%= stat.season.name %>
                 </th>
                 <th scope="row" class="px-6 py-4 ">
-                      <%= stat.team.name %>
-                  </th>
-                  <td class="px-6 py-4">
-                      <%= stat.kpl_appearance %>
-                  </td>
-                  <td class="px-6 py-4">
-                      <%= stat.kpl_goal %>
-                  </td>
-                  <td class="px-6 py-4">
-                     <%= stat.kpl_yellow %>
-                  </td>
+                  <%= stat.team.name %>
+                </th>
+                <td class="px-6 py-4">
+                  <%= stat.kpl_appearance %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.kpl_goal %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.kpl_yellow %>
+                </td>
                 <td class="px-6 py-4">
                   <%= stat.kpl_redcard %>
                 </td>
@@ -101,21 +100,16 @@
                 <td class="px-6 py-4">
                   <%= stat.fkfcup_redcard %>
                 </td>
-                  <td class="px-6 py-4 flex gap-2 ">
-                    <% if current_user&.moderator? %><!--Link to edit page -->
-                      <%= link_to "Edit", edit_statistic_path(stat.id), class: "font-medium text-blue-600 hover:underline border border-[#f4e721]" %>
+                <td class="px-6 py-4 flex gap-2 ">
+                  <% if current_user&.moderator? %><!--Link to edit page -->
+                    <%= link_to "Edit", edit_statistic_path(stat.id), class: "font-medium text-blue-600 hover:underline border border-[#f4e721]" %>
                       <!--Link to delete page -->
-                      <%= button_to "Delete", stat, method: :delete, data: { turbo_method: :delete  }, class: "font-medium text-red-600 hover:underline border border-[#f4e721]" %>
-                    <% end %>
-                  </td>
+                    <%= button_to "Delete", stat, method: :delete, data: { turbo_method: :delete  }, class: "font-medium text-red-600 hover:underline border border-[#f4e721]" %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
             </tbody>
         </table>
     </div>
-
-
-
-
-
 </div>
