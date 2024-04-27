@@ -20,5 +20,5 @@
 #
 class Season < ApplicationRecord
   belongs_to :user
-  belongs_to :statistic
+  has_many :statistics, foreign_key: :season_id, class_name: 'Statistic', dependent: :destroy
 end

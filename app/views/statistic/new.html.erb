@@ -10,6 +10,10 @@
         <%= f.collection_select :team_id, Team.all, :id, :name, {prompt: "Select Player"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
       </div>
       <div class="flex  justify-start">
+        <%= f.label :Player_Name, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.collection_select :season_id, Season.all, :id, :name, {prompt: "Select Season"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
         <%= f.label :FKF_PREMIERSHIP, class: "uppercase content-center p-4 font-bold underline"%>
       </div>
       <div class="flex  justify-start">

@@ -6,7 +6,9 @@
         <div>
           <% if current_user&.moderator? %>
             <%=link_to "Add Statistic", new_statistic_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-          <% end %>
+            <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+
+        <% end %>
         </div>
     </div>
 
@@ -34,6 +36,8 @@
               </th>
             </tr>
             <tr>
+              <th scope="col" class="px-6 py-3">
+              </th>
                 <th scope="col" class="px-6 py-3">
                     Player Name
                 </th>
@@ -67,7 +71,10 @@
             <tbody>
             <% @statistics.each do |stat| %>
               <tr class="odd:bg-white even:bg-gray-100 border-b ">
-                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  <%= stat.season.name %>
+                </th>
+                <th scope="row" class="px-6 py-4 ">
                       <%= stat.team.name %>
                   </th>
                   <td class="px-6 py-4">

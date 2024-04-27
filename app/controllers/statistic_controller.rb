@@ -53,6 +53,6 @@ class StatisticController < ApplicationController
 
   def statistic_params
     params.require(:statistic).permit(:kpl_appearance, :kpl_goal, :kpl_yellow, :kpl_redcard, :fkfcup_appearance,
-                                      :fkfcup_goal, :fkfcup_redcard, :fkfcup_yellow, :team_id, :user_id)
+                                      :fkfcup_goal, :fkfcup_redcard, :fkfcup_yellow, :team_id, :user_id, :season_id)
   end
 end

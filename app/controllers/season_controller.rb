@@ -28,11 +28,9 @@ class SeasonController < ApplicationController
     end
   end
 
-
   def edit
     @season = Season.find(params[:id])
   end
-
 
   def update
     @season = Season.find(params[:id])
@@ -47,8 +45,6 @@ class SeasonController < ApplicationController
     end
   end
 
-
-
   def destroy
     @season = Season.find(params[:id])
     @season.destroy
@@ -59,8 +55,8 @@ class SeasonController < ApplicationController
   end
 
   private
-  def season_params
-    params.require(:season).permit(:name, :start_date, :end_date, :user_id, :statistics_id, :team_id)
 
+  def season_params
+    params.require(:season).permit(:name, :start_date, :end_date, :user_id)
   end
 end

@@ -5,9 +5,9 @@ class Ability
     if user.admin?
       can :manage, Motor::Admin, :all
     elsif user.moderator?
-      can :manage, [Advert, Club, HallOfFame, News, Opponent, OpponentTeam, Product, Team], :all
+      can :manage, [Advert, Club, HallOfFame, News, Opponent, OpponentTeam, Product, Team, Statistic, Season], :all
     else
-      can :read, [Advert, Club, HallOfFame, News, Opponent, OpponentTeam, Product, Team], :all
+      can :read, [Advert, Club, HallOfFame, News, Opponent, OpponentTeam, Product, Team, Statistic], :all
     end
   end
 end

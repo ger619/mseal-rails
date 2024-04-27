@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :hall_of_fames
   resources :opponent_teams
   resources :statistic
+  resources :season
 end
