@@ -1,21 +1,25 @@
 <%= form_with  model: @season, url: season_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
+  <div class="md:p-0">
+    <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+      ADD SEASON TO STATS
+    </div>
+    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8 justify-self-center">
 
-  <div class="form-group">
-    <%= f.label :start_date %>
-    <%= f.date_field :start_date, class: "form-control" %>
-  </div>
+      <div class="flex  justify-start">
+        <%= f.label :name, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.text_field :name, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
+        <%= f.label :start_date, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.date_field :start_date, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
+        <%= f.label :end_date, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.date_field :end_date, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :end_date %>
-    <%= f.date_field :end_date, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Create Season", class: "btn btn-primary" %>
+      <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
+    </div>
   </div>
 <% end %>
