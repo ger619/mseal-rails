@@ -31,6 +31,7 @@ class Team < ApplicationRecord
 
   validates :jersey_number, presence: true, uniqueness: true
   validates :active, inclusion: { in: [true, false], default: false }
+  validates :first_name, :second_name, :last_name, :position, presence: true
 
   def name
     "#{first_name} #{last_name}"

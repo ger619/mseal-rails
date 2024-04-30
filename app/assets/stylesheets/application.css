@@ -19,7 +19,7 @@ li,
 td,
 th {
   font-family: 'Space Grotesk', serif;
-  font-size: 18px;
+  line-height: 1.6;
 }
 
 h1,
@@ -29,4 +29,6 @@ h4,
 h5,
 h6 {
   font-family: 'Equitan Sans', serif;
+  margin-bottom: 4px;
+  margin-top: 2px;
 }
