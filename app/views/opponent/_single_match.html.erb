@@ -1,4 +1,5 @@
 <% @opponent.each do |opp| %>
+  <%= link_to opponent_path(opp.id) do %>
   <div class="flex flex-col justify-center md:flex-row pb-2 pt-2 gap-5 bg-[#e6e6e6] ">
     <div class="bg-[#FFF] border-[#FAE115] border-t-4 pb-2 justify-between md:w-[600px]">
       <div class="flex justify-between border-[#FAE115] border-b-2 p-2">
@@ -9,7 +10,9 @@
           |
           <%= opp.venue %>
         </p>
-        <p class="p-2 text-sm font-semibold"><%= opp.tournament %></p>
+        <p class="p-2 text-sm font-semibold">
+          <%= opp.tournament %>
+        </p>
       </div>
       <div class="flex md:gap-5 m-8">
         <div class="justify-center  md:flex flex-col">
@@ -24,13 +27,10 @@
           <%= opp.score_two %>
         </div>
         <div class="justify-center  md:flex flex-col">
-          <a href="<%= opp.opponent_team.team_url %>" target = "_blank">
             <% if opp.opponent_team.team_badge.attached? %>
               <%= image_tag (opp.opponent_team.team_badge), class: "w-40 justify-center content-center p-4"  %>
             <% end %>
-
             <p class="text-center md:text-xl font-semibold capitalize"><%= opp.opponent_team.name %></p>
-          </a>
         </div>
       </div>
       <% if current_user && current_user.role === 'moderator' %>
@@ -41,12 +41,9 @@
           <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
             <%= button_to "Delete", opp, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
           </div>
-          <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-            <!-- show -->
-            <%= link_to 'Show', opponent_path(opp.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
-          </div>
         </div>
       <% end %>
     </div>
   </div>
+  <% end %>
 <% end %>
