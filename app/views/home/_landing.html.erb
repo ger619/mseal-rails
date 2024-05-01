@@ -1,16 +1,16 @@
-<div class="flex flex-col justify-center md:flex-row m-[4%] mx-auto">
-  <div>
+<div class="flex flex-col justify-center md:flex-row m-[4%] ">
+  <div class="md:pl-10">
       <% @news.limit(1).each do |news| %>
           <div class="flex flex-col items-start h-16 bg-[#FAE115] border border-[#FAE115] shadow md:max-w-[1024px] ">
             <h1 class="text-white font-bold uppercase text-base md:text-2xl lg:text-3xl pl-4 pt-4 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] truncate w-[330px]">
               <%= news.header_news %>
             </h1>
           </div>
-          <div class="content-center  border-t-4 border border-[#FAE115] md:mt-3 rounded grid md:grid-cols-3 md:flex-row  md:max-w-[1024px] md:m-0 m-4">
-            <div class="col-auto md:col-span-2">
+          <div class="content-center  border-t-4 border border-[#FAE115] md:mt-3 rounded grid md:grid-cols-3 md:flex-row max-w-[300px] md:max-w-[1024px] md:m-0 m-4">
+            <div class="col-span-1 md:col-span-2">
               <%= image_tag(news.image, class: "md:w-full" ) %>
             </div>
-            <div class="col-span-1 p-4 bg-white md:w-full min-w-[350px]">
+            <div class="col-span-1 p-4 bg-white md:w-full max-w-[350px]">
               <div>
                 <p class="text-gray-500  uppercase">
                   <%= news.type_of_news %>
@@ -55,6 +55,11 @@
           <% end %>
         <% end %>
       </div>
+
   </div>
+
+
   <%= render "news/adverts" %>
+
+
 </div>
