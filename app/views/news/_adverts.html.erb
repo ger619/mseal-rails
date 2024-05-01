@@ -1,14 +1,14 @@
 
-<div class="md:flex-col md:flex-row border-t-indigo-500  ml-10 mr-10">
+<div class="md:flex-col md:flex-row border-t-indigo-500 ">
   <% @advert.limit(2).each do |advert| %>
-    <div class="flex flex-col md:items-end gap-5 mb-2 hidden sm:flex  ">
+    <div class="flex flex-col md:items-end gap-5 mb-2 hidden sm:flex  ml-10 mr-10 ">
       <div class="flex flex-col lg:w-[303px] md:w-[250px] text-white">
         <%= image_tag(advert.desk_image, class: "lg:max-w-[300px] md:max-w-[250px]") %>
       </div>
     </div>
   <% end %>
   <% @advert.limit(1).each do |advert| %>
-    <div class="sm:flex flex-col md:items-end md:hidden lg:hidden xl:hidden h-[100px] ">
+    <div class="sm:flex flex-col md:items-end md:hidden lg:hidden xl:hidden h-[100px] m-4">
       <div class="flex flex-col w-[100%] h-[100px] text-white ">
         <%= image_tag(advert.mobile_image, class: "w-[100%] h-[100px] ") %>
       </div>
