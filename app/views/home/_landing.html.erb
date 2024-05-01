@@ -12,12 +12,12 @@
             </div>
             <div class="col-span-1 p-4 bg-white ">
               <div>
-                <p class="text-gray-500  uppercase ">
+                <p class="text-2xl font-bold tracking-tight text-gray-900 uppercase ">
                   <%= news.type_of_news %>
                 </p>
               </div>
               <div>
-                <p class="md:mb-6 text-2xl md:mt-[20%] font-bold tracking-tight text-[#000] mt-5 uppercase truncate ...">
+                <p class="mb-3 text-2xl md:mt-[20%] font-normal text-gray-700 mt-5 truncate ...">
                   <%= news.header_news %>
                 </p>
                 <%= link_to "Read more", news_path(news.id),  class: "bg-[#FAE115] sm:p-2 flex hover:bg-white hover:text-[#fae115] border border-[#fae115] justify-center uppercase font-semibold rounded"%>
