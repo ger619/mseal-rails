@@ -93,4 +93,4 @@ gem 'hotwire-rails', '~> 0.1.3'
 gem 'image_processing'
 gem 'mini_magick'
 
-gem "chartkick", "~> 5.0"
+gem 'chartkick', '~> 5.0'
