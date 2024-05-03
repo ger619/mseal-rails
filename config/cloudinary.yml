@@ -1,7 +1,0 @@
-
-production:
-  cloud_name: dsib9klin
-  api_key: '144329726239136'
-  api_secret: "Jofmyviar6Q4p7UCGDvYmTWKIYU"
-  enhance_image_tag: true
-  static_file_support: true

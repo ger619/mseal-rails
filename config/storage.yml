@@ -12,12 +12,9 @@ local:
 # cloudinary
 cloudinary:
   service: Cloudinary
-  #cloud_name: <%= Rails.application.credentials.dig(:cloudinary, :cloud_name) %>
-  #api_key: <%= Rails.application.credentials.dig(:cloudinary, :api_key) %>
-  #api_secret: <%= Rails.application.credentials.dig(:cloudinary, :api_secret) %>
-  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME '] %>
-  api_key: <%= ENV['CLOUDINARY_API_KEY'] %>
-  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
+  cloud_name: <%= ENV.fetch('CLOUDINARY_CLOUD_NAME') %>
+  api_key: <%= ENV.fetch('CLOUDINARY_API_KEY' )%>
+  api_secret: <%= ENV.fetch('CLOUDINARY_API_SECRET') %>
 
 
   enhance_image_tag: true
