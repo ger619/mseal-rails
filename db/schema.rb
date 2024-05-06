@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_26_201135) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_06_150601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -288,7 +288,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_26_201135) do
     t.string "type_of_news"
     t.string "header_news"
     t.string "body"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
@@ -341,6 +340,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_26_201135) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "scorers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.integer "goals"
+    t.integer "assists"
+    t.uuid "team_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "opponent_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["opponent_id"], name: "index_scorers_on_opponent_id"
+    t.index ["team_id"], name: "index_scorers_on_team_id"
+    t.index ["user_id"], name: "index_scorers_on_user_id"
+  end
+
   create_table "seasons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.date "start_date"
@@ -386,7 +399,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_26_201135) do
     t.string "second_name"
     t.string "last_name"
     t.string "position"
-    t.string "image"
     t.integer "jersey_number"
     t.string "about"
     t.uuid "user_id", null: false
@@ -436,6 +448,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_26_201135) do
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
   add_foreign_key "products", "users"
+  add_foreign_key "scorers", "opponents"
+  add_foreign_key "scorers", "teams"
+  add_foreign_key "scorers", "users"
   add_foreign_key "seasons", "users"
   add_foreign_key "statistics", "seasons"
   add_foreign_key "statistics", "teams"

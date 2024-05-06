@@ -6,7 +6,6 @@
 #  about         :string
 #  active        :boolean
 #  first_name    :string
-#  image         :string
 #  jersey_number :integer
 #  last_name     :string
 #  position      :string
@@ -28,6 +27,7 @@ class Team < ApplicationRecord
   has_one_attached :image
   before_validation :capitalize
   has_many :statistics, foreign_key: :team_id, class_name: 'Statistic', dependent: :destroy
+  has_many :scorers, foreign_key: :team_id, class_name: 'Scorer', dependent: :destroy
 
   validates :jersey_number, presence: true, uniqueness: true
   validates :active, inclusion: { in: [true, false], default: false }

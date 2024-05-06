@@ -5,7 +5,6 @@
 #  id           :uuid             not null, primary key
 #  body         :string
 #  header_news  :string
-#  image        :string
 #  type_of_news :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -22,6 +21,8 @@
 class News < ApplicationRecord
   belongs_to :user, class_name: 'User', optional: true
   has_one_attached :image
+
+  # Add file and resize image
   # Validations on a model
   validates :type_of_news, :header_news, :body, :image, presence: true
 end

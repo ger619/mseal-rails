@@ -5,7 +5,6 @@
 #  id           :uuid             not null, primary key
 #  body         :string
 #  header_news  :string
-#  image        :string
 #  type_of_news :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

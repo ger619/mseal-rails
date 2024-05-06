@@ -3,11 +3,6 @@ class OpponentController < ApplicationController
   before_action :authenticate_user!, except: :index
   def index
     @opponent = Opponent.all.order('match_date ASC')
-    # Group all the opponent by the match date in decending order
-    # @opponent = Opponent.all.group_by(&:match_date).order('match_date ASC')
-    # Group all the opponent by the match date and place them in chronological order and seperate them with a date
-    # @opponent = Opponent.all.group_by(&:match_date).sort_by { |date, _opponents| date }.reverse
-    # @opponent = Opponent.where('match_date <= ?', Date.today).where.not(score_one: nil).where.not(score_two: nil).last
   end
 
   def show
@@ -20,7 +15,7 @@ class OpponentController < ApplicationController
 
   def create
     @opponent = Opponent.new(opponent_params)
-    @opponent.user = current_user
+    @opponent.user_id = current_user.id
 
     respond_to do |format|
       if @opponent.save
@@ -33,7 +28,7 @@ class OpponentController < ApplicationController
 
   def destroy
     @opponent = Opponent.find(params[:id])
-    @opponent.user = current_user
+    @opponent.user_id = current_user.id
     @opponent.delete
     respond_to do |format|
       format.html { redirect_to opponent_index_path, notice: 'opponent was successfully deleted.' }

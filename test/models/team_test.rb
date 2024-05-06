@@ -6,7 +6,6 @@
 #  about         :string
 #  active        :boolean
 #  first_name    :string
-#  image         :string
 #  jersey_number :integer
 #  last_name     :string
 #  position      :string
