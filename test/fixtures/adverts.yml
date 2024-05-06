@@ -3,9 +3,7 @@
 # Table name: adverts
 #
 #  id             :uuid             not null, primary key
-#  desk_image     :string
 #  header_advert  :string
-#  mobile_image   :string
 #  type_of_advert :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
