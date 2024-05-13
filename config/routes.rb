@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   mount Motor::Admin => '/motor_admin'
+
   get 'cart', to: 'cart#show'
   post 'cart/add'
   post 'cart/remove'

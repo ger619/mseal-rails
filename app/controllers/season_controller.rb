@@ -1,6 +1,6 @@
 class SeasonController < ApplicationController
-  load_and_authorize_resource except: %i[index show]
   before_action :authenticate_user!, except: %i[index show]
+  load_and_authorize_resource except: %i[index show]
 
   def index
     @seasons = Season.all
