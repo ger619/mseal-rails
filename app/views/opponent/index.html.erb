@@ -55,7 +55,7 @@
 
 
   <div class="tab flex flex-col justify-center md:flex-row gap-5 bg-[#e6e6e6] ">
-    <button class="tablinks active" onclick="openCity(event, 'Result')">RESULTS</button>
+    <button class="tablinks active" onclick="openCity(event, 'Result')" id="defaultOpen">RESULTS</button>
     <button class="tablinks" onclick="openCity(event, 'Fixtures')">FIXTURES</button>
   </div>
 
@@ -83,6 +83,7 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.className += " active";
       }
+      document.getElementById("defaultOpen").click();
   </script>
 
 
