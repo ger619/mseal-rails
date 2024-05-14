@@ -27,3 +27,9 @@
     </div>
   </div>
 </div>
+<%= render "scorer/new", scorer: @scorer %>
+
+<%- @opponent.scorers.each do |scorer|%>
+  <%= scorer.goals %>
+  <br>
+<% end %>

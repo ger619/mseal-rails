@@ -4,6 +4,11 @@ class OpponentController < ApplicationController
 
   def index
     @opponent = Opponent.all.order('match_date ASC')
+    # #Fixtures
+    @opponent1 = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
+    # #Results
+    @opponent2 = Opponent.where('match_date <= ?',
+                                Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
   end
 
   def show

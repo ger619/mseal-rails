@@ -12,15 +12,17 @@ class ScorerController < ApplicationController
 
   def new
     @scorer = Scorer.new
+    @scorer.opponent_id = params[:opponent_id]
   end
 
   def create
     @scorer = Scorer.new(scorer_params)
+    @scorer.opponent_id = params[:opponent_id]
     @scorer.user_id = current_user.id
 
     respond_to do |format|
       if @scorer.save
-        format.html { redirect_to scorer_index_path(@scorer), notice: 'Scorer was successfully created.' }
+        format.html { redirect_to opponent_path(@scorer.opponent), notice: 'Scorer was successfully created.' }
       else
         format.html { redirect_to scorer_index_url, notice: 'Failure' }
       end

@@ -27,5 +27,5 @@
 class Scorer < ApplicationRecord
   belongs_to :team
   belongs_to :user
-  belongs_to :opponent
+  belongs_to :opponent, class_name: 'Opponent', optional: true
 end
