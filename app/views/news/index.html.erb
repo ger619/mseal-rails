@@ -11,20 +11,20 @@
 
 <div class="flex-col mt-10 md:ml-10">
   <div class="flex flex-col md:flex-row md:flex justify-center" >
-    <div class="ml-4 sm:w-[300px] md:w-[800px] w-[350px] hover:border-[#FAE115] mb-10">
-      <%= turbo_frame_tag :news do %>
-        <%= render 'news/news_render' %>
-      <% end %>
-      <div class="flex ml-7 md:ml-60 gap-10">
-  <% if @pagy.prev %>
-    <%= link_to "Previous", url_for(page: @pagy.prev), class: "inline-flex items-center px-4 py-2 text-sm font-medium text-[#FAE115]  border border-gray-300 rounded-lg bg-[#000] hover:bg-[#FAE115] uppercase hover:text-[#000] hover:border-[#FAE115]" %>
-  <% end %>
-  <% if @pagy.next %>
-    <%= link_to "Next ", url_for(page: @pagy.next), class: "inline-flex items-center px-4 py-2 text-sm font-medium text-[#000] border border-gray-300 rounded-lg hover:bg-[#000] bg-[#FAE115] uppercase hover:text-[#FAE115] hover:border-[#FAE115]" %>
-  <% end %>
-    
-  </div>
+    <div class="ml-4 mr-4 md:w-[800px] md:m-4 hover:border-[#FAE115] mb-10">
+        <%= turbo_frame_tag :news do %>
+          <%= render 'news/news_render' %>
+        <% end %>
+          <div class="flex ml-7 md:ml-60 gap-10">
+              <% if @pagy.prev %>
+                <%= link_to "Previous", url_for(page: @pagy.prev), class: "inline-flex items-center px-4 py-2 text-sm font-medium text-[#FAE115]  border border-gray-300 rounded-lg bg-[#000] hover:bg-[#FAE115] uppercase hover:text-[#000] hover:border-[#FAE115]" %>
+              <% end %>
+              <% if @pagy.next %>
+              <%= link_to "Next ", url_for(page: @pagy.next), class: "inline-flex items-center px-4 py-2 text-sm font-medium text-[#000] border border-gray-300 rounded-lg hover:bg-[#000] bg-[#FAE115] uppercase hover:text-[#FAE115] hover:border-[#FAE115]" %>
+          <% end %>
+          </div>
     </div >
+
     <%= render 'news/adverts' %>
   </div>
   

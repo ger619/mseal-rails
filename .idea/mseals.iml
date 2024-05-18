@@ -73,7 +73,6 @@
     <orderEntry type="library" scope="PROVIDED" name="http-accept (v1.7.0, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="http-cookie (v1.0.5, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.4, rbenv: 3.1.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="image_processing (v1.12.2, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v2.0.1, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.7.2, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.12.0, rbenv: 3.1.2) [gem]" level="application" />
@@ -87,7 +86,6 @@
     <orderEntry type="library" scope="PROVIDED" name="method_source (v1.0.0, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v3.5.2, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types-data (v3.2024.0305, rbenv: 3.1.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mini_magick (v4.12.0, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.22.3, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="motor-admin (v0.4.26, rbenv: 3.1.2) [gem]" level="application" />
@@ -127,7 +125,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.62.1, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.31.2, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, rbenv: 3.1.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ruby-vips (v2.1.4, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sassc (v2.4.0, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.10.0, rbenv: 3.1.2) [gem]" level="application" />
