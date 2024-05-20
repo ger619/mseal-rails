@@ -1,14 +1,14 @@
-<div class="m-4 ">
+<div class="m-4">
   <h1 class="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Defenders</h1>
   <hr class="ml-4 w-[6%] bg-[#FAE115] h-[10px] mb-2">
-  <div class="grid xl:grid-cols-4 lg:grid-cols-3  md:grid-cols-2 flex-col text-center p-2">
+  <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-3 flex-col text-center p-2 justify-center">
     <% @teams.each do |team| %>
       <% if team.position === "Defender" %>
         <% unless (current_user.nil? || current_user === "user") && team.active ==! true %>
           <%= link_to team_path(team.id) do %>
-            <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 border border-[#f4e721] rounded md:mb-6 mb-8 md:mx-0 mx-auto">
+            <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 border border-[#f4e721] rounded md:mb-6 mb-8 md:mx-0 mx-auto gap-2">
               <% if team.image.attached? %>
-                <%= image_tag(team.image, class: "[h-200px]") %>
+                <%= image_tag(team.image) %>
               <% end %>
               <div class="flex justify-between p-3 bg-[#ffffff]">
                 <div class="flex flex-col">
