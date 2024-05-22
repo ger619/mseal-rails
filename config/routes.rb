@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resources :opponent_teams
   resources :statistic
   resources :season
+  resources :table
 end

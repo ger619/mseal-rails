@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_06_155806) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_22_081620) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -394,6 +394,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_06_155806) do
     t.index ["user_id"], name: "index_statistics_on_user_id"
   end
 
+  create_table "tables", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "mp"
+    t.integer "w"
+    t.integer "d"
+    t.integer "l"
+    t.integer "gf"
+    t.integer "ga"
+    t.uuid "opponent_team_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "season_id", null: false
+    t.index ["opponent_team_id"], name: "index_tables_on_opponent_team_id"
+    t.index ["season_id"], name: "index_tables_on_season_id"
+    t.index ["user_id"], name: "index_tables_on_user_id"
+  end
+
   create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name"
     t.string "second_name"
@@ -456,5 +473,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_06_155806) do
   add_foreign_key "statistics", "seasons"
   add_foreign_key "statistics", "teams"
   add_foreign_key "statistics", "users"
+  add_foreign_key "tables", "opponent_teams"
+  add_foreign_key "tables", "seasons"
+  add_foreign_key "tables", "users"
   add_foreign_key "teams", "users"
 end

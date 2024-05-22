@@ -23,4 +23,5 @@ class OpponentTeam < ApplicationRecord
   has_many :opponent, dependent: :destroy
   validates :name, presence: true, uniqueness: true
   validates :team_badge, presence: true
+  has_many :tables, foreign_key: :user_id, class_name: 'Table', dependent: :destroy
 end
