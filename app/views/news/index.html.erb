@@ -18,10 +18,10 @@
 
           <div class="flex justify-center gap-4 p-4">
               <% if @pagy.prev %>
-                <%= link_to "Previous", url_for(page: @pagy.prev), class: "w-[100px] py-3 px-4 text-justify  inline-flex text-sm font-semibold text-[#FAE115]  border border-gray-300 rounded-lg bg-[#000] hover:bg-[#FAE115] uppercase hover:text-[#000] hover:border-[#FAE115]" %>
+                <%= link_to "Newer", url_for(page: @pagy.prev), class: "w-[100px] py-3 px-4 text-justify  inline-flex text-sm font-semibold text-[#FAE115]  border border-gray-300 rounded-lg bg-[#000] hover:bg-[#FAE115] uppercase hover:text-[#000] hover:border-[#FAE115] uppercase" %>
               <% end %>
               <% if @pagy.next %>
-              <%= link_to "Next", url_for(page: @pagy.next), class: "w-[100px] py-2 px-6 text-justify font-semibold text-[#000] border border-gray-300 rounded-lg hover:bg-[#000] bg-[#FAE115] uppercase hover:text-[#FAE115] hover:border-[#FAE115]" %>
+              <%= link_to "Older", url_for(page: @pagy.next), class: "w-[100px] py-2 px-6 text-justify font-semibold text-[#000] border border-gray-300 rounded-lg hover:bg-[#000] bg-[#FAE115] uppercase hover:text-[#FAE115] hover:border-[#FAE115] uppercase" %>
           <% end %>
           </div>
     </div >
