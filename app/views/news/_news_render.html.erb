@@ -1,8 +1,8 @@
 <% @news.each do |news| %>
   <a href="<%= news_path(news) %>">
-    <div class="md:mt-5 flex md:mb-6 md:hover:shadow-lg md:hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-t-4 border-[#FAE115] grid grid-cols-3">
+    <div class="md:mt-5 flex mb-4 md:hover:shadow-lg md:hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-t-4 border-[#FAE115] grid grid-cols-3">
       <div class="lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden col-span-1 h-full">
-        <%= image_tag(news.image, class: " max-w-full h-full ") %>
+        <%= image_tag(news.image, class: "max-w-full h-full ") %>
       </div>
       <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal col-span-2">
         <p class="text-sm text-gray-600 flex items-center uppercase ">

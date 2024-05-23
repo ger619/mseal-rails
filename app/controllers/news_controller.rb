@@ -3,12 +3,16 @@ class NewsController < ApplicationController
   load_and_authorize_resource except: %i[index show]
 
   def index
+    # Adding a group by month on the news
+    # Source:
+    #
     @pagy, @news = pagy_countless(News.all.order('created_at DESC'), items: 10)
     respond_to do |format|
       format.html
       format.turbo_stream
     end
     @advert = Advert.all.order('created_at DESC')
+
   end
 
   def show
