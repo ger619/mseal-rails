@@ -1,6 +1,6 @@
 <% @news.each do |news| %>
   <a href="<%= news_path(news) %>">
-    <div class="md:mt-5 flex mb-4 md:hover:shadow-lg md:hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-t-4 border-[#FAE115] grid grid-cols-3">
+    <div class="md:mt-0 flex mb-4 md:hover:shadow-lg md:hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-t-4 border-[#FAE115] grid grid-cols-3">
       <div class="lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden col-span-1 h-full">
         <%= image_tag(news.image, class: "max-w-full h-full ") %>
       </div>
