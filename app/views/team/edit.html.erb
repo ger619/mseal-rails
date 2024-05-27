@@ -1,4 +1,4 @@
-<%= form_with(model: @team, url: team_path(@team), method: :patch, class: "bg-white rounded shadow-md p-6") do |f| %>
+<%= form_with(model: @team, url: team_path(@team), method: :patch, class: "bg-white rounded shadow-md ") do |f| %>
 
     <div class="md:p-0">
       <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
@@ -16,9 +16,9 @@
           <%= f.text_field :last_name, class: "h-[50px] w-[30%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "last name", :required => :true%>
 
         </div>
-        <div class="flex justify-between pr-10">
+        <div class="flex justify-between pr-10 gap-2">
 
-          <%= f.select :position, %w[Striker Midfielder Defender Goalkeeper Coach], prompt: 'Role/Position', class: 'h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none', :required => :true%>
+          <%= f.select :position, ['Striker', 'Midfielder', 'Defender', 'Goalkeeper', 'Goalkeeping Coach', 'Team Manager', 'Strength & Conditioning Coach', 'Physical Trainer', 'Kit Manager'], prompt: 'Role/Position', :required => true, :class => 'h-[50px] w-[30%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none'%>
           <%= f.number_field :jersey_number, class: "h-[50px] w-[30%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Jersey Number", :required => :true %>
           <%= image_tag f.object.image, :class => 'w-[200px]' if f.object.image.present? %>
           <%= f.file_field :image, class: "h-[50px] w-[30%] p-2 focus:outline-none" ,placeholder: "Passport Photo of Player" %>
