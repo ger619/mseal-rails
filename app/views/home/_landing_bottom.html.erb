@@ -12,9 +12,8 @@
           <% elsif index == 2 %>
           <% elsif index == 3 %>
 
-      <% else %>
+          <% else %>
             <% @news.length - index %>
-
             <div class="md:max-w-full mx-auto md:grid md:grid-cols-1 bg-white rounded shadow-md overflow-hidden max-w-2xl md:mt-0 mt-2 md:hover:scale-105">
               <div class="flex md:flex-col border-t-4 border-[#FAE115]">
                 <a href="<%= news_path(news.id) %>">
@@ -38,29 +37,6 @@
               </div>
             </div>
 
-
-
-            <!--
-            <div class="">
-              <div class="bg-white border border-[#FAE115] border-t-4 flex flex-col md:mt-0 mt-4 hover:scale-105 rounded">
-                <%= image_tag(news.image, class: "h-[200px] w-full")  %>
-                <div class="p-5 bg-white">
-                    <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
-                      <%= news.type_of_news %>
-                    </p>
-                  <p class="mb-3 font-normal text-gray-700 capitalize truncate ...">
-                    <%= news.header_news %>
-                  </p>
-                  <%= link_to news_path(news.id) do %>
-                    <div class="inline-flex items-center px-3 py-2 text-sm font-semibold text-center text-black hover:text-[#FAE115] bg-[#FAE115] uppercase hover:bg-white hover:border-[#FAE115] border focus:ring-4 focus:outline-none focus:ring-blue-300">
-                      <p>Read More</p>
-                      <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-            -->
           <% end %>
         <% end %>
       </div>
