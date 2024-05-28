@@ -1,11 +1,9 @@
-<div>
   <table class="w-full text-sm text-left text-gray-500 bg-[#FFF]">
   <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-  <tr>
-    <th scope="col" class="p-4">
-      <div class="md:flex hidden items-center ">
+  <tr class="border-b-2 border-[#FAE115]">
+    <th scope="col" class="px-3 py-3 md:flex hidden ">
+
         Pos
-      </div>
     </th>
     <th scope="col" class="px-3 py-3">
       Club
@@ -40,20 +38,18 @@
   </tr>
   </thead>
   <tbody>
-  <tr class="bg-white border-b hover:bg-gray-50 ">
-    <% @table.each do |table| %>
-      <td class="w-4 p-4">
-        <div class="md:flex hidden items-center">
+  <% @table.each do |table| %>
+  <tr class="bg-white border-b  border-[#FAE115] hover:bg-gray-50 text-base font-semibold text-sm ">
+
+      <td class="w-4 p-4 md:flex hidden">
+
           <!-- To count the number of user and number should follow progressive-->
-        </div>
       </td>
-      <th scope="row" class="flex items-center px-1 py-3 text-gray-900 whitespace-nowrap ">
+      <td>
         <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
-      </th>
+      </td>
       <td class="px-1 py-3">
-          <div class="text-base font-semibold text-sm">
-            <%= table.opponent_team.name %>
-          </div>
+        <%= table.opponent_team.name %>
       </td>
       <td class="px-1 py-3">
         <%= table.mp %>
@@ -88,8 +84,10 @@
           <%= button_to "Delete", table, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
         </td>
       <% end %>
-      </tr>
-    <% end %>
+
+       </tr>
+
+
     </tbody>
+  <% end %>
 </table>
-</div>
