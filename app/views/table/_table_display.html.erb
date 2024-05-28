@@ -1,4 +1,4 @@
-  <table class="w-full text-sm text-left text-gray-500 bg-[#FFF]">
+  <table class="w-full text-sm text-left text-gray-500 bg-[#FFF]  rounded-lg">
   <thead class="text-xs text-gray-700 uppercase bg-gray-50">
   <tr class="border-b-2 border-[#FAE115]">
     <th scope="col" class="px-3 py-3 md:flex hidden ">
@@ -39,13 +39,13 @@
   </thead>
   <tbody>
   <% @table.each do |table| %>
-  <tr class="bg-white border-b  border-[#FAE115] hover:bg-gray-50 text-base font-semibold text-sm ">
+  <tr class="bg-white border-b  border-[#FAE115] hover:bg-gray-50 text-base font-semibold text-xs ">
 
-      <td class="w-4 p-4 md:flex hidden">
+      <td class="px-1 py-3 md:flex hidden">
 
           <!-- To count the number of user and number should follow progressive-->
       </td>
-      <td>
+      <td class="px-1 py-3">
         <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
       </td>
       <td class="px-1 py-3">
@@ -79,9 +79,7 @@
       <% if current_user && current_user.role === 'moderator' %>
         <td class="px-1 py-3">
           <%= link_to "Edit", edit_table_path(table.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
-        </td>
-        <td>
-          <%= button_to "Delete", table, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
+          <%= button_to "Delete", table, method: :delete, data: { turbo_method: :delete  },class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
         </td>
       <% end %>
 
