@@ -2,7 +2,9 @@ class TableController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @table = Table.all.order(Arel.sql('w * 3 + d DESC'))
+    # Table is sorted by the highest points and if the points are equal the highest goal difference
+
+    @table = Table.all.order(Arel.sql('w * 3 + d DESC') && Arel.sql('gf - ga ASC'))
   end
 
   def show

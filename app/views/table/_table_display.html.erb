@@ -1,11 +1,14 @@
-
-<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+<div>
+  <table class="w-full text-sm text-left text-gray-500 bg-[#FFF]">
   <thead class="text-xs text-gray-700 uppercase bg-gray-50">
   <tr>
     <th scope="col" class="p-4">
       <div class="md:flex hidden items-center ">
         Pos
       </div>
+    </th>
+    <th scope="col" class="px-3 py-3">
+      Club
     </th>
     <th scope="col" class="px-3 py-3">
       Name
@@ -46,10 +49,12 @@
       </td>
       <th scope="row" class="flex items-center px-1 py-3 text-gray-900 whitespace-nowrap ">
         <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
-        <div class="px-1 ">
-          <div class="text-base font-semibold text-sm"><%= table.opponent_team.name %></div>
-        </div>
       </th>
+      <td class="px-1 py-3">
+          <div class="text-base font-semibold text-sm">
+            <%= table.opponent_team.name %>
+          </div>
+      </td>
       <td class="px-1 py-3">
         <%= table.mp %>
       </td>
@@ -79,8 +84,12 @@
         <td class="px-1 py-3">
           <%= link_to "Edit", edit_table_path(table.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
         </td>
+        <td>
+          <%= button_to "Delete", table, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
+        </td>
       <% end %>
       </tr>
     <% end %>
     </tbody>
 </table>
+</div>
