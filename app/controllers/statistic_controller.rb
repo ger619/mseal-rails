@@ -3,7 +3,7 @@ class StatisticController < ApplicationController
   load_and_authorize_resource except: %i[index show]
 
   def index
-    @statistics = Statistic.all
+    @statistic = Statistic.all
   end
 
   def show

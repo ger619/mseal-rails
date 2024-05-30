@@ -68,7 +68,7 @@
             </tr>
             </thead>
             <tbody>
-            <% @statistics.each do |stat| %>
+            <% @statistic.each do |stat| %>
               <tr class="odd:bg-white even:bg-gray-100 border-b ">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                   <%= stat.season.name %>
@@ -108,10 +108,17 @@
                   <% end %>
                 </td>
               </tr>
+
             <% end %>
             </tbody>
         </table>
     </div>
 </div>
 
-<%== pie_chart Statistic.group(:kpl_goal).count, class: "text-black" %>
+<div class="w-[50%] h-[50%] mx-auto bg-[#e6e6e6] m-4">
+  <%= pie_chart Statistic.group(:team_id).sum(:kpl_goal) %>
+
+</div>
+
+
+
