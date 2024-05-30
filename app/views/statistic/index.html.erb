@@ -114,11 +114,12 @@
         </table>
     </div>
 </div>
-
+<!--
 <%= line_chart @statistic.map { |stat|
   {name: stat.team.name, data: stat.kpl_goal }
 }
 %>
+-->
 
 <%= pie_chart Statistic.group(:team_id).sum(:kpl_appearance) %>
 

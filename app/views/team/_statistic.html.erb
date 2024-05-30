@@ -1,0 +1,5 @@
+<div class="md:flex gap-2 flex-row justify-between md:mb-0 mb-4 ">
+  <%= pie_chart Statistic.group(:team_id).sum(:kpl_goal) %>
+  <%= pie_chart Statistic.group(:team_id).sum(:kpl_yellow) %>
+  <%= pie_chart Statistic.group(:team_id).sum(:kpl_appearance) %>
+</div>
