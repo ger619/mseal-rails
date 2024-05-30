@@ -115,10 +115,13 @@
     </div>
 </div>
 
-<div class="w-[50%] h-[50%] mx-auto bg-[#e6e6e6] m-4">
-  <%= pie_chart Statistic.group(:team_id).sum(:kpl_goal) %>
+<%= line_chart @statistic.map { |stat|
+  {name: stat.team.name, data: stat.kpl_goal }
+}
+%>
 
-</div>
+<%= pie_chart Statistic.group(:team_id).sum(:kpl_appearance) %>
+
 
 
 
