@@ -31,7 +31,7 @@
 #
 class Statistic < ApplicationRecord
   belongs_to :user
-  belongs_to :team, class_name: 'Team', optional: true, dependent: :destroy
+  belongs_to :team
   belongs_to :season, class_name: 'Season', optional: true, dependent: :destroy
 
   validates :fkfcup_appearance, :fkfcup_goal, :fkfcup_redcard, :fkfcup_yellow, :kpl_appearance, :kpl_goal,
@@ -39,6 +39,17 @@ class Statistic < ApplicationRecord
   validates :team_id, uniqueness: true
 
   def name
-    "#{first_name} #{last_name}"
+    # Pick team name from the team and display it
+    "#{Team.first_name} #{Team.last_name}"
+  end
+
+  def plan
+    # Create a pie chart for the statistics for each team in the database
+    # Pie chart for the statistics
+    # Pie chart for the statistics
+    Statistic.group(:team_id).sum(:kpl_goal).map { |k, v| [Team.find(k).name, v] }.to_h
+    {
+      title: { text: 'Statistics' }
+    }
   end
 end

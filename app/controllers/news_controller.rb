@@ -25,10 +25,6 @@ class NewsController < ApplicationController
   def create
     @news = News.new(news_params)
     @news.user_id = current_user.id
-    # Resize image to 800x400
-    # Source:
-    # https://stackoverflow.com/questions/394230/how-to-resize-an-image-using-rmagick
-    #
 
     respond_to do |format|
       if @news.save
