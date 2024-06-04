@@ -100,6 +100,9 @@
                 <td class="px-6 py-4">
                   <%= stat.fkfcup_redcard %>
                 </td>
+                <td class="px-6 py-4">
+                  <%= stat.percents %>
+                </td>
                 <td class="px-6 py-4 flex gap-2 ">
                   <% if current_user&.moderator? %><!--Link to edit page -->
                     <%= link_to "Edit", edit_statistic_path(stat.id), class: "font-medium text-blue-600 hover:underline border border-[#f4e721]" %>

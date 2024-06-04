@@ -43,13 +43,7 @@ class Statistic < ApplicationRecord
     "#{Team.first_name} #{Team.last_name}"
   end
 
-  def plan
-    # Create a pie chart for the statistics for each team in the database
-    # Pie chart for the statistics
-    # Pie chart for the statistics
-    Statistic.group(:team_id).sum(:kpl_goal).map { |k, v| [Team.find(k).name, v] }.to_h
-    {
-      title: { text: 'Statistics' }
-    }
+  def percents
+    (kpl_goal/kpl_appearance) * 100
   end
 end
