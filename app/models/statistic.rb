@@ -44,6 +44,6 @@ class Statistic < ApplicationRecord
   end
 
   def percents
-    (kpl_goal/kpl_appearance) * 100
+    (kpl_goal / kpl_appearance) * 100
   end
 end
