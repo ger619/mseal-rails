@@ -12,4 +12,6 @@ class Cart < ApplicationRecord
   def total_price
     orderables.to_a.sum(&:total)
   end
+
+  # Quantity of products in the cart < Than the number of products in the cart
 end
