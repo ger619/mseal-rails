@@ -85,9 +85,9 @@ gem 'cancancan'
 gem 'cloudinary', '~> 1.29.0'
 
 gem 'faker', '~> 3.2'
+gem 'hotwire-rails', '~> 0.1.3'
 gem 'motor-admin'
 gem 'pagy', '~> 6.0'
-gem 'hotwire-rails', '~> 0.1.3'
 
 gem 'chartkick', '~> 5.0'
 gem 'groupdate'

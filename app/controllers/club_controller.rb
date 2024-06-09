@@ -54,6 +54,7 @@ class ClubController < ApplicationController
   end
 
   private
+
   def club_params
     params.require(:club).permit(:header, :content, :photo, :user_id)
   end
