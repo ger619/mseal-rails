@@ -14,25 +14,6 @@
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
     <%= favicon_link_tag asset_path('msealslogo.png') %>
-    <%= tinymce_assets %>
-    <script src="https://cdn.tiny.cloud/1/51we9eiu22w8w2p4fijko8ri7e3d66dm3jd9rbbcdia8l1em/tinymce/6/tinymce.min.js" type="text/javascript"  referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '.tinymce',
-            height: 500,
-            menubar: false,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | ' +
-                ' bold italic backcolor | alignleft aligncenter ' +
-                ' alignright alignjustify | bullist numlist outdent indent | ' +
-                ' removeformat | help'
-        });
-    </script>
-
 
   </head>
 
@@ -40,7 +21,10 @@
     <%= render "layouts/navbar" %>
     <main class="lg:max-w-full md:mx-auto mt-0 w-full">
       <%= yield %>
+
     </main>
   <%= render "layouts/footer" %>
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
   </body>
 </html>

@@ -3,7 +3,6 @@
 # Table name: news
 #
 #  id           :uuid             not null, primary key
-#  body         :string
 #  header_news  :string
 #  type_of_news :string
 #  created_at   :datetime         not null
@@ -21,8 +20,9 @@
 class News < ApplicationRecord
   belongs_to :user, class_name: 'User', optional: true
   has_one_attached :image
+  has_rich_text :content
 
   # Add file and resize image
   # Validations on a model
-  validates :type_of_news, :header_news, :body, :image, presence: true
+  validates :type_of_news, :header_news, :content, :image, presence: true
 end

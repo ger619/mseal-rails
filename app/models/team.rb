@@ -3,7 +3,6 @@
 # Table name: teams
 #
 #  id            :uuid             not null, primary key
-#  about         :string
 #  active        :boolean
 #  first_name    :string
 #  jersey_number :integer
@@ -25,6 +24,8 @@
 class Team < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_rich_text :content
+
   before_validation :capitalize
   has_many :statistics, foreign_key: :team_id, class_name: 'Statistic', dependent: :destroy
   has_many :scorers, foreign_key: :team_id, class_name: 'Scorer', dependent: :destroy

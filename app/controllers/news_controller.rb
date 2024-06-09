@@ -61,6 +61,6 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:type_of_news, :header_news, :body, :image, :user_id)
+    params.require(:news).permit(:type_of_news, :header_news, :content, :image, :user_id)
   end
 end

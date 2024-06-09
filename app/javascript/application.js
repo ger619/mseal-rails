@@ -6,3 +6,5 @@ import "chartkick"
 import "Chart.bundle"
 
 //= require tinymce
+import "trix"
+import "@rails/actiontext"

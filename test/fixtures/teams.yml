@@ -3,7 +3,6 @@
 # Table name: teams
 #
 #  id            :uuid             not null, primary key
-#  about         :string
 #  active        :boolean
 #  first_name    :string
 #  jersey_number :integer

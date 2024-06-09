@@ -3,7 +3,6 @@
 # Table name: clubs
 #
 #  id         :uuid             not null, primary key
-#  body       :string
 #  header     :string
 #  photo      :string
 #  created_at :datetime         not null

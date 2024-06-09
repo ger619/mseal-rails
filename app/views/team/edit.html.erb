@@ -30,8 +30,8 @@
           <%= f.check_box :active, placeholder: "If Active", class: "mt-1"%>
         </div>
 
-        <%= f.text_area :about, class: "tinymce appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
-        <%= tinymce %>
+        <%= f.rich_text_area :content, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+
 
         <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
       </div>

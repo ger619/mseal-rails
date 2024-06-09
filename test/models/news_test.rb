@@ -3,7 +3,6 @@
 # Table name: news
 #
 #  id           :uuid             not null, primary key
-#  body         :string
 #  header_news  :string
 #  type_of_news :string
 #  created_at   :datetime         not null

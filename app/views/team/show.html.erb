@@ -33,7 +33,7 @@
 
 
     <div class="p-4">
-      <p class="text-base font-light"><%= raw @team.about %></p>
+      <p class="text-base font-light"><%= @team.content %></p>
     </div>
     <div class="flex inline-flex gap-2">
     <% if current_user && current_user.role === 'moderator' %>

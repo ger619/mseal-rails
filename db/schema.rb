@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_22_081620) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_09_133542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.uuid "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
@@ -59,7 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_22_081620) do
 
   create_table "clubs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "header"
-    t.string "body"
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -285,7 +294,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_22_081620) do
   create_table "news", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "type_of_news"
     t.string "header_news"
-    t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
@@ -417,7 +425,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_22_081620) do
     t.string "last_name"
     t.string "position"
     t.integer "jersey_number"
-    t.string "about"
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
