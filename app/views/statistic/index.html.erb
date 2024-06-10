@@ -119,13 +119,6 @@
     </div>
 </div>
 
-<%= line_chart @statistic.map { |stat|
-  {name: stat.team.name, data: stat.kpl_goal }
-}
-
-
-%>
-<%= line_chart Statistic.group(:id).group_by_week(:created_at).count %>
 
 
 

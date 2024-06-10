@@ -19,12 +19,12 @@
     </div>
 
     <div class="p-4">
-      <p class="text-base font-light"><%= render html: raw(@club.body) %></p>
+      <p class="text-base font-light"><%= render html: raw(@club.content) %></p>
     </div>
 
     <% if current_user && current_user.role === 'moderator' %>
       <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-        <%= link_to "Edit", edit_news_path(@club.id), class: "w-[50px] text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+        <%= link_to "Edit", edit_club_path(@club.id), class: "w-[50px] text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
       </div>
       <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
         <%= button_to "Delete", @club, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
