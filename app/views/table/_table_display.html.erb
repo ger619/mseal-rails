@@ -43,9 +43,10 @@
 
       <tr class="bg-[#FAE115] bg-opacity-70 border-b  border-[#FAE115]  text-base font-semibold text-xs ">
 
-        <td class="px-1 py-3 md:flex hidden">
+        <td class="px-4 py-3 ">
 
           <!-- To count the number of user and number should follow progressive-->
+          <%= table.rank %>
         </td>
         <td class="px-1 py-3">
           <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
@@ -95,9 +96,8 @@
 
   <tr class="bg-white border-b  border-[#FAE115] hover:bg-gray-50 text-base font-semibold text-xs ">
 
-      <td class="px-1 py-3 md:flex hidden">
-
-          <!-- To count the number of user and number should follow progressive-->
+    <td class="px-4 py-3 ">
+        <%= table.rank %>
       </td>
       <td class="px-1 py-3">
         <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>

@@ -43,4 +43,9 @@ class Table < ApplicationRecord
   validates :mp, :w, :d, :l, :gf, :ga, :opponent_team_id, :season_id, :user_id, presence: true
   validates :mp, :w, :d, :l, :gf, :ga, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :opponent_team_id, uniqueness: true
+
+  # To place a number sequentially from one to the last number of the table
+  def rank
+    Table.order(Arel.sql('w * 3 + d DESC'), Arel.sql('gf - ga DESC')).index(self) + 1
+  end
 end
