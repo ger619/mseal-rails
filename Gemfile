@@ -89,5 +89,5 @@ gem 'hotwire-rails', '~> 0.1.3'
 gem 'motor-admin'
 gem 'pagy', '~> 6.0'
 
-gem 'chartkick', '~> 5.0'
 gem 'groupdate'
+gem 'rails_charts'

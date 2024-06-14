@@ -1,4 +1,4 @@
-  <table class="w-full text-sm text-left text-black bg-[#FFF]  rounded-lg">
+  <table class="md:w-full max-w-full text-sm text-left text-black bg-[#FFF]  rounded-lg">
   <thead class="text-xs text-black uppercase bg-gray-50">
   <tr class="border-b-2 border-[#FAE115]">
     <th scope="col" class="px-3 py-3 md:flex hidden ">
@@ -42,7 +42,7 @@
 
       <tr class="bg-[#FAE115] bg-opacity-70 border-b  border-[#FAE115]  text-base font-semibold text-xs ">
 
-        <td class="px-4 py-3 ">
+        <td class="px-4 py-3 text-center">
 
           <!-- To count the number of user and number should follow progressive-->
           <%= table.rank %>
@@ -50,7 +50,7 @@
         <td class="px-1 py-3">
           <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
         </td>
-        <td class="px-1 py-3">
+        <td class="px-1 py-3 capitalize min-w-full">
           <%= table.opponent_team.name %>
         </td>
         <td class="px-1 py-3">
@@ -90,13 +90,13 @@
 
   <tr class="bg-white border-b  border-[#FAE115] hover:bg-gray-50 text-base font-semibold text-xs ">
 
-    <td class="px-4 py-3 ">
+    <td class="px-4 py-3  text-center">
         <%= table.rank %>
       </td>
       <td class="px-1 py-1">
         <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
       </td>
-      <td class="px-1 py-3 capitalize">
+      <td class="px-1 py-3 capitalize min-w-full">
         <%= table.opponent_team.name %>
       </td>
       <td class="px-1 py-3">
