@@ -55,6 +55,6 @@ class TableController < ApplicationController
   private
 
   def table_params
-    params.require(:table).permit(:mp, :w, :d, :l, :gf, :ga, :opponent_team_id, :season_id, :user_id)
+    params.require(:table).permit(:w, :d, :l, :gf, :ga, :opponent_team_id, :season_id, :user_id)
   end
 end

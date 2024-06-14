@@ -7,7 +7,6 @@
 #  ga               :integer
 #  gf               :integer
 #  l                :integer
-#  mp               :integer
 #  w                :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -40,8 +39,13 @@ class Table < ApplicationRecord
     (w * 3) + (d * 1)
   end
 
-  validates :mp, :w, :d, :l, :gf, :ga, :opponent_team_id, :season_id, :user_id, presence: true
-  validates :mp, :w, :d, :l, :gf, :ga, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  def games_played
+    # Matches W + D + L
+    w + d + l
+  end
+
+  validates :w, :d, :l, :gf, :ga, :opponent_team_id, :season_id, :user_id, presence: true
+  validates :w, :d, :l, :gf, :ga, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :opponent_team_id, uniqueness: true
 
   # To place a number sequentially from one to the last number of the table

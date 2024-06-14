@@ -2,7 +2,6 @@
   <thead class="text-xs text-black uppercase bg-gray-50">
   <tr class="border-b-2 border-[#FAE115]">
     <th scope="col" class="px-3 py-3 md:flex hidden ">
-
         Pos
     </th>
     <th scope="col" class="px-3 py-3">
@@ -55,7 +54,7 @@
           <%= table.opponent_team.name %>
         </td>
         <td class="px-1 py-3">
-          <%= table.mp %>
+          <%= table.games_played %>
         </td>
         <td class="px-1 py-3">
           <%= table.w %>
@@ -85,12 +84,7 @@
             <%= button_to "Delete", table, method: :delete, data: { turbo_method: :delete  },class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
           </td>
         <% end %>
-
       </tr>
-
-
-
-
   <% else  %>
 
 
@@ -106,7 +100,7 @@
         <%= table.opponent_team.name %>
       </td>
       <td class="px-1 py-3">
-        <%= table.mp %>
+        <%= table.games_played %>
       </td>
       <td class="px-1 py-3">
         <%= table.w %>

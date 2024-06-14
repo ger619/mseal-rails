@@ -7,7 +7,6 @@
 #  ga               :integer
 #  gf               :integer
 #  l                :integer
-#  mp               :integer
 #  w                :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
