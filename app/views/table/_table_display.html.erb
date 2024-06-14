@@ -127,7 +127,7 @@
       <% if current_user && current_user.role === 'moderator' %>
         <td class="px-1 py-3">
           <%= link_to "Edit", edit_table_path(table.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
-          <%= button_to "Delete", table, method: :delete, data: { turbo_method: :delete  },class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+          <%= button_to "Delete", table, method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?'  },class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
         </td>
       <% end %>
 
