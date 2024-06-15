@@ -32,7 +32,7 @@
 class Statistic < ApplicationRecord
   belongs_to :user
   belongs_to :team
-  belongs_to :season, class_name: 'Season', optional: true, dependent: :destroy
+  belongs_to :season, class_name: 'Season', optional: true
 
   validates :fkfcup_appearance, :fkfcup_goal, :fkfcup_redcard, :fkfcup_yellow, :kpl_appearance, :kpl_goal,
             :kpl_redcard, :kpl_yellow, numericality: { greater_than_or_equal_to: 0 }, presence: true

@@ -23,5 +23,11 @@ class OpponentTeam < ApplicationRecord
   has_many :opponent, dependent: :destroy
   validates :name, presence: true, uniqueness: true
   validates :team_badge, presence: true
-  has_many :tables, foreign_key: :user_id, class_name: 'Table', dependent: :destroy
+  has_many :tables, foreign_key: :opponent_team_id, class_name: 'Table', dependent: :destroy
+  before_validation :capitalize
+
+  # first letter of the name should be capital letter
+  def capitalize
+    self.name = name.upcase_first
+  end
 end
