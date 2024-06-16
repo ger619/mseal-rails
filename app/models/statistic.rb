@@ -2,20 +2,33 @@
 #
 # Table name: statistics
 #
-#  id                :uuid             not null, primary key
-#  fkfcup_appearance :integer
-#  fkfcup_goal       :integer
-#  fkfcup_redcard    :integer
-#  fkfcup_yellow     :integer
-#  kpl_appearance    :integer
-#  kpl_goal          :integer
-#  kpl_redcard       :integer
-#  kpl_yellow        :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  season_id         :uuid             not null
-#  team_id           :uuid             not null
-#  user_id           :uuid             not null
+#  id                     :uuid             not null, primary key
+#  assists                :integer          default(0)
+#  duel_attempted         :integer          default(0)
+#  duel_won               :integer          default(0)
+#  fouls_committed        :integer          default(0)
+#  fouls_won              :integer          default(0)
+#  goals_scored           :integer          default(0)
+#  interception_attempted :integer          default(0)
+#  interception_won       :integer          default(0)
+#  matches_played         :integer          default(0)
+#  matches_started        :integer          default(0)
+#  minutes_played         :integer          default(0)
+#  passes_attempted       :integer          default(0)
+#  passes_completed       :integer          default(0)
+#  red_card               :integer          default(0)
+#  shots_attempted        :integer          default(0)
+#  shots_off_target       :integer          default(0)
+#  shots_on_target        :integer          default(0)
+#  subs                   :integer          default(0)
+#  tackles_attempted      :integer          default(0)
+#  tackles_won            :integer          default(0)
+#  yellow_card            :integer          default(0)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  season_id              :uuid             not null
+#  team_id                :uuid             not null
+#  user_id                :uuid             not null
 #
 # Indexes
 #
@@ -34,8 +47,15 @@ class Statistic < ApplicationRecord
   belongs_to :team
   belongs_to :season, class_name: 'Season', optional: true
 
-  validates :fkfcup_appearance, :fkfcup_goal, :fkfcup_redcard, :fkfcup_yellow, :kpl_appearance, :kpl_goal,
-            :kpl_redcard, :kpl_yellow, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :matches_played, :minutes_played, :matches_started, :subs, numericality: { greater_than_or_equal_to: 0 },
+                                                                       presence: true
+  validates :tackles_won, :tackles_attempted, :duel_won, :interception_won, :interception_attempted,
+            numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :passes_completed, :passes_attempted, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :shots_on_target, :shots_off_target, :shots_attempted, :goals_scored, :assists,
+            numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :yellow_card, :red_card, :fouls_committed, :fouls_won, numericality: { greater_than_or_equal_to: 0 },
+                                                                   presence: true
   validates :team_id, uniqueness: true
 
   def name
@@ -43,7 +63,35 @@ class Statistic < ApplicationRecord
     "#{Team.first_name} #{Team.last_name}"
   end
 
-  def percents
-    (kpl_goal / kpl_appearance) * 100
+  def tackles_percentage
+    if tackles_attempted.positive?
+      ((tackles_won.to_f / tackles_attempted) * 100).round(2)
+    else
+      0
+    end
+  end
+
+  def duel_percentage
+    if duel_attempted.positive?
+      ((duel_won.to_f / duel_attempted) * 100).round(2)
+    else
+      0
+    end
+  end
+
+  def interception_percentage
+    if interception_attempted.positive?
+      ((interception_won.to_f / interception_attempted) * 100).round(2)
+    else
+      0
+    end
+  end
+
+  def passes_percentage
+    if passes_attempted.positive?
+      ((passes_completed.to_f / passes_attempted) * 100).round(2)
+    else
+      0
+    end
   end
 end

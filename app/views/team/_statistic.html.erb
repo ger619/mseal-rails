@@ -1,3 +1,139 @@
-<div class="md:flex gap-2 flex-row justify-between md:mb-0 mb-4 ">
-  <%= bar_chart @statistic.group(:kpl_appearance).sum(:kpl_goal)%>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+    /* Style the tab */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #e6e6e6;
+
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+        color: black;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        color: black;
+        background-color: #e6e6e6;
+
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+        background-color: rgba(250, 225, 21, 0.3);
+
+    }
+
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-right: 1px solid #ccc;
+    }
+</style>
+
+<div class="flex flex-col md:flex-row gap-5 bg-black mt-2 border-t-4 border-[#FAE115]">
+  <p class="text-[#FAE115] font-semibold uppercase gap-4 p-6">
+    SEASON PLAYER STATS — <%= @team.first_name %> <%= @team.second_name %> <%= @team.last_name %>
+  </p>
+
 </div>
+<div class="tab flex flex-col md:flex-row gap-5 font-bold">
+  <button class="tablinks active" onclick="openCity(event, 'General')" id="defaultOpen">General</button>
+  <button class="tablinks" onclick="openCity(event, 'Defence')">Defence</button>
+  <button class="tablinks" onclick="openCity(event, 'Distribution')">Distribution</button>
+  <button class="tablinks" onclick="openCity(event, 'Attack')">Attack</button>
+  <button class="tablinks" onclick="openCity(event, 'Discipline')">Discipline</button>
+
+</div>
+
+<div id="General" class="tabcontent active bg-[#f4e721] bg-opacity-40">
+  <div class="grid md:grid-cols-4 grid-cols-2 ">
+    <% @statistic.each do |stat|  %>
+
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-2xl"><%= stat.matches_played %></p>
+    <span class="font-extralight">Games played</span>
+  </div>
+    <div class="col-span-1 text-center p-2">
+      <p class="font-bold text-2xl"><%= stat.minutes_played %></p>
+      <span class="font-extralight">minutes played</span>
+    </div>
+    <div class="col-span-1 text-center p-2">
+      <p class="font-bold text-2xl"><%= stat.matches_started %></p>
+      <span class="font-extralight">starts</span>
+    </div>
+    <div class="col-span-1 text-center p-2">
+      <p class="font-bold text-2xl"><%= stat.subs %></p>
+      <span class="font-extralight">Subs</span>
+    </div>
+      <% end %>
+  </div>
+</div>
+<div id="Defence" class="tabcontent">
+  <div class="grid md:grid-cols-3 grid-cols-2 ">
+    <% @statistic.each do |stat|  %>
+
+      <div class="col-span-1 text-center p-2">
+        <p class="font-bold text-2xl"><%= stat.tackles_percentage %>%</p>
+        <span class="font-extralight">Tackles</span>
+      </div>
+      <div class="col-span-1 text-center p-2">
+        <p class="font-bold text-2xl"><%= stat.minutes_played %></p>
+        <span class="font-extralight">minutes played</span>
+      </div>
+      <div class="col-span-1 text-center p-2">
+        <p class="font-bold text-2xl"><%= stat.matches_started %></p>
+        <span class="font-extralight">starts</span>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+<div id="Distribution" class="tabcontent ">
+  Distribution
+</div>
+<div id="Attack" class="tabcontent ">
+  Attack
+</div>
+<div id="Discipline" class="tabcontent ">
+  Discipline
+</div>
+
+
+
+
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+</script>
+

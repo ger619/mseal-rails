@@ -2,15 +2,8 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "fortawesome/fontawesome-free"
-
 import "trix"
 import "@rails/actiontext"
 
-
-import * as echarts from 'echarts';
-import 'echarts/theme/dark';
-
-window.echarts = echarts;
-
-import "echarts"
-import "echarts/theme/dark"
+import "chartkick"
+import "Chart.bundle"

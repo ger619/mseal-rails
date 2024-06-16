@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_14_141646) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_16_185647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -384,19 +384,32 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_141646) do
   end
 
   create_table "statistics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "kpl_appearance"
-    t.integer "kpl_goal"
-    t.integer "kpl_yellow"
-    t.integer "kpl_redcard"
-    t.integer "fkfcup_appearance"
-    t.integer "fkfcup_goal"
-    t.integer "fkfcup_redcard"
-    t.integer "fkfcup_yellow"
     t.uuid "team_id", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "season_id", null: false
+    t.integer "matches_played", default: 0
+    t.integer "minutes_played", default: 0
+    t.integer "matches_started", default: 0
+    t.integer "subs", default: 0
+    t.integer "tackles_won", default: 0
+    t.integer "tackles_attempted", default: 0
+    t.integer "duel_won", default: 0
+    t.integer "duel_attempted", default: 0
+    t.integer "interception_won", default: 0
+    t.integer "interception_attempted", default: 0
+    t.integer "passes_completed", default: 0
+    t.integer "passes_attempted", default: 0
+    t.integer "shots_on_target", default: 0
+    t.integer "shots_off_target", default: 0
+    t.integer "shots_attempted", default: 0
+    t.integer "goals_scored", default: 0
+    t.integer "assists", default: 0
+    t.integer "yellow_card", default: 0
+    t.integer "red_card", default: 0
+    t.integer "fouls_committed", default: 0
+    t.integer "fouls_won", default: 0
     t.index ["season_id"], name: "index_statistics_on_season_id"
     t.index ["team_id"], name: "index_statistics_on_team_id"
     t.index ["user_id"], name: "index_statistics_on_user_id"
