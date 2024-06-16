@@ -18,6 +18,9 @@
       <%= image_tag(@team.image, class: 'rounded w-full') %>
     </div>
 
+    <%= render 'statistic' %>
+
+
     <div class="text-xl font-bold mt-4 flex justify-start gap-12 uppercase">
       <p>
         <%= @team.position %>
@@ -27,6 +30,8 @@
       </p>
 
     </div>
+
+
 
     <div class="p-4">
       <p class="text-base font-light"><%= @team.content %></p>

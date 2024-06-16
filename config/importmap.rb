@@ -11,7 +11,7 @@ pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fo
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
 
-pin "echarts", to: "echarts.min.js"
-pin "echarts/theme/dark", to: "echarts/theme/dark.js"
+pin "chartkick", to: "chartkick.js"
+pin "Chart.bundle", to: "Chart.bundle.js"
 
 

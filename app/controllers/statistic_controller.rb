@@ -1,7 +1,6 @@
 class StatisticController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   load_and_authorize_resource except: %i[index show]
-
   def index
     @statistic = Statistic.all
   end
@@ -53,7 +52,10 @@ class StatisticController < ApplicationController
   private
 
   def statistic_params
-    params.require(:statistic).permit(:kpl_appearance, :kpl_goal, :kpl_yellow, :kpl_redcard, :fkfcup_appearance,
-                                      :fkfcup_goal, :fkfcup_redcard, :fkfcup_yellow, :team_id, :user_id, :season_id)
+    params.require(:statistic).permit(:assist, :duel_attempted, :duel_won, :fouls_committed, :fouls_won, :goals_scored,
+                                      :interception_attempted, :interception_won, :matches_played, :matches_started,
+                                      :minutes_played, :passes_attempted, :passes_completed, :red_card, :shots_attempted,
+                                      :shots_off_target, :shots_on_target, :subs, :tackles_attempted, :tackles_won,
+                                      :yellow_card, :team_id, :user_id, :season_id)
   end
 end

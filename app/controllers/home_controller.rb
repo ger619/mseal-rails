@@ -7,5 +7,8 @@ class HomeController < ApplicationController
     @opponent1 = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
     @opponent2 = Opponent.where('match_date <= ?',
                                 Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
+
+    @user = User.all
+    respond_to(&:html)
   end
 end

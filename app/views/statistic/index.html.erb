@@ -77,31 +77,31 @@
                   <%= stat.team.name %>
                 </th>
                 <td class="px-6 py-4">
-                  <%= stat.kpl_appearance %>
+                  <%= stat.matches_played %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.kpl_goal %>
+                  <%= stat.minutes_played %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.kpl_yellow %>
+                  <%= stat.matches_started %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.kpl_redcard %>
+                  <%= stat.subs %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.fkfcup_appearance %>
+                  <%= stat.subs %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.fkfcup_goal %>
+                  <%= stat.subs %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.fkfcup_yellow %>
+                  <%= stat.subs %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.fkfcup_redcard %>
+                  <%= stat.subs %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.percents %>
+
                 </td>
                 <td class="px-6 py-4 flex gap-2 ">
                   <% if current_user&.moderator? %><!--Link to edit page -->
@@ -111,6 +111,7 @@
                   <% end %>
                 </td>
               </tr>
+              <%#= pie_chart stat.group(stat.great).count %>
 
 
             <% end %>
@@ -118,3 +119,4 @@
         </table>
     </div>
 </div>
+

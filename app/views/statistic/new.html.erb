@@ -2,59 +2,145 @@
 
   <div class="md:p-0">
     <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-    ADD STATISTIC TO THE WEBSITE
+      ADD STATISTIC TO THE WEBSITE
     </div>
-    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8 justify-self-center">
-      <div class="flex  justify-start">
-        <%= f.label :Player_Name, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.collection_select :team_id, Team.all, :id, :name, {prompt: "Select Player"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
-      </div>
-      <div class="flex  justify-start">
-        <%= f.label :Player_Name, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.collection_select :season_id, Season.all, :id, :name, {prompt: "Select Season"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
-      </div>
-      <div class="flex  justify-start">
-        <%= f.label :FKF_PREMIERSHIP, class: "uppercase content-center p-4 font-bold underline"%>
-      </div>
-      <div class="flex  justify-start">
-        <%= f.label :kpl_appearance, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :kpl_appearance, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
-      </div>
-      <div class="flex  justify-start">
-        <%= f.label :kpl_goal,  class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :kpl_goal, in: 0.0..100, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
-      </div>
-      <div class="flex  justify-start">
-        <%= f.label :kpl_yellow,  class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :kpl_yellow, in: 0.0..50,  class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
-      </div>
-      <div class="flex  justify-start">
-        <%= f.label :kpl_redcard, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :kpl_redcard, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+    <div class="md:w-[800px] lg:w-[1024px] gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8 justify-self-center">
+      <div class="grid grid-cols-2 gap-2">
+        <div class="flex  justify-start">
+          <%= f.label :Name_of_Season, class: "capitalize content-center font-semibold w-1/2"%>
+          <%= f.collection_select :season_id, Season.all, :id, :name, {prompt: "Select Season"}, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+        </div>
+        <div class="flex  justify-start">
+          <%= f.label :Player_Name, class: "capitalize content-center font-semibold w-1/2"%>
+          <%= f.collection_select :team_id, Team.all, :id, :name, {prompt: "Select Player"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+        </div>
       </div>
 
+      <!-- General statistics -->
       <div class="flex  justify-start">
-        <%= f.label :FKF_CUP, class: "uppercase content-center p-4 font-bold underline"%>
+        <%= f.label :General_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
+      </div>
+      <div class="grid grid-cols-4 gap-2">
+        <div class="flex-col justify-start">
+          <%= f.label :matches_played, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :matches_played, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col  justify-start">
+          <%= f.label :minutes_played, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
+          <%= f.number_field :minutes_played, in: 0.0..5000, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
+        <div class="flex-col  justify-start">
+          <%= f.label :matches_started, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :matches_started, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col justify-start">
+          <%= f.label :subs, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :subs, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
       </div>
 
+      <!-- #Defense statistics -->
       <div class="flex  justify-start">
-        <%= f.label :fkfcup_appearance, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :fkfcup_appearance, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+        <%= f.label :Defense_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
+      </div>
+      <div class="grid grid-cols-4 gap-2">
+        <div class="flex-col justify-start">
+          <%= f.label :tackles_won, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :tackles_won, in: 0.0..100 ,class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col  justify-start">
+          <%= f.label :tackles_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
+          <%= f.number_field :tackles_attempted,in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
+        <div class="flex-col  justify-start">
+          <%= f.label :duel_won, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :duel_won, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
+        <div class="flex-col justify-start">
+          <%= f.label :duel_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :duel_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col justify-start">
+          <%= f.label :interception_won, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :interception_won,in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col justify-start">
+          <%= f.label :interception_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :interception_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
       </div>
 
+      <!-- Distribution_Statistics-->
       <div class="flex  justify-start">
-        <%= f.label :fkfcup_goal, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :fkfcup_goal, in: 0.0..100, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+        <%= f.label :Distribution_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="flex-col justify-start">
+          <%= f.label :passes_completed, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :passes_completed, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col  justify-start">
+          <%= f.label :passes_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
+          <%= f.number_field :passes_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
       </div>
 
+      <!-- #Attack statistics -->
       <div class="flex  justify-start">
-        <%= f.label :fkfcup_yellow, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :fkfcup_yellow, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+        <%= f.label :Attack_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
+      </div>
+      <div class="grid grid-cols-4 gap-2">
+        <div class="flex-col justify-start">
+          <%= f.label :shots_on_target, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :shots_on_target, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col  justify-start">
+          <%= f.label :shots_off_target, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
+          <%= f.number_field :shots_off_target, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
+        <div class="flex-col  justify-start">
+          <%= f.label :shots_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :shots_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
+        <div class="flex-col justify-start">
+          <%= f.label :goals_scored, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :goals_scored, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col justify-start">
+          <%= f.label :assists, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :assists, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
       </div>
 
+      <!-- #Attack statistics -->
       <div class="flex  justify-start">
-        <%= f.label :fkfcup_redcard, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-        <%= f.number_field :fkfcup_redcard, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+        <%= f.label :Discipline_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
+      </div>
+      <div class="grid grid-cols-4 gap-2">
+        <div class="flex-col justify-start">
+          <%= f.label :yellow_card, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :yellow_card, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+        <div class="flex-col  justify-start">
+          <%= f.label :red_card, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
+          <%= f.number_field :red_card, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
+        <div class="flex-col  justify-start">
+          <%= f.label :fouls_committed, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :fouls_committed, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
+        <div class="flex-col justify-start">
+          <%= f.label :fouls_won, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :fouls_won, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
       </div>
 
       <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
