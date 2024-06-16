@@ -94,4 +94,20 @@ class Statistic < ApplicationRecord
       0
     end
   end
+
+  def shot_accurancy
+    if shots_attempted.positive?
+      ((shots_on_target.to_f / shots_attempted) * 100).round(2)
+    else
+      0
+    end
+  end
+
+  def goals_per_match
+    if matches_played.positive?
+      (goals_scored.to_f / matches_played).round(2)
+    else
+      0
+    end
+  end
 end
