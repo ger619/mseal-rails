@@ -1,40 +1,44 @@
-<% @opponent1.limit(1).each do |opp| %>
+<!-- Match Schedule -->
+<% @opponent2.limit(1).each do |opp| %>
 
   <div class="md:border-r  flex flex-col gap-2 md:border-[#FAE115] place-content-center">
-    <p class="uppercase text-center pt-10">Next Match</p>
+    <p class="uppercase text-center pt-10">Last Match</p>
 
     <div class="flex gap-4 mt-8 items-center content-center justify-center">
 
       <div class="grid grid-cols-3 p-1">
         <div class="col-span-1 justify-center">
-          <div class="flex justify-center">
-            <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "w-24"%>
-          </div>
+         <div class="flex justify-center">
+             <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "w-24"%>
+         </div>
           <p class="mt-3 text-center text-sm">Murang&apos;a Seals</p>
         </div>
         <div class="col-span-1 flex justify-center gap-4 flex-col">
           <div class="text-sm font-extralight text-center">
-            <p><%= opp.match_date.strftime("%a, %b, %d") %></p>
+            <p><%= opp.match_date.strftime("%a, %b, %d") %> </p>
             <p><%= opp.match_time.strftime("%I:%M %p") %></p>
           </div>
           <div class="flex justify-center gap-4 self-center">
-            <p class="text-3xl font-bold">
-            </p>
-            <div class="font-extralight">
-              VS
-            </div>
-            <p class="text-3xl font-bold ">
-            </p>
+          <p class="text-3xl font-bold text-[#fae115]">
+            <%= opp.score_one %>
+          </p>
+          <div class="font-extralight">
+            VS
+          </div>
+          <p class="text-3xl font-bold ">
+
+            <%= opp.score_two %>
+          </p>
           </div>
         </div>
 
         <div class="col-span-1 justify-center">
           <div class="flex justify-center">
-            <% if opp.opponent_team.team_badge.attached? %>
-              <%= image_tag (opp.opponent_team.team_badge), class: "w-24", alt: "Opponent Logo" %>
-            <% end %>
+              <% if opp.opponent_team.team_badge.attached? %>
+                <%= image_tag (opp.opponent_team.team_badge), class: "w-24", alt: "Opponent Logo" %>
+              <% end %>
           </div>
-          <p class="mt-3 text-center text-sm"><%= opp.opponent_team.name %></p>
+              <p class="mt-3 text-center text-sm"><%= opp.opponent_team.name %></p>
         </div>
       </div>
     </div>
@@ -50,5 +54,4 @@
 
   </div>
 <% end %>
-
 
