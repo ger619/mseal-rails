@@ -66,10 +66,15 @@
           <% end %>
         </p>
         <p class="text-sm md:text-lg">
-          <%=link_to "Twitter", url_for(@team.twitter), :target => "_blank" %>
+          <%=link_to url_for(@team.twitter), :target => "_blank" do %>
+            <i class="fa-brands fa-twitter text-[#f4e721] "></i>
+          <% end %>
         </p>
         <p class="text-sm md:text-lg">
-          <%= link_to "Instagram", url_for(@team.instagram), :target => "_blank" %>
+          <%= link_to url_for(@team.instagram), :target => "_blank" do %>
+            <i class="fa-brands fa-instagram text-[#f4e721]"></i>
+          <% end %>
+
         </p>
 
       </div>
