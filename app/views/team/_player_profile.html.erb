@@ -34,7 +34,7 @@
           <% if @team.date_of_birth.present? %>
               <%= @team.date_of_birth.strftime("%b, %d %Y") %>
             <% else %>
-              None born
+              None
           <% end %>
         <p class="text-sm md:text-lg">
           <% if @team.age.present? %>
@@ -48,14 +48,14 @@
           <% if @team.mseal_debut.present? %>
             <%= @team.mseal_debut %>
             <% else %>
-            None seen
+            None
           <% end %>
         </p>
         <p class="text-sm md:text-lg">
           <% if @team.first_goal.present? %>
             <%= @team.first_goal %>
           <% else %>
-            None h
+            None
           <% end %>
         </p>
         <p class="text-sm md:text-lg">
