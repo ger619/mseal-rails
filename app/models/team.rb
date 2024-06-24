@@ -4,11 +4,17 @@
 #
 #  id            :uuid             not null, primary key
 #  active        :boolean
+#  date_of_birth :date
+#  first_goal    :string
 #  first_name    :string
+#  instagram     :string           default("https://www.instagram.com/")
 #  jersey_number :integer
 #  last_name     :string
+#  mseal_debut   :string
 #  position      :string
+#  previous_club :string
 #  second_name   :string
+#  twitter       :string           default("https://x.com/home")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  user_id       :uuid             not null
@@ -42,5 +48,12 @@ class Team < ApplicationRecord
     self.first_name = first_name.capitalize
     self.last_name = last_name.capitalize
     self.second_name = second_name.capitalize
+  end
+
+  def age
+    return unless date_of_birth.present?
+
+    now = Time.now.utc.to_date
+    now.year - date_of_birth.year - (date_of_birth.to_date.change(year: now.year) > now ? 1 : 0)
   end
 end

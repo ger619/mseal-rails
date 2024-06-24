@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_16_185647) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_24_165323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -441,6 +441,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_16_185647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active"
+    t.date "date_of_birth"
+    t.string "mseal_debut"
+    t.string "first_goal"
+    t.string "previous_club"
+    t.string "twitter", default: "https://x.com/home"
+    t.string "instagram", default: "https://www.instagram.com/"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 

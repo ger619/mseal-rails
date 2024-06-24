@@ -42,6 +42,8 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
+  validates :email, presence: true, uniqueness: true
+
   has_many :news, foreign_key: :user_id, class_name: 'News', dependent: :destroy
   has_many :clubs, foreign_key: :user_id, class_name: 'Club', dependent: :destroy
   has_many :adverts, foreign_key: :user_id, class_name: 'Advert', dependent: :destroy

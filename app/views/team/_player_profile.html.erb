@@ -1,0 +1,73 @@
+<div class="w-3/4 bg-white mt-4 p-2 mx-auto">
+  <div class="p-4">
+    <div class="flex-col justify-self-center gap-4">
+      <label for="tackles_attempted" class="capitalize content-center font-extralight start text-2xl underline underline-offset-8 mb-4">PLAYER PROFILE</label>
+    </div>
+    <div>
+    <div class="grid grid-cols-3 gap-4 mt-4">
+      <div class="col-span-1">
+        <p class="capitalize">Name</p>
+        <p class="capitalize">Squad Number</p>
+        <p class="capitalize">Date of Birth</p>
+        <p class="capitalize">Age</p>
+        <p class="capitalize">Murang'a Seal Debut</p>
+        <p class="capitalize">First Goal</p>
+        <p class="capitalize">Previous Clubs</p>
+        <p class="capitalize">Twitter</p>
+        <p class="capitalize">Instagram</p>
+
+
+      </div>
+      <div class=" col-span-2 pl-10 font-extralight">
+        <p><%= @team.first_name %> <%= @team.second_name %> <%= @team.last_name %> </p>
+        <p><% if @team.jersey_number.present? %>
+            <%= @team.jersey_number %>
+            <% else %>
+
+            None
+          <% end %>
+        </p>
+        <p><% if @team.date_of_birth.present? %>
+            <%= @team.date_of_birth.strftime("%b, %d %Y") %>
+            <% else %>
+          None
+
+          <% end %>
+        <p><% if @team.age.present? %>
+            <%= @team.age %>
+            <% else %>
+          0
+          <% end %>
+            </p>
+
+        <p><% if @team.mseal_debut.present? %>
+            <%= @team.mseal_debut %>
+            <% else %>
+            None
+          <% end %>
+        </p>
+        <p>
+          <% if @team.first_goal.present? %>
+            <%= @team.first_goal %>
+          <% else %>
+            None
+          <% end %>
+        </p>
+        <p>
+          <% if @team.previous_club.present? %>
+            <%= @team.previous_club %>
+            <% else %>
+          None
+          <% end %>
+        </p>
+        <p><%= link_to @team.twitter %> </p>
+        <p><%= @team.instagram %> </p>
+
+      </div>
+
+    </div>
+    </div>
+
+  </div>
+
+</div>
