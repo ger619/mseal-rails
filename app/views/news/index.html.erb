@@ -4,7 +4,6 @@
     <% if current_user && current_user.role === 'moderator'  %>
         <%=link_to "Add News", new_news_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
         <%=link_to "Add Advert", new_advert_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-
   <% end %>
   </div>
 </div>
@@ -15,7 +14,6 @@
         <%= turbo_frame_tag :news do %>
           <%= render 'news/news_render' %>
         <% end %>
-
           <div class="flex justify-center gap-4 p-4">
               <% if @pagy.prev %>
                 <%= link_to "Newer", url_for(page: @pagy.prev), class: "w-[100px] py-3 px-4 text-justify  inline-flex text-sm font-semibold text-[#FAE115]  border border-gray-300 rounded-lg bg-[#000] hover:bg-[#FAE115] uppercase hover:text-[#000] hover:border-[#FAE115] uppercase" %>
@@ -25,7 +23,6 @@
           <% end %>
           </div>
     </div >
-
     <%= render 'news/adverts' %>
   </div>
   

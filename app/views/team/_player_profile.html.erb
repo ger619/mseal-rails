@@ -11,13 +11,10 @@
         <p class="capitalize text-sm md:text-lg">Date of Birth</p>
         <p class="capitalize text-sm md:text-lg">Age</p>
         <p class="capitalize text-sm md:text-lg">Seals Debut</p>
-
         <p class="capitalize text-sm md:text-lg">First Goal</p>
         <p class="capitalize text-sm md:text-lg">Previous Clubs</p>
         <p class="capitalize text-sm md:text-lg">Twitter</p>
         <p class="capitalize text-sm md:text-lg">Instagram</p>
-
-
       </div>
       <div class=" col-span-2 pl-10 font-extralight">
         <p class="text-sm md:text-lg">
@@ -43,7 +40,6 @@
               0 yrs
           <% end %>
         </p>
-
         <p class="text-sm md:text-lg">
           <% if @team.mseal_debut.present? %>
             <%= @team.mseal_debut %>
@@ -74,14 +70,9 @@
           <%= link_to url_for(@team.instagram), :target => "_blank" do %>
             <i class="fa-brands fa-instagram text-[#f4e721]"></i>
           <% end %>
-
         </p>
-
       </div>
-
     </div>
     </div>
-
   </div>
-
 </div>
