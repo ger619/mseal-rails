@@ -1,4 +1,4 @@
-<div class="w-3/4 bg-white mt-4 p-2 mx-auto">
+<div class="w-full md:w-3/4 bg-white mt-4 p-2 mx-auto">
   <div class="p-4">
     <div class="flex-col justify-self-center gap-4">
       <label for="tackles_attempted" class="capitalize content-center font-extralight start text-2xl underline underline-offset-8 mb-4">PLAYER PROFILE</label>
@@ -60,8 +60,8 @@
           None
           <% end %>
         </p>
-        <p><%= link_to @team.twitter %> </p>
-        <p><%= @team.instagram %> </p>
+        <p><%=link_to "Twitter", url_for(@team.twitter), :target => "_blank" %></p>
+        <p><%= link_to "Instagram", url_for(@team.instagram), :target => "_blank" %> </p>
 
       </div>
 
