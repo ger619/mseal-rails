@@ -14,10 +14,10 @@
     <div class="flex overflow-x-auto shadow-md sm:rounded-lg justify-center p-[28px]">
         <table class=" justify-items-center text-sm text-left rtl:text-right text-gray-500 bg-white">
             <thead class="text-xs text-gray-700 capitalize bg-gray-50 ">
-            <tr class="font-semibold text-2xl w-full">
-                <th scope="col" class="px-6 py-3">
+            <tr class="font-semibold text-sm w-full">
+              <th scope="col" class="px-6 py-3">
 
-                </th>
+              </th>
                 <th scope="col" class="px-6 py-3">
                   FKF Premier League
                 </th>
@@ -34,35 +34,42 @@
                 FKF Cup
               </th>
             </tr>
-            <tr class="text-[12px]">
-              <th scope="col" class="px-6 py-3">
-              </th>
+            <tr class="text-xs font-bold">
                 <th scope="col" class="px-6 py-3">
-                    Player Name
+                  Player Name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  Fkp App
+                  Matches Played
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  FKF Goals
+                  Minutes Played
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  FKF Yellow Card
+                  Matches Started
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  FKF Red Card
+                  Subs
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  FKF Cup App
+                  Tackles Won
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  FKF Cup Goal
+                  Tackles Attempted
                 </th>
               <th scope="col" class="px-6 py-3">
-                FKF Cup Yellow Card
+                Duel Won
               </th>
               <th scope="col" class="px-6 py-3">
-                FKF Red Card
+                Interception Won
+              </th>
+              <th scope="col" class="px-6 py-3">
+              Interception Attempted
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Interception Won
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Interception Attempted
               </th>
 
             </tr>
@@ -70,9 +77,6 @@
             <tbody>
             <% @statistic.each do |stat| %>
               <tr class="odd:bg-white even:bg-gray-100 border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  <%= stat.season.name %>
-                </th>
                 <th scope="row" class="px-6 py-4 ">
                   <%= stat.team.name %>
                 </th>
@@ -89,19 +93,25 @@
                   <%= stat.subs %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.subs %>
+                  <%= stat.tackles_won %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.subs %>
+                  <%= stat.tackles_attempted %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.subs %>
+                  <%= stat.duel_won %>
                 </td>
                 <td class="px-6 py-4">
-                  <%= stat.subs %>
+                  <%= stat.interception_won %>
                 </td>
                 <td class="px-6 py-4">
-
+                  <%= stat.interception_attempted %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.passes_completed %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.passes_attempted %>
                 </td>
                 <td class="px-6 py-4 flex gap-2 ">
                   <% if current_user&.moderator? %><!--Link to edit page -->
@@ -109,14 +119,14 @@
                       <!--Link to delete page -->
                     <%= button_to "Delete", stat, method: :delete, data: { turbo_method: :delete  }, class: "font-medium text-red-600 hover:underline border border-[#f4e721]" %>
                   <% end %>
+
                 </td>
               </tr>
-              <%#= pie_chart stat.group(stat.great).count %>
-
 
             <% end %>
             </tbody>
         </table>
     </div>
 </div>
+<%#= line_chart Statistic.pluck(:shots_off_target, :shots_on_target), label: "Value", title: "Awesome chart" %>
 

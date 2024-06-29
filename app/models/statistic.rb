@@ -95,7 +95,7 @@ class Statistic < ApplicationRecord
     end
   end
 
-  def shot_accurancy
+  def shot_accuracy
     if shots_attempted.positive?
       ((shots_on_target.to_f / shots_attempted) * 100).round(2)
     else

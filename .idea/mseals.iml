@@ -156,6 +156,8 @@
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, rbenv: 3.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.6.15, rbenv: 3.1.2) [gem]" level="application" />
+    <orderEntry type="library" name="trix" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
@@ -933,6 +935,14 @@
           <RakeTaskImpl description="Removes the route map from routes.rb" fullCommand="remove_routes" id="remove_routes" />
           <RakeTaskImpl description="Restart app by touching tmp/restart.txt" fullCommand="restart" id="restart" />
           <RakeTaskImpl description="Generate a cryptographically secure secret key (this is typically used to generate a secret for cookie sessions)" fullCommand="secret" id="secret" />
+          <RakeTaskImpl description="Run all specs in spec directory (excluding plugin specs)" fullCommand="spec" id="spec" />
+          <RakeTaskImpl id="spec">
+            <subtasks>
+              <RakeTaskImpl description="Run the code examples in spec/model" fullCommand="spec:model" id="model" />
+              <RakeTaskImpl description="" fullCommand="spec:prepare" id="prepare" />
+              <RakeTaskImpl description="" fullCommand="spec:statsetup" id="statsetup" />
+            </subtasks>
+          </RakeTaskImpl>
           <RakeTaskImpl description="Report code statistics (KLOCs, etc) from the application or engine" fullCommand="stats" id="stats" />
           <RakeTaskImpl id="stimulus">
             <subtasks>
