@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_08_092745) do
     t.index ["user_id"], name: "index_clubs_on_user_id"
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
+  create_table "friendly_id_slugs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50

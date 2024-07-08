@@ -46,13 +46,6 @@ class Team < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  extend FriendlyId
-  friendly_id :name, use: :slugged
-
-  def should_generate_new_friendly_id?
-    name
-  end
-
   def capitalize
     self.first_name = first_name.capitalize
     self.last_name = last_name.capitalize

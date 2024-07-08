@@ -7,7 +7,7 @@ class TeamController < ApplicationController
   end
 
   def show
-    @team = Team.friendly.find(params[:id])
+    @team = Team.find(params[:id])
     @statistic = Statistic.all.where(team_id: @team.id)
   end
 
