@@ -83,12 +83,11 @@ gem 'font-awesome-sass', '~> 6.4.0'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
 gem 'cancancan'
+gem 'chartkick'
 gem 'cloudinary', '~> 1.29.0'
-
 gem 'faker', '~> 3.2'
+gem 'friendly_id', '~> 5.5.0'
+gem 'groupdate'
 gem 'hotwire-rails', '~> 0.1.3'
 gem 'motor-admin'
 gem 'pagy', '~> 6.0'
-
-gem 'chartkick'
-gem 'groupdate'

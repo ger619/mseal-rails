@@ -14,6 +14,7 @@
 #  position      :string
 #  previous_club :string
 #  second_name   :string
+#  slug          :string
 #  twitter       :string           default("https://x.com/home")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -21,6 +22,7 @@
 #
 # Indexes
 #
+#  index_teams_on_slug     (slug) UNIQUE
 #  index_teams_on_user_id  (user_id)
 #
 # Foreign Keys
@@ -44,6 +46,8 @@ class Team < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   def capitalize
     self.first_name = first_name.capitalize
     self.last_name = last_name.capitalize
