@@ -45,13 +45,21 @@
         <%= f.label :Defense_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
       </div>
       <div class="grid grid-cols-4 gap-2">
+
+        <div class="flex-col  justify-start">
+          <%= f.label :tackles_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
+          <%= f.number_field :tackles_attempted,in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
         <div class="flex-col justify-start">
           <%= f.label :tackles_won, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
           <%= f.number_field :tackles_won, in: 0.0..100 ,class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
-        <div class="flex-col  justify-start">
-          <%= f.label :tackles_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
-          <%= f.number_field :tackles_attempted,in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+
+
+        <div class="flex-col justify-start">
+          <%= f.label :duel_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :duel_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
         <div class="flex-col  justify-start">
@@ -59,18 +67,18 @@
           <%= f.number_field :duel_won, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
-        <div class="flex-col justify-start">
-          <%= f.label :duel_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :duel_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
-        </div>
-        <div class="flex-col justify-start">
-          <%= f.label :interception_won, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :interception_won,in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
-        </div>
+
+
         <div class="flex-col justify-start">
           <%= f.label :interception_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
           <%= f.number_field :interception_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
+
+        <div class="flex-col justify-start">
+          <%= f.label :interception_won, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :interception_won,in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
       </div>
 
       <!-- Distribution_Statistics-->
@@ -78,13 +86,15 @@
         <%= f.label :Distribution_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
       </div>
       <div class="grid grid-cols-2 gap-2">
+
+        <div class="flex-col  justify-start">
+          <%= f.label :passes_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold start" %>
+          <%= f.number_field :passes_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
         <div class="flex-col justify-start">
           <%= f.label :passes_completed, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
           <%= f.number_field :passes_completed, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
-        </div>
-        <div class="flex-col  justify-start">
-          <%= f.label :passes_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
-          <%= f.number_field :passes_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
 
       </div>
@@ -94,19 +104,17 @@
         <%= f.label :Attack_Statistics, class: "uppercase content-center p-4 font-bold underline"%>
       </div>
       <div class="grid grid-cols-4 gap-2">
-        <div class="flex-col justify-start">
-          <%= f.label :shots_on_target, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
-          <%= f.number_field :shots_on_target, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
-        </div>
-        <div class="flex-col  justify-start">
-          <%= f.label :shots_off_target, class: "capitalize content-center p-4 w-[180px] font-semibold start"%>
-          <%= f.number_field :shots_off_target, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
-        </div>
 
         <div class="flex-col  justify-start">
           <%= f.label :shots_attempted, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
           <%= f.number_field :shots_attempted, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
         </div>
+
+        <div class="flex-col justify-start">
+          <%= f.label :shots_on_target, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+          <%= f.number_field :shots_on_target, in: 0.0..300, class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" , :required => true %>
+        </div>
+
 
         <div class="flex-col justify-start">
           <%= f.label :goals_scored, class: "capitalize content-center p-4 w-[180px] font-semibold"%>

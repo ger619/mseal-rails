@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_24_165323) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_08_083334) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -402,7 +402,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_24_165323) do
     t.integer "passes_completed", default: 0
     t.integer "passes_attempted", default: 0
     t.integer "shots_on_target", default: 0
-    t.integer "shots_off_target", default: 0
     t.integer "shots_attempted", default: 0
     t.integer "goals_scored", default: 0
     t.integer "assists", default: 0
