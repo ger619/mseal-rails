@@ -86,3 +86,6 @@ gem 'hotwire-rails', '~> 0.1.3'
 gem 'motor-admin'
 gem 'pagy', '~> 6.0'
 gem 'tailwindcss-rails', '~> 2.0'
+gem "stackprof"
+gem "sentry-ruby"
+gem "sentry-rails"
