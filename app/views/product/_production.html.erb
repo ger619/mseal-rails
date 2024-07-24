@@ -1,8 +1,8 @@
 <% @products.each do |product| %>
   <div class="flex flex-col md:flex-row mt-5 mb-5 md:items-center gap-10">
-    <div class="md:w-[40%] border-[#000] md:p-16 p-3 border-2">
+    <div class="border-[#000] md:p-8 p-2 border-2 ml-10">
       <%= link_to product_path(product.id) do %>
-        <%= image_tag(product.photo_product, class: "w-[100%]") %>
+        <%= image_tag(product.photo_product, class: "h-96") %>
       <% end %>
     </div>
 
