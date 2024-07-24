@@ -48,16 +48,17 @@ class ProductController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
     @product.delete
 
     respond_to do |format|
-      format.html { redirect_to product_url, notice: 'Product was successfully deleted.' }
+      format.html { redirect_to product_index_url, notice: 'Product was successfully deleted.' }
     end
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :description, :quantity, :price, :photo_product, :user_id)
+    params.require(:product).permit(:product_name, :content, :quantity, :price, :photo_product, :user_id)
   end
 end

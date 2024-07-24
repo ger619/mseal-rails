@@ -53,4 +53,5 @@ class User < ApplicationRecord
   has_many :teams, foreign_key: :user_id, class_name: 'Team', dependent: :destroy
   has_many :scorers, foreign_key: :user_id, class_name: 'Scorer', dependent: :destroy
   has_many :tables, foreign_key: :user_id, class_name: 'Table', dependent: :destroy
+  has_many :products, foreign_key: :user_id, class_name: 'Product', dependent: :destroy
 end

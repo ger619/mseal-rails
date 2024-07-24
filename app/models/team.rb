@@ -14,7 +14,6 @@
 #  position      :string
 #  previous_club :string
 #  second_name   :string
-#  slug          :string
 #  twitter       :string           default("https://x.com/home")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -22,7 +21,6 @@
 #
 # Indexes
 #
-#  index_teams_on_slug     (slug) UNIQUE
 #  index_teams_on_user_id  (user_id)
 #
 # Foreign Keys
