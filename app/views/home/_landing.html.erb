@@ -9,7 +9,9 @@
           </div>
           <div class="content-center  border-t-4 border border-[#FAE115] md:mt-3 rounded md:grid md:grid-cols-3 md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] md:m-0 ml-4 mr-4 mt-4">
             <div class="col-span-1 md:col-span-2 aspect-auto ">
-              <%= image_tag(news.image, class: "md:w-full" ) %>
+              <% if news.image.attached? %>
+                <%= image_tag(news.image, class: "md:w-full" ) %>
+              <% end %>
             </div>
             <div class="col-span-1 p-4 bg-white ">
               <div>
@@ -39,7 +41,9 @@
               <div class="flex md:flex-col border-t-4 border-[#FAE115]">
                 <a href="<%= news_path(news.id) %>">
                   <div class="shrink-0 ">
-                    <%= image_tag(news.image, class: "md:h-48 md:w-full object-cover h-24 w-32")  %>
+                    <% if news.image.attached? %>
+                      <%= image_tag(news.image, class: "md:h-48 md:w-full object-cover h-24 w-32")  %>
+                    <% end %>
                   </div>
                   <div class="md:p-6 p-4">
                     <div class="mb-2 md:text-2xl text-sm font-bold tracking-tight text-gray-900 truncate uppercase">

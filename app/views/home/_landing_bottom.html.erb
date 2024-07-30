@@ -4,7 +4,6 @@
 
       <div class="md:grid grid-cols-4 md:grid-cols-4 gap-3 md:mt-4 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] p-4 md:p-0">
         <!-- if the type_of_news is the same as the first one, then skip it -->
-        with_attached_images
         <% @news.limit(8).each_with_index do |news, index| %>
           <% if index == 0  %>
             <%# Handle the last item separately %>
