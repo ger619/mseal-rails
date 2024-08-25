@@ -360,7 +360,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (~> 3.2)
   bootsnap
-  bullet
+  bullet (~> 7.2)
   cancancan
   capybara
   chartkick
