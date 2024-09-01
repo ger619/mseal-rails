@@ -1,6 +1,11 @@
 class NewsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  load_and_authorize_resource except: %i[index show]
+
   def index
+    # Adding a group by month on the news
+    # Source:
+    #
     @pagy, @news = pagy_countless(News.all.order('created_at DESC'), items: 10)
     respond_to do |format|
       format.html
@@ -56,6 +61,6 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:type_of_news, :header_news, :body, :image, :user_id)
+    params.require(:news).permit(:type_of_news, :header_news, :content, :image, :user_id)
   end
 end

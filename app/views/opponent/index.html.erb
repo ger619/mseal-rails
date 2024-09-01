@@ -1,0 +1,106 @@
+<div>
+  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+    <h1>FIXTURES</h1>
+    <div>
+      <% if current_user && current_user.role === 'moderator' %>
+        <%=link_to "Add Opponent", new_opponent_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%=link_to "Add Opponent Team", new_opponent_team_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%=link_to "Add Table", new_table_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+
+
+    <% end %>
+    </div>
+  </div>
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            color: #FAE115;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+
+
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+
+
+  <div class="tab flex flex-col justify-center md:flex-row gap-5 bg-[#e6e6e6] ">
+    <button class="tablinks active" onclick="openCity(event, 'Result')" id="defaultOpen">RESULTS</button>
+    <button class="tablinks" onclick="openCity(event, 'Fixtures')">FIXTURES</button>
+    <button class="tablinks" onclick="openCity(event, 'Table')">TABLE </button>
+
+  </div>
+
+  <div id="Result" class="tabcontent active  ">
+    <%= render 'opponent/results' %>
+
+  </div>
+  <!--Fixtures-->
+  <div id="Fixtures" class="tabcontent">
+    <%= render 'opponent/fixture' %>
+  </div>
+
+  <!--Fixtures-->
+  <div id="Table" class="tabcontent ">
+    <%= render 'table/table_display'%>
+  </div>
+
+
+  <script>
+      function openCity(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+      }
+      document.getElementById("defaultOpen").click();
+  </script>
+
+
+
+
+
+</div>
+

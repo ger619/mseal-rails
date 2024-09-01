@@ -1,6 +1,5 @@
 class MembershipController < ApplicationController
   before_action :authenticate_user!, except: %i[index show new create]
-
   def index; end
 
   def show
@@ -15,7 +14,7 @@ class MembershipController < ApplicationController
     @membership = Membership.new(membership_params)
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to membership_index_url(@membership), notice: 'Membership was successfully created.' }
+        format.html { redirect_to membership_index_url, notice: 'Membership was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity, notice: 'Failure' }
       end

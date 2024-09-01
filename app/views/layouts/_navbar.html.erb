@@ -7,12 +7,12 @@
             </a>
           </li>
             <li>
-                <a target="_blank" rel="noreferrer" href="https://twitter.com/Mseal_FC">
+                <a target="_blank" rel="noreferrer" href="https://twitter.com/murangaseal">
                   <i class="fa-brands fa-twitter text-[#050505] hover:text-[#f4e721]"></i>
                 </a>
             </li>
             <li>
-                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/msealfc/">
+                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/profile.php?id=100093441294551">
                   <i class="fa-brands fa-facebook-f fa-lg text-[#050505] hover:text-[#f4e721]"></i>
                 </a>
             </li>
@@ -40,7 +40,6 @@
             </li>
    </ul>
  </div>
-
     <div class="bg-black w-full h-20 shadow-xl md:mt-0 z-[100] md:px-24 w-full h-20 z-[100] md:mt-0 md:px-24 hidden md:block">
         <div class="flex justify-between md:justify-end items-center w-full md:mt-0 h-full  md:px-4 py-7 px-2 2xl:px-16 rounded">
             <div>
@@ -54,19 +53,35 @@
                     </li>
 
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "FIXTURES" , fixture_index_path %>
+                        <%= link_to "FIXTURES" , opponent_index_path %>
                     </li>
+
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "MEMBERSHIP", membership_index_path %>
+                        <%= link_to "STATISTICS", statistic_index_path %>
                     </li>
+
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <%= link_to "OUR CLUB", club_index_path %>
                     </li>
+                  <!--
+                  <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
+                    <%= link_to "HALL OF FAME", hall_of_fames_path %>
+                  </li>
+                  -->
+
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
                       <%= link_to "SHOP", product_index_path %>
                     </li>
+                    <% if current_user %>
+                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+                        <%= button_to "LOGOUT",  destroy_user_session_path,  method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?' } %>
+                      </li>
+                    <% else %>
+                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+                        <%= button_to "LOG IN",  user_session_path %>
+                      </li>
+                    <% end %>
                 </ul>
-
             </div>
         </div>
     </div>
@@ -95,17 +110,35 @@
       <%= link_to "TEAM", team_index_path %>
     </li>
     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "FIXTURES", fixture_index_path %>
+      <%= link_to "FIXTURES", opponent_index_path %>
     </li>
+
     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "MEMBERSHIP", membership_index_path %>
+      <%= link_to "STATISTICS", statistic_index_path %>
     </li>
+
     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
       <%= link_to "OUR CLUB", club_index_path %>
     </li>
+    <!--
+    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
+      <%= link_to "HALL OF FAME", hall_of_fames_path %>
+    </li>
+    -->
     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
       <%= link_to "SHOP", product_index_path %>
     </li>
+
+    <% if current_user %>
+    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
+      <%= button_to "LOGOUT",  destroy_user_session_path,  method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?' } %>
+    </li>
+    <% else %>
+      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
+        <%= button_to "LOG IN",  user_session_path %>
+      </li>
+    <% end %>
+
   </ul>
 </div>
 
