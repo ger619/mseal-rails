@@ -90,4 +90,4 @@ gem 'sentry-ruby'
 gem 'stackprof'
 gem 'tailwindcss-rails', '~> 2.0'
 
-gem "bullet", "~> 7.2"
+gem 'bullet', '~> 7.2'
