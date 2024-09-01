@@ -36,7 +36,7 @@ class Table < ApplicationRecord
   end
 
   def pts
-    (w * 3) + (d * 1)
+    (w * 3) + d
   end
 
   def games_played
