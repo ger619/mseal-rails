@@ -1,47 +1,29 @@
  <!-- Header one with sponsors -->
- <div class="p-2 content-end bg-[#F6F6F6] border-b-4 border-[#f4e721] hidden md:block">
+ <div class="p-2 content-end bg-black border-b border-[#e6e6e6] hidden md:block">
    <ul class="flex justify-end gap-5 p-2 text-[#F6F6F6]">
-          <li>
-            <a target="_blank" rel="noreferrer" href="#">
-              <i class="fa-brands fa-instagram text-[#050505] hover:text-[#f4e721]"></i>
-            </a>
-          </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://twitter.com/murangaseal">
-                  <i class="fa-brands fa-twitter text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/profile.php?id=100093441294551">
-                  <i class="fa-brands fa-facebook-f fa-lg text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@murangasealfc" >
-                  <i class="fa-brands fa-youtube text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="#">
-                  <i class="fa-brands fa-tiktok text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
+     <% if current_user %>
+       <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+         <%= button_to "LOGOUT",  destroy_user_session_path,  method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?' } %>
+       </li>
+     <% else %>
+       <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] flex gap-1">
+         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+         </svg>
+         <%= button_to "LOG IN",  user_session_path %>
+       </li>
+       <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] flex gap-1">
+         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+         </svg>
 
-
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-                    <%= image_tag "SP_logo-01.png", class: "w-[100px] text-[#F6F6F6]" %>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-                    <%= image_tag "finix-casino.png", class: "w-[100px] text-[#F6F6F6]" %>
-                </a>
-            </li>
+         <%= button_to "REGISTER",  user_session_path %>
+       </li>
+     <% end %>
    </ul>
  </div>
-    <div class="bg-black w-full h-20 shadow-xl md:mt-0 z-[100] md:px-24 w-full h-20 z-[100] md:mt-0 md:px-24 hidden md:block">
-        <div class="flex justify-between md:justify-end items-center w-full md:mt-0 h-full  md:px-4 py-7 px-2 2xl:px-16 rounded">
+    <div class="bg-black w-full h-20 shadow-xl md:mt-0 z-[100] md:px-24 w-full h-20 z-[100] md:mt-0 md:px-24 hidden md:block border-b-8 border-[#f4e721]">
+        <div class="flex justify-between md:justify-start items-center w-full md:mt-0 h-full  md:px-4 py-7 px-2 2xl:px-16 rounded">
             <div>
                 <ul class="hidden items-center md:flex gap-5 uppercase">
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
@@ -49,38 +31,20 @@
                     </li>
 
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+                      <%= link_to "FIXTURES" , opponent_index_path %>
+                    </li>
+                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <%= link_to "TEAM", team_index_path %>
                     </li>
-
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "FIXTURES" , opponent_index_path %>
-                    </li>
-
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <%= link_to "STATISTICS", statistic_index_path %>
                     </li>
-
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <%= link_to "OUR CLUB", club_index_path %>
                     </li>
-                  <!--
-                  <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
-                    <%= link_to "HALL OF FAME", hall_of_fames_path %>
-                  </li>
-                  -->
-
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
                       <%= link_to "SHOP", product_index_path %>
                     </li>
-                    <% if current_user %>
-                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= button_to "LOGOUT",  destroy_user_session_path,  method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?' } %>
-                      </li>
-                    <% else %>
-                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= button_to "LOG IN",  user_session_path %>
-                      </li>
-                    <% end %>
                 </ul>
             </div>
         </div>
@@ -156,4 +120,3 @@
 
 
 
- 
