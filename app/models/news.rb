@@ -25,4 +25,13 @@ class News < ApplicationRecord
   # Add file and resize image
   # Validations on a model
   validates :type_of_news, :header_news, :content, :image, presence: true
+
+  def time_taken
+    time_diff = Time.now - created_at
+    if time_diff < 1.hour
+      "#{(time_diff / 1.minute).round} minutes"
+    else
+      "#{(time_diff / 1.hour).round} hours"
+    end
+  end
 end

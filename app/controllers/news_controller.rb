@@ -6,7 +6,7 @@ class NewsController < ApplicationController
     # Adding a group by month on the news
     # Source:
     #
-    @pagy, @news = pagy_countless(News.all.order('created_at DESC'), items: 10)
+    @pagy, @news = pagy_countless(News.includes(image_attachment: :blob).all.order('created_at DESC'), items: 10)
     respond_to do |format|
       format.html
       format.turbo_stream
