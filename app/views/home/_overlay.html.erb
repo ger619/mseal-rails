@@ -1,15 +1,13 @@
 
-
-<div class="container w-1/2 mx-auto grid grid-cols-3 md:p-0 absolute gap-3 inset-0 flex content-end self-end z-10 self-end ">
-
+<section class="bg-[#FAE115]">
+<div class="hidden relative h-[200px] bottom-0 container w-1/2 justify-center mx-auto md:grid grid-cols-3 md:p-0  gap-3 inset-0 content-end ">
   <!-- if the type_of_news is the same as the first one, then skip it -->
   <% @news.limit(4).each_with_index do |news, index| %>
     <% if index == 0 %>
       <%# Handle the last item separately %>
     <% else %>
       <% @news.length - index %>
-
-      <div class="container mx-auto md:grid md:grid-cols-1 bg-black rounded shadow-md md:hover:scale-105">
+      <div class="container  mx-auto md:grid md:grid-cols-1 bg-black rounded shadow-md md:hover:scale-105">
         <div class="flex md:flex-col">
           <a href="<%= news_path(news.id) %>">
             <div class="shrink-0 p-2">
@@ -33,7 +31,7 @@
           </a>
         </div>
       </div>
-
     <% end %>
   <% end %>
 </div>
+</section>
