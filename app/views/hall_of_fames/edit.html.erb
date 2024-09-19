@@ -1,0 +1,8 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing hall of fame</h1>
+
+  <%= render "form", hall_of_fame: @hall_of_fame %>
+
+  <%= link_to "Show this hall of fame", @hall_of_fame, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to hall of fames", hall_of_fames_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>

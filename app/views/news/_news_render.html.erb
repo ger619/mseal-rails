@@ -1,32 +1,29 @@
-
-
-  <% @news.each do |news| %>
-<a href="<%= news_path(news) %>">
-    <div class=" mt-5 flex mb-6 h-28 md:w-[100%] md:h-40 hover:shadow-lg hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t">
-    <div class=" h-28 md:h-40  sm:h-30 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
-      <%= image_tag(news.image, class: "w-28 md:w-96 h-28 md:h-40 ") %>
-    </div>
-    <div class="lg:w-[90%] w-[300px] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
-      <div class="">
-        <p class="text-sm text-gray-600 flex items-center uppercase">
+<% @news.each do |news| %>
+  <a href="<%= news_path(news) %>">
+    <div class="md:mt-0 flex mb-4 md:hover:shadow-lg md:hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-t-4 border-[#FAE115] grid grid-cols-3">
+      <div class="lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden col-span-1 h-full">
+        <%= image_tag(news.image, class: "max-w-full h-full ") %>
+      </div>
+      <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal col-span-2">
+        <p class="text-sm text-gray-600 flex items-center uppercase ">
           <%= news.type_of_news %>
         </p>
-
-        <div class="text-gray-900 font-bold text-xl mb-2 md:mt-3 sm:text-sm md:text-xl truncate ">
+        <div class="text-gray-900 font-bold text-xl mb-2 md:mt-3 sm:text-sm md:text-xl max-w-[400px] truncate ">
           <%= news.header_news %>
         </div>
-
         <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
-        
-          <% if current_user %>
+          <% if current_user && current_user.role === 'moderator' %>
             <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-              <%= link_to "Edit News", edit_news_path(news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+              <%= link_to "Edit", edit_news_path(news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
             </div>
-          <% end %>
+            <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+              <%= button_to "Delete", news, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
+            </div>
+        <% end %>
         </div>
-      </div>
     </div>
   </div>
 </a>
+
 <% end %>
 

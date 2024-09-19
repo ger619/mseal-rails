@@ -1,0 +1,98 @@
+<% @table.each  do |table| %>
+
+
+  <% if table.opponent_team.name == "Murang'a Seals" %>
+
+    <tr class="bg-[#FAE115] bg-opacity-70 border-b  border-[#FAE115]  text-base font-semibold text-xs ">
+
+      <td class="px-4 py-3 text-center">
+
+        <!-- To count the number of user and number should follow progressive-->
+        <%= table.rank %>
+      </td>
+      <td class="px-1 py-3">
+        <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
+      </td>
+      <td class="px-1 py-3 capitalize min-w-full">
+        <%= table.opponent_team.name %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.games_played %>
+      </td><td class="px-1 py-3">
+        <%= table.w %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.d %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.l %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.gf %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.ga %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.gd %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.pts %>
+      </td>
+
+      <% if current_user && current_user.role === 'moderator' %>
+        <td class="px-1 py-3">
+          <%= link_to "Edit", edit_table_path(table.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+          <%= button_to "Delete", table, method: :delete, data: { turbo_method: :delete  },class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+        </td>
+      <% end %>
+    </tr>
+  <% else  %>
+
+
+    <tr class="bg-white border-b  border-[#FAE115] hover:bg-gray-50 text-base font-semibold text-xs ">
+
+      <td class="px-4 py-3  text-center">
+        <%= table.rank %>
+      </td>
+      <td class="px-1 py-1">
+        <%= image_tag(table.opponent_team.team_badge, class: "w-10 h-10 rounded") %>
+      </td>
+      <td class="px-1 py-3 capitalize min-w-full">
+        <%= table.opponent_team.name %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.games_played %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.w %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.d %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.l %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.gf %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.ga %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.gd %>
+      </td>
+      <td class="px-1 py-3">
+        <%= table.pts %>
+      </td>
+
+      <% if current_user && current_user.role === 'moderator' %>
+        <td class="px-1 py-3">
+          <%= link_to "Edit", edit_table_path(table.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+          <%= button_to "Delete", table, method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?'  },class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+        </td>
+      <% end %>
+
+    </tr>
+  <% end %>
+<% end %>

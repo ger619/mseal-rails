@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   mount Motor::Admin => '/motor_admin'
+
   get 'cart', to: 'cart#show'
   post 'cart/add'
   post 'cart/remove'
@@ -14,8 +16,13 @@ Rails.application.routes.draw do
   resources :news
   resources :club
   resources :team
-  resources :fixture
+  resources :opponent
   resources :membership
   resources :product
   resources :advert
+  resources :hall_of_fames
+  resources :opponent_teams
+  resources :statistic
+  resources :season
+  resources :table
 end

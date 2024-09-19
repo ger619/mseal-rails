@@ -1,0 +1,40 @@
+<%= form_with(model: @team, url: team_path(@team), method: :patch, class: "bg-white rounded shadow-md ") do |f| %>
+    <div class="md:p-0">
+      <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+        EDIT TEAM MEMBERS
+      </div>
+      <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8">
+        <p class="text-xl font-light mt-5">
+          This is a platform where you can add edit team members
+        </p>
+
+        <div class="flex justify-between pr-10 gap-2">
+          <%= f.text_field :first_name, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "first name",  :required => :true %>
+          <%= f.text_field :second_name, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "second name", :required => :true%>
+          <%= f.text_field :last_name, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "last name", :required => :true%>
+        </div>
+        <div class="flex justify-between pr-10 gap-2">
+          <%= f.select :position, ['Striker', 'Midfielder', 'Defender', 'Goalkeeper', 'Goalkeeping Coach', 'Team Manager', 'Strength & Conditioning Coach', 'Physical Trainer', 'Kit Manager'], prompt: 'Role/Position', :required => true, :class => 'h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none'%>
+          <%= f.number_field :jersey_number, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Jersey Number", :required => :true %>
+          <%= image_tag f.object.image, :class => 'w-[200px]' if f.object.image.present? %>
+          <%= f.file_field :image, class: "h-[50px] w-full p-2 focus:outline-none" ,placeholder: "Passport Photo of Player" %>
+        </div>
+        <div class="flex justify-between pr-10 gap-2">
+          <%= f.date_field :date_of_birth,  :class => 'h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none'%>
+          <%= f.text_field :twitter, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Twitter" %>
+          <%= f.text_field :instagram, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Instagram" %>
+        </div>
+        <div class="flex justify-between pr-10 gap-2">
+          <%= f.text_area :mseal_debut, size: "70x5", class: " w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Muranga Seal Debut" %>
+          <%= f.text_area :first_goal, size: "70x5",  class: "w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "First Goal"%>
+          <%= f.text_area :previous_club, size: "70x5",  class: "w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Previous Club"%>
+        </div>
+        <div class="flex gap-2 pr-10">
+          <%= f.label :Active %>
+          <%= f.check_box :active, placeholder: "If Active", class: "mt-1"%>
+        </div>
+        <%= f.rich_text_area :content, class: "bg-white h-[400px] appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+        <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
+      </div>
+    </div>
+<% end %>
