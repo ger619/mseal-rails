@@ -40,7 +40,7 @@ class Table < ApplicationRecord
   end
 
   def games_played
-    # Matches W + D + L
+    # matches W + D + L
     w + d + l
   end
 

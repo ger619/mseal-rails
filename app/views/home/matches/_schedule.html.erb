@@ -5,23 +5,20 @@
 
       <!--Button to View All Results-->
       <div class="col-span-1 justify-center border content-center h-64">
-        <p class="mt-3 text-center text-black font-bold text-4xl ">View all <br> Result</p>
+        <%= link_to  opponent_index_path, class: 'mt-3 text-center text-black font-bold text-4xl' do %>
+          <p>View all<br>Results</p>
+        <% end %>
       </div>
 
       <!--Button to View The current Match Results-->
-      <%= render 'home/current_match' %>
+      <%= render 'home/matches/current_match_landing' %>
 
 
       <div class="col-span-1 justify-center border h-64">
-        <div class="bg-black w-full flex p-1">
-          <p class="font-bold text-4xl">31</p>
-          <p class="pl-1 font-extralighy text-xs p-1 uppercase">Wednesday<br><span>July</span></p>
-        </div>
-        <div class="justify-center content-center p-4">
-          <!-- Home Team -->
-          <p class="mt-3 text-center text-black font-bold text-4xl ">View all <br> Schedule</p>
-        </div>
+        <%= render 'home/matches/next_match_landing' %>
+
       </div>
+
 
     </div>
   </div>

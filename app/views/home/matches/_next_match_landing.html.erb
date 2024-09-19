@@ -1,0 +1,61 @@
+<% @opponent2.limit(2).each do |opp| %>
+  <div class="col-span-1 justify-center border h-64">
+    <div class="bg-black w-full flex p-1">
+      <p class="font-bold text-4xl"><%= opp.match_date.strftime("%d") %></p>
+      <p class="pl-1 font-extralighy text-xs p-1 uppercase">
+        <%= opp.match_date.strftime("%A") %><br><span><%= opp.match_date.strftime("%B") %></span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-3 justify-center content-center pb-4">
+      <!-- Home Team -->
+      <div class="col-span-1  content-center h-64 p-2">
+          <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "h-24"%>
+        <p class="mt-3 text-center text-xs uppercase text-black">
+          Murang&apos;a Seals12
+        </p>
+      </div>
+      <!-- Middle Ground Team -->
+        <div class="col-span-1 content-center h-64 text-black">
+         <div class="flex flex-col justify-center ">
+            <p class="text-xl font-extralight text-center">
+              <%= opp.match_time.strftime("%I:%M %p") %>
+            </p>
+            <div class="flex justify-center gap-4 self-center">
+            <p class="text-3xl font-bold text-[#fae115]">
+              <% if opp.score_one.present? %>
+                <%= opp.score_one %>
+              <% else %>
+                0
+              <% end %>
+            </p>
+            <div class="font-extralight content-center">
+              VS
+            </div>
+            <p class="text-3xl font-bold">
+              <% if opp.score_one.present? %>
+                <%= opp.score_two %>
+              <% else %>
+                0
+              <% end %>
+            </p>
+          </div>
+        </div>
+        <p class="mt-3 text-center text-sm"><%= opp.venue %></p>
+      </div>
+      <!-- Away Team -->
+      <div class="col-span-1 content-center h-64 p-2">
+        <div class="flex justify-center content-center ">
+          <% if opp.opponent_team.team_badge.attached? %>
+            <%= image_tag (opp.opponent_team.team_badge), class: "h-24", alt: "Opponent Logo" %>
+          <% end %>
+        </div>
+        <p class="mt-3 text-center text-xs text-black uppercase">
+          <%= opp.opponent_team.name %>
+        </p>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="bg-black p-4 mx-auto">
+  <%= render 'home/teams/teams_display' %>
+
+  <!-- Pagination of Players to show 3 per page -->
+  <div class="flex flex-col justify-center">
+    <% if @page > 1 %>
+      <%= link_to 'Previous', home_index_path(page: @page - 1), class: 'mb-4 h-12 w-24 border border-b-4 border-r-2 p-3 rounded font-semibold rounded' %>
+    <% end %>
+
+    <span class="text-white">Page <%= @page %> of <%= @total_pages %></span>
+
+      <% if @page < @total_pages || @page > 1 %>
+        <%= link_to 'Next', home_index_path(page: @page + 1), class: 'mb-4 h-12 w-24  p-3 font-semibold rounded text-[#fae115]' %>
+    <% end %>
+  </div>
+</div>

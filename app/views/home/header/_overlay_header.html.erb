@@ -1,0 +1,36 @@
+
+<section class="bg-[#FAE115]">
+<div class="hidden relative h-[200px] bottom-0 container w-1/2 justify-center mx-auto md:grid grid-cols-3 md:p-0  gap-3 inset-0 content-end ">
+  <!-- if the type_of_news is the same as the first one, then skip it -->
+  <% @news.limit(4).each_with_index do |news, index| %>
+    <% if index == 0 %>
+      <%# Handle the last item separately %>
+    <% else %>
+        <div class="container  mx-auto md:grid md:grid-cols-1 bg-black rounded shadow-md md:hover:scale-105">
+          <div class="flex md:flex-col">
+            <a href="<%= news_path(news.id) %>">
+              <div class="shrink-0 p-2">
+                <% if news.image.attached? %>
+                  <%= image_tag(news.image, class: "md:h-48 md:w-full object-cover h-24 w-32")  %>
+                <% end %>
+              </div>
+              <div class="md:p-6 p-4">
+                <div class="mb-2 md:text-xl text-sm font-semibold tracking-tight text-gray-100 truncate uppercase">
+                  <p><%= news.type_of_news %></p>
+                </div>
+                <p class="block mt-1 md:text-lg leading-tight md:font-medium text-xl md:max-w-full max-w-44 truncate ..."><%= news.header_news %>
+                </p>
+                <%= link_to news_path(news.id) do %>
+                  <div class="hidden md:inline-flex mt-2 items-center px-3 py-2 text-sm font-semibold text-center  hover:text-[#FAE115] bg-[#FAE115] uppercase hover:bg-white hover:border-[#FAE115] border focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    <p>Read More</p>
+                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </div>
+                <% end %>
+              </div>
+            </a>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+</div>
+</section>
