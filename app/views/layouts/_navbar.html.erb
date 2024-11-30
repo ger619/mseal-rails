@@ -1,126 +1,80 @@
- <!-- Header one with sponsors -->
- <div class="p-2 content-end bg-[#F6F6F6] border-b-4 border-[#f4e721] hidden md:block">
-   <ul class="flex justify-end gap-5 p-2 text-[#F6F6F6]">
-          <li>
-            <a target="_blank" rel="noreferrer" href="#">
-              <i class="fa-brands fa-instagram text-[#050505] hover:text-[#f4e721]"></i>
-            </a>
-          </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://twitter.com/Mseal_FC">
-                  <i class="fa-brands fa-twitter text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/msealfc/">
-                  <i class="fa-brands fa-facebook-f fa-lg text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@murangasealfc" >
-                  <i class="fa-brands fa-youtube text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="#">
-                  <i class="fa-brands fa-tiktok text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
+<header class="relative pt-4 bg-[#131313]">
+  <div class="absolute top-1/2 transform -translate-y-1/2 z-15 mt-2">
+    <a class="md:flex xl:none
+    lg:h-[140px] md:h-[140px] sm:h-[120px] " href="/"><img src="/assets/logo-de4289f6164d54f4f02025b1e96d8b0d4539f654b4cb357c60b6b08dde0fb6c3.png"></a>
+  </div>
+  <div class="bg-[#131313]">
+    <div class="container mx-auto flex justify-between items-center px-4 pb-4">
+      <!-- Logo on the Left -->
+      <div class="flex-grow"></div>
+      <!-- Spacer to push hamburger to the right -->
 
+      <!-- Login and Register Links -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
+          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+            <i class="fa fa-user-plus"></i>
+          </span>
+          <span>Login</span>
+        </a>
+        <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
+          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+            <i class="fa fa-user-plus"></i>
+          </span>
+          <span>Register</span>
+        </a>
+      </div>
 
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-                    <%= image_tag "SP_logo-01.png", class: "w-[100px] text-[#F6F6F6]" %>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-                    <%= image_tag "finix-casino.png", class: "w-[100px] text-[#F6F6F6]" %>
-                </a>
-            </li>
-   </ul>
- </div>
-
-    <div class="bg-black w-full h-20 shadow-xl md:mt-0 z-[100] md:px-24 w-full h-20 z-[100] md:mt-0 md:px-24 hidden md:block">
-        <div class="flex justify-between md:justify-end items-center w-full md:mt-0 h-full  md:px-4 py-7 px-2 2xl:px-16 rounded">
-            <div>
+      <!-- Hamburger Icon for Mobile (aligned to the right) -->
+      <div class="md:hidden flex justify-end">
+        <button id="hamburger-btn" class="text-white focus:outline-none focus:text-yellow-500">
+          <i class="fa fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="bg-black py-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Main Navigation Links for Desktop -->
+      <nav class="hidden md:flex space-x-6 ml-16">
+        <div>
                 <ul class="hidden items-center md:flex gap-5 uppercase">
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "NEWS", news_index_path %>
+                        <a href="/news">NEWS</a>
                     </li>
 
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "TEAM", team_index_path %>
+                        <a href="/team">TEAM</a>
                     </li>
 
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "FIXTURES" , fixture_index_path %>
+                        <a href="/fixture">FIXTURES</a>
                     </li>
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "MEMBERSHIP", membership_index_path %>
+                        <a href="/membership">MEMBERSHIP</a>
                     </li>
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "OUR CLUB", club_index_path %>
-                    </li>
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
-                      <%= link_to "SHOP", product_index_path %>
+                        <a href="/club">OUR CLUB</a>
                     </li>
                 </ul>
-
             </div>
-        </div>
+      </nav>
+      <div class="hidden md:flex items-center space-x-4 mr-30">
+        <a href="#" class="hover:text-yellow-500">Shop</a>
+      </div>
     </div>
+  </div>
+  <div class="bg-yellow-500 h-2"></div>
 
-    <div class="hidden md:flex md:top-0 bottom-0 left-2 md:absolute md:h-[140px] sm:h-[120px]">
-        <%= link_to(image_tag("logo.png"), root_path, class: "md:flex xl:none lg:h-[200px] md:h-[140px] sm:h-[120px] ") %>
-    </div>
-
-
- <!-- Mobile menu -->
-<div class="content-end bg-black block md:hidden">
-  <ul class="flex justify-end gap-5 pt-4 bg-black">
-    <li class="absolute top-0 left-0">
-      <%= link_to(image_tag("logo.png", class: "w-[80px] text-[#F6F6F6]" ), root_path ) %>
-    </li>
-    <li id="menuToggle" class="grid mt-5 mr-3">
-      <i id="menuIcon" class="fa-sharp fa-solid fa-bars fa-flip-horizontal fa-xl mr-3 pb-4" style="color: #ffffff;"></i>
-    </li>
-  </ul>
-
-  <ul id="menu" class="hidden items-center md:flex gap-5 text-center mt-12 ml-5 pb-5 uppercase">
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "NEWS", news_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "TEAM", team_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "FIXTURES", fixture_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "MEMBERSHIP", membership_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "OUR CLUB", club_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
-      <%= link_to "SHOP", product_index_path %>
-    </li>
-  </ul>
-</div>
-
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const menu = document.getElementById('menu');
-  const menuIcon = document.getElementById('menuIcon');
-
-  menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-    menuIcon.classList.toggle('fa-bars');
-    menuIcon.classList.toggle('fa-times');
-  });
-</script>
-
-
-
- 
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="bg-black py-2 md:hidden">
+    <nav class="flex flex-col items-start space-y-4 px-4">
+      <a href="#" class="hover:text-yellow-500">News</a>
+      <a href="#" class="hover:text-yellow-500">Fixtures</a>
+      <a href="#" class="hover:text-yellow-500">Team</a>
+      <a href="#" class="hover:text-yellow-500">Statistics</a>
+      <a href="#" class="hover:text-yellow-500">Our Club</a>
+      <a href="#" class="hover:text-yellow-500">Shop</a>
+    </nav>
+  </div>
+</header>

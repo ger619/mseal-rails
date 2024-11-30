@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+ /*Custom Css*/
+ .shadow-b {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  /*Decorate the next and previous buttons*/ 
+  .previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+  
+  .next {
+    background-color: #ddd;
+    color: #000;
+  }
+  
+  .round {
+    border-radius: 50%;
+  }
+  
+  #mobile-menu {
+    display: none;
+  }
+  
