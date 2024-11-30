@@ -50,12 +50,23 @@
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <a href="/fixture">FIXTURES</a>
                     </li>
+
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <a href="/membership">MEMBERSHIP</a>
                     </li>
+
                     <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                         <a href="/club">OUR CLUB</a>
                     </li>
+                    <% if current_user %>
+                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+                        <%= button_to "LOGOUT",  destroy_user_session_path,  method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?' } %>
+                      </li>
+                    <% else %>
+                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+                        <%= button_to "LOG IN",  user_session_path %>
+                      </li>
+                    <% end %>
                 </ul>
             </div>
       </nav>

@@ -1,0 +1,22 @@
+<div class="md:p-0">
+  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+    <h1>
+      KENYA PREMIER LEAGUE TABLE
+    </h1>
+    <div>
+      <% if current_user && current_user.role === 'moderator' %>
+        <%=link_to "Add Table", new_table_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg justify-center mx-auto container m-4">
+  <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white ">
+
+
+    <%= render 'table/table_display' %>
+  </div>
+</div>

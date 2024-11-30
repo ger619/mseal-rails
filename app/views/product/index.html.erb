@@ -1,12 +1,12 @@
 <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-  SHOP
+  <h1>SHOP</h1>
+
+  <% if current_user && current_user.role === 'moderator' %>
+    <%=link_to "Add Product", new_product_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] rounded font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 mb-2" %>
+  <% end %>
 
     <%= render partial: "cart/cart" if @render_cart %>
 
-  <% if current_user %>
-    <%=link_to "Add Product", new_product_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 mb-2" %>
-
-  <% end %>
 </div>
 
 <%= render 'product/production' %>

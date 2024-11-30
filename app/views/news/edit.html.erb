@@ -1,27 +1,27 @@
-<div class="max-w-md mx-auto mt-8">
-  <h1 class="text-2xl font-bold mb-4">Edit News</h1>
-
+<div class="max-w-4xl mx-auto my-8">
   <%= form_with(model: @news, url: news_path(@news), method: :patch, class: "bg-white rounded shadow-md p-6") do |form| %>
-    <div class="mb-4">
-      <%= form.label :type_of_news, class: "block text-sm font-bold mb-2" %>
-      <%= form.text_field :type_of_news, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+
+    <div class="mb-4 flex">
+      <%= image_tag form.object.image, class: 'w-72' if form.object.image.present? %>
+      <%= form.file_field :image, class: "appearance-none border rounded w-full h-1/2 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", placeholder: "All Photos on the site must be landscape" %>
     </div>
 
-    <div class="mb-4">
-      <%= form.label :image, class: "block text-sm font-bold mb-2" %>
-      <%= image_tag form.object.image if form.object.image.present? %>
-      <%= form.file_field :image, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
+    <div class="flex justify-center gap-2">
 
-    <div class="mb-4">
-      <%= form.label :header_news, class: "block text-sm font-bold mb-2" %>
-      <%= form.text_field :header_news, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+        <div class="mb-4 w-full">
+          <%= form.label :header_news, class: "block text-sm font-bold mb-2" %>
+          <%= form.text_field :header_news, class: "appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
+        </div>
+        <div class="mb-4 w-full">
+          <%= form.label :type_of_news, class: "block text-sm font-bold mb-2" %>
+          <%= form.select :type_of_news, %w[Injuries News Fans League Latest News Club News Features, prompt: 'Type of News',], prompt: 'Type of News', class: "h-[50px] flex items-center p-2 w-full border-b bg-[#F7F3ED] border-black focus:outline-none" ,placeholder: "Type of News", required: true%>
+
+        </div>
     </div>
 
     <div class="mb-6">
-      <%= form.label :body, class: "block text-sm font-bold mb-2" %>
-      <%= form.text_area :body, class: "tinymce appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
-      <%= tinymce %>
+      <%= form.label :content , class: "block text-sm font-bold mb-2" %>
+      <%= form.rich_text_area :content, class: "bg-white h-[500px] appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" %>
 
     </div>
 

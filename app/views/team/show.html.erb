@@ -1,14 +1,43 @@
-<div class="shadow-md">
-  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between truncate ...">
-    <p>Muranga Seal | <%= @team.first_name %></p>
+<div class="shadow-md ">
+  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between ">
+    <h1 class="md:w-full w-[90%]">TEAM </h1>
   </div>
+  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-[28px] p-4">
+    <div class="mt-4 border-t-[8px] pt-6 pb-6 border-[#FAE115] flex gap-4 bg-[#FFF]">
+      <p class="text-3xl font-bold  flex justify-start capitalize pl-6">
+        <%= @team.first_name %>
+      </p>
+      <p class="text-3xl font-extralight flex justify-start capitalize">
+         <%= @team.last_name %>
+      </p>
+    </div>
+    <div class="md:w-full w-[100%]">
+      <%= image_tag(@team.image, class: 'rounded w-full') %>
+    </div>
+    <%= render 'statistic' %>
+    <%= render 'player_profile' %>
 
-  <%= @team.first_name %>
-  <%= @team.second_name  %>
-  <%= @team.last_name %>
-  <%= @team.position %>
-  <%= @team.jersey_number%>
-  <%= @team.image %>
-  <%= image_tag(@team.image, class: "w-[50%]") %>
-  <%= raw @team.about%>
+    <div class="text-xl font-bold mt-4 flex justify-start gap-12 uppercase">
+      <p>
+        <%= @team.position %>
+      </p>
+      <p>
+        <%= @team.jersey_number %>
+      </p>
+    </div>
+    <div class="p-4">
+      <p class="text-base font-light"><%= @team.content %></p>
+    </div>
+    <div class="flex inline-flex gap-2">
+    <% if current_user && current_user.role === 'moderator' %>
+      <%= link_to "Edit", edit_team_path(@team.id), class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+      <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
+
+
+

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_24_082001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.uuid "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
@@ -46,8 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
   create_table "adverts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "type_of_advert"
     t.string "header_advert"
-    t.string "mobile_image"
-    t.string "desk_image"
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,12 +69,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
 
   create_table "clubs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "header"
-    t.string "body"
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_clubs_on_user_id"
+  end
+
+  create_table "hall_of_fames", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "goals"
+    t.string "saves"
+    t.string "blocks"
+    t.index ["team_id"], name: "index_hall_of_fames_on_team_id"
   end
 
   create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -78,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
     t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "motor_alert_locks", force: :cascade do |t|
@@ -276,12 +294,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
   create_table "news", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "type_of_news"
     t.string "header_news"
-    t.string "body"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
+  create_table "opponent_teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "team_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id"
+    t.index ["user_id"], name: "index_opponent_teams_on_user_id"
+  end
+
+  create_table "opponents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.date "match_date"
+    t.time "match_time"
+    t.string "venue"
+    t.string "tournament"
+    t.integer "score_one"
+    t.integer "score_two"
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "opponent_team_id"
+    t.uuid "season_id"
+    t.index ["opponent_team_id"], name: "index_opponents_on_opponent_team_id"
+    t.index ["season_id"], name: "index_opponents_on_season_id"
+    t.index ["user_id"], name: "index_opponents_on_user_id"
   end
 
   create_table "orderables", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -297,13 +339,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
 
   create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "name"
-    t.string "description"
     t.integer "price"
     t.string "photo_product"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "scorers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.integer "goals"
+    t.integer "assists"
+    t.uuid "team_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "opponent_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["opponent_id"], name: "index_scorers_on_opponent_id"
+    t.index ["team_id"], name: "index_scorers_on_team_id"
+    t.index ["user_id"], name: "index_scorers_on_user_id"
+  end
+
+  create_table "seasons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_seasons_on_user_id"
   end
 
   create_table "shops", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -317,17 +382,69 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "statistics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "team_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "season_id", null: false
+    t.integer "matches_played", default: 0
+    t.integer "minutes_played", default: 0
+    t.integer "matches_started", default: 0
+    t.integer "subs", default: 0
+    t.integer "tackles_won", default: 0
+    t.integer "tackles_attempted", default: 0
+    t.integer "duel_won", default: 0
+    t.integer "duel_attempted", default: 0
+    t.integer "interception_won", default: 0
+    t.integer "interception_attempted", default: 0
+    t.integer "passes_completed", default: 0
+    t.integer "passes_attempted", default: 0
+    t.integer "shots_on_target", default: 0
+    t.integer "shots_attempted", default: 0
+    t.integer "goals_scored", default: 0
+    t.integer "assists", default: 0
+    t.integer "yellow_card", default: 0
+    t.integer "red_card", default: 0
+    t.integer "fouls_committed", default: 0
+    t.integer "fouls_won", default: 0
+    t.index ["season_id"], name: "index_statistics_on_season_id"
+    t.index ["team_id"], name: "index_statistics_on_team_id"
+    t.index ["user_id"], name: "index_statistics_on_user_id"
+  end
+
+  create_table "tables", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "w"
+    t.integer "d"
+    t.integer "l"
+    t.integer "gf"
+    t.integer "ga"
+    t.uuid "opponent_team_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "season_id", null: false
+    t.index ["opponent_team_id"], name: "index_tables_on_opponent_team_id"
+    t.index ["season_id"], name: "index_tables_on_season_id"
+    t.index ["user_id"], name: "index_tables_on_user_id"
+  end
+
   create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name"
     t.string "second_name"
     t.string "last_name"
     t.string "position"
-    t.string "image"
     t.integer "jersey_number"
-    t.string "about"
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
+    t.date "date_of_birth"
+    t.string "mseal_debut"
+    t.string "first_goal"
+    t.string "previous_club"
+    t.string "twitter", default: "https://x.com/home"
+    t.string "instagram", default: "https://www.instagram.com/"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
@@ -357,14 +474,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_130431) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "adverts", "users"
   add_foreign_key "clubs", "users"
+  add_foreign_key "hall_of_fames", "teams"
   add_foreign_key "motor_alert_locks", "motor_alerts", column: "alert_id"
   add_foreign_key "motor_alerts", "motor_queries", column: "query_id"
   add_foreign_key "motor_note_tag_tags", "motor_note_tags", column: "tag_id"
   add_foreign_key "motor_note_tag_tags", "motor_notes", column: "note_id"
   add_foreign_key "motor_taggable_tags", "motor_tags", column: "tag_id"
   add_foreign_key "news", "users"
+  add_foreign_key "opponent_teams", "users"
+  add_foreign_key "opponents", "opponent_teams"
+  add_foreign_key "opponents", "seasons"
+  add_foreign_key "opponents", "users"
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
   add_foreign_key "products", "users"
+  add_foreign_key "scorers", "opponents"
+  add_foreign_key "scorers", "teams"
+  add_foreign_key "scorers", "users"
+  add_foreign_key "seasons", "users"
+  add_foreign_key "statistics", "seasons"
+  add_foreign_key "statistics", "teams"
+  add_foreign_key "statistics", "users"
+  add_foreign_key "tables", "opponent_teams"
+  add_foreign_key "tables", "seasons"
+  add_foreign_key "tables", "users"
   add_foreign_key "teams", "users"
 end

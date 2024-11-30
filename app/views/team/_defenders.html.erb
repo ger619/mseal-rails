@@ -1,125 +1,27 @@
-<div class="my-4 ml-8">
+<div class="m-4">
   <h1 class="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Defenders</h1>
   <hr class="ml-4 w-[6%] bg-[#FAE115] h-[10px] mb-2">
-  <div class="grid xl:grid-cols-4 lg:grid-cols-3  md:grid-cols-2 flex-col text-center p-2">
-
+  <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-3 flex-col text-center p-2 justify-center">
     <% @teams.each do |team| %>
       <% if team.position === "Defender" %>
-        <%= link_to team_path(team.id) do %>
-          <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-            <% if team.image.attached? %>
-              <%= image_tag(team.image) %>
-            <% end %>
-            <div class="flex justify-between">
-              <div class="flex flex-col">
-                <h1 class="self-start"><%= team.first_name %></h1>
-                <h1 class="font-semibold text-2xl"><%= team.last_name %></h1>
+        <% unless (current_user.nil? || current_user === "user") && team.active ==! true %>
+          <%= link_to team_path(team.id) do %>
+            <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 border border-[#f4e721] rounded md:mb-6 mb-8 md:mx-0 mx-auto gap-2">
+              <% if team.image.attached? %>
+                <%= image_tag(team.image) %>
+              <% end %>
+              <div class="flex justify-between p-3 bg-[#ffffff]">
+                <div class="flex flex-col">
+                  <p class="self-start font-extralight uppercase"><%= team.first_name %></p>
+                  <p class="self-start font-semibold text-2xl"><%= team.last_name %></p>
+                </div>
+                  <p class="text-5xl"><%= team.jersey_number %></p>
               </div>
-              <h1 class="text-gray-400 text-5xl">0<%= team.jersey_number %></h1>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 mb-6">
-      <%= image_tag "defender1.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Samuel</h1>
-          <h1 class="font-semibold text-2xl">Semo</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">70</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 mb-6">
-    <%= image_tag "briandf.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Brian</h1>
-          <h1 class="font-semibold text-2xl">Marvin</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">40</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 mb-6">
-      <%= image_tag "HumphreyDF1.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Humfrey</h1>
-          <h1 class="font-semibold text-2xl">Obina</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">20</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 mb-6">
-      <%= image_tag "PeterMwaura.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Peter</h1>
-          <h1 class="font-semibold text-2xl">Mwaura(Cpt)</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">04</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 mb-6">
-      <%= image_tag "CentricDF.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Centric</h1>
-          <h1 class="font-semibold text-2xl">Asango</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">21</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 mb-6">
-      <%= image_tag "VictorDF.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Victor</h1>
-          <h1 class="font-semibold text-2xl">Odhiambo</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">03</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "GideonWere.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Gideon</h1>
-          <h1 class="font-semibold text-2xl">Were</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">19</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "RajabDF.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Rajab</h1>
-          <h1 class="font-semibold text-2xl">Omar</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">12</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "ThomasDF.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Thomas</h1>
-          <h1 class="font-semibold text-2xl">Wainaina</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">13</h1>
-      </div>
-    </div>
 
   </div>
 

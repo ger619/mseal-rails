@@ -14,6 +14,44 @@
  *= require_self
  */
 
+p,
+li,
+td,
+th {
+  font-family: 'Space Grotesk', serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Equitan Sans', serif;
+  margin-bottom: 4px;
+  margin-top: 2px;
+}
+
+p,
+li,
+td,
+th {
+  font-family: 'Space Grotesk', serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Equitan Sans', serif;
+  margin-bottom: 4px;
+  margin-top: 2px;
+}
+
  /*Custom Css*/
  .shadow-b {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
