@@ -1,7 +1,9 @@
 <header class="relative pt-4 bg-[#131313]">
   <div class="absolute top-1/2 transform -translate-y-1/2 z-15 mt-2">
-    <a class="md:flex xl:none
-    lg:h-[140px] md:h-[140px] sm:h-[120px] " href="/"><img src="/assets/logo-de4289f6164d54f4f02025b1e96d8b0d4539f654b4cb357c60b6b08dde0fb6c3.png"></a>
+    <a class="md:flex xl:none lg:h-[140px] md:h-[140px] sm:h-[120px]" href="/"
+      ><img
+        src="/assets/logo-de4289f6164d54f4f02025b1e96d8b0d4539f654b4cb357c60b6b08dde0fb6c3.png"
+    /></a>
   </div>
   <div class="bg-[#131313]">
     <div class="container mx-auto flex justify-between items-center px-4 pb-4">
@@ -27,7 +29,10 @@
 
       <!-- Hamburger Icon for Mobile (aligned to the right) -->
       <div class="md:hidden flex justify-end">
-        <button id="hamburger-btn" class="text-white focus:outline-none focus:text-yellow-500">
+        <button
+          id="hamburger-btn"
+          class="text-white focus:outline-none focus:text-yellow-500"
+        >
           <i class="fa fa-bars text-2xl"></i>
         </button>
       </div>
@@ -38,40 +43,60 @@
       <!-- Main Navigation Links for Desktop -->
       <nav class="hidden md:flex space-x-6 ml-16">
         <div>
-                <ul class="hidden items-center md:flex gap-5 uppercase">
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <a href="/news">NEWS</a>
-                    </li>
+          <ul class="hidden items-center md:flex gap-5 uppercase">
+            <li
+              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+            >
+              <a href="/news">NEWS</a>
+            </li>
 
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <a href="/team">TEAM</a>
-                    </li>
+            <li
+              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+            >
+              <a href="/team">TEAM</a>
+            </li>
 
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <a href="/fixture">FIXTURES</a>
-                    </li>
+            <li
+              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+            >
+              <a href="/fixture">FIXTURES</a>
+            </li>
 
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <a href="/membership">MEMBERSHIP</a>
-                    </li>
+            <li
+              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+            >
+              <a href="/membership">MEMBERSHIP</a>
+            </li>
 
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <a href="/club">OUR CLUB</a>
-                    </li>
-                    <% if current_user %>
-                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= button_to "LOGOUT",  destroy_user_session_path,  method: :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure?' } %>
-                      </li>
-                    <% else %>
-                      <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= button_to "LOG IN",  user_session_path %>
-                      </li>
-                    <% end %>
-                </ul>
-            </div>
+            <li
+              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+            >
+              <a href="/club">OUR CLUB</a>
+            </li>
+            <% if current_user %>
+            <li
+              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+            >
+              <%= button_to "LOGOUT", destroy_user_session_path, method:
+              :delete, data: { 'turbo_method': :delete, 'turbo-confirm': 'Are
+              you sure?' } %>
+            </li>
+            <% else %>
+            <li
+              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+            >
+              <%= button_to "LOG IN", user_session_path %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
       </nav>
       <div class="hidden md:flex items-center space-x-4 mr-30">
-        <a href="#" class="hover:text-yellow-500">Shop</a>
+        <li
+          class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
+        >
+          <%= link_to "SHOP", product_index_path %>
+        </li>
       </div>
     </div>
   </div>
