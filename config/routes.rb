@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   resources :statistic
   resources :season
   resources :table
+
+  Rails.application.routes.draw do
+    get 'features', to: 'pages#features', as: 'features'
+  end
 end
