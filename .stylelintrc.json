@@ -28,5 +28,5 @@
     ],
     "csstree/validator": true
   },
-  "ignoreFiles": ["build/**", "dist/**", "**/reset*.css", "**/bootstrap*.css","**/actiontext*.css"]
+  "ignoreFiles": ["build/**", "builds/**","dist/**", "**/reset*.css", "**/bootstrap*.css","**/actiontext*.css", "**/tailwind.css"]
 }

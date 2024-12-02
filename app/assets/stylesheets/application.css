@@ -14,24 +14,21 @@
  *= require_self
  */
 
-p,
-li,
-td,
-th {
-  font-family: 'Space Grotesk', serif;
-  line-height: 1.6;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Equitan Sans', serif;
-  margin-bottom: 4px;
-  margin-top: 2px;
-}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
 
 p,
 li,
@@ -52,28 +49,28 @@ h6 {
   margin-top: 2px;
 }
 
- /*Custom Css*/
- .shadow-b {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-  
-  /*Decorate the next and previous buttons*/ 
-  .previous {
-    background-color: #f1f1f1;
-    color: black;
-  }
-  
-  .next {
-    background-color: #ddd;
-    color: #000;
-  }
-  
-  .round {
-    border-radius: 50%;
-  }
-  
-  #mobile-menu {
-    display: none;
-  }
-  
+/* Custom Css */
+.shadow-b {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Decorate the next and previous buttons */
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #ddd;
+  color: #000;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+#mobile-menu {
+  display: none;
+}
