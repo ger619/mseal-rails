@@ -1,0 +1,66 @@
+<% @opponent1.limit(1).each do |opp| %>
+  <div class="bg-white shadow-md overflow-hidden w-1/3">
+    <div class="relative flex items-center bg-gradient-to-r from-gray-900 to-purple-900 p-4 shadow-lg">
+      <!-- Date Section -->
+      <div class="flex items-center justify-center text-white text-4xl font-bold pr-4">
+        <div class="text-center gap-1">
+          <p>
+            <%= opp.match_date.strftime("%d") %>
+          </p>
+        </div>
+        <div>
+          <p class="text-sm font-light uppercase">
+            <%= opp.match_date.strftime("%A") %>
+          </p>
+          <p class="text-xs font-light uppercase text-gray-400">
+            <%= opp.match_date.strftime("%B") %>
+          </p>
+        </div>
+      </div>
+
+      <!-- Sponsor Logo -->
+      <div class="ml-auto">
+        <!-- Match Info Section -->
+        <div class="flex-grow pl-4">
+          <p class="text-yellow-400 text-2xl font-semibold uppercase italic">
+            Next Match
+          </p>
+          <div class="flex">
+            <p class="text-white text-xs border-r border-gray-700 mr-2">
+              Presented by
+            </p>
+            <img
+              src=""
+
+              class="h-3"
+              />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4">
+      <div class="flex justify-center space-x-4 items-center">
+        <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "h-24"%>
+        <span class="text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold">
+                <%= opp.match_time.strftime("%I:%M %p") %>
+              </span>
+        <% if opp.opponent_team.team_badge.attached? %>
+          <%= image_tag (opp.opponent_team.team_badge), class: "w-24", alt: "Opponent Logo" %>
+        <% end %>
+      </div>
+      <p class="text-center mt-2 text-gray-700">
+        Murang'a Seals v <%= opp.opponent_team.name %>
+      </p>
+      <p class="text-center text-sm text-gray-500">
+        <%= opp.venue %>
+      </p>
+      <button
+        class="w-full bg-yellow-500 text-white font-semibold py-2 mt-4 rounded-lg hover:bg-yellow-600"
+      >
+        TICKETS
+      </button>
+    </div>
+  </div>
+
+<% end %>
