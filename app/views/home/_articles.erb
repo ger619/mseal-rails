@@ -24,7 +24,7 @@
               <h2 class="text-lg font-bold">
                 <%= truncate(news.header_news, length: 30, separator: ' ') %>              </h2>
               <div class="flex items-center mt-2 text-gray-400 text-sm">
-                <span>🎬 05:00</span>
+                <span>🎬 <%= news.created_at %></span>
               </div>
             </div>
           </article>
