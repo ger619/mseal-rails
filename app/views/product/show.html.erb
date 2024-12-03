@@ -2,13 +2,11 @@
   <div class="p-8 bg-[#FAE115] font-bold uppercase text-3xl">
     <h1>PRODUCT SHOP | <%= @product.name %></h1>
   </div>
-
   <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
     <div>
       <%= image_tag(@product.photo_product) %>
       <%= @product.price  %>
     </div>
-    <%= button_to "Destroy this product", @product, method: :delete %>
-
+    <%= button_to "Destroy This Product", @product, method: :delete %>
   </div>
 </div>
