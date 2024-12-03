@@ -10,7 +10,7 @@
       <!-- Logo on the Left -->
       <div class="flex-grow"></div>
       <!-- Spacer to push hamburger to the right -->
-
+      <% if current_user %>
       <!-- Login and Register Links -->
       <div class="hidden md:flex items-center space-x-4">
         <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
@@ -26,6 +26,27 @@
           <span>Register</span>
         </a>
       </div>
+        <% else %>
+        <!-- Login and Register Links -->
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
+          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+            <i class="fa fa-user-plus"></i>
+          </span>
+            <span>
+              <%= button_to "Login", user_session_path %>
+            </span>
+          </a>
+          <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
+          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+            <i class="fa fa-user-plus"></i>
+          </span>
+            <span>
+              <%= button_to "Registration", new_user_registration_path, method: :get %>
+            </span>
+          </a>
+        </div>
+      <% end %>
 
       <!-- Hamburger Icon for Mobile (aligned to the right) -->
       <div class="md:hidden flex justify-end">
@@ -44,34 +65,21 @@
       <nav class="hidden md:flex space-x-6 ml-16">
         <div>
           <ul class="hidden items-center md:flex gap-5 uppercase">
-            <li
-              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
-            >
-              <a href="/news">NEWS</a>
+            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+              <%= link_to 'NEWS', news_index_path %>
             </li>
-
-            <li
-              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
-            >
-              <a href="/team">TEAM</a>
+            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+              <%= link_to 'TEAM', team_index_path %>
             </li>
-
-            <li
-              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
-            >
-              <a href="/fixture">FIXTURES</a>
+            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+              <%= link_to 'FIXTURE', opponent_index_path %>
             </li>
-
-            <li
-              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
-            >
-              <a href="/membership">MEMBERSHIP</a>
+            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+              <%= link_to 'MEMBERSHIP', membership_index_path %>
             </li>
-
-            <li
-              class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
-            >
+            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
               <a href="/club">OUR CLUB</a>
+              <%= link_to 'OUR CLUB', club_index_path %>
             </li>
             <% if current_user %>
             <li
@@ -92,9 +100,7 @@
         </div>
       </nav>
       <div class="hidden md:flex items-center space-x-4 mr-30">
-        <li
-          class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]"
-        >
+        <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
           <%= link_to "SHOP", product_index_path %>
         </li>
       </div>
