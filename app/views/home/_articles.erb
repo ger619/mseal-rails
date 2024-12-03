@@ -755,3 +755,72 @@
         </div>
       </div>
     </section>
+
+<section>
+  <!-- Players Section -->
+  <div class="py-16 relative overflow-hidden bg-gradient-to-br from-yellow-600 to-blue-900">
+    <div class="max-w-screen-lg mx-auto px-6 relative">
+      <!-- Title -->
+      <h1 class="text-center text-white text-4xl md:text-5xl font-bold mb-10">
+        Players
+      </h1>
+
+      <!-- Carousel -->
+      <div class="relative">
+        <div class="flex space-x-6 overflow-x-auto scroll-snap">
+          <!-- Player Cards -->
+          <div class="flex-shrink-0 w-1/3 md:w-1/4">
+            <div class="rounded-lg overflow-hidden">
+              <img src="./assets/player-profile.png" alt="Player 1" class="w-full h-auto object-cover" />
+            </div>
+            <p class="text-center text-white mt-2">Player 1</p>
+          </div>
+
+          <div class="flex-shrink-0 w-1/3 md:w-1/4">
+            <div class="rounded-lg overflow-hidden">
+              <img src="./assets/player-profile.png" alt="Player 2" class="w-full h-auto object-cover" />
+            </div>
+            <p class="text-center text-white mt-2">Player 2</p>
+          </div>
+
+          <div class="flex-shrink-0 w-1/3 md:w-1/4">
+            <div class="rounded-lg overflow-hidden">
+              <img src="./assets/player-profile.png" alt="Player 3" class="w-full h-auto object-cover" />
+            </div>
+            <p class="text-center text-white mt-2">Player 3</p>
+          </div>
+
+          <div class="flex-shrink-0 w-1/3 md:w-1/4">
+            <div class="rounded-lg overflow-hidden">
+              <img src="./assets/player-profile.png" alt="Player 4" class="w-full h-auto object-cover" />
+            </div>
+            <p class="text-center text-white mt-2">Player 4</p>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button
+          class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-2xl bg-transparent border-none focus:outline-none z-10"
+          onclick="scrollLeft()">
+          &larr;
+        </button>
+        <button
+          class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-2xl bg-transparent border-none focus:outline-none z-10"
+          onclick="scrollRight()">
+          &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script for Carousel Navigation -->
+<script>
+    function scrollLeft() {
+        document.querySelector('.scroll-snap').scrollBy({ left: -300, behavior: 'smooth' });
+    }
+
+    function scrollRight() {
+        document.querySelector('.scroll-snap').scrollBy({ left: 300, behavior: 'smooth' });
+    }
+</script>
