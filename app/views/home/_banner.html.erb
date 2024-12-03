@@ -1,17 +1,17 @@
+<% @news.limit(1).each do |news| %>
 <section class="relative">
-      <img
-        src="./assets/home-banner.jpg"
-        alt="Background Image"
-        class="w-full h-96 object-cover"
-      />
+  <% if news.image.attached? %>
+    <%= image_tag(news.image, class: "w-full h-96 object-cover", alt: "Background Image" ) %>
+  <% end %>
       <div
         class="absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col items-center justify-center"
       >
         <div class="flex flex-col items-center mt-4">
-          <h1 class="text-4xl font-bold text-center px-4 sm:px-0">PREVIEW | Barça v Man City</h1>
+          <h1 class="text-4xl font-bold text-center px-4 sm:px-0"><%= news.header_news %></h1>
           <div class="h-1 bg-white w-full"></div>
         </div>
 
-        <p class="text-gray-400 text-sm mt-2">⚽ First Team | 1 hr ago</p>
+        <p class="text-gray-400 text-sm mt-2">⚽ <%= news.type_of_news %> | <%= news.created_at %> </p>
       </div>
     </section>
+<% end %>
