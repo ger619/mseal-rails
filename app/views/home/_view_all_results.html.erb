@@ -3,19 +3,14 @@
 <section class="bg-gray-900 py-4 text-gray-200">
   <div class="container mx-auto px-4">
     <div class="bg-white p-4">
-      <div
-        class="flex items-center justify-between py-4 px-8 bg-white shadow-b"
-      >
+      <div class="flex items-center justify-between py-4 px-8 bg-white shadow-b">
         <div class="flex items-center space-x-2">
-          <h1
-            class="text-2xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
-          >
+          <h1 class="text-2xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
             Murang'a
           </h1>
-          <span
-            class="text-2xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
-          >First Team</span
-          >
+          <span class="text-2xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
+            First Team
+          </span>
         </div>
 
         <!-- Countdown Section -->
@@ -76,133 +71,16 @@
 
 
         <!--Card 2-->
-        <% @opponent1.limit(1).each do |opp| %>
-          <div class="bg-white shadow-md overflow-hidden w-1/3">
-            <div class="relative flex items-center bg-gradient-to-r from-gray-900 to-purple-900 p-4 shadow-lg">
-            <!-- Date Section -->
-            <div
-              class="flex items-center justify-center text-white text-4xl font-bold pr-4"
-            >
-              <div class="text-center gap-1">
-                <p><%= opp.match_date.strftime("%d") %>
-                </p>
-              </div>
-              <div>
-                <p class="text-sm font-light uppercase"><%= opp.match_date.strftime("%A") %></p>
-                <p class="text-xs font-light uppercase text-gray-400">
-                  <%= opp.match_date.strftime("%B") %>
-                </p>
-              </div>
-            </div>
-
-            <!-- Sponsor Logo -->
-            <div class="ml-auto">
-              <!-- Match Info Section -->
-              <div class="flex-grow pl-4">
-                <p
-                  class="text-yellow-400 text-2xl font-semibold uppercase italic"
-                >
-                  Next Match
-                </p>
-                <div class="flex">
-                  <p
-                    class="text-white text-xs border-r border-gray-700 mr-2"
-                  >
-                    Presented by
-                  </p>
-                  <img
-                    src=""
-
-                    class="h-3"
-                    />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-4">
-            <div class="flex justify-center space-x-4 items-center">
-              <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "h-24"%>
-              <span class="text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold">
-                <%= opp.match_time.strftime("%I:%M %p") %>
-              </span>
-              <% if opp.opponent_team.team_badge.attached? %>
-                <%= image_tag (opp.opponent_team.team_badge), class: "w-24", alt: "Opponent Logo" %>
-              <% end %>
-            </div>
-            <p class="text-center mt-2 text-gray-700">
-              Murang'a Seals v <%= opp.opponent_team.name %>
-            </p>
-            <p class="text-center text-sm text-gray-500">
-              <%= opp.venue %>
-            </p>
-            <button
-              class="w-full bg-yellow-500 text-white font-semibold py-2 mt-4 rounded-lg hover:bg-yellow-600"
-            >
-              TICKETS
-            </button>
-          </div>
-        </div>
-          <% end %>
-
-
-
+       <%= render 'latest_fixtures' %>
         <!-- Card 3 -->
-        <div class="bg-white shadow-md overflow-hidden w-1/3">
-          <div
-            class="relative flex items-center bg-gradient-to-r from-gray-900 to-purple-900 p-5 shadow-lg"
-          >
-            <!-- Date Section -->
-            <div
-              class="flex items-center justify-center text-white text-4xl font-bold pr-4"
-            >
-              <div class="text-center">
-                <p>04</p>
-              </div>
-              <div>
-                <p class="text-sm font-light uppercase">SUNDAY</p>
-                <p class="text-xs font-light uppercase text-gray-400">
-                  AUGUST
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="p-4">
-            <div class="flex justify-center space-x-4 items-center">
-              <img
-                src="./assets/Barcelona.png"
-                alt="Barcelona Logo"
-                class="h-10"
-                />
-              <span
-                class="text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold"
-              >01:00</span
-              >
-              <img
-                src="./assets/Real_madrid.png"
-                alt="Real Madrid Logo"
-                class="h-10"
-                />
-            </div>
-            <p class="text-center mt-6 text-gray-700">
-              FC Barcelona v R. Madrid
-            </p>
-            <p class="text-center text-sm mb-8 text-gray-500">
-              Santiago Bernabeu
-            </p>
-            <button
-              class="w-full bg-yellow-500 text-white font-semibold py-2 mt-4 rounded-lg hover:bg-yellow-600"
-            >
-              TICKETS
-            </button>
-          </div>
-        </div>
+        <%= render 'home/upcoming_match' %>
+
       </div>
     </div>
   </div>
 </section>
 
-<!--Ticketing section-->
+<!--Ticketing section
 <section class="bg-gray-900 py-4 text-gray-200">
   <div class="container mx-auto px-4">
     <div class="bg-white p-4">
@@ -220,24 +98,25 @@
         </div>
       </div>
 
+
       <article class="flex justify-center">
-        <!-- Cards Section -->
+
         <div class="flex space-x-4 mt-6 ml-2">
-          <!-- Card 1 -->
+
           <div class="bg-white shadow-md overflow-hidden">
             <img src="./assets/team_players_1.png" alt="results section" />
           </div>
         </div>
 
         <div class="flex space-x-4 mt-6 ml-2">
-          <!-- Card 1 -->
+
           <div class="bg-white shadow-md overflow-hidden">
             <img src="./assets/team_players_1.png" alt="results section" />
           </div>
         </div>
 
         <div class="flex space-x-4 mt-6 ml-2">
-          <!-- Card 1 -->
+
           <div class="bg-white shadow-md overflow-hidden">
             <img
               src="./assets/team_women_player.png"
@@ -249,9 +128,9 @@
       </article>
 
       <article class="flex justify-center">
-        <!-- Cards Section -->
+
         <div class="flex space-x-4 mt-6 ml-2">
-          <!-- Card 1 -->
+
           <div class="bg-white shadow-md overflow-hidden">
             <img src="./assets/team_players_1.png" alt="results section" />
           </div>
@@ -260,179 +139,10 @@
     </div>
   </div>
 </section>
-
+-->
 <!--Shopping section-->
-<section class="bg-gray-900 py-4 text-gray-200">
-  <div class="container mx-auto px-4">
-    <div class="bg-white p-4">
-      <div class="flex items-center justify-center py-4 px-8 bg-white">
-        <div class="flex items-center space-x-2">
-          <h1
-            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
-          >
-            Murang'a
-          </h1>
-          <span
-            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
-          >Seal Store</span
-          >
-        </div>
-      </div>
-      <div class="flex justify-end mt-2 mb-4">
-        <button
-          class="bg-black text-white px-4 py-2 flex items-center justify-center space-x-2 ml-auto"
-        >
-          <span>OFFICIAL STORE MURANG’A SEAL</span>
-          <i class="fa fa-shopping-cart"></i>
-        </button>
-      </div>
+<%= render 'home/muranga_seal_store' %>
 
-      <article class="flex justify-center">
-        <!-- Card 1 -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden w-1/4 mr-2"
-        >
-          <img
-            src="./assets/new_kit.png"
-            alt="New Kit"
-            class="w-full h-48 object-cover"
-            />
-          <div class="flex">
-            <!-- Seat Image -->
-            <div class="p-4 flex-1">
-              <img
-                src="./assets/kit.png"
-                alt="Seat Memorabilia"
-                class="w-full h-full object-cover"
-                />
-            </div>
-
-            <!-- Text Section -->
-            <div class="p-4 flex-1">
-              <h2 class="text-xl font-semibold">MEMORABILIA</h2>
-              <p class="text-gray-500 mt-2">
-                Take a piece of history home. The most exclusive products.
-              </p>
-              <a
-                href="#"
-                class="mt-4 inline-flex text-xs items-center text-black font-semibold"
-              >
-                SHOP NOW <span class="ml-1">&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden w-1/4 mr-2"
-        >
-          <img
-            src="./assets/training.png"
-            alt="Training"
-            class="w-full h-48 object-cover"
-            />
-          <div class="flex">
-            <!-- Seat Image -->
-            <div class="p-4 flex-1">
-              <img
-                src="./assets/training_man.png"
-                alt="Seat Memorabilia"
-                class="w-full h-full object-cover"
-                />
-            </div>
-
-            <!-- Text Section -->
-            <div class="p-4 flex-1">
-              <h2 class="text-xl font-semibold">MEMORABILIA</h2>
-              <p class="text-gray-500 mt-2">
-                Take a piece of history home. The most exclusive products.
-              </p>
-              <a
-                href="#"
-                class="mt-4 inline-flex text-xs items-center text-black font-semibold"
-              >
-                SHOP NOW <span class="ml-1">&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden w-1/4 mr-2"
-        >
-          <img
-            src="./assets/barcity.png"
-            alt="Barçity"
-            class="w-full h-48 object-cover"
-            />
-          <div class="flex">
-            <!-- Seat Image -->
-            <div class="p-4 flex-1">
-              <img
-                src="./assets/Igg.png"
-                alt="Seat Memorabilia"
-                class="w-full h-full object-cover"
-                />
-            </div>
-
-            <!-- Text Section -->
-            <div class="p-4 flex-1">
-              <h2 class="text-xl font-semibold">MEMORABILIA</h2>
-              <p class="text-gray-500 mt-2">
-                Take a piece of history home. The most exclusive products.
-              </p>
-              <a
-                href="#"
-                class="mt-4 inline-flex text-xs items-center text-black font-semibold"
-              >
-                SHOP NOW <span class="ml-1">&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden w-1/4 mr-2"
-        >
-          <!-- Main Product Image -->
-          <img
-            src="./assets/memorabilia.png"
-            alt="Memorabilia"
-            class="w-full h-48 object-cover"
-            />
-
-          <div class="flex">
-            <!-- Seat Image -->
-            <div class="p-4 flex-1">
-              <img
-                src="./assets/seat.png"
-                alt="Seat Memorabilia"
-                class="w-full h-20 mt-10 object-cover"
-                />
-            </div>
-
-            <!-- Text Section -->
-            <div class="p-4 flex-1">
-              <h2 class="text-xl font-semibold">MEMORABILIA</h2>
-              <p class="text-gray-500 mt-2">
-                Take a piece of history home. The most exclusive products.
-              </p>
-              <a
-                href="#"
-                class="mt-4 inline-flex text-xs items-center text-black font-semibold"
-              >
-                SHOP NOW <span class="ml-1">&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
 
 <section class="bg-gray-900 py-4 text-gray-200">
   <div class="container mx-auto px-4">
