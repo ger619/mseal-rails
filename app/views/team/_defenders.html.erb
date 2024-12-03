@@ -1,28 +1,43 @@
-<div class="m-4">
-  <h1 class="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Defenders</h1>
-  <hr class="ml-4 w-[6%] bg-[#FAE115] h-[10px] mb-2">
-  <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-3 flex-col text-center p-2 justify-center">
-    <% @teams.each do |team| %>
-      <% if team.position === "Defender" %>
-        <% unless (current_user.nil? || current_user === "user") && team.active ==! true %>
-          <%= link_to team_path(team.id) do %>
-            <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 border border-[#f4e721] rounded md:mb-6 mb-8 md:mx-0 mx-auto gap-2">
-              <% if team.image.attached? %>
-                <%= image_tag(team.image) %>
-              <% end %>
-              <div class="flex justify-between p-3 bg-[#ffffff]">
-                <div class="flex flex-col">
-                  <p class="self-start font-extralight uppercase"><%= team.first_name %></p>
-                  <p class="self-start font-semibold text-2xl"><%= team.last_name %></p>
-                </div>
-                  <p class="text-5xl"><%= team.jersey_number %></p>
-              </div>
+<div class="space-y-10">
+  <!-- Section: Goalkeepers -->
+  <div>
+    <h3 class="text-2xl font-semibold text-center mb-6">DEFENDERS</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Player Card -->
+      <!-- Player Card -->
+      <div class="relative group w-full h-96 overflow-hidden">
+        <img src="./assets/player-image-squared.png" alt="IÑAKI PEÑA" class="w-full h-full object-cover">
+        <!-- Default Info -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent flex items-center justify-center text-center transition-all duration-300 group-hover:hidden">
+          <div class="flex flex-col items-center justify-end h-full p-4 text-white">
+            <p class="text-xl font-bold mb-1">IÑAKI PEÑA</p>
+            <p class="text-sm text-gray-400 mb-4">Goalkeeper</p>
+          </div>
+        </div>
+
+        <!-- Hover Details -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent hidden group-hover:flex flex-col items-center justify-center p-4 text-white transition-all duration-300">
+          <div class="flex justify-around w-full mb-4">
+            <div class="text-center">
+              <p class="text-xs uppercase text-gray-400">Barça Appearances</p>
+              <p class="text-2xl font-bold">95</p>
+              <p class="text-sm text-yellow-500">15</p>
             </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
+            <div class="text-center">
+              <p class="text-xs uppercase text-gray-400">Barça Goals</p>
+              <p class="text-2xl font-bold">2</p>
+              <p class="text-sm text-yellow-500">0</p>
+            </div>
+            <div class="text-center">
+              <p class="text-xs uppercase text-gray-400">Barça Assists</p>
+              <p class="text-2xl font-bold">9</p>
+              <p class="text-sm text-yellow-500">2</p>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400">2024/2025 SEASON</p>
+        </div>
+      </div>
 
+    </div>
   </div>
-
 </div>
