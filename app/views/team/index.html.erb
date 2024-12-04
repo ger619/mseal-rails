@@ -5,17 +5,21 @@
       <!-- Title -->
       <h2 class="text-3xl font-semibold text-center mb-10">MURANG'A SEAL FIRST TEAM</h2>
 
-      <!-- Tabs for Positions -->
       <div class="mb-10 text-center">
         <ul class="flex justify-center space-x-6">
-          <li><button class="text-lg text-gray-600">ALL PLAYERS</button></li>
-          <li><button class="text-lg text-gray-600">GOALKEEPERS</button></li>
-          <li><button class="text-lg text-gray-600">DEFENDERS</button></li>
-          <li><button class="text-lg text-gray-600">MIDFIELDERS</button></li>
-          <li><button class="text-lg text-gray-600">FORWARDS</button></li>
-          <li><button class="text-lg text-gray-600">COACHING STAFF</button></li>
+          <li><button class="text-lg text-white" data-action="click->partial#load" data-partial="all_players" data-id="all_players">ALL PLAYERS</button></li>
+          <li><button class="text-lg text-white" data-action="click->partial#load" data-partial="goalkeepers" data-id="goalkeepers">GOALKEEPERS</button></li>
+          <li><button class="text-lg text-white" data-action="click->partial#load" data-partial="defenders" data-id="defenders">DEFENDERS</button></li>
+          <li><button class="text-lg text-white" data-action="click->partial#load" data-partial="midfielders" data-id="midfielders">MIDFIELDERS</button></li>
+          <li><button class="text-lg text-white" data-action="click->partial#load" data-partial="forwards" data-id="forwards">FORWARDS</button></li>
+          <li><button class="text-lg text-white" data-action="click->partial#load" data-partial="coach" data-id="coach">COACHING STAFF</button></li>
         </ul>
       </div>
+
+      <turbo-frame id="players-frame">
+        <%= render partial: 'team/all_players' %>
+      </turbo-frame>
+
       <div>
         <% if current_user && current_user.role === 'moderator'  %>
           <%=link_to "Add Player", new_team_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
@@ -23,16 +27,4 @@
       </div>
       <!-- Repeat Player Card for other goalkeepers... -->
     </div>
-
-    <div>
-      <%= render "team/goalkeeper" %>
-      <%= render "team/defenders" %>
-      <%= render "team/midfielders" %>
-      <%= render "team/forward" %>
-      <%= render "team/coach" %>
-
-    </div>
-
-
-
   </div>
