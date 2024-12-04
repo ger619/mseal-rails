@@ -1,29 +1,83 @@
-<% @news.each do |news| %>
-  <a href="<%= news_path(news) %>">
-    <div class="md:mt-0 flex mb-4 md:hover:shadow-lg md:hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-t-4 border-[#FAE115] grid grid-cols-3">
-      <div class="lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden col-span-1 h-full">
-        <%= image_tag(news.image, class: "max-w-full h-full ") %>
+<section class="bg-gray-900 py-4 text-gray-200">
+  <div class="container mx-auto px-4">
+    <div class="bg-white p-4">
+      <div class="flex items-center justify-center py-4 px-8 bg-white">
+        <div class="flex items-center space-x-2">
+          <h1
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
+          >
+            Murang'a
+          </h1>
+          <span
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
+          >Seal News</span
+          >
+        </div>
       </div>
-      <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal col-span-2">
-        <p class="text-sm text-gray-600 flex items-center uppercase ">
-          <%= news.type_of_news %>
-        </p>
-        <div class="text-gray-900 font-bold text-xl mb-2 md:mt-3 sm:text-sm md:text-xl max-w-[400px] truncate ">
-          <%= news.header_news %>
+      <div class="w-36 bg-white rounded-lg shadow-md overflow-hidden mb-4">
+        <div class="flex justify-between items-center bg-gray-200 px-4 py-4 relative">
+          <span class="font-bold text-gray-700">NEWS</span>
+          <div class="relative border-gray-700">
+            <select id="news-select"  class="bg-gray-200 text-gray-600 border-none focus:outline-none appearance-none w-6 h-6">
+              <option value="/features">Features</option>
+              <option value="/features">Sports</option>
+            </select>
+          </div>
         </div>
-        <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
-          <% if current_user && current_user.role === 'moderator' %>
-            <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-              <%= link_to "Edit", edit_news_path(news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+      </div>
+
+      <article class="flex justify-start">
+        <% @news.each do |news| %>
+          <a href="<%= news_path(news) %>"><!-- Card 1 -->
+        <div class="bg-white shadow-lg overflow-hidden w-1/4 mr-2">
+          <%= image_tag(news.image, class: "w-full h-48 object-cover") %>
+
+          <div class="flex">
+            <!-- Text Section -->
+            <div class="p-4 text-center">
+              <p class="text-black mt-2">
+                <%= news.header_news %> <br />
+                <%= news.type_of_news %>
+              </p>
+              <a
+                href="#"
+                class="mt-4 inline-flex text-xs items-center text-black font-semibold"
+              >
+                <span class="ml-1">&rarr;</span> Club
+              </a>
+              <a
+                href="#"
+                class="mt-4 inline-flex text-xs items-center text-black font-semibold"
+              >
+                <span class="ml-1">&rarr;</span> 3 hrs ago
+              </a>
+              <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
+                <% if current_user && current_user.role === 'moderator' %>
+                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+                    <%= link_to "Edit", edit_news_path(news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+                  </div>
+                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+                    <%= button_to "Delete", news, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
+                  </div>
+                <% end %>
+              </div>
             </div>
-            <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-              <%= button_to "Delete", news, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold " %>
-            </div>
+          </div>
+        </div>
+          </a>
+
         <% end %>
-        </div>
+
+      </article>
+
+      <div class="p-4 border-t">
+        <a href="#" class="text-sm font-medium text-gray-700 flex items-center justify-end">
+          See more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
-</a>
-
-<% end %>
-
+</section>
