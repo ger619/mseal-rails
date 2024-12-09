@@ -10,43 +10,36 @@
       <!-- Logo on the Left -->
       <div class="flex-grow"></div>
       <!-- Spacer to push hamburger to the right -->
-      <% if current_user %>
-      <!-- Login and Register Links -->
       <div class="hidden md:flex items-center space-x-4">
-        <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
-          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
-            <i class="fa fa-user-plus"></i>
-          </span>
-          <span>Login</span>
-        </a>
-        <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
-          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
-            <i class="fa fa-user-plus"></i>
-          </span>
-          <span>Register</span>
-        </a>
-      </div>
+        <% if current_user %>
+          <!-- Show user's email and logout button if logged in -->
+          <div class="flex items-center space-x-4">
+            <span class="text-white font-medium"><%= current_user.email %></span>
+            <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-yellow-500 space-x-2" do %>
+  <span class="bg-red-500 text-white text-xs rounded-full p-2">
+    <i class="fa fa-sign-out-alt"></i>
+  </span>
+              <span>Logout</span>
+            <% end %>
+          </div>
         <% else %>
-        <!-- Login and Register Links -->
-        <div class="hidden md:flex items-center space-x-4">
-          <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
-          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
-            <i class="fa fa-user-plus"></i>
-          </span>
-            <span>
-              <%= button_to "Login", user_session_path %>
-            </span>
+          <!-- Show login and register buttons if not logged in -->
+          <a href="<%= user_session_path %>" class="flex items-center hover:text-yellow-500 space-x-2">
+      <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+        <i class="fa fa-user"></i>
+      </span>
+            <span>Login</span>
           </a>
-          <a href="#" class="flex items-center hover:text-yellow-500 space-x-2">
-          <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
-            <i class="fa fa-user-plus"></i>
-          </span>
-            <span>
-              <%= button_to "Registration", new_user_registration_path, method: :get %>
-            </span>
+          <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-yellow-500 space-x-2">
+      <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+        <i class="fa fa-user-plus"></i>
+      </span>
+            <span>Register</span>
           </a>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
+
 
       <!-- Hamburger Icon for Mobile (aligned to the right) -->
       <div class="md:hidden flex justify-end">
@@ -84,10 +77,13 @@
           </ul>
         </div>
       </nav>
-      <div class="hidden md:flex items-center space-x-4 mr-30">
-        <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-          <%= link_to "SHOP", product_index_path %>
-        </li>
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="<%= product_index_path %>" class="flex items-center hover:text-yellow-500 space-x-2 text-white">
+    <span class="text-xl">
+      <i class="fa fa-shopping-cart"></i>
+    </span>
+          <span>SHOP</span>
+        </a>
       </div>
     </div>
   </div>
