@@ -1,5 +1,5 @@
 <div>
-  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+  <div class="p-6 bg-gray-900 font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
     <h1>FIXTURES</h1>
     <div>
       <% if current_user && current_user.role === 'moderator' %>
@@ -21,8 +21,8 @@
         /* Style the tab */
         .tab {
             overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
+            border-bottom: 1px solid #ccc;
+
         }
 
         /* Style the buttons inside the tab */
@@ -44,7 +44,7 @@
 
         /* Create an active/current tablink class */
         .tab button.active {
-            background-color: #ccc;
+            color: yellow;
 
 
         }
@@ -53,22 +53,23 @@
         .tabcontent {
             display: none;
             padding: 6px 12px;
-            border: 1px solid #ccc;
             border-top: none;
         }
     </style>
 
 
-  <div class="tab flex flex-col justify-center md:flex-row gap-5 bg-[#e6e6e6] ">
-    <button class="tablinks active" onclick="openCity(event, 'Result')" id="defaultOpen">RESULTS</button>
-    <button class="tablinks" onclick="openCity(event, 'Fixtures')">FIXTURES</button>
-    <button class="tablinks" onclick="openCity(event, 'Table')">TABLE </button>
-
+  <div class="tab flex flex-col justify-center md:flex-row gap-5 bg-gray-900 ">
+    <button class="tablinks active" onclick="openCity(event, 'Schedule')" id="defaultOpen">SCHEDULE</button>
+    <button class="tablinks" onclick="openCity(event, 'Result')">RESULTS</button>
+    <button class="tablinks" onclick="openCity(event, 'Fixtures')">STANDINGS</button>
   </div>
 
-  <div id="Result" class="tabcontent active  ">
-    <%= render 'opponent/results' %>
+  <div id="Schedule" class="tabcontent active  ">
+    <%= render 'opponent/schedule' %>
+  </div>
 
+  <div id="Result" class="tabcontent">
+    <%= render 'opponent/results' %>
   </div>
   <!--Fixtures-->
   <div id="Fixtures" class="tabcontent">
