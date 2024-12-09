@@ -1,7 +1,7 @@
 <section class="bg-gray-900 py-4 text-gray-200">
   <div class="container mx-auto px-4">
-    <div class="bg-white p-4">
-      <div class="flex items-center justify-center py-4 px-8 bg-white">
+    <div class="bg-[#FAF0E6] p-4">
+      <div class="flex items-center justify-center py-4 px-8 bg-[#FAF0E6]">
         <div class="flex items-center space-x-2">
           <h1
             class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
@@ -18,9 +18,13 @@
         <div class="flex justify-between items-center bg-gray-200 px-4 py-4 relative">
           <span class="font-bold text-gray-700">NEWS</span>
           <div class="relative border-gray-700">
-            <select id="news-select"  class="bg-gray-200 text-gray-600 border-none focus:outline-none appearance-none w-6 h-6">
+            <select
+              id="news-select"
+              class="bg-gray-200 text-gray-600 border-none focus:outline-none appearance-none w-6 h-6"
+              onchange="navigateToLink(this)"
+            >
+              <option value="" disabled selected>Select News</option>
               <option value="/features">Features</option>
-              <option value="/features">Sports</option>
             </select>
           </div>
         </div>
@@ -81,3 +85,12 @@
     </div>
   </div>
 </section>
+
+<script>
+    function navigateToLink(selectElement) {
+        const selectedValue = selectElement.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    }
+</script>
