@@ -3,7 +3,8 @@ class TeamController < ApplicationController
   load_and_authorize_resource except: %i[index show]
 
   def index
-    @teams = Team.all.order('jersey_number ASC')
+    @teams = Team.includes(image_attachment: :blob).all.order('jersey_number ASC')
+    @statistics = Statistic.all
   end
 
   def show
