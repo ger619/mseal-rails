@@ -1,9 +1,8 @@
 <div>
-  <div class="p-6 bg-gray-900 font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-    <h1>FIXTURES</h1>
+  <div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
     <div>
       <% if current_user && current_user.role === 'moderator' %>
-        <%=link_to "Add Opponent", new_opponent_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%=link_to "Add Opponent", new_opponent_path, class: "normal-case border-2 border-slate-100 hover:bg-slate-100 font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
         <%=link_to "Add Opponent Team", new_opponent_team_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
         <%=link_to "Add Table", new_table_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
         <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
@@ -58,7 +57,7 @@
     </style>
 
 
-  <div class="tab flex flex-col justify-center md:flex-row gap-5 bg-gray-900 ">
+  <div class="tab flex flex-col justify-center md:flex-row gap-5">
     <button class="tablinks active" onclick="openCity(event, 'Schedule')" id="defaultOpen">SCHEDULE</button>
     <button class="tablinks" onclick="openCity(event, 'Result')">RESULTS</button>
     <button class="tablinks" onclick="openCity(event, 'Fixtures')">STANDINGS</button>

@@ -1,5 +1,4 @@
-<div class="p-6 bg-gray-900 font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-  <h1>NEWS</h1>
+<div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between align-right">
   <div>
     <% if current_user && current_user.role === 'moderator'  %>
         <%=link_to "Add News", new_news_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
@@ -12,6 +11,8 @@
         <% end %>
 
     <%= render 'news/adverts' %>
+
+
 
 <script>
     document.getElementById('news-select').addEventListener('change', function () {
