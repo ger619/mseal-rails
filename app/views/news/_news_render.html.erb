@@ -40,7 +40,7 @@
           <div class="flex">
             <!-- Text Section -->
             <div class="p-4 text-left">
-              <p class="text-black mt-2">
+              <p class="text-slate-100 mt-2">
                 <%= truncate(news.header_news, length: 40) %>              </p>
               <a
                 href="#"
@@ -76,12 +76,24 @@
       </article>
 
       <div class="p-4 border-t mt-2">
-        <a href="#" class="text-sm font-medium text-gray-700 flex items-center justify-end">
-          See more
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
+        <div class="text-sm font-medium text-gray-700 flex items-center justify-end">
+          <% if @pagy.next %>
+            <%= link_to url_for(page: @pagy.next), class: "text-sm font-medium text-[#FAE115] flex items-center justify-end" do %>
+              See More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 stroke-custom-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            <% end %>
+          <% end %>
+          <% if @pagy.prev %>
+            <%= link_to url_for(page: @pagy.prev), class: "text-sm font-medium text-[#FAE115] flex items-center justify-end" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 stroke-custom-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              See Less
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
