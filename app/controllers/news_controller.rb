@@ -6,7 +6,13 @@ class NewsController < ApplicationController
     # Adding a group by month on the news
     # Source:
     #
-    @pagy, @news = pagy_countless(News.includes(image_attachment: :blob).all.order('created_at DESC'), items: 8)
+    @pagy, @news = if params[:query].present?
+                     pagy_countless(
+                       News.where('type_of_news ILIKE ?', "%#{params[:query]}%").includes(image_attachment: :blob).order('created_at DESC'), items: 8
+                     )
+                   else
+                     pagy_countless(News.includes(image_attachment: :blob).all.order('created_at DESC'), items: 8)
+                   end
     respond_to do |format|
       format.html
       format.turbo_stream
