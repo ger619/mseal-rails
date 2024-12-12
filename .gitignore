@@ -37,3 +37,4 @@
 /node_modules/
 /db/20240420044858_add_sign_in_count_to_user.rb
 /db/20230624071753_devise_create_users.rb
+/config/database.yml
