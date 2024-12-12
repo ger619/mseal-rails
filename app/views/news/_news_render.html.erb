@@ -30,30 +30,30 @@
         </div>
       </div>
 
-      <article class="flex justify-start">
+      <article class="grid grid-cols-4">
         <% @news.each do |news| %>
+          <div class="col-span-1">
           <a href="<%= news_path(news) %>"><!-- Card 1 -->
-        <div class="bg-white shadow-lg overflow-hidden w-1/4 mr-2">
+        <div class="bg-white shadow-lg overflow-hidden mr-2 mb-2">
           <%= image_tag(news.image, class: "w-full h-48 object-cover") %>
 
           <div class="flex">
             <!-- Text Section -->
-            <div class="p-4 text-center">
+            <div class="p-4 text-left">
               <p class="text-black mt-2">
-                <%= news.header_news %> <br />
-                <%= news.type_of_news %>
-              </p>
+                <%= truncate(news.header_news, length: 40) %>              </p>
               <a
                 href="#"
                 class="mt-4 inline-flex text-xs items-center text-black font-semibold"
               >
-                <span class="ml-1">&rarr;</span> Club
+                <span class="ml-1">&rarr;</span> <%= news.type_of_news %>
               </a>
               <a
                 href="#"
                 class="mt-4 inline-flex text-xs items-center text-black font-semibold"
               >
-                <span class="ml-1">&rarr;</span> 3 hrs ago
+                <span class="ml-1"><%= time_ago_in_words(news.created_at) %> ago</span>
+
               </a>
               <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
                 <% if current_user && current_user.role === 'moderator' %>
@@ -69,6 +69,7 @@
           </div>
         </div>
           </a>
+          </div>
 
         <% end %>
 
