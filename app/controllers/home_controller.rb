@@ -11,5 +11,6 @@ class HomeController < ApplicationController
 
     @user = User.all
     respond_to(&:html)
+    @teams = Team.includes(image_attachment: :blob).all.order('jersey_number ASC')
   end
 end
