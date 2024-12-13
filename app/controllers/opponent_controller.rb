@@ -9,8 +9,7 @@ class OpponentController < ApplicationController
     # #Results
     @opponent2 = Opponent.where('match_date <= ?',
                                 Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
-    @table = Table.all.order(Arel.sql('w * 3 + d DESC'), Arel.sql('gf - ga DESC'))
-  end
+    @table = Table.includes(opponent_team: { team_badge_attachment: :blob }).all.order(Arel.sql('w * 3 + d DESC'), Arel.sql('gf - ga DESC'))  end
 
   def show
     @opponent = Opponent.find(params[:id])
