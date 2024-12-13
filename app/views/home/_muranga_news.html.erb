@@ -3,18 +3,14 @@
     <div class="bg-white p-4">
       <div class="flex items-center justify-center py-4 px-8 bg-white">
         <div class="flex items-center space-x-2">
-          <h1
-            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
-          >
+          <h1 class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
             Murang'a
           </h1>
-          <span
-            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
-          >Seal News</span
-          >
+          <span class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
+            Seal News
+          </span>
         </div>
       </div>
-
       <article class="flex justify-start">
         <% @news.limit(8).each_with_index do |news, index| %>
           <% if index == 0  %>
@@ -23,7 +19,6 @@
             <%# Handle the last item separately %>
           <% elsif index == 2 %>
           <% elsif index == 3 %>
-
           <% else %>
             <% @news.length - index %>
             <!-- Card 1 -->
