@@ -12,9 +12,15 @@
   <!-- Tabs Section -->
   <div class="flex justify-center mb-10">
     <nav class="flex space-x-4">
-      <a href="#history" class="px-4 py-2 text-gray-700 border-b-2 border-transparent hover:border-blue-500">History</a>
-      <a href="#club-records" class="px-4 py-2 text-gray-700 border-b-2 border-transparent hover:border-blue-500">Club Records</a>
-      <a href="#management" class="px-4 py-2 text-gray-700 border-b-2 border-transparent hover:border-blue-500">Management</a>
+      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+         id="tab-history"
+         onclick="openCity(event, 'history')">History</button>
+      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+         id="tab-club-records"
+         onclick="openCity(event, 'club-records')">Club Records</button>
+      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+         id="tab-management"
+         onclick="openCity(event, 'management')">Management</button>
     </nav>
   </div>
 
@@ -31,51 +37,40 @@
       </svg>
     </button>
   </div>
+  <div id="history" class="tabcontent active">
+    <%= render 'club/history' %>
+  </div>
 
-  <!-- Paragraph Section -->
-  <div id="history">
-    <div class="bg-black p-6 rounded shadow">
-      <p class="mb-6">
-        France international William continued to establish himself as one of the best centre backs in England
-        during his second season of first-team action. The elegant, pacey centre back became the first Arsenal
-        outfield player in the Premier League era, and the first since Lee Dixon in 1988/90, to play every minute
-        of the league season, and he was a cornerstone of the PL&#39;s meanest defence - he won possession 213 times,
-        more than any other centre back in the league.
-      </p>
-      <p class="mb-6">
-        William made his long-awaited debut in 2022/23 after initially signing in July 2019 and impressed from the
-        start, underpinning the Gunners&#39; title challenge until suffering a season-ending back injury in March 2023.
-        He made his breakthrough at Saint-Etienne, where he remained on loan after signing for us and reached the
-        French Cup final before spending half of 2020/21 on loan at Nice.
-      </p>
-      <p>
-        He joined Marseille on loan the following season and helped the club to second place during a campaign in
-        which he was named the Ligue 1 Young Player of the Year, earned a spot in the league&#39;s Team of the Year and
-        made his senior international debut. He featured for France at the 2022 World Cup and made six appearances
-        as France reached the semi-finals of Euro 2024.
-      </p>
-    </div>
+  <div id="club-records" class="tabcontent">
+    <%= render 'club-records' %>
   </div>
-  <div id="club-records">
-    <div class="bg-black p-6 rounded shadow">
-      <p>
-        He joined Marseille on loan the following season and helped the club to second place during a campaign in
-        which he was named the Ligue 1 Young Player of the Year, earned a spot in the league&#39;s Team of the Year and
-        made his senior international debut. He featured for France at the 2022 World Cup and made six appearances
-        as France reached the semi-finals of Euro 2024.
-      </p>
-    </div>
-  </div>
-  <div id="management">
-    <div class="bg-black p-6 rounded shadow">
-      <p class="mb-6">
-        William made his long-awaited debut in 2022/23 after initially signing in July 2019 and impressed from the
-        start, underpinning the Gunners&#39; title challenge until suffering a season-ending back injury in March 2023.
-        He made his breakthrough at Saint-Etienne, where he remained on loan after signing for us and reached the
-        French Cup final before spending half of 2020/21 on loan at Nice.
-      </p>
-    </div>
+
+  <div id="management" class="tabcontent">
+    <%= render 'club/management'%>
   </div>
 
 
 </div>
+<script>
+    function openCity(evt, cityName) {
+        const tabcontent = document.getElementsByClassName("tabcontent");
+        const tablinks = document.getElementsByClassName("tablinks");
+
+        // Hide all tab content
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove active class from all tab links
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("text-yellow-500", "underline");
+        }
+
+        // Show current tab content and add active class to clicked tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("text-yellow-500", "underline");
+    }
+
+    // Set default tab to open
+    document.getElementById("tab-history").click();
+</script>
