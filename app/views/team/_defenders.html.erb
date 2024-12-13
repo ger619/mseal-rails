@@ -2,7 +2,7 @@
   <div class="space-y-10">
     <!-- Section: Defender -->
     <div>
-      <h3 class="text-2xl font-semibold text-center mb-6">COACHING STAFF</h3>
+      <h3 class="text-2xl font-semibold text-center mb-6">DEFENDERS</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <% @teams.select { |team| team.id.present? && team.position == "Defender" }.each do |team| %>
           <div class="relative group w-full h-96 overflow-hidden">
