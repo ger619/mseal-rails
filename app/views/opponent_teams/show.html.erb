@@ -6,10 +6,10 @@
 
     <%= render @opponent_team %>
 
-    <%= link_to "Edit this opponent_team", edit_opponent_team_path(@opponent_team), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this opponent_team", edit_opponent_team_path(@opponent_team), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-black" %>
     <div class="inline-block ml-2">
-      <%= button_to "Destroy this opponent_team", opponent_team_path(@opponent_team), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Destroy this opponent_team", opponent_team_path(@opponent_team), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium text-black" %>
     </div>
-    <%= link_to "Back to opponent_teams", opponent_teams_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Back to opponent_teams", opponent_teams_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-black" %>
   </div>
 </div>
