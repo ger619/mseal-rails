@@ -1,153 +1,46 @@
+<!-- Footer Component -->
+<div class="px-5 bg-black pt-20 w-full">
+  <div class="bg-black w-full rounded-none">
+    <div class="flex justify-between items-center py-4">
+      <!-- Navigation Items -->
+      <nav>
+        <ul class="flex space-x-6 text-yellow-400">
+          <li><a href="#" class="hover:text-yellow-300">Home</a></li>
+          <li><a href="#" class="hover:text-yellow-300">About</a></li>
+          <li><a href="#" class="hover:text-yellow-300">Events</a></li>
+          <li><a href="#" class="hover:text-yellow-300">Blogs</a></li>
+        </ul>
+      </nav>
 
-<div class="bg-[#000] hidden md:block  p-8  text-white">
-  <div class="mx-auto py-8 w-[90%] flex flex-col md:flex-row justify-between border-b-4 border-[#f4e721]">
-    <h1>murangaseals@gmail.com</h1>
-    <h1>+254 790 770982</h1>
-    <div>
-      <a target="_blank" rel="noreferrer" href="#">
-        <i class="fa-brands fa-instagram text-[#fff] text-3xl hover:text-[#f4e721] mr-10"></i>
-      </a>
-      <a target="_blank" rel="noreferrer" href="https://twitter.com/murangaseal">
-        <i class="fa-brands fa-twitter  text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
-      </a>
-      <a target="_blank" rel="noreferrer" href="https://www.facebook.com/profile.php?id=100093441294551">
-        <i class="fa-brands fa-facebook-f text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
-      </a>
-      <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@murangasealfc" >
-        <i class="fa-brands fa-youtube text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
-      </a>
-      <a target="_blank" rel="noreferrer" href="#">
-        <i class="fa-brands fa-tiktok text-3xl text-[#fff] hover:text-[#f4e721] mr-10"></i>
-      </a>
-
+      <!-- Social Media Icons -->
+      <div class="flex space-x-6 text-yellow-400 text-2xl">
+        <a href="#" class="hover:text-yellow-300"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-yellow-300"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="hover:text-yellow-300"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-yellow-300"><i class="fab fa-whatsapp"></i></a>
+      </div>
     </div>
 
+    <hr class="border-yellow-400" />
   </div>
 
-  <div class="w-[90%] my-8 mx-auto flex justify-between">
-    <div class="flex flex-col gap-2">
-      <p class="text-[#fae115]">
-        <%= link_to "NEWS", news_index_path %>
-      </p>
-    </div>
-    <div class="flex flex-col gap-2">
-      <p class="text-[#fae115]">
-        <%= link_to "TEAM", team_index_path %>
-      </p>
-    </div>
+  <footer class="bg-black py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-4">
+      <div class="text-center md:text-left">
+        <p class="text-yellow-400">&copy; Muranga Seal. All rights reserved</p>
+      </div>
 
-    <div class="flex flex-col gap-2">
-      <p class="text-[#fae115]">
-        <%= link_to "FIXTURES", opponent_index_path %>
-      </p>
-    </div>
+      <div class="hidden md:block">
+        <!-- Optionally add a title or logo here -->
+      </div>
 
-    <div class="flex flex-col gap-2">
-      <p class="text-[#fae115]">
-        <%= link_to "STATISTICS", statistic_index_path %>
-      </p>
+      <div class="flex justify-center md:justify-end space-x-6">
+        <a href="#" class="text-yellow-400 hover:text-yellow-300">Terms of Service</a>
+        <a href="#" class="text-yellow-400 hover:text-yellow-300">Privacy Policy</a>
+      </div>
     </div>
-
-    <!--
-    <div class="flex flex-col gap-2">
-      <p class="text-[#fae115]">
-        <%= link_to "MEMBERSHIP", membership_index_path %>
-      </p>
-
-    </div>
-    -->
-    <div class="flex flex-col gap-2">
-      <p class="text-[#fae115]">
-        <%= link_to "OUR CLUB", club_index_path %>
-      </p>
-
-    </div>
-    <!--
-    <div class="flex flex-col gap-2">
-      <p class="text-[#fae115]">
-        <%= link_to "HALL OF FAME", hall_of_fames_path %>
-      </p>
-    </div>
-    -->
-
-    <div class="flex flex-col gap-2">
-      <h5 class="text-[#fae115]">
-        <%= link_to "SHOP", product_index_path %>
-      </h5>
-    </div>
-
-  </div>
-  <div class="w-[80%] mx-auto  flex  flex-col gap-2">
-    <h1 class="text-3xl  font-bold pt-4">Newsletter</h1>
-    <div class="flex items-center gap-1">
-      <input
-        type="text"
-        placeholder="Enter your email"
-        class="h-[50px] w-[455px] p-2 bg-[#A8A2A2] focus:outline-none placeholder-[#D9D9D9]"
-        />
-      <p class="text-3xl font-bold text-[#F4E721] p-2 cursor-pointer">
-        Subscribe
-      </p>
-    </div>
-  </div>
+  </footer>
 </div>
-<div class="bg-[#000] block md:hidden">
-  <div class="mx-6">
-    <h1 class="text-white text-2xl py-4 font-bold">
-      Explore Murang&apos;a seals app
-    </h1>
-    <div class="text-white flex gap-10 ">
-      <div class="">
-        <ul class="flex flex-col gap-4">
-          <li>Home</li>
-          <li>News</li>
-          <li>Teams</li>
-        </ul>
-      </div>
-      <div>
-        <ul class="flex flex-col gap-4">
-          <li>Tickets</li>
-          <li>Membership</li>
-        </ul>
-      </div>
-    </div>
-    <div class="mt-10 flex justify-between">
-      <div class="text-white">
-        <p>murangaseals@gmail.com</p>
-        <p class="mt-3">+254 790 770982</p>
-      </div>
-      <div>
-        <button class="bg-[#fae115] p-4 text-[#000] rounded-xl">
-          Subscribe
-        </button>
-      </div>
-    </div>
-    <hr class="text-grey mt-5" />
-    <div class="flex justify-between mt-5">
-      <div class="text-white">
-        <ul>
-          <li>Home Jersey</li>
-          <li>Season Jersey</li>
-          <li>News trophy</li>
-          <li>room</li>
-          <li>Advertise with us</li>
-        </ul>
-      </div>
-      <div class="text-white">
-        <ul>
-          <li>About Murang’a Seals</li>
-          <li> Cookies</li>
-          <li>Parental Guide</li>
-        </ul>
-      </div>
-    </div>
-    <div class="flex mt-10 text-white text-center gap-12 items-center  justify-center">
-      <AiFillInstagram size={40} />
-      <BsTwitter size={35} />
-      <ImFacebook size={35} />
-    </div>
-    <p class="text-white text-center py-4">
-      Copyright @ 2024 Muranga Seals.
-    </p>
-  </div>
-</div>
+
+<!-- Include Font Awesome for icons (or replace with Tailwind HeroIcons) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

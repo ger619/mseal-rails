@@ -4,7 +4,8 @@ class TableController < ApplicationController
   def index
     # Table is sorted by the highest points and if the points are equal the highest goal difference
 
-    @table = Table.all.order(Arel.sql('w * 3 + d DESC'), Arel.sql('gf - ga DESC'))
+    @table = Table.includes(opponent_team: :team_badge_attachment)
+      .order(Arel.sql('w * 3 + d DESC'), Arel.sql('gf - ga DESC'))
   end
 
   def show

@@ -1,0 +1,63 @@
+<div class="container mx-auto p-4">
+  <!-- Month Selector -->
+  <div class="flex overflow-x-auto space-x-4 mb-8">
+    <div class="min-w-[100px] p-3 text-center cursor-pointer border-b-2 border-blue-600">
+      <div class="text-sm text-gray-500">2024</div>
+      <div class="text-base font-semibold">AUG</div>
+    </div>
+    <div class="min-w-[100px] p-3 text-center cursor-pointer hover:bg-gray-100">
+      <div class="text-sm text-gray-500">2024</div>
+      <div class="text-base">SEP</div>
+    </div>
+    <!-- Add more months as needed -->
+  </div>
+  <!-- Filters -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <select class="w-full p-2 border rounded-md bg-gray-900">
+      <option value="MEN" selected>MEN</option>
+    </select>
+    <select class="w-full p-2 border rounded-md bg-gray-900">
+      <option value="ALL" selected>COMPETITION - ALL</option>
+    </select>
+    <select class="w-full p-2 border rounded-md bg-gray-900">
+      <option value="ALL" selected>LOCATION - ALL</option>
+    </select>
+  </div>
+
+  <!-- Title -->
+  <h4 class="text-xl font-semibold mb-6">AUGUST 2024</h4>
+  <!-- Matches -->
+  <div class="space-y-4">
+    <!-- Match Card -->
+    <div class="bg-gray-900 p-4 rounded-md border border-gray-200 shadow-md">
+      <div class="grid grid-cols-12 gap-4 items-center">
+        <% @opponent2.each do |opp| %>
+        <div class="col-span-2 text-center">
+          <div class="text-gray-500 uppercase"><%= opp.match_date.strftime("%a %d  %b") %></div>
+          <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
+        </div>
+        <div class="col-span-3 flex items-center space-x-2">
+          <img src="../assets/La-Liga-Small-Transparent.png" alt="Competition Logo" class="h-8">
+          <span class="text-sm text-gray-500">Matchday 4</span>
+        </div>
+        <div class="col-span-6 flex items-center justify-center">
+          <div class="flex items-center space-x-2 text-left">
+            <span class="font-bold text-left">Murang&apos;a Seals</span>
+              <%= image_tag("logo.png", class: "w-10") %>
+          </div>
+          <div class="mx-4 font-bold">vs</div>
+          <div class="flex items-center space-x-2">
+            <% if opp.opponent_team.team_badge.attached? %>
+              <%= image_tag (opp.opponent_team.team_badge), class: "w-10"  %>
+            <% end %>
+            <span class="font-bold text-right"><%= opp.opponent_team.name %></span>
+          </div>
+        </div>
+        <div class="col-span-1 text-right">
+          <button class="bg-yellow-400 text-black px-4 py-2 rounded-md font-semibold">TICKETS</button>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Motor::Admin => '/motor_admin'
 
   get 'cart', to: 'cart#show'
+
   post 'cart/add'
   post 'cart/remove'
   root "home#index"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get 'partials/:partial', to: 'partials#show', as: :partial
 
   resources :news
   resources :club
@@ -25,4 +27,8 @@ Rails.application.routes.draw do
   resources :statistic
   resources :season
   resources :table
+
+  Rails.application.routes.draw do
+    get 'features', to: 'pages#features', as: 'features'
+  end
 end

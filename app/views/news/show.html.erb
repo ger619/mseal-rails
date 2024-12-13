@@ -1,10 +1,6 @@
-<div class="shadow-md">
-  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between ">
-    <h1 class="md:w-full w-[90%] truncate ...">NEWS | <%= @news.header_news %></h1>
-  </div>
-
-  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
-    <div class="mt-4 border-t-[8px] pt-6 pb-6  border-[#FAE115] flex gap-4 bg-[#FFF] justify-between ">
+<div class="shadow-md pl-4 pr-4">
+  <div class="sm:w-[200px] md:w-[100%] text-white lg:max-w-full xl:max-w-full bg-black mx-auto mt-[6px]">
+    <div class="mt-4 pt-6 pb-6 flex gap-4 bg-black justify-between ">
       <p class="text-2xl font-bold mt-4 mr-3 m-4 flex uppercase">
           <%= @news.type_of_news %>
       </p>
@@ -12,13 +8,51 @@
         <%= @news.created_at.strftime("%d.%m.%Y") %>
       </p>
     </div>
-    <div class="md:w-full w-full h-[60%]">
+    <div class="md:w-full w-full h-[60%] pl-24 pr-24">
       <%= render "news/image_show" %>
     </div>
 
-    <p class="text-2xl font-semibold p-2"><%= @news.header_news %></p>
-    <div class="p-4">
-      <p class="text-base font-light"><%= @news.content %></p>
+    <p class="text-2xl font-semibold p-24"><%= @news.header_news %></p>
+    <div class="pl-24 pr-24">
+      <p class="text-base font-light mb-4"><%= @news.content %></p>
+    </div>
+
+
+      <article class="flex justify-start mt-4 pl-24 pr-24">
+        <!-- Card 2 -->
+        <% @similar_news.each do |similar_news| %>
+        <div class="bg-black shadow-lg overflow-hidden w-1/4 mr-2">
+          <img
+            src="../assets/new_team.png"
+            alt="New Kit"
+            class="w-full h-48 object-cover rounded"
+            />
+
+          <%= image_tag(similar_news.image, class: "rounded w-full") %>
+
+          <div class="flex">
+            <!-- Text Section -->
+            <div class="p-4 text-center">
+              <p class="text-[#fff] mt-2">
+                Spain men in basketball and football<br />action
+              </p>
+              <a
+                href="#"
+                class="mt-4 inline-flex text-xs items-center text-white font-semibold"
+              >
+                <span class="ml-1">&rarr;</span> Club
+              </a>
+              <a
+                href="#"
+                class="mt-4 inline-flex text-xs items-center text-white font-semibold"
+              >
+                <span class="ml-1">&rarr;</span> 3 hrs ago
+              </a>
+            </div>
+          </div>
+        </div>
+          <% end %>
+      </article>
     </div>
 
     <% if current_user && current_user.role === 'moderator' %>
@@ -34,7 +68,7 @@
       </div>
     <% end %>
   </div>
-</div>
+
 
 
 

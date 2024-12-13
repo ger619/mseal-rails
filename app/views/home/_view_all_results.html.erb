@@ -1,0 +1,139 @@
+<!-- Team Section with Timer -->
+<section class="bg-black py-4 text-gray-200">
+  <div class="container mx-auto px-4">
+    <div class="bg-white p-4">
+      <div class="flex items-center justify-between py-4 px-8 bg-white shadow-b">
+        <div class="flex items-center space-x-2">
+          <h1 class="text-2xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
+            Murang'a
+          </h1>
+          <span class="text-2xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
+            First Team
+          </span>
+        </div>
+
+        <!-- Countdown Section -->
+        <div class="flex items-center space-x-4 text-gray-500">
+          <span class="text-xs uppercase tracking-wide">Next Match</span>
+          <div>
+            <div
+              id="countdown"
+              class="flex items-center space-x-2 text-yellow-600 font-bold text-3xl"
+            >
+              <!-- Days -->
+              <span>00</span>
+              <span class="text-gray-400">:</span>
+              <!-- Hours -->
+              <span id="hours">20</span>
+              <span class="text-gray-400">:</span>
+              <!-- Minutes -->
+              <span id="minutes">00</span>
+              <span class="text-gray-400">:</span>
+              <!-- Seconds -->
+              <span id="seconds">00</span>
+            </div>
+            <!-- Labels -->
+            <div
+              class="ml-1 items-center space-x-4 text-sm text-gray-400 uppercase tracking-wide"
+            >
+              <span>Days</span>
+              <span>Hours</span>
+              <span>Mins</span>
+              <span>Secs</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Cards Section -->
+      <div class="flex space-x-4 mt-6">
+        <!-- Card 1 -->
+        <div class="bg-white shadow-md overflow-hidden">
+          <%= link_to opponent_index_path do %>
+          <img
+            src="./assets/results.png"
+            alt="results section"
+            class="h-full"
+            />
+          <% end %>
+        </div>
+
+
+        <!--Card 2-->
+       <%= render 'latest_fixtures' %>
+        <!-- Card 3 -->
+        <%= render 'home/upcoming_match' %>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Ticketing section
+<section class="bg-gray-900 py-4 text-gray-200">
+  <div class="container mx-auto px-4">
+    <div class="bg-white p-4">
+      <div class="flex items-center justify-center py-4 px-8 bg-white">
+        <div class="flex items-center space-x-2">
+          <h1
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
+          >
+            Murang'a
+          </h1>
+          <span
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
+          >First Team</span
+          >
+        </div>
+      </div>
+
+
+      <article class="flex justify-center">
+
+        <div class="flex space-x-4 mt-6 ml-2">
+
+          <div class="bg-white shadow-md overflow-hidden">
+            <img src="./assets/team_players_1.png" alt="results section" />
+          </div>
+        </div>
+
+        <div class="flex space-x-4 mt-6 ml-2">
+
+          <div class="bg-white shadow-md overflow-hidden">
+            <img src="./assets/team_players_1.png" alt="results section" />
+          </div>
+        </div>
+
+        <div class="flex space-x-4 mt-6 ml-2">
+
+          <div class="bg-white shadow-md overflow-hidden">
+            <img
+              src="./assets/team_women_player.png"
+              alt="results section"
+              class="h-full"
+              />
+          </div>
+        </div>
+      </article>
+
+      <article class="flex justify-center">
+
+        <div class="flex space-x-4 mt-6 ml-2">
+
+          <div class="bg-white shadow-md overflow-hidden">
+            <img src="./assets/team_players_1.png" alt="results section" />
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+-->
+<!--Shopping section-->
+<%= render 'home/muranga_seal_store' %>
+
+
+<%= render 'home/muranga_news' %>
+
+<%= render 'home/player_section' %>
