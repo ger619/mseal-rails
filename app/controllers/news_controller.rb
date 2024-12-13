@@ -22,6 +22,7 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find(params[:id])
+    @similar_news = News.where(type_of_news: @news.type_of_news).where.not(id: @news.id).limit(5)
   end
 
   def new
