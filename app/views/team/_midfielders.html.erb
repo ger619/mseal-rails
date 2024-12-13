@@ -4,7 +4,7 @@
     <div>
       <h3 class="text-2xl font-semibold text-center mb-6">MIDFIELDERS</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
+        <% @teams.each do |team| %>
         <div class="relative group w-full h-96 overflow-hidden">
 
           <!-- Player Info at the Bottom -->
@@ -13,7 +13,7 @@
             </div>
           </div>
 
-          <% @teams.each do |team| %>
+
             <% if team.position === "Midfielder" %>
               <% unless (current_user.nil? || current_user === "user") && team.active ==! true %>
                 <%= link_to team_path(team.id) do %>
@@ -59,9 +59,9 @@
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
 
+        </div>
+<% end %>
       </div>
     </div>
   </div>
