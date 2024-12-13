@@ -12,7 +12,9 @@
           <%# Handle the last item separately %>
         <% else %>
           <% @news.length - index %>
+
           <article class="bg-gray-800 shadow-lg rounded-lg overflow-hidden w-72">
+            <%= link_to news_path(news) do %>
             <% if news.image.attached? %>
               <%= image_tag(news.image, class: "w-full h-48 object-cover")  %>
             <% end %>
@@ -24,7 +26,9 @@
                 <span>🎬 <%= time_ago_in_words(news.created_at) %> ago</span>
               </div>
             </div>
+            <% end %>
           </article>
+
         <% end %>
       <% end %>
     </div>

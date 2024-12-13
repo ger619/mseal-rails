@@ -22,14 +22,15 @@
           <% else %>
             <% @news.length - index %>
             <!-- Card 1 -->
+            <a href="<%= news_path(news) %>">
             <div class="bg-white shadow-lg overflow-hidden w-1/4 mr-2">
               <% if news.image.attached? %>
                 <%= image_tag(news.image, class: "w-full h-48 object-cover w-full", alt: "Background Image" ) %>
               <% end %>
               <div class="flex">
                 <!-- Text Section -->
-                <div class="p-4 text-center">
-                  <p class="text-black mt-2">
+                <div class="p-4 ">
+                  <p class="text-black text-left mt-2">
                     <%= truncate(news.header_news, length: 25, separator: ' ') %>
                   </p>
                   <a href="#" class="mt-4 inline-flex text-xs items-center text-black font-semibold">
@@ -41,6 +42,7 @@
                 </div>
               </div>
             </div>
+            </a>
         <% end %>
         <% end %>
       </article>
