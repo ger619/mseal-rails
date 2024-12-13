@@ -4,7 +4,7 @@ class TeamController < ApplicationController
 
   def index
     @teams = Team.includes(image_attachment: :blob).all.order('jersey_number ASC')
-    @statistics = Statistic.all
+    # All players are displayed in the index page with their statistics from the statics table
   end
 
   def show

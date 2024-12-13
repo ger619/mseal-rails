@@ -4,7 +4,7 @@
     <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
       ADD NEWS TEAM MEMBERS
     </div>
-    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] md:p-8">
+    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] text-black text-black md:p-8">
       <p class="text-xl font-light mt-5">
         This is a platform where you can add news about your team members
       </p>
@@ -17,29 +17,29 @@
 
       <div class="flex justify-between pr-10 gap-2">
 
-        <%= f.text_field :first_name, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "first name",  :required => :true %>
-        <%= f.text_field :second_name, class: "h-[50px] w-full  p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "second name", :required => :true%>
-        <%= f.text_field :last_name, class: "h-[50px] w-full  p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "last name", :required => :true%>
+        <%= f.text_field :first_name, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none" ,placeholder: "first name",  :required => :true %>
+        <%= f.text_field :second_name, class: "h-[50px] w-full  p-2 border-b border-black bg-[#F7F3ED] text-black text-black text-black focus:outline-none" ,placeholder: "second name", :required => :true%>
+        <%= f.text_field :last_name, class: "h-[50px] w-full  p-2 border-b border-black bg-[#F7F3ED] text-black text-black text-black focus:outline-none" ,placeholder: "last name", :required => :true%>
 
       </div>
       <div class="flex justify-between pr-10 gap-2">
 
-        <%= f.select :position, ['Striker', 'Midfielder', 'Defender', 'Goalkeeper', 'Goalkeeping Coach', 'Team Manager', 'Strength & Conditioning Coach', 'Physical Trainer', 'Kit Manager'], prompt: 'Role/Position', :required => true, :class => 'h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none'%>
-        <%= f.number_field :jersey_number, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Jersey Number", :required => :true %>
+        <%= f.select :position, ['Striker', 'Midfielder', 'Defender', 'Goalkeeper', 'Goalkeeping Coach', 'Team Manager', 'Strength & Conditioning Coach', 'Physical Trainer', 'Kit Manager'], prompt: 'Role/Position', :required => true, :class => 'h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none'%>
+        <%= f.number_field :jersey_number, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none" ,placeholder: "Jersey Number", :required => :true %>
         <%= f.file_field :image, class: "h-[50px] w-full p-2 focus:outline-none" ,placeholder: "Passport Photo of Player(Please ensure this is a landscape photo)", :required => :true%>
       </div>
       <div class="flex justify-between pr-10 gap-2">
 
-        <%= f.date_field :date_of_birth,  :class => 'h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none'%>
-        <%= f.text_field :twitter, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Twitter" %>
-        <%= f.text_field :instagram, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Instagram" %>
+        <%= f.date_field :date_of_birth,  :class => 'h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none'%>
+        <%= f.text_field :twitter, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none" ,placeholder: "Twitter" %>
+        <%= f.text_field :instagram, class: "h-[50px] w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none" ,placeholder: "Instagram" %>
       </div>
 
       <div class="flex justify-between pr-10 gap-2">
 
-        <%= f.text_area :mseal_debut, size: "70x5", class: " w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Muranga Seal Debut" %>
-        <%= f.text_area :first_goal, size: "70x5",  class: "w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "First Goal"%>
-        <%= f.text_area :previous_club, size: "70x5",  class: "w-full p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Previous Club"%>
+        <%= f.text_area :mseal_debut, size: "70x5", class: " w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none" ,placeholder: "Muranga Seal Debut" %>
+        <%= f.text_area :first_goal, size: "70x5",  class: "w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none" ,placeholder: "First Goal"%>
+        <%= f.text_area :previous_club, size: "70x5",  class: "w-full p-2 border-b border-black bg-[#F7F3ED] text-black text-black focus:outline-none" ,placeholder: "Previous Club"%>
 
       </div>
 
