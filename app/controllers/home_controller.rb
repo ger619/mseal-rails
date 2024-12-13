@@ -1,7 +1,10 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
-    @news = News.includes(image_attachment: :blob).order('created_at DESC')
+    @news = News.includes(:image_attachment).all
+
+    # Updated query (without unused associations)
+    @news = News.all
     @advert = Advert.all.order('created_at DESC')
     # Display all opponent in ascending order if date is greater than today
     @opponent1 = Opponent.where('match_date >=?', Date.today).order('match_date ASC')

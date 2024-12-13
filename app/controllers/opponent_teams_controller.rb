@@ -5,7 +5,7 @@ class OpponentTeamsController < ApplicationController
 
   # GET /opponent_teams or /opponent_teams.json
   def index
-    @opponent_teams = OpponentTeam.all
+    @opponent_teams = OpponentTeam.includes(team_badge_attachment: :blob).all
   end
 
   # GET /opponent_teams/1 or /opponent_teams/1.json
