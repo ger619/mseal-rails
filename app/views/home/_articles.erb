@@ -12,7 +12,9 @@
           <%# Handle the last item separately %>
         <% else %>
           <% @news.length - index %>
+
           <article class="bg-gray-800 shadow-lg rounded-lg overflow-hidden w-72">
+            <%= link_to news_path(news) do %>
             <% if news.image.attached? %>
               <%= image_tag(news.image, class: "w-full h-48 object-cover")  %>
             <% end %>
@@ -21,10 +23,12 @@
                 <%= truncate(news.header_news, length: 30, separator: ' ') %>
               </h2>
               <div class="flex items-center mt-2 text-gray-400 text-sm">
-                <span>🎬 <%= news.created_at %></span>
+                <span>🎬 <%= time_ago_in_words(news.created_at) %> ago</span>
               </div>
             </div>
+            <% end %>
           </article>
+
         <% end %>
       <% end %>
     </div>
