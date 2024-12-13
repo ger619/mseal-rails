@@ -1,45 +1,76 @@
-<div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-  <h1>CLUB & HISTORY</h1>  <% if current_user && current_user.role === 'moderator' %>
+<% if current_user && current_user.role === 'moderator' %>
+<div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+  <h1>CLUB & HISTORY</h1>
       <%=link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-      <% end %>
 </div>
-<% @club.each do |club| %>
-  <div class="md:flex flex-col justify-between gap-4 odd:flex-row-reverse even:flex-row   border-t-4 border-l-4  border-[#FAE115] bg-[#fdfee9] md:p-10 p-2 m-6 justify-center container mx-auto">
-    <div>
-    <div class="flex flex-col">
-      <h1 class="md:text-4xl text-2xl uppercase mt-5 font-normal truncate md:w-full truncate w-[300px]">
-        <%= club.header %>
-      </h1>
-      <h6 class="w-[300px] truncate">
-        <%= render html: raw(club.content), class: "font-bold text-4xl" %>
-      </h6>
-    </div>
-
-      <div class="flex gap-4">
-        <%= link_to club_path(club.id) do %>
-          <button class="md:p-4 p-2 bg-[#F4E721] font-bold text-sm my-3  text-2xl rounded uppercase w-full ">
-            Read More
-          </button>
-        <% end %>
-        <% if current_user && current_user.role === 'moderator' %>
-
-            <%= link_to edit_club_path(club.id) do %>
-              <button class="md:p-4 p-2 bg-[#F4E721] font-bold text-sm my-3  text-2xl rounded uppercase" >
-                Edit
-              </button>
-            <% end %>
-
-          <%= button_to 'Delete', club, method: :delete, data: { turbo_method: :delete }, class: "md:p-4 p-2 bg-[#F4E721] font-bold text-sm my-3  text-2xl rounded uppercase" %>
-
-      <% end %>
-      </div>
-  </div>
-
-
-    <div class="">
-      <%= image_tag club.photo, class: "w-[600px] object-cover", alt: "This is text" if club.photo.present? %>
-    </div>
-  </div>
-
 <% end %>
+<div class="max-w-5xl mx-auto p-5 min-h-screen">
 
+  <!-- Page Title -->
+  <h1 class="text-3xl font-bold text-center mb-10">Murang&#39;a Seal Story</h1>
+
+  <!-- Tabs Section -->
+  <div class="flex justify-center mb-10">
+    <nav class="flex space-x-4">
+      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+         id="tab-history"
+         onclick="openCity(event, 'history')">History</button>
+      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+         id="tab-club-records"
+         onclick="openCity(event, 'club-records')">Club Records</button>
+      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+         id="tab-management"
+         onclick="openCity(event, 'management')">Management</button>
+    </nav>
+  </div>
+
+  <!-- Video Section -->
+  <div class="bg-gray-200 relative aspect-w-16 aspect-h-9 mb-10">
+    <img
+      src="../assets/images/hero-section.png"
+      alt="Construction Site"
+      class="absolute inset-0 object-cover w-full h-full">
+    <button
+      class="absolute inset-0 flex items-center justify-center text-white text-6xl">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+  </div>
+  <div id="history" class="tabcontent active">
+    <%= render 'club/history' %>
+  </div>
+
+  <div id="club-records" class="tabcontent">
+    <%= render 'club-records' %>
+  </div>
+
+  <div id="management" class="tabcontent">
+    <%= render 'club/management'%>
+  </div>
+
+
+</div>
+<script>
+    function openCity(evt, cityName) {
+        const tabcontent = document.getElementsByClassName("tabcontent");
+        const tablinks = document.getElementsByClassName("tablinks");
+
+        // Hide all tab content
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove active class from all tab links
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("text-yellow-500", "underline");
+        }
+
+        // Show current tab content and add active class to clicked tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("text-yellow-500", "underline");
+    }
+
+    // Set default tab to open
+    document.getElementById("tab-history").click();
+</script>
