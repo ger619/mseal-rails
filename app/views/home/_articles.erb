@@ -21,7 +21,7 @@
                 <%= truncate(news.header_news, length: 30, separator: ' ') %>
               </h2>
               <div class="flex items-center mt-2 text-gray-400 text-sm">
-                <span>🎬 <%= news.created_at %></span>
+                <span>🎬 <%= time_ago_in_words(news.created_at) %> ago</span>
               </div>
             </div>
           </article>
