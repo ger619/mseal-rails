@@ -5,10 +5,22 @@
       <!-- Navigation Items -->
       <nav>
         <ul class="flex space-x-6 text-yellow-400">
-          <li><a href="#" class="hover:text-yellow-300">Home</a></li>
-          <li><a href="#" class="hover:text-yellow-300">About</a></li>
-          <li><a href="#" class="hover:text-yellow-300">Events</a></li>
-          <li><a href="#" class="hover:text-yellow-300">Blogs</a></li>
+          <li class="hover:text-yellow-300">
+            <%= link_to 'HOME', root_path %>
+          </li>
+          <li class="hover:text-yellow-300">
+            <%= link_to 'NEWS', news_index_path %>
+            </li>
+          <li class="hover:text-yellow-300">
+            <%= link_to 'TEAM', team_index_path %>
+          </li>
+          <li class="hover:text-yellow-300">
+            <%= link_to 'FIXTURE', opponent_index_path %>
+          </li>
+          <li class="hover:text-yellow-300">
+            <%= link_to 'OUR CLUB', club_index_path %>
+          </li>
+
         </ul>
       </nav>
 
