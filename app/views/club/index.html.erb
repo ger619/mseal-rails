@@ -26,24 +26,15 @@
 
   <!-- Video Section -->
   <div id="history" class="tabcontent active">
-    <% @club.each do |club| %>
-      <% if club.header == 'History' %>
-        <%= render 'club/history', club: @club  %>
-      <% end %>
-    <% end %>
+    <%= render 'club/history' %>
   </div>
 
   <div id="club-records" class="tabcontent">
-
+    <%= render 'club/club-records'  %>
   </div>
 
   <div id="management" class="tabcontent">
-    <% @club.each do |club| %>
-      <% if club.header == 'Management' %>
-        <%= render 'club/management', club: @club  %>
-      <% end %>
-    <% end %>
-
+    <%= render 'club/management'  %>
   </div>
 
 

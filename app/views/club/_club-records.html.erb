@@ -1,10 +1,16 @@
 <div id="club-records">
-  <div class="bg-black p-6 rounded shadow">
-    <p>
-      He joined Marseille on loan the following season and helped the club to second place during a campaign in
-      which he was named the Ligue 1 Young Player of the Year, earned a spot in the league&#39;s Team of the Year and
-      made his senior international debut. He featured for France at the 2022 World Cup and made six appearances
-      as France reached the semi-finals of Euro 2024.
-    </p>
-  </div>
+  <% @club.each do |club| %>
+    <% if club.header == 'Records' %>
+      <div class="bg-gray-200 relative aspect-w-16 aspect-h-9 mb-10">
+        <!-- Place an image from the assets/images folder -->
+        <%= image_tag(club.photo, class: 'absolute inset-0 object-cover w-full h-full', alt: 'Construction Site') %>
+      </div>
+      <div class="bg-black p-6 rounded shadow text-slate-100">
+        <%= club.content %>
+      </div>
+      <% if current_user && current_user.role === 'moderator' %>
+        <%= link_to 'Edit Records', edit_club_path(club), class: 'bg-[#FAE115] text-black font-bold uppercase hover:bg-black hover:text-[#FAE115] p-2 rounded' %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>

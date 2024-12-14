@@ -1,12 +1,17 @@
 <!-- Video Section -->
 <div id="management">
   <% @club.each do |club| %>
-    <div class="bg-gray-200 relative aspect-w-16 aspect-h-9 mb-10">
-      <!-- Place an image from the assets/images folder -->
-      <%= image_tag(club.photo, class: 'absolute inset-0 object-cover w-full h-full', alt: 'Construction Site') %>
-    </div>
-    <div class="bg-black p-6 rounded shadow text-slate-100">
-      <%= club.content %>
-    </div>
+    <% if club.header == 'Management' %>
+      <div class="bg-gray-200 relative aspect-w-16 aspect-h-9 mb-10">
+        <!-- Place an image from the assets/images folder -->
+        <%= image_tag(club.photo, class: 'absolute inset-0 object-cover w-full h-full', alt: 'Construction Site') %>
+      </div>
+      <div class="bg-black p-6 rounded shadow text-slate-100">
+        <%= club.content %>
+      </div>
+      <% if current_user && current_user.role === 'moderator' %>
+        <%= link_to 'Edit Management', edit_club_path(club), class: 'bg-[#FAE115] text-black font-bold uppercase hover:bg-black hover:text-[#FAE115] p-2 rounded' %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
