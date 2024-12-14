@@ -14,7 +14,7 @@
 
     <p class="text-2xl font-semibold p-24"><%= @news.header_news %></p>
     <div class="pl-24 pr-24">
-      <p class="text-base font-light mb-4"><%= @news.content %></p>
+      <p class="text-base font-light mb-4 text-justify"><%= @news.content %></p>
     </div>
 
 
@@ -28,21 +28,22 @@
               <div class="flex">
                 <!-- Text Section -->
                 <div class="p-4 text-center">
-                  <p class="text-[#fff] mt-2">
-                    <%= truncate(similar_news.header_news, length: 30) %>
-                  </p>
-                  <a
-                    href="#"
-                    class="mt-4 inline-flex text-xs items-center text-white font-semibold"
-                  >
-                    <span class="ml-1">&rarr;</span> <%= similar_news.type_of_news %>
-                  </a>
-                  <a
-                    href="#"
-                    class="mt-4 inline-flex text-xs items-center text-white font-semibold"
-                  >
-                    <span class="ml-1">&rarr;</span> <%= time_ago_in_words(similar_news.created_at) %> ago
-                  </a>
+                  <div class="flex">
+                    <a
+                      href="#"
+                      class="bg-[#FAE115] flex text-black mt-2 md:mt-3 rounded-lg sm:mt-2 p-1">
+                      <%= similar_news.type_of_news %>
+                    </a>
+                    <a
+                      href="#"
+                      class="mt-4 inline-flex text-xs items-center text-white font-semibold"
+                    >
+                      <span class="ml-1">&rarr;</span> <%= time_ago_in_words(similar_news.created_at) %> ago
+                    </a>
+                  </div>
+                    <p class="text-[#fff] mt-2 font-bold">
+                      <%= truncate(similar_news.header_news, length: 30) %>
+                    </p>
                 </div>
               </div>
             </div>
