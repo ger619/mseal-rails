@@ -21,4 +21,6 @@ class Club < ApplicationRecord
   belongs_to :user, class_name: 'User', optional: true
   has_one_attached :photo
   has_rich_text :content
+  # Header should only be created once and later should only be updated
+  validates :header, presence: true, uniqueness: true
 end

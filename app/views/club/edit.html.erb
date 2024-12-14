@@ -5,7 +5,7 @@
 
 <%= form_with  model: @club, url: club_path(@club), method: :patch do |f| %>
 
-  <div class="md:w-[1280px] flex flex-col gap-4 md:my-12 md:mx-auto bg-[#F7F3ED] md:p-4">
+  <div class="md:w-[1280px] flex flex-col gap-4 md:my-12 md:mx-auto bg-[#F7F3ED] text-black md:p-4">
     <h1 class="md:text-5xl text-2xl ">
       Ensure you have installed grammarly and it is working!
     </h1>
@@ -14,8 +14,8 @@
     </p>
 
     <div class="flex  justify-between">
-      <%= f.text_field :header, class: "h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] focus:outline-none" ,placeholder: "Header for Club Details i.e. Management, History, etc", required: true %>
-      <%= f.file_field :photo, class: "h-[50px] flex items-center p-2 w-[45%] bg-[#F7F3ED] border-black focus:outline-none" ,placeholder: "Upload A Photo" %>
+      <%= f.text_field :header, class: "h-[50px] w-[45%] p-2 border-b border-black bg-[#F7F3ED] text-black focus:outline-none" ,placeholder: "Header for Club Details i.e. Management, History, etc", required: true %>
+      <%= f.file_field :photo, class: "h-[50px] flex items-center p-2 w-[45%] bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Upload A Photo" %>
       <%= image_tag(f.object.photo, class:"w-[300px]") if f.object.photo.present? %>
 
 
