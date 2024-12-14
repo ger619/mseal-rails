@@ -1,0 +1,114 @@
+<div class="container mx-auto p-4">
+    <!-- Table Header -->
+    <div class="flex justify-between items-start mb-6 px-4">
+      <div class="text-2xl font-bold">STANDINGS</div>
+      <div class="text-right text-sm text-gray-600">
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-400">BROUGHT TO YOU BY</span>
+          <img src="../assets/sponsor-logo.png" alt="Sponsor" class="h-16 bg-white">
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub Header -->
+    <div class="text-center mb-6">
+      <img src="../assets/La-Liga-Small-Transparent.png" alt="LaLiga" class="h-10 mx-auto mb-4">
+      <div class="text-sm text-gray-600">LAST UPDATED: 10:00 CET AUGUST 21 2024</div>
+      <div class="mt-2">2024/2025 Season</div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full table-auto border-collapse border border-gray-300">
+        <thead class="bg-gray-200">
+        <tr>
+          <th class="p-3 text-left text-gray-700">Position</th>
+          <th class="p-3 text-left text-gray-700">Team</th>
+          <th class="p-3 text-center text-gray-700">Points</th>
+          <th class="p-3 text-center text-gray-700">Matches Played</th>
+          <th class="p-3 text-center text-gray-700">Wins</th>
+          <th class="p-3 text-center text-gray-700">Draws</th>
+          <th class="p-3 text-center text-gray-700">Losses</th>
+          <th class="p-3 text-center text-gray-700">Goals For</th>
+          <th class="p-3 text-center text-gray-700">Goals Against</th>
+          <th class="p-3 text-center text-gray-700">Goal Difference</th>
+          <th class="p-3 text-center text-gray-700">Form</th>
+          <th class="p-3 text-center text-gray-700">Next Match</th>
+        </tr>
+        </thead>
+        <% @table.each  do |table| %>
+        <% if table.opponent_team.name == "Murang'a Seals" %>
+            <tbody class="bg-[#FAE115] bg-opacity-70 border-b  border-[#FAE115]  text-base font-semibold text-black">
+            <!-- Example Row -->
+            <tr class="#hover:bg-gray-100">
+              <td class="p-3"><%= table.rank %></td>
+              <td class="p-3 flex items-center space-x-2">
+                <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
+                <span><%= table.opponent_team.name %></span>
+              </td>
+              <td class="p-3 text-center"><%= table.pts %></td>
+              <td class="p-3 text-center"><%= table.games_played %></td>
+              <td class="p-3 text-center"><%= table.w %></td>
+              <td class="p-3 text-center"><%= table.d %></td>
+              <td class="p-3 text-center"><%= table.l %></td>
+              <td class="p-3 text-center"><%= table.gf %></td>
+              <td class="p-3 text-center"><%= table.ga %></td>
+              <td class="p-3 text-center"><%= table.gd %></td>
+
+
+              <td class="p-3 text-center">
+                <div class="flex justify-center space-x-1">
+                  <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                  <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                  <span class="block w-5 h-5 rounded-full bg-gray-500 text-white text-xs text-center">D</span>
+                  <span class="block w-5 h-5 rounded-full bg-red-500 text-white text-xs text-center">L</span>
+                  <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                </div>
+              </td>
+              <td class="p-3 text-center">
+                <img src="../assets/VAL.png" alt="Next Match" class="h-6 w-6">
+              </td>
+            </tr>
+            <!-- Add more rows as necessary -->
+            </tbody>
+        <% else %>
+          <tbody class="bg-black">
+          <!-- Example Row -->
+          <tr class="#hover:bg-gray-100">
+            <td class="p-3">1</td>
+            <td class="p-1 flex items-center space-x-2">
+              <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
+              <span><%= table.opponent_team.name %></span>
+            </td>
+            <td class="p-3 text-center"><%= table.pts %></td>
+            <td class="p-3 text-center"><%= table.games_played %></td>
+            <td class="p-3 text-center"><%= table.w %></td>
+            <td class="p-3 text-center"><%= table.d %></td>
+            <td class="p-3 text-center"><%= table.l %></td>
+            <td class="p-3 text-center"><%= table.gf %></td>
+            <td class="p-3 text-center"><%= table.ga %></td>
+            <td class="p-3 text-center"><%= table.gd %></td>
+            <td class="p-3 text-center">
+              <div class="flex justify-center space-x-1">
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                <span class="block w-5 h-5 rounded-full bg-gray-500 text-white text-xs text-center">D</span>
+                <span class="block w-5 h-5 rounded-full bg-red-500 text-white text-xs text-center">L</span>
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+              </div>
+            </td>
+            <td class="p-3 text-center">
+              <img src="../assets/VAL.png" alt="Next Match" class="h-6 w-6">
+            </td>
+          </tr>
+          <!-- Add more rows as necessary -->
+          </tbody>
+        <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+
+
+

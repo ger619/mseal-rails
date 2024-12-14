@@ -1,11 +1,120 @@
+<div>
+  <!-- Main Container -->
+  <div class="max-w-screen-xl mx-auto p-6">
+    <!-- Title -->
+    <h2 class="text-3xl font-semibold text-center mb-10">MURANG'A SEAL FIRST TEAM</h2>
 
-  <div >
-    <div class="p-4 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-      Teams
+    <div class="mb-10 text-center">
+      <ul class="flex justify-center space-x-6">
+        <li>
+          <button
+            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            id="tab-All_players"
+            onclick="openCity(event, 'All_players')"
+          >
+            ALL PLAYERS
+          </button>
+        </li>
+        <li>
+          <button
+            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            id="tab-GoalKeeper"
+            onclick="openCity(event, 'GoalKeeper')"
+          >
+            GOALKEEPERS
+          </button>
+        </li>
+        <li>
+          <button
+            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            id="tab-Defenders"
+            onclick="openCity(event, 'Defenders')"
+          >
+            DEFENDERS
+          </button>
+        </li>
+        <li>
+          <button
+            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            id="tab-Midfielders"
+            onclick="openCity(event, 'Midfielders')"
+          >
+            MIDFIELDERS
+          </button>
+        </li>
+        <li>
+          <button
+            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            id="tab-Forward"
+            onclick="openCity(event, 'Forward')"
+          >
+            FORWARD
+          </button>
+        </li>
+        <li>
+          <button
+            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            id="tab-Coach"
+            onclick="openCity(event, 'Coach')"
+          >
+            COACHING STAFF
+          </button>
+        </li>
+      </ul>
     </div>
-    <%= render "team/goalkeeper" %>
-    <%= render "team/defenders" %>
-    <%= render "team/midfielders" %>
-    <%= render "team/forward" %>
-    <%= render "team/coach" %>
+
+    <div id="All_players" class="tabcontent active">
+      <%= render 'team/all_players' %>
+    </div>
+
+    <div id="GoalKeeper" class="tabcontent">
+      <%= render 'team/goalkeeper' %>
+    </div>
+
+    <div id="Defenders" class="tabcontent">
+      <%= render 'team/defenders'%>
+    </div>
+
+    <div id="Midfielders" class="tabcontent">
+      <%= render 'team/midfielders'%>
+    </div>
+
+    <div id="Forward" class="tabcontent">
+      <%= render 'team/forward'%>
+    </div>
+
+    <div id="Coach" class="tabcontent">
+      <%= render 'team/coach'%>
+    </div>
+
+    <div>
+      <% if current_user && current_user.role === 'moderator' %>
+        <%= link_to "Add Player", new_team_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+      <% end %>
+    </div>
   </div>
+</div>
+
+<script>
+    function openCity(evt, cityName) {
+        const tabcontent = document.getElementsByClassName("tabcontent");
+        const tablinks = document.getElementsByClassName("tablinks");
+
+        // Hide all tab content
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove active class from all tab links
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("text-yellow-500", "underline");
+        }
+
+        // Show current tab content and add active class to clicked tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("text-yellow-500", "underline");
+    }
+
+    // Set default tab to open
+    document.getElementById("tab-All_players").click();
+</script>

@@ -1,32 +1,76 @@
-<% @products.each do |product| %>
-  <div class="flex flex-col md:flex-row mt-5 mb-5 md:items-center gap-10">
-    <div class="md:w-[40%] border-[#000] md:p-16 p-3 border-2">
-      <%= link_to product_path(product.id) do %>
-        <%= image_tag(product.photo_product, class: "w-[100%]") %>
-      <% end %>
-    </div>
+<div class="max-w-7xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-10">Murang&#39;a Seal Shop</h1>
 
-    <div class="mx-5">
-      <h1 class="text-2xl md:text-5xl font-bold uppercase"><%= product.description %></h1>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <!-- Filters Section -->
+      <div class="bg-transparent border border-gray-300 p-4 rounded shadow">
+        <div class="mb-6">
+          <h2 class="font-bold mb-2">Size</h2>
+          <div class="space-y-2">
+            <label><input type="radio" name="size" value="S"> S</label><br>
+            <label><input type="radio" name="size" value="M"> M</label><br>
+            <label><input type="radio" name="size" value="L"> L</label><br>
+            <label><input type="radio" name="size" value="XL"> XL</label>
+          </div>
+        </div>
 
-      <p class="mt-2"><%= product.name %>Color: Yellow with Black and White stripes</p>
+        <div class="mb-6">
+          <h2 class="font-bold mb-2">Prices</h2>
+          <div class="space-y-2">
+            <label><input type="radio" name="price" value="0-50"> $0-$50</label><br>
+            <label><input type="radio" name="price" value="50-100"> $50-$100</label><br>
+            <label><input type="radio" name="price" value="100-150"> $100-$150</label><br>
+            <label><input type="radio" name="price" value="150-200"> $150-$200</label><br>
+            <label><input type="radio" name="price" value="300-400"> $300-$400</label>
+          </div>
+        </div>
 
-      <div id="price" class="mt-2 mb-2">Price: <%= product.price %></div>
+        <div class="mb-6">
+          <h2 class="font-bold mb-2">Collections</h2>
+          <div class="space-y-2">
+            <label><input type="radio" name="collection" value="all"> All products</label><br>
+            <label><input type="radio" name="collection" value="bestsellers"> Best sellers</label><br>
+            <label><input type="radio" name="collection" value="new"> New arrivals</label><br>
+            <label><input type="radio" name="collection" value="accessories"> Accessories</label>
+          </div>
+        </div>
 
-      <%= form_with(url: cart_add_path) do |f| %>
-        <%= f.hidden_field :product_id, value: product.id %>
-        <%= f.select :size, ['SMALL', 'MEDIUM', 'LARGE'], class: "border-[#FAE115] border-2 p-2 md:p-4 size-option uppercase", required: true %>
-        <br/><br/>
-        <%= f.number_field :quantity, value: 1, min: 1, id: "quantity", class: "bg-[#FAE115] border-none", required: true %>
-        <br/>
-        <%= f.submit "Add to cart", class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-      <% end %>
-      <br/>
+        <div>
+          <h2 class="font-bold mb-2">Tags</h2>
+          <div class="flex flex-wrap gap-2">
+            <button class="text-sm bg-transparent border border-gray-300 px-2 py-1 rounded">Fashion</button>
+            <button class="text-sm bg-transparent border border-gray-300 px-2 py-1 rounded">Hats</button>
+            <button class="text-sm bg-transparent border border-gray-300 px-2 py-1 rounded">Sandal</button>
+            <button class="text-sm bg-transparent border border-gray-300 px-2 py-1 rounded">Belt</button>
+            <button class="text-sm bg-transparent border border-gray-300 px-2 py-1 rounded">Bags</button>
+            <button class="text-sm bg-transparent border border-gray-300 px-2 py-1 rounded">Snacker</button>
+          </div>
+        </div>
+      </div>
 
-      <% if current_user %>
-        <%= link_to 'Edit', edit_product_path(product), class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-        <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2" %>
-      <% end %>
+      <!-- Products Section -->
+      <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Product Card -->
+        <div class="bg-transparent border border-gray-300 rounded shadow overflow-hidden">
+          <div class="relative">
+            <img src="./assets/jersey-full.png" alt="Rounded Red Hat" class="w-full h-64 object-cover">
+            <button class="absolute bottom-4 right-4 bg-yellow-400 text-black p-2 rounded-full shadow hover:bg-yellow-500">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .485.379L2.89 5H14.5a.5.5 0 0 1 .49.598l-1.5 8A.5.5 0 0 1 13 14H4a.5.5 0 0 1-.49-.402L.61 1.607.5 1H.5zM5 12a2 2 0 1 0 4 0H5z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold">Rounded Red Hat</h3>
+            <div class="flex justify-between items-center mt-2">
+              <span class="font-bold text-gray-700">$8.00</span>
+              <div class="flex space-x-2">
+                <div class="w-5 h-5 rounded-full border border-gray-300 bg-yellow-500"></div>
+                <div class="w-5 h-5 rounded-full border border-gray-300 bg-black"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-<% end %>

@@ -1,32 +1,111 @@
-
-
-  <% @news.each do |news| %>
-<a href="<%= news_path(news) %>">
-    <div class=" mt-5 flex mb-6 h-28 md:w-[100%] md:h-40 hover:shadow-lg hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t">
-    <div class=" h-28 md:h-40  sm:h-30 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
-      <%= image_tag(news.image, class: "w-28 md:w-96 h-28 md:h-40 ") %>
-    </div>
-    <div class="lg:w-[90%] w-[300px] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-start leading-normal">
-      <div class="">
-        <p class="text-sm text-gray-600 flex items-center uppercase">
-          <%= news.type_of_news %>
-        </p>
-
-        <div class="text-gray-900 font-bold text-xl mb-2 md:mt-3 sm:text-sm md:text-xl truncate ">
-          <%= news.header_news %>
+<section class="bg-black py-4 text-gray-200">
+  <div class="container mx-auto px-4">
+    <div class="bg-black p-4">
+      <div class="flex items-center justify-center py-4 px-8 ">
+        <div class="flex items-center space-x-2">
+          <h1
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
+          >
+            Murang'a
+          </h1>
+          <span
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
+          >Seal News</span
+          >
         </div>
+      </div>
 
-        <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
-        
-          <% if current_user %>
-            <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-              <%= link_to "Edit News", edit_news_path(news.id), class: "text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+
+      <div class="grid col-span-1 justify-start">
+        <div class="flex flex-col md:flex-row items-start md:items-center w-full">
+          <%= form_with url: news_index_path, method: :get, class: 'flex' do |f| %>
+            <%= f.select :query,
+                         options_for_select(News.distinct.pluck(:type_of_news), params[:query]),
+                         { include_blank: "Select type" },
+                         class: "border-b-4 h-12 border border-black text-black border-b-4 border-r-2 rounded" %>
+            <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-slate-100 border-b-4 border-r-2 p-2 font-semibold rounded "  %>
+          <% end %>
+          <%= form_with url: news_index_path, method: :get, class: 'flex' do |f| %>
+            <%= f.submit "Clear", class: "ml-4 mb-4 h-12 border border-slate-100 border border-b-4 border-r-2 p-2 font-semibold rounded"  %>
+          <% end %>
+        </div>
+      </div>
+
+
+      <article class="grid grid-cols-4 gap-2">
+        <% @news.each do |news| %>
+          <div class="col-span-1 border-slate-100 border-2 rounded">
+          <a href="<%= news_path(news) %>"><!-- Card 1 -->
+        <div class="bg-black overflow-hidden">
+          <%= image_tag(news.image, class: "w-full h-48 object-cover") %>
+
+          <div class="flex">
+            <!-- Text Section -->
+            <div class="p-4 text-left">
+              <p class="text-slate-100 mt-2">
+                <%= truncate(news.header_news, length: 30) %>              </p>
+              <a
+                href="#"
+                class="mt-4 inline-flex text-xs items-center text-slate-100 font-semibold"
+              >
+                <span class="ml-1">&rarr;</span> <%= news.type_of_news %>
+              </a>
+              <a
+                href="#"
+                class="mt-4 inline-flex text-xs items-center text-slate-100 font-semibold"
+              >
+                <span class="ml-1"><%= time_ago_in_words(news.created_at) %> ago</span>
+
+              </a>
+              <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
+                <% if current_user && current_user.role === 'moderator' %>
+                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+                    <%= link_to "Edit", edit_news_path(news.id), class: "text-slate-100  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+                  </div>
+                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+                    <%= button_to "Delete", news, method: :delete, data: { turbo_method: :delete  },class: "text-slate-100 font-semibold " %>
+                  </div>
+                <% end %>
+              </div>
             </div>
+          </div>
+        </div>
+          </a>
+          </div>
+
+        <% end %>
+
+      </article>
+
+      <div class="p-4 border-t mt-2">
+        <div class="text-sm font-medium text-gray-700 flex items-center justify-end">
+          <% if @pagy.next %>
+            <%= link_to url_for(page: @pagy.next), class: "text-sm font-medium text-[#FAE115] flex items-center justify-end" do %>
+              See More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 stroke-custom-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            <% end %>
+          <% end %>
+          <% if @pagy.prev %>
+            <%= link_to url_for(page: @pagy.prev), class: "text-sm font-medium text-[#FAE115] flex items-center justify-end" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 stroke-custom-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              See Less
+            <% end %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-</a>
-<% end %>
+</section>
 
+<script>
+    function navigateToLink(selectElement) {
+        const selectedValue = selectElement.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    }
+</script>

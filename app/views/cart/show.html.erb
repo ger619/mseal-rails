@@ -24,7 +24,6 @@
             <tr>
               <th class="text-center">Image</th>
               <th class="text-center">Product</th>
-
               <th class="text-center">Quantity</th>
               <th class="text-center">Price</th>
               <th class="text-center">Total</th>
@@ -36,8 +35,7 @@
               <td class="text-center h-20 w-20">
                 <%= image_tag(orderable.product.photo_product) %>
               </td>
-              <td class="text-center"><%= orderable.product.description %></td>
-
+              <td class="text-center capitalize truncate ..."><%= orderable.product.content  %></td>
               <td class="text-center"><%= orderable.quantity %></td>
               <td class="text-center"><%= orderable.product.price %></td>
               <td class="text-center">

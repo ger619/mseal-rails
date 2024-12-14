@@ -1,4 +1,5 @@
 class ProductController < ApplicationController
+  load_and_authorize_resource except: %i[index show]
   before_action :authenticate_user!, except: %i[index show]
   def index
     @products = Product.all
@@ -15,6 +16,11 @@ class ProductController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
+
+    params[:product][:images] do |image|
+      mini_image = MiniMagick::Image.new(image.tempfile.path)
+      mini_image.resize '640x480'
+    end
 
     respond_to do |format|
       if @product.save
@@ -46,13 +52,13 @@ class ProductController < ApplicationController
     @product.delete
 
     respond_to do |format|
-      format.html { redirect_to product_index_path, notice: 'Product was successfully deleted.' }
+      format.html { redirect_to product_index_url, notice: 'Product was successfully deleted.' }
     end
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :description, :quantity, :price, :photo_product, :user_id)
+    params.require(:product).permit(:name, :content, :quantity, :price, :photo_product, :user_id)
   end
 end

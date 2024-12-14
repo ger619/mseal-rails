@@ -1,12 +1,15 @@
 class TeamController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  load_and_authorize_resource except: %i[index show]
 
   def index
-    @teams = Team.all
+    @teams = Team.includes(image_attachment: :blob).all.order('jersey_number ASC')
+    # All players are displayed in the index page with their statistics from the statics table
   end
 
   def show
     @team = Team.find(params[:id])
+    @statistic = Statistic.all.where(team_id: @team.id)
   end
 
   def new
@@ -14,14 +17,14 @@ class TeamController < ApplicationController
   end
 
   def create
-    @team = Team.new(news_params)
+    @team = Team.new(team_params)
     @team.user_id = current_user.id
 
     respond_to do |format|
       if @team.save
         format.html { redirect_to team_url(@team), notice: 'Team was successfully created.' }
       else
-        format.html { redirect_to team_url, notice: 'Failure' }
+        format.html { render :new, status: :unprocessable_entity, notice: 'Failure' }
       end
     end
   end
@@ -41,7 +44,7 @@ class TeamController < ApplicationController
   def update
     @team = Team.find(params[:id])
     respond_to do |format|
-      if @team.update(news_params)
+      if @team.update(team_params)
         format.html { redirect_to team_url(@team.id), notice: 'Team was successfully updated.' }
       else
         format.html { redirect_to team_index_url, notice: 'Failure' }
@@ -51,8 +54,8 @@ class TeamController < ApplicationController
 
   private
 
-  def news_params
-    params.require(:team).permit(:first_name, :second_name, :last_name, :position, :image, :jersey_number, :about,
-                                 :user_id)
+  def team_params
+    params.require(:team).permit(:first_name, :second_name, :last_name, :position, :image, :jersey_number, :content,
+                                 :user_id, :active, :date_of_birth, :mseal_debut, :first_goal, :previous_club, :twitter, :instagram)
   end
 end

@@ -1,8 +1,9 @@
 class ClubController < ApplicationController
+  load_and_authorize_resource except: %i[index show]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @club = Club.all.order('created_at DESC')
+    @club = Club.all.order('created_at ASC')
   end
 
   def show
@@ -55,6 +56,6 @@ class ClubController < ApplicationController
   private
 
   def club_params
-    params.require(:club).permit(:header, :body, :photo, :user_id)
+    params.require(:club).permit(:header, :content, :photo, :user_id)
   end
 end

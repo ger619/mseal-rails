@@ -1,0 +1,42 @@
+<%= form_with  model: @table, url: table_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
+
+  <div class="md:p-0">
+    <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+      ADD TABLE TO THE WEBSITE
+    </div>
+    <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] text-black md:p-8 justify-self-center">
+      <div class="flex  justify-start">
+        <%= f.label :Name_of_Season, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.collection_select :season_id, Season.all, :id, :name, {prompt: "Select Season"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
+        <%= f.label :Player_Name, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.collection_select :opponent_team_id, OpponentTeam.all, :id, :name, {prompt: "Select TheTeam"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", :required => true %>
+      </div>
+
+      <div class="flex  justify-start">
+        <%= f.label :Wins, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.number_field :w, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
+        <%= f.label :Draws, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.number_field :d, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
+        <%= f.label :Loss, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.number_field :l, in: 0.0..50, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
+        <%= f.label :Goals_For, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.number_field :gf, in: 0.0..90, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", :required => true %>
+      </div>
+      <div class="flex  justify-start">
+        <%= f.label :Goals_Against, class: "capitalize content-center p-4 w-[180px] font-semibold"%>
+        <%= f.number_field :ga, in: 0.0..90, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", :required => true %>
+      </div>
+      <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
+    </div>
+
+  </div>
+<% end %>
+

@@ -1,71 +1,64 @@
-<div class="my-4 ml-8">
-  <h1 class="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Forward</h1>
-  <hr class="ml-4 w-[6%] bg-[#FAE115] h-[10px] mb-2">
-  <div class="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 flex-col text-center p-2">
+<div class="max-w-screen-xl mx-auto p-6">
+  <div class="space-y-10">
+    <!-- Section: Defender -->
+    <div>
+      <h3 class="text-2xl font-semibold text-center mb-6">Forwards</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <% @teams.select { |team| team.id.present? && team.position == "Striker" }.each do |team| %>
+          <div class="relative group w-full h-96 overflow-hidden">
 
-    <% @teams.each do |team| %>
-      <% if team.position === "Striker" %>
-        <%= link_to team_path(team.id) do %>
-          <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-            <% if team.image.attached? %>
-              <%= image_tag(team.image) %>
-            <% end %>
-            <div class="flex justify-between">
-              <div class="flex flex-col">
-                <h1 class="self-start"><%= team.first_name %></h1>
-                <h1 class="font-semibold text-2xl"><%= team.last_name %></h1>
+            <!-- Player Info at the Bottom -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent group-hover:hidden transition-all duration-300">
+              <div class="flex flex-col items-center justify-end h-full p-4 text-white">
               </div>
-              <h1 class="text-gray-400 text-5xl">0<%= team.jersey_number %></h1>
             </div>
+
+            <% unless (current_user.nil? || current_user == "user") && team.active != true %>
+              <%= link_to team_path(team.id) do %>
+                <div class="relative group w-full h-96 overflow-hidden">
+                  <% if team.image.attached? %>
+                    <%= image_tag(team.image, class: 'w-full h-full object-cover', alt: "Goal Keeper" ) %>
+                  <% end %>
+                </div>
+
+                <!-- Hover Effects: Additional Player Details -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent transform hidden group-hover:flex flex-col items-center justify-center p-4 text-white transition-all duration-300">
+                  <div class="flex flex-col items-center justify-end h-full p-4 text-white">
+                    <p class="text-xl font-bold mb-1 uppercase"><%= team.first_name %> <%= team.last_name %></p>
+                    <p class="text-sm text-gray-400 mb-4"><%= team.position %></p>
+                  </div>
+                  <hr/>
+                  <div class="flex justify-around w-full mb-4">
+                    <div class="text-center">
+                      <p class="text-xs uppercase text-gray-400">Appearances</p>
+                      <p class="text-2xl font-bold">
+                        <%= team.statistics.sum(:matches_played) %>
+                      </p>
+                      <p class="text-sm text-yellow-500"></p>
+                    </div>
+                    <div class="text-center">
+                      <p class="text-xs uppercase text-gray-400">Goals</p>
+                      <p class="text-2xl font-bold">
+                        <%= team.statistics.sum(:goals_scored) %>
+                      </p>
+                      <p class="text-sm text-yellow-500"></p>
+                    </div>
+                    <div class="text-center">
+                      <p class="text-xs uppercase text-gray-400">Assists</p>
+                      <p class="text-2xl font-bold">
+                        <%= team.statistics.sum(:assists) %>
+                      </p>
+                      <p class="text-sm text-yellow-500"></p>
+                    </div>
+                  </div>
+                  <p class="text-xs text-gray-400">2024/2025 SEASON</p>
+                </div>
+              <% end %>
+            <% end %>
+
           </div>
         <% end %>
-      <% end %>
-    <% end %>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "BrianJumaAT.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Brian</h1>
-          <h1 class="font-semibold text-2xl">Juma</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">29</h1>
       </div>
     </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "JohnMwitaAT.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">John</h1>
-          <h1 class="font-semibold text-2xl">Mwita</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">07</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "SalimAT.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Salim</h1>
-          <h1 class="font-semibold text-2xl">Akatha</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">25</h1>
-      </div>
-    </div>
-
-    <div class="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500">
-      <%= image_tag "FrancisAT.png" %>
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <h1 class="self-start">Francis</h1>
-          <h1 class="font-semibold text-2xl">Ocholla</h1>
-        </div>
-        <h1 class="text-gray-400 text-5xl">88</h1>
-      </div>
-    </div>
-
-
   </div>
 </div>

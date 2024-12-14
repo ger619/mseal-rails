@@ -1,0 +1,20 @@
+<% @news.limit(1).each do |news| %>
+<section class="relative">
+  <% if news.image.attached? %>
+    <%= image_tag(news.image, class: "w-full h-96 object-cover", alt: "Background Image" ) %>
+  <% end %>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col items-center justify-center"
+      >
+        <div class="flex flex-col items-center mt-4">
+          <h1 class="text-4xl font-bold text-center px-4 sm:px-0">
+            <%= link_to truncate(news.header_news, length: 100, separator: ' '), news_path(news) %>
+          </h1>
+          <div class="h-1 bg-white w-full"></div>
+        </div>
+        <p class="text-gray-400 text-sm mt-2">
+          ⚽ <%= news.type_of_news %> | <%= time_ago_in_words(news.created_at) %> ago
+        </p>
+      </div>
+    </section>
+<% end %>
