@@ -8,10 +8,15 @@ class NewsController < ApplicationController
     #
     @pagy, @news = if params[:query].present?
                      pagy_countless(
-                       News.where('type_of_news ILIKE ?', "%#{params[:query]}%").includes(image_attachment: :blob).order('created_at DESC'), items: 8
+                       News.where('type_of_news ILIKE ?', "%#{params[:query]}%")
+                           .includes(image_attachment: :blob)
+                           .order('created_at DESC'), items: 8
                      )
                    else
-                     pagy_countless(News.includes(image_attachment: :blob).all.order('created_at DESC'), items: 8)
+                     pagy_countless(
+                       News.includes(image_attachment: :blob)
+                           .order('created_at DESC'), items: 8
+                     )
                    end
     respond_to do |format|
       format.html
@@ -21,8 +26,8 @@ class NewsController < ApplicationController
   end
 
   def show
-    @news = News.find(params[:id])
-    @similar_news = News.where(type_of_news: @news.type_of_news).where.not(id: @news.id).limit(5)
+    @news = News.includes(image_attachment: :blob).find(params[:id])
+    @similar_news = News.includes(image_attachment: :blob).where(type_of_news: @news.type_of_news).where.not(id: @news.id).limit(5)
   end
 
   def new
