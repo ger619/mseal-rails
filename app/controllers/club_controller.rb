@@ -3,7 +3,7 @@ class ClubController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @club = Club.all.order('created_at ASC')
+    @club = Club.includes(:rich_text_content, photo_attachment: :blob).all.order('created_at ASC')
   end
 
   def show

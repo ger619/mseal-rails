@@ -25,28 +25,25 @@
   </div>
 
   <!-- Video Section -->
-  <div class="bg-gray-200 relative aspect-w-16 aspect-h-9 mb-10">
-    <img
-      src="../assets/images/hero-section.png"
-      alt="Construction Site"
-      class="absolute inset-0 object-cover w-full h-full">
-    <button
-      class="absolute inset-0 flex items-center justify-center text-white text-6xl">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16">
-        <path d="M8 5v14l11-7z"/>
-      </svg>
-    </button>
-  </div>
   <div id="history" class="tabcontent active">
-    <%= render 'club/history' %>
+    <% @club.each do |club| %>
+      <% if club.header == 'History' %>
+        <%= render 'club/history', club: @club  %>
+      <% end %>
+    <% end %>
   </div>
 
   <div id="club-records" class="tabcontent">
-    <%= render 'club-records' %>
+
   </div>
 
   <div id="management" class="tabcontent">
-    <%= render 'club/management'%>
+    <% @club.each do |club| %>
+      <% if club.header == 'Management' %>
+        <%= render 'club/management', club: @club  %>
+      <% end %>
+    <% end %>
+
   </div>
 
 
