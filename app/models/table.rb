@@ -52,4 +52,12 @@ class Table < ApplicationRecord
   def rank
     Table.order(Arel.sql('w * 3 + d DESC'), Arel.sql('gf - ga DESC')).index(self) + 1
   end
+
+  def self.search_by_season(season_id)
+    if season_id.present?
+      where(season_id: season_id)
+    else
+      all
+    end
+  end
 end

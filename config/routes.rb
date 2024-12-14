@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  mount Motor::Admin => '/motor_admin'
+  authenticate :user, ->(user) { user.role == 'admin' } do
+    mount Motor::Admin => '/motor_admin'
+  end
+
 
   get 'cart', to: 'cart#show'
+
 
   post 'cart/add'
   post 'cart/remove'
