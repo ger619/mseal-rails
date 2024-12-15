@@ -15,7 +15,7 @@
           <!-- Show user's email and logout button if logged in -->
           <div class="flex items-center space-x-4">
             <span class="text-white font-medium"><%= current_user.email %></span>
-            <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-yellow-500 space-x-2" do %>
+            <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-[#fae115] space-x-2" do %>
   <span class="bg-red-500 text-white text-xs rounded-full p-2">
     <i class="fa fa-sign-out-alt"></i>
   </span>
@@ -24,14 +24,14 @@
           </div>
         <% else %>
           <!-- Show login and register buttons if not logged in -->
-          <a href="<%= user_session_path %>" class="flex items-center hover:text-yellow-500 space-x-2">
-      <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+          <a href="<%= user_session_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
+      <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
         <i class="fa fa-user"></i>
       </span>
             <span>Login</span>
           </a>
-          <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-yellow-500 space-x-2">
-      <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
+          <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
+      <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
         <i class="fa fa-user-plus"></i>
       </span>
             <span>Register</span>
@@ -45,7 +45,7 @@
       <div class="md:hidden flex justify-end">
         <button
           id="hamburger-btn"
-          class="text-white focus:outline-none focus:text-yellow-500"
+          class="text-white focus:outline-none focus:text-[#fae115]"
         >
           <i class="fa fa-bars text-2xl"></i>
         </button>
@@ -58,19 +58,19 @@
       <nav class="hidden md:flex space-x-6 ml-16">
         <div>
           <ul class="hidden items-center md:flex gap-5 uppercase">
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
               <%= link_to 'HOME', root_path %>
             </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
               <%= link_to 'NEWS', news_index_path %>
             </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
               <%= link_to 'TEAM', team_index_path %>
             </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
               <%= link_to 'FIXTURE', opponent_index_path %>
             </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
               <%= link_to 'OUR CLUB', club_index_path %>
             </li>
 
@@ -78,7 +78,7 @@
         </div>
       </nav>
       <div class="hidden md:flex items-center space-x-4">
-        <a href="<%#= product_index_path %>" class="flex items-center hover:text-yellow-500 space-x-2 text-white">
+        <a href="<%#= product_index_path %>" class="flex items-center hover:text-[#FAE115]0 space-x-2 text-white">
     <span class="text-xl">
       <i class="fa fa-shopping-cart"></i>
     </span>
@@ -87,17 +87,17 @@
       </div>
     </div>
   </div>
-  <div class="bg-yellow-500 h-2"></div>
+  <div class="bg-[#fae115] h-2"></div>
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="bg-black py-2 md:hidden">
     <nav class="flex flex-col items-start space-y-4 px-4">
-      <a href="#" class="hover:text-yellow-500">News</a>
-      <a href="#" class="hover:text-yellow-500">Fixtures</a>
-      <a href="#" class="hover:text-yellow-500">Team</a>
-      <a href="#" class="hover:text-yellow-500">Statistics</a>
-      <a href="#" class="hover:text-yellow-500">Our Club</a>
-      <a href="#" class="hover:text-yellow-500">Shop</a>
+      <a href="#" class="hover:text-[#fae115]">News</a>
+      <a href="#" class="hover:text-[#fae115]">Fixtures</a>
+      <a href="#" class="hover:text-[#fae115]">Team</a>
+      <a href="#" class="hover:text-[#fae115]">Statistics</a>
+      <a href="#" class="hover:text-[#fae115]">Our Club</a>
+      <a href="#" class="hover:text-[#fae115]">Shop</a>
     </nav>
   </div>
 </header>

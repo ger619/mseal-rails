@@ -4,14 +4,11 @@
       <div class="flex items-center justify-center py-4 px-8 ">
         <div class="flex items-center space-x-2">
           <h1
-            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-[#fae115] to-yellow-700"
           >
-            Murang'a
+            Murang'a Seal News
           </h1>
-          <span
-            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700"
-          >Seal News</span
-          >
+
         </div>
       </div>
 
@@ -59,10 +56,10 @@
               </a>
               <div class="hidden md:flex xl:flex lg:flex-row md:flex-row sm:flex-row gap-2 md:w-[60%] sm:w-[20%] sm:hidden">
                 <% if current_user && current_user.role === 'moderator' %>
-                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2 ">
                     <%= link_to "Edit", edit_news_path(news.id), class: "text-slate-100  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
                   </div>
-                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
+                  <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2 ">
                     <%= button_to "Delete", news, method: :delete, data: { turbo_method: :delete  },class: "text-slate-100 font-semibold " %>
                   </div>
                 <% end %>
@@ -82,14 +79,14 @@
           <% if @pagy.next %>
             <%= link_to url_for(page: @pagy.next), class: "text-sm font-medium text-[#FAE115] flex items-center justify-end" do %>
               See More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 stroke-custom-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 stroke-[#fae115]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
             <% end %>
           <% end %>
           <% if @pagy.prev %>
             <%= link_to url_for(page: @pagy.prev), class: "text-sm font-medium text-[#FAE115] flex items-center justify-end" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 stroke-custom-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 stroke-[#FAE115]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
               </svg>
               See Less
