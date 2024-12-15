@@ -12,13 +12,13 @@
   <!-- Tabs Section -->
   <div class="flex justify-center mb-10">
     <nav class="flex space-x-4">
-      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+      <button class="text-lg tablinks hover:text-text-[#FAE115] hover:underline"
          id="tab-history"
          onclick="openCity(event, 'history')">History</button>
-      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline"
          id="tab-club-records"
          onclick="openCity(event, 'club-records')">Club Records</button>
-      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
+      <button class="text-lg tablinks hover:text-text-[#FAE115] hover:underline"
          id="tab-management"
          onclick="openCity(event, 'management')">Management</button>
     </nav>
@@ -51,12 +51,12 @@
 
         // Remove active class from all tab links
         for (let i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("text-yellow-500", "underline");
+            tablinks[i].classList.remove("text-[#FAE115]", "underline");
         }
 
         // Show current tab content and add active class to clicked tab
         document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.classList.add("text-yellow-500", "underline");
+        evt.currentTarget.classList.add("text-[#FAE115]", "underline");
     }
 
     // Set default tab to open

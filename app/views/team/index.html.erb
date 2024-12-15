@@ -8,7 +8,7 @@
       <ul class="flex justify-center space-x-6">
         <li>
           <button
-            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            class="text-lg tablinks hover:text-[#fae115] hover:underline"
             id="tab-All_players"
             onclick="openCity(event, 'All_players')"
           >
@@ -17,7 +17,7 @@
         </li>
         <li>
           <button
-            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            class="text-lg tablinks hover:text-[#fae115] hover:underline"
             id="tab-GoalKeeper"
             onclick="openCity(event, 'GoalKeeper')"
           >
@@ -26,7 +26,7 @@
         </li>
         <li>
           <button
-            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            class="text-lg tablinks hover:text-[#fae115] hover:underline"
             id="tab-Defenders"
             onclick="openCity(event, 'Defenders')"
           >
@@ -35,7 +35,7 @@
         </li>
         <li>
           <button
-            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            class="text-lg tablinks hover:text-[#fae115] hover:underline"
             id="tab-Midfielders"
             onclick="openCity(event, 'Midfielders')"
           >
@@ -44,7 +44,7 @@
         </li>
         <li>
           <button
-            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            class="text-lg tablinks hover:text-[#fae115] hover:underline"
             id="tab-Forward"
             onclick="openCity(event, 'Forward')"
           >
@@ -53,7 +53,7 @@
         </li>
         <li>
           <button
-            class="text-lg tablinks hover:text-yellow-500 hover:underline"
+            class="text-lg tablinks hover:text-[#fae115] hover:underline"
             id="tab-Coach"
             onclick="openCity(event, 'Coach')"
           >
@@ -107,12 +107,12 @@
 
         // Remove active class from all tab links
         for (let i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("text-yellow-500", "underline");
+            tablinks[i].classList.remove("text-[#fae115]", "underline");
         }
 
         // Show current tab content and add active class to clicked tab
         document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.classList.add("text-yellow-500", "underline");
+        evt.currentTarget.classList.add("text-[#fae115]", "underline");
     }
 
     // Set default tab to open

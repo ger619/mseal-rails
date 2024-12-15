@@ -4,7 +4,7 @@
       <div class="flex items-center justify-center py-4 px-8 ">
         <div class="flex items-center space-x-2">
           <h1
-            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-[#fae115] to-yellow-700"
+            class="text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-[#fae115] to-slate-100"
           >
             Murang'a Seal News
           </h1>
@@ -20,10 +20,10 @@
                          options_for_select(News.distinct.pluck(:type_of_news), params[:query]),
                          { include_blank: "Select type" },
                          class: "border-b-4 h-12 border border-black text-black border-b-4 border-r-2 rounded" %>
-            <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-slate-100 border-b-4 border-r-2 p-2 font-semibold rounded "  %>
+            <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded "  %>
           <% end %>
           <%= form_with url: news_index_path, method: :get, class: 'flex' do |f| %>
-            <%= f.submit "Clear", class: "ml-4 mb-4 h-12 border border-slate-100 border border-b-4 border-r-2 p-2 font-semibold rounded"  %>
+            <%= f.submit "Clear", class: "ml-4 mb-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded"  %>
           <% end %>
         </div>
       </div>
