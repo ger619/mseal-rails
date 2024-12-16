@@ -34,11 +34,11 @@
         <% @opponent2.each do |opp| %>
           <div class="col-span-2 text-center">
             <div class="text-gray-500 uppercase">
-              <% if opp.blank? %>
-                <%#= opp.match_date.strftime("%a %d  %b") %>
-              <% end %>
+                <%= opp.match_date.strftime("%a %d  %b") %>
             </div>
-            <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
+            <div class="font-bold">
+              <%= opp.match_time.strftime("%I:%M") %>
+            </div>
           </div>
           <div class="col-span-3 flex items-center space-x-2">
             <%= image_tag('kpl.png', class: 'h-12', alt: 'Competition Logo') %>
