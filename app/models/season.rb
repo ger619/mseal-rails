@@ -21,5 +21,6 @@
 class Season < ApplicationRecord
   belongs_to :user
   has_many :statistics, foreign_key: :season_id, dependent: :destroy
+  has_many :opponents, foreign_key: :season_id, dependent: :nullify
   validates :name, presence: true, uniqueness: true
 end

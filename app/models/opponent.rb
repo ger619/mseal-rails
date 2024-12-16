@@ -31,6 +31,7 @@ class Opponent < ApplicationRecord
   belongs_to :user, class_name: 'User', optional: true
   belongs_to :opponent_team
   before_validation :capitalize
+  belongs_to :season
   has_many :scorers, foreign_key: :opponent_id, class_name: 'Scorer', dependent: :destroy
   # validates :match_date, :match_time, :tournament, :venue, presence: true
 

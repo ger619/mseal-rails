@@ -90,4 +90,7 @@ gem 'sentry-ruby'
 gem 'stackprof'
 gem 'tailwindcss-rails', '~> 2.0'
 
+gem 'base64'
 gem 'bullet', '~> 7.2'
+gem 'mutex_m'
+gem 'ostruct'
