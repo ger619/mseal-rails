@@ -2,7 +2,7 @@
   <% @similar_news.limit(4).each do |similar_news| %>
     <div class="bg-black shadow-lg overflow-hidden w-1/4 mr-2">
       <%= link_to news_path(similar_news) do %>
-        <%= image_tag(similar_news.image, class: "rounded w-full") %>
+        <%= image_tag(similar_news.image, class: "rounded w-full h-[300px]") %>
         <div class="flex">
           <div class="text-left">
             <a href="#" class="mt-4 inline-flex text-sm items-center text-black bg-[#FAE115] p-1 rounded ">
