@@ -30,7 +30,7 @@
 
     /* Create an active/current tablink class */
     .tab button.active {
-        background-color: rgba(250, 225, 21, 0.3);
+        background-color: #fae115;
 
     }
 
@@ -59,7 +59,7 @@
   <button class="tablinks" onclick="openCity(event, 'Discipline')">Discipline</button>
 </div>
 
-<div id="General" class="tabcontent active bg-[#f4e721] bg-opacity-40">
+<div id="General" class="tabcontent active ">
   <div class="grid md:grid-cols-4 grid-cols-2 ">
     <% @statistic.each do |stat|  %>
 
@@ -82,7 +82,7 @@
       <% end %>
   </div>
 </div>
-<div id="Defence" class="tabcontent bg-[#f4e721] bg-opacity-40">
+<div id="Defence" class="tabcontent ">
   <div class="grid md:grid-cols-3 grid-cols-2 ">
     <% @statistic.each do |stat|  %>
 
@@ -102,7 +102,7 @@
   </div>
 
 </div>
-<div id="Distribution" class="tabcontent bg-[#f4e721] bg-opacity-40 ">
+<div id="Distribution" class="tabcontent ">
   <div class="grid md:grid-cols-3 grid-cols-2 ">
     <% @statistic.each do |stat|  %>
 
@@ -121,7 +121,7 @@
     <% end %>
   </div>
 </div>
-<div id="Attack" class="tabcontent bg-[#f4e721] bg-opacity-40 ">
+<div id="Attack" class="tabcontent  ">
   <div class="grid md:grid-cols-4 grid-cols-2 ">
     <% @statistic.each do |stat|  %>
       <div class="col-span-1 text-center p-2">
@@ -132,6 +132,8 @@
         <p class="font-bold text-2xl"><%= stat.shots_on_target %></p>
         <span class="font-extralight">Shots on Target</span>
       </div>
+
+
       <div class="col-span-1 text-center p-2">
         <p class="font-bold text-2xl"><%= stat.shots_off_target %></p>
         <span class="font-extralight">Shot off target</span>
@@ -155,7 +157,7 @@
     <% end %>
   </div>
 </div>
-<div id="Discipline" class="tabcontent bg-[#f4e721] bg-opacity-40 ">
+<div id="Discipline" class="tabcontent">
   <div class="grid md:grid-cols-4 grid-cols-2 ">
     <% @statistic.each do |stat|  %>
       <div class="col-span-1 text-center p-2">
