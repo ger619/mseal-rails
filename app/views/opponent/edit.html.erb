@@ -5,24 +5,27 @@
       <h1 class="md:text-5xl text-2xl ">
         EDIT MATCHES TO THE WEBSITE
       </h1>
-      <div class="flex  justify-between">
-        <%= f.date_field :match_date, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black text-black border-black focus:outline-none" ,placeholder: "Match Date" , required: true %>
-        <%= f.time_field :match_time, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Match Time", required: true %>
+      <div class="flex  justify-between gap-2">
+        <%= f.date_field :match_date, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black text-black border-black focus:outline-none" ,placeholder: "Match Date" , required: true %>
+        <%= f.time_field :match_time, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Match Time", required: true %>
       </div>
-      <div class="flex  justify-between">
+      <div class="flex  justify-between gap-2">
 
-        <%= f.text_field :venue, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Venue"  , required: true%>
-        <%= f.text_field :tournament, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Tournament" , required: true %>
+        <%= f.text_field :venue, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Venue"  , required: true%>
+        <%= f.text_field :tournament, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Tournament" , required: true %>
       </div>
       <!-- Add season to the form -->
-      <div class="flex  justify-between">
-        <%= f.collection_select :season_id, Season.all, :id, :name, {prompt: "Select Season"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none"  , required: true %>
+      <div class="flex  justify-between gap-2">
+        <%= f.collection_select :season_id, Season.all, :id, :name, {prompt: "Select Season"}, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none"  , required: true %>
+        <%= f.collection_select :opponent_team_id, OpponentTeam.all, :id, :name, {prompt: "Select Opponent Team"}, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none"  , required: true %>
       </div>
-      <div class="flex  justify-between gap-3">
-        <%= f.collection_select :opponent_team_id, OpponentTeam.all, :id, :name, {prompt: "Select Opponent Team"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none"  , required: true %>
-        <%= f.number_field :score_one, class: "h-[50px] flex items-center p-2 w-[30%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Home Team Score" %>
-        <%= f.number_field  :score_two, class: "h-[50px] flex items-center p-2 w-[30%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Away Team Score" %>
+
+      <div class="flex  justify-between gap-2">
+        <%= f.number_field :score_one, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Home Team Score" %>
+        <%= f.number_field  :score_two, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Away Team Score" %>
+
       </div>
+
       <%= f.submit "Submit", class: "w-[300px] mt-10 mb-10 md:mb-10 md:mt-16  mx-auto p-4 bg-[#F4E721] text-3xl text-black uppercase" %>
     </div>
 
