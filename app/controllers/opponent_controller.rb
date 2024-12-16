@@ -71,6 +71,6 @@ class OpponentController < ApplicationController
 
   def opponent_params
     params.require(:opponent).permit(:match_date, :match_time, :venue, :tournament, :score_one, :score_two, :user_id,
-                                     :opponent_team_id)
+                                     :opponent_team_id, :season_id)
   end
 end
