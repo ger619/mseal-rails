@@ -32,30 +32,34 @@
     <div class="bg-gray-900 p-4 rounded-md border border-gray-200 shadow-md">
       <div class="grid grid-cols-12 gap-4 items-center">
         <% @opponent2.each do |opp| %>
-        <div class="col-span-2 text-center">
-          <div class="text-gray-500 uppercase"><%= opp.match_date.strftime("%a %d  %b") %></div>
-          <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
-        </div>
-        <div class="col-span-3 flex items-center space-x-2">
-          <%= image_tag('kpl.png', class: 'h-12', alt: 'Competition Logo') %>
-          <span class="text-sm text-gray-500">Matchday 4</span>
-        </div>
-        <div class="col-span-6 flex items-center justify-center">
-          <div class="flex items-center space-x-2 text-left">
-            <span class="font-bold text-left">Murang&apos;a Seals</span>
+          <div class="col-span-2 text-center">
+            <div class="text-gray-500 uppercase">
+              <% if opp.blank? %>
+                <%= opp.match_date.strftime("%a %d  %b") %>
+              <% end %>
+            </div>
+            <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
+          </div>
+          <div class="col-span-3 flex items-center space-x-2">
+            <%= image_tag('kpl.png', class: 'h-12', alt: 'Competition Logo') %>
+            <span class="text-sm text-gray-500">Matchday 4</span>
+          </div>
+          <div class="col-span-6 flex items-center justify-center">
+            <div class="flex items-center space-x-2 text-left">
+              <span class="font-bold text-left">Murang&apos;a Seals</span>
               <%= image_tag("logo.png", class: "w-10") %>
+            </div>
+            <div class="mx-4 font-bold">vs</div>
+            <div class="flex items-center space-x-2">
+              <% if opp.opponent_team.team_badge.attached? %>
+                <%= image_tag (opp.opponent_team.team_badge), class: "w-10"  %>
+              <% end %>
+              <span class="font-bold text-right"><%= opp.opponent_team.name %></span>
+            </div>
           </div>
-          <div class="mx-4 font-bold">vs</div>
-          <div class="flex items-center space-x-2">
-            <% if opp.opponent_team.team_badge.attached? %>
-              <%= image_tag (opp.opponent_team.team_badge), class: "w-10"  %>
-            <% end %>
-            <span class="font-bold text-right"><%= opp.opponent_team.name %></span>
+          <div class="col-span-1 text-right">
+            <button class="bg-yellow-400 text-black px-4 py-2 rounded-md font-semibold">TICKETS</button>
           </div>
-        </div>
-        <div class="col-span-1 text-right">
-          <button class="bg-yellow-400 text-black px-4 py-2 rounded-md font-semibold">TICKETS</button>
-        </div>
         <% end %>
       </div>
     </div>
