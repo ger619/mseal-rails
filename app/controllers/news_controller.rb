@@ -27,7 +27,7 @@ class NewsController < ApplicationController
 
   def show
     @news = News.includes(image_attachment: :blob).find(params[:id])
-    @similar_news = News.includes(image_attachment: :blob).where(type_of_news: @news.type_of_news).where.not(id: @news.id).limit(5)
+    @similar_news = News.includes(image_attachment: :blob).where(type_of_news: @news.type_of_news).where.not(id: @news.id).limit(3)
   end
 
   def new
