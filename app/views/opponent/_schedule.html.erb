@@ -4,7 +4,7 @@
     <% @months.each_with_index do |month, index| %>
       <div class="min-w-[100px] p-3 text-center cursor-pointer <%= 'border-b-2 border-blue-600' if index + 1 == @current_page %>">
         <div class="text-sm text-gray-500"><%= month.strftime("%Y") %></div>
-        <div class="text-base font-semibold"><%= month.strftime("%b") %></div>
+        <div class="text-base font-semibold "><%= month.strftime("%b") %></div>
       </div>
     <% end %>
   </div>
