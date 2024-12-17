@@ -34,9 +34,7 @@
         <% @opponent2.each do |opp| %>
           <div class="col-span-2 text-center">
             <div class="text-gray-500 uppercase">
-              <% if opp.blank? %>
                 <%= opp.match_date.strftime("%a %d  %b") %>
-              <% end %>
             </div>
             <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
           </div>
