@@ -4,7 +4,6 @@ class NewsController < ApplicationController
 
   def index
     # Adding a group by month on the news
-    # Source:
     #
     @pagy, @news = if params[:query].present?
                      pagy_countless(
