@@ -1,74 +1,77 @@
 <div class="container mx-auto p-4">
   <!-- Month Selector -->
   <div class="flex overflow-x-auto space-x-4 mb-8">
-    <div class="min-w-[100px] p-3 text-center cursor-pointer border-b-2 border-blue-600">
-      <div class="text-sm text-gray-500">2024</div>
-      <div class="text-base font-semibold">AUG</div>
-    </div>
-    <div class="min-w-[100px] p-3 text-center cursor-pointer hover:bg-gray-100">
-      <div class="text-sm text-gray-500">2024</div>
-      <div class="text-base">SEP</div>
-    </div>
-    <!-- Add more months as needed -->
-  </div>
-  <!-- Filters -->
-
-    <%= form_with url: opponent_index_path, method: :get, class: 'grid grid-cols-1 md:grid-cols-3 gap-4 mb-8' do |f| %>
-      <%= f.select :venue,
-                   options_for_select(Opponent.distinct.pluck(:tournament), params[:venue]),
-                   { include_blank: "COMPETITION - ALL" },
-                   class: "w-full p-2 border rounded-md bg-gray-900 h-12 mr-2" %>
-      <%= f.select :venue,
-                   options_for_select(Opponent.distinct.pluck(:venue), params[:venue]),
-                   { include_blank: "LOCATION - ALL" },
-                   class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
-      <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
+    <% @months.each_with_index do |month, index| %>
+      <div class="min-w-[100px] p-3 text-center cursor-pointer <%= 'border-b-2 border-blue-600' if index + 1 == @current_page %>">
+        <div class="text-sm text-gray-500"><%= month.strftime("%Y") %></div>
+        <div class="text-base font-semibold"><%= month.strftime("%b") %></div>
+      </div>
     <% end %>
+  </div>
 
-
+  <!-- Filters -->
+  <%= form_with url: opponent_index_path, method: :get, class: 'grid grid-cols-1 md:grid-cols-3 gap-4 mb-8' do |f| %>
+    <%= f.select :venue,
+                 options_for_select(Opponent.distinct.pluck(:tournament), params[:venue]),
+                 { include_blank: "COMPETITION - ALL" },
+                 class: "w-full p-2 border rounded-md bg-gray-900 h-12 mr-2" %>
+    <%= f.select :venue,
+                 options_for_select(Opponent.distinct.pluck(:venue), params[:venue]),
+                 { include_blank: "LOCATION - ALL" },
+                 class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
+    <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
+  <% end %>
 
   <div class="space-y-4">
     <!-- Match Card -->
-
-  </div>
-
-  <% @schedule.each do |month, matches| %>
-    <div class="month-group">
-      <h4 class="text-xl font-semibold mb-6 uppercase">
-          <%= month.strftime("%B %Y") %>
-      </h4>
-      <% matches.each do |opp| %>
-        <div class="bg-gray-900 p-4 rounded-md border border-gray-200 shadow-md mb-6">
-          <div class="grid grid-cols-12 gap-4 items-center">
-            <div class="col-span-2 text-center">
-              <div class="text-gray-500 uppercase">
-                <%= opp.match_date.strftime("%a %d %b") %>
+    <% if @current_matches %>
+      <div class="month-group">
+        <h4 class="text-xl font-semibold mb-6 uppercase">
+          <%= @current_month.strftime("%B %Y") %>
+        </h4>
+        <% @current_matches.each do |opp| %>
+          <div class="bg-gray-900 p-4 rounded-md border border-gray-200 shadow-md mb-6">
+            <div class="grid grid-cols-12 gap-4 items-center">
+              <div class="col-span-2 text-center">
+                <div class="text-gray-500 uppercase">
+                  <%= opp.match_date.strftime("%a %d %b") %>
+                </div>
+                <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
               </div>
-              <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
-            </div>
-            <div class="col-span-3 flex items-center space-x-2">
-              <%= image_tag('kpl.png', class: 'h-12', alt: 'Competition Logo') %>
-              <span class="text-sm text-gray-500">Matchday 4</span>
-            </div>
-            <div class="col-span-6 flex items-center justify-center">
-              <div class="flex items-center space-x-2 text-left">
-                <span class="font-bold text-left">Murang&apos;a Seals</span>
-                <%= image_tag("logo.png", class: "w-10") %>
+              <div class="col-span-3 flex items-center space-x-2">
+                <%= image_tag('kpl.png', class: 'h-12', alt: 'Competition Logo') %>
+                <span class="text-sm text-gray-500">Matchday 4</span>
               </div>
-              <div class="mx-4 font-bold">vs</div>
-              <div class="flex items-center space-x-2">
-                <% if opp.opponent_team.team_badge.attached? %>
-                  <%= image_tag (opp.opponent_team.team_badge), class: "w-10"  %>
-                <% end %>
-                <span class="font-bold text-right"><%= opp.opponent_team.name %></span>
+              <div class="col-span-6 flex items-center justify-center">
+                <div class="flex items-center space-x-2 text-left">
+                  <span class="font-bold text-left">Murang&apos;a Seals</span>
+                  <%= image_tag("logo.png", class: "w-10") %>
+                </div>
+                <div class="mx-4 font-bold">vs</div>
+                <div class="flex items-center space-x-2">
+                  <% if opp.opponent_team.team_badge.attached? %>
+                    <%= image_tag (opp.opponent_team.team_badge), class: "w-10"  %>
+                  <% end %>
+                  <span class="font-bold text-right"><%= opp.opponent_team.name %></span>
+                </div>
               </div>
-            </div>
-            <div class="col-span-1 text-right">
-              <button class="bg-yellow-400 text-black px-4 py-2 rounded-md font-semibold">TICKETS</button>
+              <div class="col-span-1 text-right">
+                <button class="bg-yellow-400 text-black px-4 py-2 rounded-md font-semibold">TICKETS</button>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls flex justify-between">
+    <% if @current_page > 1 %>
+      <%= link_to 'Previous', opponent_index_path(page: @current_page - 1), class: 'bg-gray-900 text-white px-4 py-2 rounded-md' %>
+    <% end %>
+    <% if @current_page < @total_pages %>
+      <%= link_to 'Next', opponent_index_path(page: @current_page + 1), class: 'bg-gray-900 text-white px-4 py-2 rounded-md' %>
+    <% end %>
+  </div>
 </div>
