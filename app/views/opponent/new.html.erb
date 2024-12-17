@@ -1,8 +1,5 @@
 <%= form_with  model: @opponent, url: opponent_index_path, method: :post, data: { turbo: false }, local: true do |f| %>
   <div class="md:p-0">
-    <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-      ADD NEWS PAGE
-    </div>
     <div class="md:w-[800px] lg:w-[1024px] flex flex-col gap-4 md:my-24 md:mx-auto bg-[#F7F3ED] text-black md:p-8">
       <h1 class="md:text-5xl text-2xl ">
         ADD MATCHES TO THE WEBSITE
@@ -15,8 +12,8 @@
         <%= f.time_field :match_time, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Match Time", required: true %>
       </div>
       <div class="flex  justify-between gap-2">
-        <%= f.text_field :venue, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Venue"  , required: true%>
-        <%= f.text_field :tournament, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Tournament" , required: true %>
+        <%= f.select :venue, options_for_select(['St Sebastian Park', 'Kenyatta Stadium', 'Nyayo Stadium', 'Kasarani Stadium', 'Dandora Stadium', 'Afraha Stadium','Safaricon Stadium','City Stadium', 'Bukhungu Stadium','Mombasa Municipal Stadium']), { prompt: "Select Venue" }, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", required: true %>
+        <%= f.select :tournament, options_for_select(['KPL', 'Gotv SHIELD CUP']), { prompt: "Select Tournament" }, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", required: true %>
       </div>
       <!-- Add season to the form -->
       <div class="flex  justify-between gap-2">
