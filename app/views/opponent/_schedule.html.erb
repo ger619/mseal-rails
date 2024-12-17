@@ -16,7 +16,7 @@
     <%= form_with url: opponent_index_path, method: :get, class: 'grid grid-cols-1 md:grid-cols-3 gap-4 mb-8' do |f| %>
       <%= f.select :venue,
                    options_for_select(Opponent.distinct.pluck(:tournament), params[:venue]),
-                   { include_blank: "Competition - ALL" },
+                   { include_blank: "COMPETITION - ALL" },
                    class: "w-full p-2 border rounded-md bg-gray-900 h-12 mr-2" %>
       <%= f.select :venue,
                    options_for_select(Opponent.distinct.pluck(:venue), params[:venue]),

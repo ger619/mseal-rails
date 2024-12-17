@@ -12,7 +12,9 @@
         <%= f.time_field :match_time, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none" ,placeholder: "Match Time", required: true %>
       </div>
       <div class="flex  justify-between gap-2">
-        <%= f.select :venue, options_for_select(['St Sebastian Park', 'Kenyatta Stadium', 'Nyayo Stadium', 'Kasarani Stadium', 'Dandora Stadium', 'Afraha Stadium','Safaricon Stadium','City Stadium', 'Bukhungu Stadium','Mombasa Municipal Stadium']), { prompt: "Select Venue" }, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", required: true %>        <%= f.select :tournament, options_for_select(['KPL', 'SHIELD CUP']), { prompt: "Select Tournament" }, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", required: true %>      </div>
+        <%= f.select :venue, options_for_select(['St Sebastian Park', 'Kenyatta Stadium', 'Nyayo Stadium', 'Kasarani Stadium', 'Dandora Stadium', 'Afraha Stadium','Safaricon Stadium','City Stadium', 'Bukhungu Stadium','Mombasa Municipal Stadium']), { prompt: "Select Venue" }, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", required: true %>
+        <%= f.select :tournament, options_for_select(['KPL', 'Gotv SHIELD CUP']), { prompt: "Select Tournament" }, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none", required: true %>
+      </div>
       <!-- Add season to the form -->
       <div class="flex  justify-between gap-2">
         <%= f.collection_select :season_id, Season.all, :id, :name, {prompt: "Select Season"}, class: "h-[50px] flex items-center p-2 w-[50%] border-b bg-[#F7F3ED] text-black border-black focus:outline-none"  , required: true %>
