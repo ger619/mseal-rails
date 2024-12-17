@@ -5,7 +5,16 @@ class OpponentController < ApplicationController
   def index
     @opponent = Opponent.all.order('match_date ASC')
     # #Fixtures
-    @schedule = Opponent.where('match_date >=?', Date.today).order('match_date ASC').group_by { |match| match.match_date.beginning_of_month }
+    @opponent_logic = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
+    @schedule = @opponent_logic.group_by { |match| match.match_date.beginning_of_month }
+
+    @months = @schedule.keys
+    @current_page = (params[:page] || 1).to_i
+    @per_page = 1
+    @total_pages = (@months.size / @per_page.to_f).ceil
+    @current_month = @months[@current_page - 1]
+    @current_matches = @schedule[@current_month]
+
     # #Results
     @result = Opponent.where('match_date <= ?',
                              Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
