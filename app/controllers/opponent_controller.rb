@@ -5,10 +5,12 @@ class OpponentController < ApplicationController
   def index
     @opponent = Opponent.all.order('match_date ASC')
     # #Fixtures
-    @opponent1 = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
+    @schedule = Opponent.where('match_date >=?', Date.today).order('match_date ASC').group_by { |match| match.match_date.beginning_of_month }
     # #Results
-    @opponent2 = Opponent.where('match_date <= ?',
+    @result = Opponent.where('match_date <= ?',
                                 Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
+
+
     @latest_season = Season.order(created_at: :desc).first
     params[:season_id] ||= @latest_season.id
 
