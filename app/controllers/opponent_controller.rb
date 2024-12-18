@@ -16,8 +16,12 @@ class OpponentController < ApplicationController
     @current_matches = @schedule[@current_month]
 
     # #Results
-    @result = Opponent.where('match_date <= ?',
-                             Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
+    # #Results
+    @result = Opponent.where('match_date <= ?', Date.today)
+      .where.not(score_one: nil)
+      .where.not(score_two: nil)
+      .order('match_date DESC')
+      .group_by { |match| match.match_date.beginning_of_month }
 
     @latest_season = Season.order(created_at: :desc).first
     params[:season_id] ||= @latest_season.id
