@@ -2,75 +2,69 @@
   <div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
     <div>
       <% if current_user && current_user.role === 'moderator' %>
-        <%=link_to "Add Opponent", new_opponent_path, class: "normal-case border-2 border-slate-100 hover:bg-slate-100 font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-        <%=link_to "Add Opponent Team", new_opponent_team_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-        <%=link_to "Add Table", new_table_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-        <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-    <% end %>
+        <%= link_to "Add Opponent", new_opponent_path, class: "normal-case border-2 border-slate-100 hover:bg-slate-100 font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%= link_to "Add Opponent Team", new_opponent_team_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%= link_to "Add Table", new_table_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <%= link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+      <% end %>
     </div>
   </div>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+  <style>
+      /* Style the tab */
+      .tab {
+          overflow: hidden;
+          border-bottom: 1px solid #ccc;
+      }
 
-        /* Style the tab */
-        .tab {
-            overflow: hidden;
-            border-bottom: 1px solid #ccc;
+      /* Style the buttons inside the tab */
+      .tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+      }
 
-        }
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+          color: #FAE115;
+      }
 
-        /* Style the buttons inside the tab */
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 17px;
-        }
+      /* Create an active/current tablink class */
+      .tab button.active {
+          color: yellow;
+      }
 
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            color: #FAE115;
-        }
+      /* Style the tab content */
+      .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+      }
+  </style>
 
-        /* Create an active/current tablink class */
-        .tab button.active {
-            color: yellow;
-
-
-        }
-
-        /* Style the tab content */
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
-        }
-    </style>
-
-
-  <div class="tab flex flex-col justify-center md:flex-row gap-5">
+  <div class="tab flex flex-col md:flex-row gap-5 justify-center">
     <button class="tablinks active" onclick="openCity(event, 'Schedule')" id="defaultOpen">SCHEDULE</button>
     <button class="tablinks" onclick="openCity(event, 'Result')">RESULTS</button>
     <button class="tablinks" onclick="openCity(event, 'Fixtures')">STANDINGS</button>
   </div>
 
-  <div id="Schedule" class="tabcontent active  ">
+  <div id="Schedule" class="tabcontent active">
     <%= render 'opponent/schedule' %>
   </div>
 
   <div id="Result" class="tabcontent">
     <%= render 'opponent/results' %>
   </div>
-  <!--Fixtures-->
-  <div id="Fixtures" class="tabcontent">
-    <%= render 'table/table_display'%>
-  </div>
 
+  <div id="Fixtures" class="tabcontent">
+    <%= render 'table/table_display' %>
+  </div>
 
   <script>
       function openCity(evt, cityName) {
@@ -88,10 +82,4 @@
       }
       document.getElementById("defaultOpen").click();
   </script>
-
-
-
-
-
 </div>
-

@@ -1,35 +1,35 @@
 <div class="shadow-md pl-4 pr-4 pt-8">
-  <div class="sm:w-[200px] md:w-full text-white lg:max-w-full xl:max-w-full bg-black mx-auto mt-1.5">
-    <div class="grid grid-cols-6 justify-between">
-      <div class="col-span-1">
+  <div class="w-full text-white bg-black mx-auto mt-1.5 sm:w-[200px] md:w-full lg:max-w-full xl:max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-6 justify-between">
+      <div class="hidden md:block col-span-1">
       </div>
-      <div class="col-span-4">
-        <div class="w-full mx-auto ">
+      <div class="col-span-1 md:col-span-4">
+        <div class="w-full mx-auto">
           <% if @news.image.attached? %>
-            <%= image_tag(@news.image, class: "rounded w-full") %>
+            <%= image_tag(@news.image, class: "rounded  lg:h-[100%] sm:h-48 md:h-64 ") %>
           <% end %>
         </div>
 
-        <p class="text-2xl font-semibold w-full mt-4">
+        <p class="text-xl sm:text-2xl font-semibold w-full mt-4">
           <%= @news.header_news %>
         </p>
 
-        <p class="text-2xl font-semibold w-full mt-4">
+        <p class="text-xl sm:text-2xl font-semibold w-full mt-4">
           <%= @news.content %>
         </p>
 
         <% if current_user && current_user.role == 'moderator' %>
-          <div class="grid grid-cols-2 gap-4 p-2">
-            <div class="bg-yellow-400 mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2">
-              <%= link_to "Edit", edit_news_path(@news.id), class: "w-12 text-black lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-2">
+            <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+              <%= link_to "Edit", edit_news_path(@news.id), class: "w-full text-black text-sm sm:text-xs md:text-sm lg:text-base font-semibold py-1 px-2 rounded" %>
             </div>
-            <div class="bg-yellow-400 mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2">
-              <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete }, class: "text-black font-semibold" %>
+            <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+              <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete }, class: "w-full text-black font-semibold" %>
             </div>
           </div>
         <% end %>
         <div class="my-10">
-          <div class="flex items-center space-x-8">
+          <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
             <p class="font-bold">SHARE ARTICLE</p>
             <div class="flex space-x-4">
               <a href="https://www.facebook.com/sharer/sharer.php?u=<%= url_for(controller: 'news', action: 'show', id: @news.id, only_path: false) %>" target="_blank" rel="noopener noreferrer" class="text-[#fae115]">
@@ -44,13 +44,9 @@
         </div>
 
         <%= render 'news/similar_news' %>
-
-
       </div>
-      <div class="col-span-1">
+      <div class="hidden md:block col-span-1">
       </div>
     </div>
-
   </div>
-
 </div>

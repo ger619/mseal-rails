@@ -1,16 +1,16 @@
 <!-- Footer Component -->
 <div class="px-5 bg-black pt-20 w-full">
   <div class="bg-black w-full rounded-none">
-    <div class="flex justify-between items-center py-4">
+    <div class="flex flex-col sm:flex-row justify-between items-center py-4">
       <!-- Navigation Items -->
       <nav>
-        <ul class="flex space-x-6 text-[#fae115]">
+        <ul class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-[#fae115]">
           <li class="hover:text-[#fae115]">
             <%= link_to 'HOME', root_path %>
           </li>
           <li class="hover:text-[#fae115]">
             <%= link_to 'NEWS', news_index_path %>
-            </li>
+          </li>
           <li class="hover:text-[#fae115]">
             <%= link_to 'TEAM', team_index_path %>
           </li>
@@ -20,12 +20,11 @@
           <li class="hover:text-[#fae115]">
             <%= link_to 'OUR CLUB', club_index_path %>
           </li>
-
         </ul>
       </nav>
 
       <!-- Social Media Icons -->
-      <div class="flex space-x-6 text-[#fae115] text-2xl">
+      <div class="flex space-x-6 text-[#fae115] text-2xl mt-4 sm:mt-0">
         <a href="#" class="hover:text-[#fae115]"><i class="fab fa-facebook"></i></a>
         <a href="#" class="hover:text-[#fae115]"><i class="fab fa-youtube"></i></a>
         <a href="#" class="hover:text-[#fae115]"><i class="fab fa-twitter"></i></a>

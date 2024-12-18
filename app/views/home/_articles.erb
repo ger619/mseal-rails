@@ -1,11 +1,10 @@
-
 <section class="relative">
-  <div class="bg-black h-48">
+  <div class="bg-black h-32 sm:h-48">
   </div>
-  <div class="bg-gradient-to-b from-[#fae115] to-black h-60">
+  <div class="bg-gradient-to-b from-[#fae115] to-black h-40 sm:h-60">
   </div>
-  <div class="absolute inset-0 flex justify-center py-8">
-    <div class="flex flex-wrap justify-center gap-4">
+  <div class="absolute inset-0 flex justify-center py-4 sm:py-8">
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-4">
       <!-- Card 1 -->
       <% @news.limit(4).each_with_index do |news, index| %>
         <% if index == 0 %>
@@ -13,19 +12,19 @@
         <% else %>
           <% @news.length - index %>
 
-          <article class="bg-gray-800 shadow-lg rounded-lg overflow-hidden w-72">
+          <article class="bg-gray-800 shadow-lg rounded-lg overflow-hidden w-40 sm:w-72">
             <%= link_to news_path(news) do %>
-            <% if news.image.attached? %>
-              <%= image_tag(news.image, class: "w-full h-48 object-cover")  %>
-            <% end %>
-            <div class="p-4">
-              <h2 class="text-lg font-bold">
-                <%= truncate(news.header_news, length: 30, separator: ' ') %>
-              </h2>
-              <div class="flex items-center mt-2 text-gray-400 text-sm">
-                <span>🎬 <%= time_ago_in_words(news.created_at) %> ago</span>
+              <% if news.image.attached? %>
+                <%= image_tag(news.image, class: "w-full h-32 sm:h-48 object-cover")  %>
+              <% end %>
+              <div class="p-2 sm:p-4">
+                <h2 class="text-sm sm:text-lg font-bold">
+                  <%= truncate(news.header_news, length: 30, separator: ' ') %>
+                </h2>
+                <div class="flex items-center mt-1 sm:mt-2 text-gray-400 text-xs sm:text-sm">
+                  <span>🎬 <%= time_ago_in_words(news.created_at) %> ago</span>
+                </div>
               </div>
-            </div>
             <% end %>
           </article>
 
