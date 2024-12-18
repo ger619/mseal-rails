@@ -4,8 +4,8 @@ class HomeController < ApplicationController
     @news = News.includes(image_attachment: :blob).order('created_at DESC')
     @advert = Advert.all.order('created_at DESC')
     # Display all opponent in ascending order if date is greater than today
-    @opponent1 = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
-    @opponent2 = Opponent.where('match_date <= ?',
+    @upcoming = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
+    @results = Opponent.where('match_date <= ?',
                                 Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
     @product = Product.includes(%i[photo_product_attachment rich_text_content]).order('created_at DESC')
 

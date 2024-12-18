@@ -1,5 +1,5 @@
 <!-- Card 3 -->
-<% @opponent2.limit(1).each do |opp| %>
+<% @results.limit(1).each do |opp| %>
   <div class="bg-white shadow-md overflow-hidden w-full sm:w-1/3">
     <div class="relative flex flex-col sm:flex-row items-center bg-gradient-to-r from-gray-900 to-purple-900 p-4 sm:p-5 shadow-lg">
       <!-- Date Section -->
@@ -35,9 +35,6 @@
       <p class="text-center text-xs sm:text-sm mb-4 sm:mb-8 text-gray-500">
         <%= opp.venue %>
       </p>
-      <button class="w-full bg-[#fae115] text-white font-semibold py-2 mt-4 rounded-lg hover:bg-opacity-50">
-        TICKETS
-      </button>
     </div>
   </div>
 <% end %>
