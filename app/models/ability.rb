@@ -11,8 +11,6 @@ class Ability
 
     return unless user.role == 'admin'
 
-    can :manage,
-        Advert, Club, HallOfFame, News, Opponent, OpponentTeam, Product, Team, Statistic, Season, Scorer, Motor::Admin,
-        user.role == 'admin'
+    can :manage, :all
   end
 end
