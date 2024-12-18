@@ -1,8 +1,8 @@
-<header class="relative pt-4 ">
+<header class="relative pt-4">
   <div class="absolute top-1/2 transform -translate-y-1/2 z-15 mt-2">
     <%= image_tag('logo.png', class: "md:flex xl:none lg:h-[140px] md:h-[140px] sm:h-[120px] h-28") %>
   </div>
-  <div class="">
+  <div>
     <div class="container mx-auto flex justify-between items-center px-4 pb-4">
       <!-- Logo on the Left -->
       <div class="flex-grow"></div>
@@ -13,37 +13,32 @@
           <div class="flex items-center space-x-4">
             <span class="text-white font-medium"><%= current_user.email %></span>
             <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-[#fae115] space-x-2" do %>
-  <span class="bg-red-500 text-white text-xs rounded-full p-2">
-    <i class="fa fa-sign-out-alt"></i>
-  </span>
+              <span class="bg-red-500 text-white text-xs rounded-full p-2">
+                <i class="fa fa-sign-out-alt"></i>
+              </span>
               <span>Logout</span>
             <% end %>
           </div>
         <% else %>
           <!-- Show login and register buttons if not logged in -->
           <a href="<%= user_session_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
-      <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
-        <i class="fa fa-user"></i>
-      </span>
+            <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
+              <i class="fa fa-user"></i>
+            </span>
             <span>Login</span>
           </a>
           <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
-      <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
-        <i class="fa fa-user-plus"></i>
-      </span>
+            <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
+              <i class="fa fa-user-plus"></i>
+            </span>
             <span>Register</span>
           </a>
         <% end %>
       </div>
 
-
-
       <!-- Hamburger Icon for Mobile (aligned to the right) -->
       <div class="md:hidden flex justify-end">
-        <button
-          id="hamburger-btn"
-          class="text-white focus:outline-none focus:text-[#fae115]"
-        >
+        <button id="hamburger-btn" class="text-white focus:outline-none focus:text-[#fae115]">
           <i class="fa fa-bars text-2xl"></i>
         </button>
       </div>
@@ -53,32 +48,29 @@
     <div class="container mx-auto flex ml-14 justify-between items-center">
       <!-- Main Navigation Links for Desktop -->
       <nav class="hidden md:flex space-x-6 ml-16">
-        <div>
-          <ul class="hidden items-center md:flex gap-5 uppercase">
-            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
-              <%= link_to 'HOME', root_path %>
-            </li>
-            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
-              <%= link_to 'NEWS', news_index_path %>
-            </li>
-            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
-              <%= link_to 'TEAM', team_index_path %>
-            </li>
-            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
-              <%= link_to 'FIXTURE', opponent_index_path %>
-            </li>
-            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
-              <%= link_to 'OUR CLUB', club_index_path %>
-            </li>
-
-          </ul>
-        </div>
+        <ul class="hidden items-center md:flex gap-5 uppercase">
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'HOME', root_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'NEWS', news_index_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'TEAM', team_index_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'FIXTURE', opponent_index_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'OUR CLUB', club_index_path %>
+          </li>
+        </ul>
       </nav>
       <div class="hidden md:flex items-center space-x-4">
-        <a href="<%= product_index_path %>" class="flex items-center hover:text-[#FAE115]0 space-x-2 text-white">
-    <span class="text-xl">
-      <i class="fa fa-shopping-cart"></i>
-    </span>
+        <a href="<%= product_index_path %>" class="flex items-center hover:text-[#fae115] space-x-2 text-white">
+          <span class="text-xl">
+            <i class="fa fa-shopping-cart"></i>
+          </span>
           <span>SHOP</span>
         </a>
       </div>
@@ -89,12 +81,12 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="bg-black py-2 md:hidden">
     <nav class="flex flex-col items-start space-y-4 px-4">
-      <a href="#" class="hover:text-[#fae115]">News</a>
-      <a href="#" class="hover:text-[#fae115]">Fixtures</a>
-      <a href="#" class="hover:text-[#fae115]">Team</a>
+      <a href="<%= news_index_path %>" class="hover:text-[#fae115]">News</a>
+      <a href="<%= opponent_index_path %>" class="hover:text-[#fae115]">Fixtures</a>
+      <a href="<%= team_index_path %>" class="hover:text-[#fae115]">Team</a>
       <a href="#" class="hover:text-[#fae115]">Statistics</a>
-      <a href="#" class="hover:text-[#fae115]">Our Club</a>
-      <a href="#" class="hover:text-[#fae115]">Shop</a>
+      <a href="<%= club_index_path %>" class="hover:text-[#fae115]">Our Club</a>
+      <a href="<%= product_index_path %>" class="hover:text-[#fae115]">Shop</a>
     </nav>
   </div>
 </header>

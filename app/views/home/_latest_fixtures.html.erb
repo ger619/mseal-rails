@@ -1,15 +1,15 @@
-<% @opponent1.limit(1).each do |opp| %>
-  <div class="bg-white shadow-md overflow-hidden w-1/3">
-    <div class="relative flex items-center bg-gradient-to-r from-gray-900 to-purple-900 p-4 shadow-lg">
+<% @upcoming.limit(1).each do |opp| %>
+  <div class="bg-white shadow-md overflow-hidden w-full sm:w-1/3">
+    <div class="relative flex flex-col sm:flex-row items-center bg-gradient-to-r from-gray-900 to-purple-900 p-4 shadow-lg">
       <!-- Date Section -->
-      <div class="flex items-center justify-center text-white text-4xl font-bold pr-4">
+      <div class="flex items-center justify-center text-white text-2xl sm:text-4xl font-bold pr-0 sm:pr-4">
         <div class="text-center gap-1">
           <p>
             <%= opp.match_date.strftime("%d") %>
           </p>
         </div>
         <div>
-          <p class="text-sm font-light uppercase">
+          <p class="text-xs sm:text-sm font-light uppercase">
             <%= opp.match_date.strftime("%A") %>
           </p>
           <p class="text-xs font-light uppercase text-gray-400">
@@ -19,10 +19,10 @@
       </div>
 
       <!-- Sponsor Logo -->
-      <div class="ml-auto">
+      <div class="ml-auto mt-4 sm:mt-0">
         <!-- Match Info Section -->
-        <div class="flex-grow pl-4">
-          <p class="text-yellow-400 text-2xl font-semibold uppercase italic">
+        <div class="flex-grow pl-0 sm:pl-4">
+          <p class="text-yellow-400 text-xl sm:text-2xl font-semibold uppercase italic">
             Next Match
           </p>
           <div class="flex">
@@ -31,7 +31,6 @@
             </p>
             <img
               src=""
-
               class="h-3"
               />
           </div>
@@ -40,19 +39,19 @@
     </div>
 
     <div class="p-4">
-      <div class="flex justify-center space-x-4 items-center">
-        <%= image_tag "msealslogo.png" , alt: "M-seals logo" ,class: "h-24"%>
-        <span class="text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold">
-                <%= opp.match_time.strftime("%I:%M %p") %>
-              </span>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 items-center">
+        <%= image_tag "msealslogo.png", alt: "M-seals logo", class: "h-16 sm:h-24" %>
+        <span class="text-2xl sm:text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold">
+          <%= opp.match_time.strftime("%I:%M %p") %>
+        </span>
         <% if opp.opponent_team.team_badge.attached? %>
-          <%= image_tag (opp.opponent_team.team_badge), class: "w-24", alt: "Opponent Logo" %>
+          <%= image_tag(opp.opponent_team.team_badge, class: "w-16 sm:w-24", alt: "Opponent Logo") %>
         <% end %>
       </div>
       <p class="text-center mt-2 text-gray-700">
         Murang'a Seals v <%= opp.opponent_team.name %>
       </p>
-      <p class="text-center text-sm text-gray-500">
+      <p class="text-center text-xs sm:text-sm text-gray-500">
         <%= opp.venue %>
       </p>
       <button
@@ -62,5 +61,4 @@
       </button>
     </div>
   </div>
-
 <% end %>

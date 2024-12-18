@@ -12,9 +12,10 @@
 
       <!-- Add a link to edit the club history -->
       <% if current_user && current_user.role === 'moderator' %>
-        <%= link_to 'Edit History', edit_club_path(club), class: 'bg-[#FAE115] text-black font-bold uppercase hover:bg-black hover:text-[#FAE115] p-2 rounded' %>
+        <div class="flex justify-end mt-4">
+          <%= link_to 'Edit History', edit_club_path(club), class: 'bg-[#FAE115] text-black font-bold uppercase hover:bg-black hover:text-[#FAE115] p-2 rounded' %>
+        </div>
       <% end %>
-
     <% end %>
   <% end %>
 </div>

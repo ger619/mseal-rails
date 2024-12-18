@@ -1,17 +1,14 @@
-<div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between align-right">
+<div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex flex-col md:flex-row justify-between items-start md:items-center">
   <div>
-    <% if current_user && current_user.role === 'moderator'  %>
-        <%=link_to "Add News", new_news_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-        <%=link_to "Add Advert", new_advert_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-  <% end %>
+    <% if current_user && current_user.role == 'moderator' %>
+      <%= link_to "Add News", new_news_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+      <%= link_to "Add Advert", new_advert_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+    <% end %>
   </div>
 </div>
-        <%= turbo_frame_tag :news do %>
-          <%= render 'news/news_render' %>
-        <% end %>
-
-
-
+<%= turbo_frame_tag :news do %>
+  <%= render 'news/news_render' %>
+<% end %>
 
 <script>
     document.getElementById('news-select').addEventListener('change', function () {
