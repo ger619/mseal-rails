@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     @next_match = @upcoming.first&.match_date
     @results = Opponent.where('match_date <= ?',
                               Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
-    @product = Product.includes(%i[photo_product_attachment rich_text_content]).order('created_at DESC')
+    @product = Product.includes(photo_product_attachment: :blob).order('created_at DESC')
 
     @user = User.all
     respond_to(&:html)

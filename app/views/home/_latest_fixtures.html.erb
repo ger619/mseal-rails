@@ -41,7 +41,7 @@
     <div class="p-4">
       <div class="flex flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 items-center gap-2">
         <%= image_tag "logo.png", alt: "M-seals logo", class: "h-16 sm:h-24" %>
-        <span class="text-xl sm:text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold">
+        <span class="text-xl sm:text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-[#fae115] to-yellow-700 font-bold">
           <%= opp.match_time.strftime("%I:%M %p") %>
         </span>
         <% if opp.opponent_team.team_badge.attached? %>
