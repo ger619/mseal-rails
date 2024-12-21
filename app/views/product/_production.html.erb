@@ -49,12 +49,15 @@
       </div>
 
       <!-- Products Section -->
+
       <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Product Card -->
+
         <div class="bg-transparent border border-gray-300 rounded shadow overflow-hidden">
+          <% @products.each  do |product|%>
           <div class="relative">
-            <% if @product %>
-              <%= image_tag(@product.photo_product, class: "w-full h-64 object-cover", alt: "Rounded Red Hat" ) %>
+            <% if product %>
+              <%= image_tag(product.photo_product, class: "w-full h-64 object-cover", alt: "Rounded Red Hat" ) %>
             <% else %>
               <p>Product image not available</p>
             <% end %>
@@ -66,16 +69,18 @@
             </button>
           </div>
           <div class="p-4">
-            <h3 class="text-lg font-bold">Rounded Red Hat</h3>
+            <h3 class="text-lg font-bold"><%= product.name %></h3>
             <div class="flex justify-between items-center mt-2">
-              <span class="font-bold text-gray-700">$8.00</span>
+              <span class="font-bold text-gray-700">kshs. <%= product.price %></span>
               <div class="flex space-x-2">
                 <div class="w-5 h-5 rounded-full border border-gray-300 bg-yellow-500"></div>
                 <div class="w-5 h-5 rounded-full border border-gray-300 bg-black"></div>
               </div>
             </div>
           </div>
+          <% end %>
         </div>
       </div>
+
     </div>
   </div>

@@ -2,7 +2,7 @@ class ProductController < ApplicationController
   load_and_authorize_resource except: %i[index show]
   before_action :authenticate_user!, except: %i[index show]
   def index
-    @products = Product.all
+    @products = Product.includes(photo_product_attachment: :blob).all
   end
 
   def show
