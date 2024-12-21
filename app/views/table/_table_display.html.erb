@@ -44,7 +44,7 @@
       <% @table.each do |table| %>
         <% if table.opponent_team.name == "Murang'a Seals" %>
           <tbody class="bg-[#FAE115] bg-opacity-70 border-b border-[#FAE115] text-base font-semibold text-black">
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 ">
             <td class="p-3"><%= table.rank %></td>
             <td class="p-3 flex items-center space-x-2">
               <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
@@ -74,9 +74,9 @@
           </tbody>
         <% else %>
           <tbody class="bg-black">
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 hover:text-[#f4e721]">
             <td class="p-3"><%= table.rank %></td>
-            <td class="p-1 flex items-center space-x-2">
+            <td class="p-3 flex items-center space-x-2">
               <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
               <span><%= table.opponent_team.name %></span>
             </td>
