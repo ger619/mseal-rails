@@ -26,7 +26,7 @@
       <p class="text-sm sm:text-base font-light"><%= @team.content %></p>
     </div>
     <div class="flex flex-col sm:flex-row gap-2">
-      <% if current_user && current_user.role === 'moderator' %>
+      <% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
         <%= link_to "Edit", edit_team_path(@team.id), class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
         <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
       <% end %>
