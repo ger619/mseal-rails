@@ -38,13 +38,12 @@
         <th class="p-3 text-center text-gray-700">Goals Against</th>
         <th class="p-3 text-center text-gray-700">Goal Difference</th>
         <th class="p-3 text-center text-gray-700">Form</th>
-        <th class="p-3 text-center text-gray-700">Next Match</th>
       </tr>
       </thead>
       <% @table.each do |table| %>
         <% if table.opponent_team.name == "Murang'a Seals" %>
           <tbody class="bg-[#FAE115] bg-opacity-70 border-b border-[#FAE115] text-base font-semibold text-black">
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 ">
             <td class="p-3"><%= table.rank %></td>
             <td class="p-3 flex items-center space-x-2">
               <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
@@ -67,16 +66,13 @@
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
               </div>
             </td>
-            <td class="p-3 text-center">
-              <img src="../assets/VAL.png" alt="Next Match" class="h-6 w-6">
-            </td>
           </tr>
           </tbody>
         <% else %>
           <tbody class="bg-black">
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 hover:text-black">
             <td class="p-3"><%= table.rank %></td>
-            <td class="p-1 flex items-center space-x-2">
+            <td class="p-3 flex items-center space-x-2">
               <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
               <span><%= table.opponent_team.name %></span>
             </td>
@@ -96,9 +92,6 @@
                 <span class="block w-5 h-5 rounded-full bg-red-500 text-white text-xs text-center">L</span>
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
               </div>
-            </td>
-            <td class="p-3 text-center">
-              <img src="../assets/VAL.png" alt="Next Match" class="h-6 w-6">
             </td>
           </tr>
           </tbody>
