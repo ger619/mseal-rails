@@ -38,7 +38,6 @@
         <th class="p-3 text-center text-gray-700">Goals Against</th>
         <th class="p-3 text-center text-gray-700">Goal Difference</th>
         <th class="p-3 text-center text-gray-700">Form</th>
-        <th class="p-3 text-center text-gray-700">Next Match</th>
       </tr>
       </thead>
       <% @table.each do |table| %>
@@ -67,9 +66,6 @@
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
               </div>
             </td>
-            <td class="p-3 text-center">
-              <img src="../assets/VAL.png" alt="Next Match" class="h-6 w-6">
-            </td>
           </tr>
           </tbody>
         <% else %>
@@ -96,9 +92,6 @@
                 <span class="block w-5 h-5 rounded-full bg-red-500 text-white text-xs text-center">L</span>
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
               </div>
-            </td>
-            <td class="p-3 text-center">
-              <img src="../assets/VAL.png" alt="Next Match" class="h-6 w-6">
             </td>
           </tr>
           </tbody>
