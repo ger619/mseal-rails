@@ -1,6 +1,8 @@
 <header class="relative pt-4">
   <div class="absolute top-1/2 transform -translate-y-1/2 z-15 mt-2">
-    <%= image_tag('logo.png', class: "md:flex xl:none lg:h-[140px] md:h-[140px] sm:h-[120px] h-28") %>
+    <%= link_to root_path do %>
+      <%= image_tag('logo.png', class: "md:flex xl:none lg:h-[140px] md:h-[140px] sm:h-[120px] h-28") %>
+    <% end %>
   </div>
   <div>
     <div class="container mx-auto flex justify-between items-center px-4 pb-4">
@@ -13,7 +15,7 @@
           <div class="flex items-center space-x-4">
             <span class="text-white font-medium"><%= current_user.email %></span>
             <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-[#fae115] space-x-2" do %>
-              <span class="bg-red-500 text-white text-xs rounded-full p-2">
+              <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
                 <i class="fa fa-sign-out-alt"></i>
               </span>
               <span>Logout</span>
@@ -35,10 +37,9 @@
           </a>
         <% end %>
       </div>
-
-      <!-- Hamburger Icon for Mobile (aligned to the right) -->
-      <div class="md:hidden flex justify-end">
-        <button id="hamburger-btn" class="text-white focus:outline-none focus:text-[#fae115]">
+      <!-- Hamburger Menu for Mobile -->
+      <div class="md:hidden flex items-center">
+        <button id="menu-button" class="text-white focus:outline-none">
           <i class="fa fa-bars text-2xl"></i>
         </button>
       </div>
@@ -76,17 +77,33 @@
       </div>
     </div>
   </div>
-  <div class="bg-[#fae115] h-2"></div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="bg-black py-2 md:hidden">
-    <nav class="flex flex-col items-start space-y-4 px-4">
-      <a href="<%= news_index_path %>" class="hover:text-[#fae115]">News</a>
-      <a href="<%= opponent_index_path %>" class="hover:text-[#fae115]">Fixtures</a>
-      <a href="<%= team_index_path %>" class="hover:text-[#fae115]">Team</a>
-      <a href="#" class="hover:text-[#fae115]">Statistics</a>
-      <a href="<%= club_index_path %>" class="hover:text-[#fae115]">Our Club</a>
-      <a href="<%= product_index_path %>" class="hover:text-[#fae115]">Shop</a>
-    </nav>
+  <!-- Mobile Menu Modal -->
+  <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
+    <div class="flex flex-col items-center justify-center h-full">
+      <button id="close-menu" class="text-white text-2xl mb-8 focus:outline-none">
+        <i class="fa fa-times"></i>
+      </button>
+      <ul class="space-y-6 text-center text-white text-xl">
+        <li><%= link_to 'HOME', root_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'NEWS', news_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'TEAM', team_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'FIXTURE', opponent_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'OUR CLUB', club_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'SHOP', product_index_path, class: "hover:text-[#fae115]" %></li>
+      </ul>
+    </div>
   </div>
 </header>
+
+<script>
+    document.addEventListener('turbo:load', function() {
+        document.getElementById('menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.remove('hidden');
+        });
+
+        document.getElementById('close-menu').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+    });
+</script>

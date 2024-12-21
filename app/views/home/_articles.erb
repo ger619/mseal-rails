@@ -8,14 +8,12 @@
       <!-- Card 1 -->
       <% @news.limit(4).each_with_index do |news, index| %>
         <% if index == 0 %>
-          <%# Handle the last item separately %>
+          <%# Handle the first item separately if needed %>
         <% else %>
-          <% @news.length - index %>
-
           <article class="bg-gray-800 shadow-lg rounded-lg overflow-hidden w-40 sm:w-72">
             <%= link_to news_path(news) do %>
               <% if news.image.attached? %>
-                <%= image_tag(news.image, class: "w-full h-32 sm:h-48 object-cover")  %>
+                <%= image_tag(news.image, class: "w-full h-32 sm:h-48 object-cover") %>
               <% end %>
               <div class="p-2 sm:p-4">
                 <h2 class="text-sm sm:text-lg font-bold">
@@ -27,7 +25,6 @@
               </div>
             <% end %>
           </article>
-
         <% end %>
       <% end %>
     </div>

@@ -1,4 +1,4 @@
-<% if current_user && current_user.role === 'moderator' %>
+<% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
   <div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex flex-col md:flex-row justify-between">
     <h1>CLUB & HISTORY</h1>
     <%= link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2 mt-4 md:mt-0" %>
