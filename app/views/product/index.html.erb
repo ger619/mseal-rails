@@ -6,15 +6,14 @@
     <%= render partial: "cart/cart" if @render_cart %>
 </div>
 
-<%= render 'product/production' %>
-<div class="p-6 flex flex-row relative">
+<div class="p-6 flex flex-row justify-center">
   <!-- Categories section, taking more space -->
-  <div class="w-[35%]">
+  <div class="">
     <%= render 'product/categories' %>
   </div>
 
   <!-- Product cards container, taking the remaining space -->
-  <div class="w-[70%]">
+  <div class="">
     <div class="flex flex-wrap mx-auto">
       <%= render 'product/product' %>
     </div>
