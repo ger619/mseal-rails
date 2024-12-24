@@ -23,7 +23,7 @@
               <div class="grid grid-cols-3 justify-center items-center space-x-0 md:space-x-16 p-6">
                 <div class="flex flex-col items-center">
                   <%= image_tag("logo.png", class: "h-24 mb-4 md:mb-0", alt: 'Mseals Logo') %>
-                  <span class="block text-[10px] md:text-lg font-semibold mb-2">
+                  <span class="block text-[12px] md:text-lg font-semibold mb-2">
                     Murang&apos;a Seals
                   </span>
                 </div>
@@ -39,7 +39,7 @@
                 <% if opp.opponent_team.team_badge.attached? %>
                   <%= image_tag(opp.opponent_team.team_badge, class: "h-24 mb-4 md:mt-0", alt: 'Other Team logo') %>
                 <% end %>
-                  <span class="block text-[10px] md:text-lg font-semibold mb-2">
+                  <span class="block text-[12px] md:text-lg font-semibold mb-2">
                     <%= opp.opponent_team.name %>
                   </span>
                 </div>
