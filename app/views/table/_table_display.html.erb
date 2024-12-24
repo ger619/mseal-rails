@@ -14,7 +14,7 @@
     <%= image_tag('kpl.png', class: 'h-20 mx-auto mb-4', alt: 'Competition Logo') %>
     <% selected_season = Season.find_by(id: params[:season_id]) %>
     <div class="mb-4">
-      <span class="text-white font-semibold">Season: <%= selected_season&.name || "All Seasons" %></span>
+      <span class="text-white font-semibold"><%= selected_season&.name || "All Seasons" %></span>
     </div>
   </div>
 
