@@ -1,71 +1,52 @@
-<div class="shadow-md pl-4 pr-4">
-  <div class="sm:w-[200px] md:w-[100%] text-white lg:max-w-full xl:max-w-full bg-black mx-auto mt-[6px]">
-    <div class="mt-4 pt-6 pb-6 flex gap-4 bg-black justify-between ">
-      <p class="text-2xl font-bold mt-4 mr-3 m-4 flex uppercase">
-          <%= @news.type_of_news %>
-      </p>
-      <p class="text-xs p-4">
-        <%= @news.created_at.strftime("%d.%m.%Y") %>
-      </p>
-    </div>
-    <div class="md:w-full w-full h-[60%] pl-24 pr-24">
-      <%= render "news/image_show" %>
-    </div>
-
-    <p class="text-2xl font-semibold p-24"><%= @news.header_news %></p>
-    <div class="pl-24 pr-24">
-      <p class="text-base font-light mb-4"><%= @news.content %></p>
-    </div>
-
-
-      <article class="flex justify-start mt-4 pl-24 pr-24">
-        <!-- Card 2 -->
-        <% @similar_news.limit(4).each do |similar_news| %>
-        <div class="bg-black shadow-lg overflow-hidden w-1/4 mr-2">
-          <%= link_to news_path(similar_news)  do%>
-              <%= image_tag(similar_news.image, class: "rounded w-full") %>
-
-              <div class="flex">
-                <!-- Text Section -->
-                <div class="p-4 text-center">
-                  <p class="text-[#fff] mt-2">
-                    <%= truncate(similar_news.header_news, length: 30) %>
-                  </p>
-                  <a
-                    href="#"
-                    class="mt-4 inline-flex text-xs items-center text-white font-semibold"
-                  >
-                    <span class="ml-1">&rarr;</span> <%= similar_news.type_of_news %>
-                  </a>
-                  <a
-                    href="#"
-                    class="mt-4 inline-flex text-xs items-center text-white font-semibold"
-                  >
-                    <span class="ml-1">&rarr;</span> <%= time_ago_in_words(similar_news.created_at) %> ago
-                  </a>
-                </div>
-              </div>
-            </div>
-            <% end %>
+<div class="shadow-md pl-4 pr-4 pt-8">
+  <div class="w-full text-white bg-black mx-auto mt-1.5 sm:w-[200px] md:w-full lg:max-w-full xl:max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-6 justify-between">
+      <div class="hidden md:block col-span-1">
+      </div>
+      <div class="col-span-1 md:col-span-4">
+        <div class="w-full mx-auto">
+          <% if @news.image.attached? %>
+            <%= image_tag(@news.image, class: "rounded  lg:h-[100%] sm:h-48 md:h-64 ") %>
           <% end %>
-      </article>
+        </div>
+
+        <p class="text-xl sm:text-2xl font-semibold w-full mt-4">
+          <%= @news.header_news %>
+        </p>
+
+        <p class="text-xl sm:text-2xl font-semibold w-full mt-4">
+          <%= @news.content %>
+        </p>
+
+        <% if current_user && current_user.role == 'moderator' %>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-2">
+            <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+              <%= link_to "Edit", edit_news_path(@news.id), class: "w-full text-black text-sm sm:text-xs md:text-sm lg:text-base font-semibold py-1 px-2 rounded" %>
+            </div>
+            <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+              <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete }, class: "w-full text-black font-semibold" %>
+            </div>
+          </div>
+        <% end %>
+        <div class="my-10">
+          <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
+            <p class="font-bold">SHARE ARTICLE</p>
+            <div class="flex space-x-4">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=<%= url_for(controller: 'news', action: 'show', id: @news.id, only_path: false) %>" target="_blank" rel="noopener noreferrer" class="text-[#fae115]">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+
+              <a href="https://twitter.com/intent/tweet?url=<%= url_for(controller: 'news', action: 'show', id: @news.id, only_path: false) %>" target="_blank" rel="noopener noreferrer" class="text-[#fae115]">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <%= render 'news/similar_news' %>
+      </div>
+      <div class="hidden md:block col-span-1">
+      </div>
     </div>
-
-    <% if current_user && current_user.role === 'moderator' %>
-      <div class="grid grid-cols-2 gap-4 p-2">
-
-
-      <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-        <%= link_to "Edit", edit_news_path(@news.id), class: "w-[50px] text-[#000]  lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold  md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
-      </div>
-      <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2  mt-2 p-2">
-        <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete  },class: "text-[#000] font-semibold  " %>
-      </div>
-      </div>
-    <% end %>
   </div>
-
-
-
-
-
+</div>

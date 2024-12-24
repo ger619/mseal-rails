@@ -1,20 +1,20 @@
-<div class="shadow-md ">
+<div class="shadow-md">
   <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-[28px]">
-    <div class="pt-6 pb-6 flex gap-4 bg-black">
-      <p class="text-3xl font-bold flex justify-start capitalize pl-6">
+    <div class="pt-6 pb-6 flex flex-col sm:flex-row gap-4 bg-black">
+      <p class="text-xl sm:text-3xl font-bold flex justify-start capitalize pl-6">
         <%= @team.first_name %>
       </p>
-      <p class="text-3xl font-extralight flex justify-start capitalize">
-         <%= @team.last_name %>
+      <p class="text-xl sm:text-3xl font-extralight flex justify-start capitalize">
+        <%= @team.last_name %>
       </p>
     </div>
-    <div class="md:w-full w-[100%]">
+    <div class="w-full">
       <%= image_tag(@team.image, class: 'rounded w-full') %>
     </div>
     <%= render 'statistic' %>
     <%= render 'player_profile' %>
 
-    <div class="text-xl font-bold mt-4 flex justify-start gap-12 uppercase">
+    <div class="text-lg sm:text-xl font-bold mt-4 flex flex-col sm:flex-row justify-start gap-12 uppercase">
       <p>
         <%= @team.position %>
       </p>
@@ -23,18 +23,13 @@
       </p>
     </div>
     <div class="p-4">
-      <p class="text-base font-light"><%= @team.content %></p>
+      <p class="text-sm sm:text-base font-light"><%= @team.content %></p>
     </div>
-    <div class="flex inline-flex gap-2">
-    <% if current_user && current_user.role === 'moderator' %>
-      <%= link_to "Edit", edit_team_path(@team.id), class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
-      <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+    <div class="flex flex-col sm:flex-row gap-2">
+      <% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
+        <%= link_to "Edit", edit_team_path(@team.id), class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+        <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
       <% end %>
     </div>
   </div>
 </div>
-
-
-
-
-

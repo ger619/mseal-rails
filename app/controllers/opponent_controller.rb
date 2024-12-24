@@ -5,10 +5,24 @@ class OpponentController < ApplicationController
   def index
     @opponent = Opponent.all.order('match_date ASC')
     # #Fixtures
-    @opponent1 = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
+    @opponent_logic = Opponent.where('match_date >=?', Date.today).order('match_date ASC')
+    @schedule = @opponent_logic.group_by { |match| match.match_date.beginning_of_month }
+
+    @months = @schedule.keys
+    @current_page = (params[:page] || 1).to_i
+    @per_page = 1
+    @total_pages = (@months.size / @per_page.to_f).ceil
+    @current_month = @months[@current_page - 1]
+    @current_matches = @schedule[@current_month]
+
     # #Results
-    @opponent2 = Opponent.where('match_date <= ?',
-                                Date.today).where.not(score_one: nil).where.not(score_two: nil).order('match_date DESC')
+    # #Results
+    @result = Opponent.where('match_date <= ?', Date.today)
+      .where.not(score_one: nil)
+      .where.not(score_two: nil)
+      .order('match_date DESC')
+      .group_by { |match| match.match_date.beginning_of_month }
+
     @latest_season = Season.order(created_at: :desc).first
     params[:season_id] ||= @latest_season.id
 
@@ -71,6 +85,6 @@ class OpponentController < ApplicationController
 
   def opponent_params
     params.require(:opponent).permit(:match_date, :match_time, :venue, :tournament, :score_one, :score_two, :user_id,
-                                     :opponent_team_id)
+                                     :opponent_team_id, :season_id)
   end
 end

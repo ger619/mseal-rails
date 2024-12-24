@@ -1,8 +1,8 @@
-<% if current_user && current_user.role === 'moderator' %>
-<div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-  <h1>CLUB & HISTORY</h1>
-      <%=link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
-</div>
+<% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
+  <div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex flex-col md:flex-row justify-between">
+    <h1>CLUB & HISTORY</h1>
+    <%= link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2 mt-4 md:mt-0" %>
+  </div>
 <% end %>
 <div class="max-w-5xl mx-auto p-5 min-h-screen">
 
@@ -11,16 +11,16 @@
 
   <!-- Tabs Section -->
   <div class="flex justify-center mb-10">
-    <nav class="flex space-x-4">
-      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
-         id="tab-history"
-         onclick="openCity(event, 'history')">History</button>
-      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
-         id="tab-club-records"
-         onclick="openCity(event, 'club-records')">Club Records</button>
-      <button class="text-lg tablinks hover:text-yellow-500 hover:underline"
-         id="tab-management"
-         onclick="openCity(event, 'management')">Management</button>
+    <nav class="flex flex-wrap justify-center space-x-4">
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline"
+              id="tab-history"
+              onclick="openCity(event, 'history')">History</button>
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline"
+              id="tab-club-records"
+              onclick="openCity(event, 'club-records')">Club Records</button>
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline"
+              id="tab-management"
+              onclick="openCity(event, 'management')">Management</button>
     </nav>
   </div>
 
@@ -30,13 +30,12 @@
   </div>
 
   <div id="club-records" class="tabcontent">
-    <%= render 'club/club-records'  %>
+    <%= render 'club/club-records' %>
   </div>
 
   <div id="management" class="tabcontent">
-    <%= render 'club/management'  %>
+    <%= render 'club/management' %>
   </div>
-
 
 </div>
 <script>
@@ -51,12 +50,12 @@
 
         // Remove active class from all tab links
         for (let i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("text-yellow-500", "underline");
+            tablinks[i].classList.remove("text-[#FAE115]", "underline");
         }
 
         // Show current tab content and add active class to clicked tab
         document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.classList.add("text-yellow-500", "underline");
+        evt.currentTarget.classList.add("text-[#FAE115]", "underline");
     }
 
     // Set default tab to open

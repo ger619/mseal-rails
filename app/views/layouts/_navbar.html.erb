@@ -1,11 +1,10 @@
-<header class="relative pt-4 bg-[#131313]">
+<header class="relative pt-4">
   <div class="absolute top-1/2 transform -translate-y-1/2 z-15 mt-2">
-    <a class="md:flex xl:none lg:h-[140px] md:h-[140px] sm:h-[120px]" href="/"
-      ><img
-        src="/assets/logo-de4289f6164d54f4f02025b1e96d8b0d4539f654b4cb357c60b6b08dde0fb6c3.png"
-    /></a>
+    <%= link_to root_path do %>
+      <%= image_tag('logo.png', class: "md:flex xl:none lg:h-[140px] md:h-[140px] sm:h-[120px] h-28") %>
+    <% end %>
   </div>
-  <div class="bg-[#131313]">
+  <div>
     <div class="container mx-auto flex justify-between items-center px-4 pb-4">
       <!-- Logo on the Left -->
       <div class="flex-grow"></div>
@@ -15,70 +14,62 @@
           <!-- Show user's email and logout button if logged in -->
           <div class="flex items-center space-x-4">
             <span class="text-white font-medium"><%= current_user.email %></span>
-            <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-yellow-500 space-x-2" do %>
-  <span class="bg-red-500 text-white text-xs rounded-full p-2">
-    <i class="fa fa-sign-out-alt"></i>
-  </span>
+            <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-[#fae115] space-x-2" do %>
+              <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
+                <i class="fa fa-sign-out-alt"></i>
+              </span>
               <span>Logout</span>
             <% end %>
           </div>
         <% else %>
           <!-- Show login and register buttons if not logged in -->
-          <a href="<%= user_session_path %>" class="flex items-center hover:text-yellow-500 space-x-2">
-      <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
-        <i class="fa fa-user"></i>
-      </span>
+          <a href="<%= user_session_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
+            <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
+              <i class="fa fa-user"></i>
+            </span>
             <span>Login</span>
           </a>
-          <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-yellow-500 space-x-2">
-      <span class="bg-yellow-500 text-white text-xs rounded-full p-2">
-        <i class="fa fa-user-plus"></i>
-      </span>
+          <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
+            <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
+              <i class="fa fa-user-plus"></i>
+            </span>
             <span>Register</span>
           </a>
         <% end %>
       </div>
-
-
-
-      <!-- Hamburger Icon for Mobile (aligned to the right) -->
-      <div class="md:hidden flex justify-end">
-        <button
-          id="hamburger-btn"
-          class="text-white focus:outline-none focus:text-yellow-500"
-        >
+      <!-- Hamburger Menu for Mobile -->
+      <div class="md:hidden flex items-center">
+        <button id="menu-button" class="text-white focus:outline-none">
           <i class="fa fa-bars text-2xl"></i>
         </button>
       </div>
     </div>
   </div>
-  <div class="bg-black py-4">
-    <div class="container mx-auto flex justify-between items-center">
+  <div class="bg-black py-4 mr-4">
+    <div class="container mx-auto flex ml-14 justify-between items-center">
       <!-- Main Navigation Links for Desktop -->
       <nav class="hidden md:flex space-x-6 ml-16">
-        <div>
-          <ul class="hidden items-center md:flex gap-5 uppercase">
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              <%= link_to 'HOME', root_path %>
-            </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              <%= link_to 'NEWS', news_index_path %>
-            </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              <%= link_to 'TEAM', team_index_path %>
-            </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              <%= link_to 'FIXTURE', opponent_index_path %>
-            </li>
-            <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-              <%= link_to 'OUR CLUB', club_index_path %>
-            </li>
-
-          </ul>
-        </div>
+        <ul class="hidden items-center md:flex gap-5 uppercase">
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'HOME', root_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'NEWS', news_index_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'TEAM', team_index_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'FIXTURE', opponent_index_path %>
+          </li>
+          <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+            <%= link_to 'OUR CLUB', club_index_path %>
+          </li>
+        </ul>
       </nav>
       <div class="hidden md:flex items-center space-x-4">
-        <a href="<%= product_index_path %>" class="flex items-center hover:text-yellow-500 space-x-2 text-white">
+        <a href="<%= product_index_path %>" class="flex items-center hover:text-[#fae115] space-x-2 text-white">
+
           <span class="text-xl">
             <i class="fa fa-shopping-cart"></i>
           </span>
@@ -87,17 +78,33 @@
       </div>
     </div>
   </div>
-  <div class="bg-yellow-500 h-2"></div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="bg-black py-2 md:hidden">
-    <nav class="flex flex-col items-start space-y-4 px-4">
-      <a href="#" class="hover:text-yellow-500">News</a>
-      <a href="#" class="hover:text-yellow-500">Fixtures</a>
-      <a href="#" class="hover:text-yellow-500">Team</a>
-      <a href="#" class="hover:text-yellow-500">Statistics</a>
-      <a href="#" class="hover:text-yellow-500">Our Club</a>
-      <a href="#" class="hover:text-yellow-500">Shop</a>
-    </nav>
+  <!-- Mobile Menu Modal -->
+  <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
+    <div class="flex flex-col items-center justify-center h-full">
+      <button id="close-menu" class="text-white text-2xl mb-8 focus:outline-none">
+        <i class="fa fa-times"></i>
+      </button>
+      <ul class="space-y-6 text-center text-white text-xl">
+        <li><%= link_to 'HOME', root_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'NEWS', news_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'TEAM', team_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'FIXTURE', opponent_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'OUR CLUB', club_index_path, class: "hover:text-[#fae115]" %></li>
+        <li><%= link_to 'SHOP', product_index_path, class: "hover:text-[#fae115]" %></li>
+      </ul>
+    </div>
   </div>
 </header>
+
+<script>
+    document.addEventListener('turbo:load', function() {
+        document.getElementById('menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.remove('hidden');
+        });
+
+        document.getElementById('close-menu').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+    });
+</script>

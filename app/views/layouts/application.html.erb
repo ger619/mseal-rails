@@ -14,18 +14,18 @@
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
-    <%= favicon_link_tag asset_path('msealslogo.png') %>
+    <%= favicon_link_tag asset_path('logo.png') %>
+      <!-- Other head content -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
-  <body class="bg-black text-white">
+  <body class="bg-black text-slate-100">
     <%= render "layouts/navbar" %>
     <main class="lg:max-w-full md:mx-auto mt-0 w-full">
       <%= yield %>
-
     </main>
   <%= render "layouts/footer" %>
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
     <script src="https://js-de.sentry-cdn.com/b89135aa393ce8013adf95df9c580521.min.js" crossorigin="anonymous"></script>
-
   </body>
 </html>

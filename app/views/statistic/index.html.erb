@@ -4,7 +4,7 @@
       TEAM STATISTICS
     </h1>
         <div>
-          <% if current_user && current_user.role === 'moderator' %>
+          <% if current_user && current_user.role === 'moderator' or  current_user.role === 'admin' %>
             <%=link_to "Add Statistic", new_statistic_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
             <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
         <% end %>

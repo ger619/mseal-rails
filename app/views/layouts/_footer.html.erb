@@ -1,45 +1,44 @@
 <!-- Footer Component -->
 <div class="px-5 bg-black pt-20 w-full">
   <div class="bg-black w-full rounded-none">
-    <div class="flex justify-between items-center py-4">
+    <div class="flex flex-col sm:flex-row justify-between items-center py-4">
       <!-- Navigation Items -->
       <nav>
-        <ul class="flex space-x-6 text-yellow-400">
-          <li class="hover:text-yellow-300">
+        <ul class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-[#fae115]">
+          <li class="hover:text-[#fae115]">
             <%= link_to 'HOME', root_path %>
           </li>
-          <li class="hover:text-yellow-300">
+          <li class="hover:text-[#fae115]">
             <%= link_to 'NEWS', news_index_path %>
-            </li>
-          <li class="hover:text-yellow-300">
+          </li>
+          <li class="hover:text-[#fae115]">
             <%= link_to 'TEAM', team_index_path %>
           </li>
-          <li class="hover:text-yellow-300">
+          <li class="hover:text-[#fae115]">
             <%= link_to 'FIXTURE', opponent_index_path %>
           </li>
-          <li class="hover:text-yellow-300">
+          <li class="hover:text-[#fae115]">
             <%= link_to 'OUR CLUB', club_index_path %>
           </li>
-
         </ul>
       </nav>
 
       <!-- Social Media Icons -->
-      <div class="flex space-x-6 text-yellow-400 text-2xl">
-        <a href="#" class="hover:text-yellow-300"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="hover:text-yellow-300"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="hover:text-yellow-300"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="hover:text-yellow-300"><i class="fab fa-whatsapp"></i></a>
+      <div class="flex space-x-6 text-[#fae115] text-2xl mt-4 sm:mt-0">
+        <a href="#" class="hover:text-[#fae115]"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-[#fae115]"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="hover:text-[#fae115]"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-[#fae115]"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
 
-    <hr class="border-yellow-400" />
+    <hr class="border-[#fae115]" />
   </div>
 
   <footer class="bg-black py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-4">
       <div class="text-center md:text-left">
-        <p class="text-yellow-400">&copy; Muranga Seal. All rights reserved</p>
+        <p class="text-[#fae115]">&copy; Muranga Seal. All rights reserved</p>
       </div>
 
       <div class="hidden md:block">
@@ -47,8 +46,8 @@
       </div>
 
       <div class="flex justify-center md:justify-end space-x-6">
-        <a href="#" class="text-yellow-400 hover:text-yellow-300">Terms of Service</a>
-        <a href="#" class="text-yellow-400 hover:text-yellow-300">Privacy Policy</a>
+        <a href="#" class="text-[#fae115] hover:text-[#fae115]">Terms of Service</a>
+        <a href="#" class="text-[#fae115] hover:text-[#fae115]">Privacy Policy</a>
       </div>
     </div>
   </footer>

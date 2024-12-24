@@ -5,7 +5,6 @@
         overflow: hidden;
         border: 1px solid #ccc;
         background-color: #e6e6e6;
-
     }
 
     /* Style the buttons inside the tab */
@@ -25,15 +24,12 @@
     .tab button:hover {
         color: black;
         background-color: #e6e6e6;
-
     }
 
     /* Create an active/current tablink class */
     .tab button.active {
-        background-color: rgba(250, 225, 21, 0.3);
-
+        background-color: #fae115;
     }
-
 
     /* Style the tab content */
     .tabcontent {
@@ -49,7 +45,6 @@
   <p class="text-[#FAE115] font-semibold uppercase gap-4 p-6">
     SEASON PLAYER STATS — <%= @team.first_name %>
   </p>
-
 </div>
 <div class="tab flex flex-col md:flex-row gap-5 font-bold justify-between">
   <button class="tablinks active" onclick="openCity(event, 'General')" id="defaultOpen">General</button>
@@ -59,119 +54,115 @@
   <button class="tablinks" onclick="openCity(event, 'Discipline')">Discipline</button>
 </div>
 
-<div id="General" class="tabcontent active bg-[#f4e721] bg-opacity-40">
-  <div class="grid md:grid-cols-4 grid-cols-2 ">
-    <% @statistic.each do |stat|  %>
-
-  <div class="col-span-1 text-center p-2">
-    <p class="font-bold text-2xl"><%= stat.matches_played %></p>
-    <span class="font-extralight">Games played</span>
-  </div>
-    <div class="col-span-1 text-center p-2">
-      <p class="font-bold text-2xl"><%= stat.minutes_played %></p>
-      <span class="font-extralight">minutes played</span>
-    </div>
-    <div class="col-span-1 text-center p-2">
-      <p class="font-bold text-2xl"><%= stat.matches_started %></p>
-      <span class="font-extralight">starts</span>
-    </div>
-    <div class="col-span-1 text-center p-2">
-      <p class="font-bold text-2xl"><%= stat.subs %></p>
-      <span class="font-extralight">Subs</span>
-    </div>
-      <% end %>
+<div id="General" class="tabcontent active">
+  <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+    <% @statistic.each do |stat| %>
+      <div class="col-span-1 text-center p-2">
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.matches_played %></p>
+        <span class="font-extralight">Games played</span>
+      </div>
+      <div class="col-span-1 text-center p-2">
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.minutes_played %></p>
+        <span class="font-extralight">Minutes played</span>
+      </div>
+      <div class="col-span-1 text-center p-2">
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.matches_started %></p>
+        <span class="font-extralight">Starts</span>
+      </div>
+      <div class="col-span-1 text-center p-2">
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.subs %></p>
+        <span class="font-extralight">Subs</span>
+      </div>
+    <% end %>
   </div>
 </div>
-<div id="Defence" class="tabcontent bg-[#f4e721] bg-opacity-40">
-  <div class="grid md:grid-cols-3 grid-cols-2 ">
-    <% @statistic.each do |stat|  %>
-
+<div id="Defence" class="tabcontent">
+  <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
+    <% @statistic.each do |stat| %>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.tackles_percentage %>%</p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.tackles_percentage %>%</p>
         <span class="font-extralight">Tackles</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.tackles_won %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.tackles_won %></p>
         <span class="font-extralight">Tackles Won</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.tackles_attempted %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.tackles_attempted %></p>
         <span class="font-extralight">Tackles Attempted</span>
       </div>
     <% end %>
   </div>
-
 </div>
-<div id="Distribution" class="tabcontent bg-[#f4e721] bg-opacity-40 ">
-  <div class="grid md:grid-cols-3 grid-cols-2 ">
-    <% @statistic.each do |stat|  %>
-
+<div id="Distribution" class="tabcontent">
+  <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
+    <% @statistic.each do |stat| %>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.passes_completed %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_completed %></p>
         <span class="font-extralight">Passes Completed</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.passes_attempted %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_attempted %></p>
         <span class="font-extralight">Passes Attempted</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.passes_percentage %>%</p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_percentage %>%</p>
         <span class="font-extralight">Pass Percentage</span>
       </div>
     <% end %>
   </div>
 </div>
-<div id="Attack" class="tabcontent bg-[#f4e721] bg-opacity-40 ">
-  <div class="grid md:grid-cols-4 grid-cols-2 ">
-    <% @statistic.each do |stat|  %>
+<div id="Attack" class="tabcontent">
+  <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+    <% @statistic.each do |stat| %>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.shots_attempted %></p>
-        <span class="font-extralight">Shot Attempted</span>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.shots_attempted %></p>
+        <span class="font-extralight">Shots Attempted</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.shots_on_target %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.shots_on_target %></p>
         <span class="font-extralight">Shots on Target</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.shots_off_target %></p>
-        <span class="font-extralight">Shot off target</span>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.shots_off_target %></p>
+        <span class="font-extralight">Shots off Target</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.goals_scored %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.goals_scored %></p>
         <span class="font-extralight">Goals Scored</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.assists %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.assists %></p>
         <span class="font-extralight">Assists</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.shot_accuracy %>%</p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.shot_accuracy %>%</p>
         <span class="font-extralight">Shot Accuracy</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.goals_per_match %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.goals_per_match %></p>
         <span class="font-extralight">Goal Ratio</span>
       </div>
     <% end %>
   </div>
 </div>
-<div id="Discipline" class="tabcontent bg-[#f4e721] bg-opacity-40 ">
-  <div class="grid md:grid-cols-4 grid-cols-2 ">
-    <% @statistic.each do |stat|  %>
+<div id="Discipline" class="tabcontent">
+  <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+    <% @statistic.each do |stat| %>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.fouls_won %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.fouls_won %></p>
         <span class="font-extralight">Fouls Won</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.fouls_committed %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.fouls_committed %></p>
         <span class="font-extralight">Fouls Conceded</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.yellow_card %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.yellow_card %></p>
         <span class="font-extralight">Yellow Card</span>
       </div>
       <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-2xl"><%= stat.red_card %></p>
+        <p class="font-bold text-xl sm:text-2xl"><%= stat.red_card %></p>
         <span class="font-extralight">Red Card</span>
       </div>
     <% end %>
@@ -183,7 +174,6 @@
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
-
             tabcontent[i].style.display = "none";
         }
         tablinks = document.getElementsByClassName("tablinks");
@@ -195,4 +185,3 @@
     }
     document.getElementById("defaultOpen").click();
 </script>
-
