@@ -13,7 +13,7 @@
         <% if current_user %>
           <!-- Show user's email and logout button if logged in -->
           <div class="flex items-center space-x-4">
-            <span class="text-white font-medium"><%= current_user.email %></span>
+            <span class="text-white font-medium"></span>
             <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-[#fae115] space-x-2" do %>
               <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
                 <i class="fa fa-sign-out-alt"></i>
