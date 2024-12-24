@@ -14,12 +14,12 @@
     <%= f.select :venue,
                  options_for_select(Opponent.distinct.pluck(:tournament), params[:venue]),
                  { include_blank: "COMPETITION - ALL" },
-                 class: "w-full p-2 border rounded-md bg-gray-900 h-12 mr-2" %>
+                 class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
     <%= f.select :venue,
                  options_for_select(Opponent.distinct.pluck(:venue), params[:venue]),
                  { include_blank: "LOCATION - ALL" },
                  class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
-    <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
+    <%= f.submit "Search", class: "mb-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
   <% end %>
 
   <div class="space-y-4">
