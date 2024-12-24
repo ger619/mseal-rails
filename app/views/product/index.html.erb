@@ -1,3 +1,4 @@
+
 <div class="p-6 bg-[#00000] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
   <% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
     <%=link_to "Add Product", new_product_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] rounded font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 mb-2" %>
@@ -6,3 +7,16 @@
 </div>
 
 <%= render 'product/production' %>
+<div class="p-6 flex flex-row relative">
+  <!-- Categories section, taking more space -->
+  <div class="w-[35%]">
+    <%= render 'product/categories' %>
+  </div>
+
+  <!-- Product cards container, taking the remaining space -->
+  <div class="w-[70%]">
+    <div class="flex flex-wrap mx-auto">
+      <%= render 'product/product' %>
+    </div>
+  </div>
+</div>
