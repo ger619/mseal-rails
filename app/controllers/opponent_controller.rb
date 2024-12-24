@@ -17,11 +17,18 @@ class OpponentController < ApplicationController
 
     # #Results
     # #Results
-    @result = Opponent.where('match_date <= ?', Date.today)
-      .where.not(score_one: nil)
-      .where.not(score_two: nil)
-      .order('match_date DESC')
-      .group_by { |match| match.match_date.beginning_of_month }
+
+    @result = if current_user&.admin? || current_user&.moderator?
+                Opponent.where('match_date <= ?', Date.today).order('match_date DESC')
+                  .group_by { |match| match.match_date.beginning_of_month }
+              else
+                Opponent.where('match_date <= ?', Date.today)
+                  .where.not(score_one: nil)
+                  .where.not(score_two: nil)
+                  .order('match_date DESC')
+                  .group_by { |match| match.match_date.beginning_of_month }
+
+              end
 
     @latest_season = Season.order(created_at: :desc).first
     params[:season_id] ||= @latest_season.id
