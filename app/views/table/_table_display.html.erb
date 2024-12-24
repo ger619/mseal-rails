@@ -21,7 +21,7 @@
   <%= form_with url: opponent_index_path, method: :get, local: true do %>
     <div class="search-bar text-slate-100 mb-4 flex justify-end">
       <%= hidden_field_tag :tab, 'Fixtures' %>
-      <%= select_tag :season_id, options_from_collection_for_select(Season.all, :id, :name, params[:season_id]), include_blank: false, class: "w-1/3 p-2 border rounded-md bg-gray-900 h-12 mr-3" %>
+      <%= select_tag :season_id, options_from_collection_for_select(Season.all, :id, :name, params[:season_id]), include_blank: false, class: "w-full md:w-1/3 p-2 border rounded-md bg-gray-900 h-12 mr-3" %>
       <%= submit_tag "Search", name: nil, class: "bg-[#fae115] hover:bg-black border-2 hover:border-[#fae115] text-white hover:text-[#fae115] font-bold py-2 px-4 rounded" %>
     </div>
   <% end %>

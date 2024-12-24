@@ -14,12 +14,12 @@
     <%= f.select :venue,
                  options_for_select(Opponent.distinct.pluck(:tournament), params[:venue]),
                  { include_blank: "COMPETITION - ALL" },
-                 class: "w-full p-2 border rounded-md bg-gray-900 h-12 mr-2" %>
+                 class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
     <%= f.select :venue,
                  options_for_select(Opponent.distinct.pluck(:venue), params[:venue]),
                  { include_blank: "LOCATION - ALL" },
                  class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
-    <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
+    <%= f.submit "Search", class: "mb-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
   <% end %>
 
   <div class="space-y-4">
@@ -31,9 +31,9 @@
         </h4>
         <% @current_matches.each do |opp| %>
           <div class="bg-gray-900 p-4 rounded-md border border-gray-200 shadow-md mb-6">
-            <div class="grid grid-cols-12 gap-4 items-center">
-              <div class="col-span-2 text-center">
-                <div class="text-gray-500 uppercase">
+            <div class="grid md:grid-cols-12 grid-cols-1 md:gap-4 gap-1 items-center">
+              <div class="col-span-2 md:text-center">
+                <div class="text-gray-500 uppercase text-xs">
                   <%= opp.match_date.strftime("%a %d %b") %>
                 </div>
                 <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
@@ -42,28 +42,29 @@
                 <%= image_tag('kpl.png', class: 'h-12', alt: 'Competition Logo') %>
                 <span class="text-sm text-gray-500">Matchday 4</span>
               </div>
-              <div class="col-span-6 flex items-center justify-center">
-                <div class="flex items-center space-x-2 text-left">
+              <div class="col-span-6 flex items-center md:justify-center">
+                <div class="flex flex-col md:flex-row-reverse items-center space-x-2 text-left">
+                  <%= image_tag("logo.png", class: "w-12 mb-2 md:mb-0") %>
                   <span class="font-bold text-left">Murang&apos;a Seals</span>
-                  <%= image_tag("logo.png", class: "w-10") %>
                 </div>
                 <div class="mx-4 font-bold">vs</div>
-                <div class="flex items-center space-x-2">
+                <div class="flex flex-col md:flex-row items-center space-x-2 text-left">
                   <% if opp.opponent_team.team_badge.attached? %>
-                    <%= image_tag (opp.opponent_team.team_badge), class: "w-10"  %>
+                    <%= image_tag (opp.opponent_team.team_badge), class: "w-12 mb-2 md:mb-0"  %>
                   <% end %>
-                  <span class="font-bold text-right"><%= opp.opponent_team.name %></span>
+                  <span class="font-bold text-left"><%= opp.opponent_team.name %></span>
                 </div>
+
               </div>
-              <div class="col-span-1 text-right flex gap-2">
-                <button class="bg-[#fae115] text-black px-4 py-2 rounded-md font-semibold">TICKETS</button>
+              <div class="md:col-span-1 col-span-6 flex gap-2 order-last md:order-none w-full">
+                <button class="bg-[#fae115] text-black px-4 py-2 rounded-md font-semibold w-full">TICKETS</button>
 
                 <% if current_user && (current_user.role == 'admin' || current_user.role == 'moderator') %>
-                  <%= link_to 'Edit', edit_opponent_path(opp.id), class: 'bg-[#fae115] text-black font-semibold py-2 px-2 rounded hover:bg-yellow-500' %>
+                  <%= link_to 'Edit', edit_opponent_path(opp.id), class: 'bg-[#fae115] text-black font-semibold py-2 px-2 rounded hover:bg-yellow-500 w-full text-center' %>
                   <%= button_to 'Delete', opp,
                                 method: :delete,
                                 data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure you want to delete this item?' },
-                                class: 'bg-red-500 text-white font-semibold py-2 px-2 rounded hover:bg-red-700' %>
+                                class: 'bg-red-500 text-white font-semibold py-2 px-2 rounded hover:bg-red-700 w-full' %>
                 <% end %>
               </div>
             </div>
