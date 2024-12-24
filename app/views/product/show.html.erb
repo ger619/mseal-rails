@@ -1,12 +1,84 @@
 <div class="shadow-md">
-  <div class="p-8 bg-[#FAE115] font-bold uppercase text-3xl">
-    <h1>PRODUCT SHOP | <%= @product.name %></h1>
-  </div>
-  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
-    <div>
-      <%= image_tag(@product.photo_product) %>
-      <%= @product.price  %>
+<div class="max-w-7xl mx-auto p-6">
+  <h1 class="text-3xl font-bold text-center mb-10">Murang&#39;a Seal Shop</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Product Image Section -->
+    <div class="flex justify-center">
+      <% if @product.present? %>
+      <%= image_tag(@product.photo_product, alt: "Denim Jacket", class: "w-full h-auto object-cover", style: "max-height: 618px; max-width: 447px;") %>
+      <% end %>
     </div>
-    <%= button_to "Destroy This Product", @product, method: :delete %>
+
+    <!-- Product Details Section -->
+    <div>
+      <p class="text-gray-500">FASCO</p>
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold">
+          <% if @product.present? %>
+            <%= @product.name %>
+          <% end %>
+        </h2>
+        <button class="text-gray-500"><i class="fas fa-star"></i></button>
+      </div>
+      <div class="flex items-center mt-2">
+        <div class="flex items-center">
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-gray-300"></i>
+        </div>
+        <p class="ml-2">(3)</p>
+      </div>
+      <div class="flex items-baseline mt-4">
+        <h3 class="text-3xl font-bold">kshs.
+          <% if @product.present? %>
+            <%= @product.price  %>
+          <% end %></h3>
+        <!--
+        <p class="text-gray-500 line-through ml-4">$59.00</p>
+        <span class="bg-yellow-500 text-white text-sm font-bold ml-4 px-2 py-1 rounded">SAVE 34%</span>
+        -->
+      </div>
+      <div class="mt-6">
+        <p>Only <strong>9</strong> item(s) left in stock!</p>
+        <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+          <div class="bg-[#fae115] h-2 rounded-full" style="width: 20%;"></div>
+        </div>
+      </div>
+      <div class="mt-6">
+        <p class="font-bold">Size: M</p>
+        <div class="flex mt-2 space-x-2">
+          <button class="px-4 py-2 border border-gray-300 rounded">M</button>
+          <button class="px-4 py-2 border border-gray-300 rounded">L</button>
+          <button class="px-4 py-2 border border-gray-300 rounded">XL</button>
+          <button class="px-4 py-2 border border-gray-300 rounded">XXL</button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mt-6">
+        <div>
+          <p class="font-bold">Quantity</p>
+          <div class="flex items-center mt-2 space-x-2">
+            <button class="px-2 py-1 border border-gray-300 rounded"><i class="fas fa-minus"></i></button>
+            <input type="number" min="1" value="1" class="w-16 text-center text-black border border-gray-300 rounded">
+            <button class="px-2 py-1 border border-gray-300 rounded"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+        <button class="bg-[#fae115] text-black px-6 py-2 rounded">Add to cart</button>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button class="text-gray-500"><i class="fas fa-share-alt"></i> Share</button>
+        <button class="text-gray-500"><i class="fas fa-question-circle"></i> Ask a question</button>
+        <button class="text-gray-500">Compare</button>
+      </div>
+      <div class="mt-6 p-4 bg-gray-100 text-black rounded">
+        <p><strong>Estimated Delivery:</strong> Jul 30 - Aug 03</p>
+      </div>
+      <div class="mt-6 text-center">
+        <p>Guarantee safe & secure checkout</p>
+      </div>
+    </div>
   </div>
+</div>
 </div>
