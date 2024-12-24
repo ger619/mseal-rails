@@ -12,7 +12,10 @@
   <!-- Sub Header -->
   <div class="text-center mb-6">
     <%= image_tag('kpl.png', class: 'h-20 mx-auto mb-4', alt: 'Competition Logo') %>
-    <div class="mt-2">2024/2025 Season</div>
+    <% selected_season = Season.find_by(id: params[:season_id]) %>
+    <div class="mb-4">
+      <span class="text-white font-semibold">Season: <%= selected_season&.name || "All Seasons" %></span>
+    </div>
   </div>
 
   <%= form_with url: opponent_index_path, method: :get, local: true do %>
