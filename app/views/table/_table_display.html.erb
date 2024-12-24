@@ -38,7 +38,9 @@
         <th class="p-3 text-center text-gray-700">Goals For</th>
         <th class="p-3 text-center text-gray-700">Goals Against</th>
         <th class="p-3 text-center text-gray-700">Goal Difference</th>
-        <th class="p-3 text-center text-gray-700">Form</th>
+        <!--
+          <th class="p-3 text-center text-gray-700">Form</th>
+        -->
       </tr>
       </thead>
       <% @table.each do |table| %>
@@ -58,6 +60,7 @@
             <td class="p-3 text-center"><%= table.gf %></td>
             <td class="p-3 text-center"><%= table.ga %></td>
             <td class="p-3 text-center"><%= table.gd %></td>
+            <!--
             <td class="p-3 text-center">
               <div class="flex justify-center space-x-1">
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
@@ -66,7 +69,7 @@
                 <span class="block w-5 h-5 rounded-full bg-red-500 text-white text-xs text-center">L</span>
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
               </div>
-            </td>
+            </td> -->
           </tr>
           </tbody>
         <% else %>
@@ -85,6 +88,7 @@
             <td class="p-3 text-center"><%= table.gf %></td>
             <td class="p-3 text-center"><%= table.ga %></td>
             <td class="p-3 text-center"><%= table.gd %></td>
+            <!--
             <td class="p-3 text-center">
               <div class="flex justify-center space-x-1">
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
@@ -94,6 +98,7 @@
                 <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
               </div>
             </td>
+            -->
           </tr>
           </tbody>
         <% end %>
