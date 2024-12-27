@@ -48,10 +48,10 @@
           <%= image_tag(opp.opponent_team.team_badge, class: "w-16 sm:w-24", alt: "Opponent Logo") %>
         <% end %>
       </div>
-      <p class="text-center mt-2 text-gray-700">
-        Murang'a Seals v <%= opp.opponent_team.name %>
+      <p class="text-center mt-2 text-gray-700 capitalize">
+        Murang'a Seal vs <%= opp.opponent_team.name %>
       </p>
-      <p class="text-center text-xs sm:text-sm text-gray-500">
+      <p class="text-center text-xs sm:text-sm text-gray-500 capitalize">
         <%= opp.venue %>
       </p>
       <button

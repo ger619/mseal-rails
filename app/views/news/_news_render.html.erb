@@ -9,17 +9,17 @@
         </div>
       </div>
 
-      <div class="grid col-span-1 justify-start">
-        <div class="flex flex-col md:flex-row items-start md:items-center w-full">
+      <div class="justify-start col-span-1">
+        <div class="md:flex inline-flex md:flex-row items-start md:items-center col-span-1">
           <%= form_with url: news_index_path, method: :get, class: 'flex' do |f| %>
             <%= f.select :query,
                          options_for_select(News.distinct.pluck(:type_of_news), params[:query]),
                          { include_blank: "Select type" },
-                         class: "border-b-4 h-12 border border-black text-black border-b-4 border-r-2 rounded" %>
-            <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
+                         class: "h-12 border border-black text-black border-b-4 border-r-2 rounded w-full" %>
+            <%= f.submit "Search", class: "mb-4 ml-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded w-full" %>
           <% end %>
           <%= form_with url: news_index_path, method: :get, class: 'flex' do |f| %>
-            <%= f.submit "Clear", class: "ml-4 mb-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
+            <%= f.submit "Clear", class: "ml-4 mb-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded w-full" %>
           <% end %>
         </div>
       </div>
