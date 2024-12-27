@@ -52,7 +52,7 @@
                   <% if opp.opponent_team.team_badge.attached? %>
                     <%= image_tag (opp.opponent_team.team_badge), class: "w-12 mb-2 md:mb-0"  %>
                   <% end %>
-                  <span class="font-bold text-left"><%= opp.opponent_team.name %></span>
+                  <span class="font-bold text-left capitalize"><%= opp.opponent_team.name %></span>
                 </div>
 
               </div>

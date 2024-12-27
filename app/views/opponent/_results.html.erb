@@ -39,7 +39,7 @@
                 <% if opp.opponent_team.team_badge.attached? %>
                   <%= image_tag(opp.opponent_team.team_badge, class: "h-24 mb-4 md:mt-0", alt: 'Other Team logo') %>
                 <% end %>
-                  <span class="block text-[12px] md:text-lg font-semibold mb-2">
+                  <span class="block text-[12px] md:text-lg font-semibold mb-2 capitalize">
                     <%= opp.opponent_team.name %>
                   </span>
                 </div>
