@@ -10,6 +10,9 @@ class TeamController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @statistic = Statistic.all.where(team_id: @team.id)
+    @previous_team_member = Team.where("id < ?", @team.id).last
+    @next_team_member = Team.where("id > ?", @team.id).first
+
   end
 
   def new

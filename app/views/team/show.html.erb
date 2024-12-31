@@ -10,9 +10,17 @@
         </div>
         <div class="absolute top-1/2 right-[-50px] transform -translate-y-1/2">
           <div class="space-x-2">
-            <button class="bg-yellow-500 text-white p-2 rounded"><i class="fas fa-chevron-left"></i></button>
-            <button class="bg-black text-white p-2 rounded"><i class="fas fa-chevron-right"></i></button>
-          </div>
+          <% if @previous_team_member %>
+            <%= link_to team_path(@previous_team_member), class: "bg-yellow-500 text-white p-2 rounded" do %>
+              <i class="fas fa-chevron-left"></i>
+            <% end %>
+          <% end %>
+          <% if @next_team_member %>
+            <%= link_to team_path(@next_team_member), class: "bg-black text-white p-2 rounded" do %>
+              <i class="fas fa-chevron-right"></i>
+            <% end %>
+          <% end %>
+        </div>
         </div>
       </div>
     </div>
