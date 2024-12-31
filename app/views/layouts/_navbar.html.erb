@@ -22,20 +22,6 @@
                 <span>Logout</span>
               <% end %>
             </div>
-          <% else %>
-            <!-- Show login and register buttons if not logged in -->
-            <a href="<%= user_session_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
-              <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
-                <i class="fa fa-user"></i>
-              </span>
-              <span>Login</span>
-            </a>
-            <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
-              <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
-                <i class="fa fa-user-plus"></i>
-              </span>
-              <span>Register</span>
-            </a>
           <% end %>
         </div>
         <!-- Hamburger Menu for Mobile -->
