@@ -62,27 +62,14 @@
 </div>
 
 <div id="General" class="tabcontent active">
-  <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
+  <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
    <%= render 'general_stats' %>
   </div>
 </div>
 
 <div id="Defence" class="tabcontent">
   <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
-    <% @statistic.each do |stat| %>
-      <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-xl sm:text-2xl"><%= stat.tackles_percentage %>%</p>
-        <span class="font-extralight">Tackles</span>
-      </div>
-      <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-xl sm:text-2xl"><%= stat.tackles_won %></p>
-        <span class="font-extralight">Tackles Won</span>
-      </div>
-      <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-xl sm:text-2xl"><%= stat.tackles_attempted %></p>
-        <span class="font-extralight">Tackles Attempted</span>
-      </div>
-    <% end %>
+   <%= render 'defense_stat' %>
   </div>
 </div>
 
