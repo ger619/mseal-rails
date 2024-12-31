@@ -1,4 +1,4 @@
-<header id="main-header" class="relative top-0 w-full z-50 bg-black">
+<header id="main-header" class="relative top-0 w-full z-50 bg-black md:border-b-8 border-b-4 border-[#fae115]">
   <div class="relative md:pt-3 pt-6">
     <div class="absolute md:top-1/2 transform -translate-y-1/2 z-15 md:m-0 mt-5">
       <%= link_to root_path do %>
@@ -22,20 +22,6 @@
                 <span>Logout</span>
               <% end %>
             </div>
-          <% else %>
-            <!-- Show login and register buttons if not logged in -->
-            <a href="<%= user_session_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
-              <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
-                <i class="fa fa-user"></i>
-              </span>
-              <span>Login</span>
-            </a>
-            <a href="<%= new_user_registration_path %>" class="flex items-center hover:text-[#fae115] space-x-2">
-              <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
-                <i class="fa fa-user-plus"></i>
-              </span>
-              <span>Register</span>
-            </a>
           <% end %>
         </div>
         <!-- Hamburger Menu for Mobile -->

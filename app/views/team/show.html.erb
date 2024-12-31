@@ -1,18 +1,64 @@
 <div class="shadow-md">
-  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-[28px]">
+  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-7">
     <div class="pt-6 pb-6 flex flex-col sm:flex-row gap-4 bg-black">
-      <p class="text-xl sm:text-3xl font-bold flex justify-start capitalize pl-6">
-        <%= @team.first_name %>
-      </p>
-      <p class="text-xl sm:text-3xl font-extralight flex justify-start capitalize">
-        <%= @team.last_name %>
-      </p>
+      <div class="relative">
+        <%= image_tag(@team.image, class: 'w-full h-auto') %>
+
+        <div class="absolute bottom-[-20px] md:right-[-50px] right-0 bg-gray-900 p-5 text-white">
+          <span class="text-gray-500 block"><%= @team.position %></span>
+          <h3 class="text-white text-2xl m-0 uppercase"><%= @team.jersey_number %> <%= @team.first_name %> <%= @team.last_name %></h3>
+        </div>
+        <div class="absolute top-1/2 md:right-[-50px] right-0 transform -translate-y-1/2">
+          <div class="space-x-2">
+          <% if @previous_team_member %>
+            <%= link_to team_path(@previous_team_member), class: "bg-yellow-500 text-white p-2 rounded" do %>
+              <i class="fas fa-chevron-left"></i>
+            <% end %>
+          <% end %>
+          <% if @next_team_member %>
+            <%= link_to team_path(@next_team_member), class: "bg-black text-white p-2 rounded" do %>
+              <i class="fas fa-chevron-right"></i>
+            <% end %>
+          <% end %>
+        </div>
+        </div>
+      </div>
     </div>
-    <div class="w-full">
-      <%= image_tag(@team.image, class: 'rounded w-full') %>
+
+    <h2 class="text-3xl mt-10 p-3">PLAYER PROFILE</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3">
+      <div>
+        <span class="text-gray-500">Squad number:</span>
+        <span class="font-bold block text-white"> <% if @team.jersey_number.present? %>
+            <%= @team.jersey_number %>
+          <% else %>
+            None
+          <% end %></span>
+      </div>
+      <div>
+        <span class="text-gray-500">Born:</span>
+        <span class="font-bold block text-white">
+        <% if @team.date_of_birth.present? %>
+          <%= @team.date_of_birth.strftime("%B %d, %Y") %>
+        <% else %>
+          None
+        <% end %>
+        </span>
+      </div>
+      <div>
+        <span class="text-gray-500">Previous clubs:</span>
+        <span class="font-bold block text-white">
+          <% if @team.previous_club.present? %>
+            <%= @team.previous_club %>
+          <% else %>
+            None
+          <% end %>
+        </span>
+      </div>
     </div>
+
     <%= render 'statistic' %>
-    <%= render 'player_profile' %>
 
     <div class="text-lg sm:text-xl font-bold mt-4 flex flex-col sm:flex-row justify-start gap-12 uppercase">
       <p>
@@ -27,8 +73,8 @@
     </div>
     <div class="flex flex-col sm:flex-row gap-2">
       <% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
-        <%= link_to "Edit", edit_team_path(@team.id), class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
-        <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+        <%= link_to "Edit", edit_team_path(@team.id), class: "bg-yellow-500 p-3 rounded-lg mt-2 uppercase" %>
+        <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-yellow-500 p-3 rounded-lg mt-2 uppercase" %>
       <% end %>
     </div>
   </div>
