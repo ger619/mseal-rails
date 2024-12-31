@@ -1,16 +1,50 @@
 <div class="shadow-md">
   <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-[28px]">
     <div class="pt-6 pb-6 flex flex-col sm:flex-row gap-4 bg-black">
-      <p class="text-xl sm:text-3xl font-bold flex justify-start capitalize pl-6">
-        <%= @team.first_name %>
-      </p>
-      <p class="text-xl sm:text-3xl font-extralight flex justify-start capitalize">
-        <%= @team.last_name %>
-      </p>
+      <div class="relative">
+        <%= image_tag(@team.image, class: 'w-full h-auto') %>
+
+        <div class="absolute bottom-[-20px] right-[-50px] bg-gray-900 p-5 text-white">
+          <span class="text-gray-500 block"><%= @team.position %></span>
+          <h3 class="text-white text-2xl m-0 uppercase"><%= @team.jersey_number %> <%= @team.first_name %> <%= @team.last_name %></h3>
+        </div>
+        <div class="absolute top-1/2 right-[-50px] transform -translate-y-1/2">
+          <div class="space-x-2">
+            <button class="bg-yellow-500 text-white p-2 rounded"><i class="fas fa-chevron-left"></i></button>
+            <button class="bg-black text-white p-2 rounded"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="w-full">
-      <%= image_tag(@team.image, class: 'rounded w-full') %>
+
+    <h2 class="text-3xl mt-10">PLAYER PROFILE</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+        <span class="text-gray-500">Squad number:</span>
+        <span class="font-bold block"> <% if @team.jersey_number.present? %>
+            <%= @team.jersey_number %>
+          <% else %>
+            None
+          <% end %></span>
+      </div>
+      <div>
+        <span class="text-gray-500">Born:</span>
+        <span class="font-bold block">
+        <% if @team.date_of_birth.present? %>
+          <%= @team.date_of_birth.strftime("%B %d, %Y") %>
+        <% else %>
+          None
+        <% end %>
+        </span>
+      </div>
+      <div>
+        <span class="text-gray-500">Previous clubs:</span>
+        <span class="font-bold block">Saint-Etienne, Nice (loan)</span>
+      </div>
     </div>
+
+
     <%= render 'statistic' %>
     <%= render 'player_profile' %>
 
