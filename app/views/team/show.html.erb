@@ -4,11 +4,11 @@
       <div class="relative">
         <%= image_tag(@team.image, class: 'w-full h-auto') %>
 
-        <div class="absolute bottom-[-20px] right-[-50px] bg-gray-900 p-5 text-white">
+        <div class="absolute bottom-[-20px] md:right-[-50px] right-0 bg-gray-900 p-5 text-white">
           <span class="text-gray-500 block"><%= @team.position %></span>
           <h3 class="text-white text-2xl m-0 uppercase"><%= @team.jersey_number %> <%= @team.first_name %> <%= @team.last_name %></h3>
         </div>
-        <div class="absolute top-1/2 right-[-50px] transform -translate-y-1/2">
+        <div class="absolute top-1/2 md:right-[-50px] right-0 transform -translate-y-1/2">
           <div class="space-x-2">
           <% if @previous_team_member %>
             <%= link_to team_path(@previous_team_member), class: "bg-yellow-500 text-white p-2 rounded" do %>
@@ -25,9 +25,9 @@
       </div>
     </div>
 
-    <h2 class="text-3xl mt-10">PLAYER PROFILE</h2>
+    <h2 class="text-3xl mt-10 p-3">PLAYER PROFILE</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3">
       <div>
         <span class="text-gray-500">Squad number:</span>
         <span class="font-bold block text-white"> <% if @team.jersey_number.present? %>
