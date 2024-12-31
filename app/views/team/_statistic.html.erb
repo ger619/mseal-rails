@@ -68,22 +68,22 @@
         <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl"><%= stat.goals_scored %></p>
         <span class="font-extralight">Goal Scored</span>
       </div>
-      <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-[#FAE115] md:text-5xl sm:text-2xl"><%= stat.tackles_percentage %>%</p>
-        <span class="font-extralight">Tackles</span>
-      </div>
-      <div class="col-span-1 p-2 ">
-        <div class="justify-items-center h-36">
+      <div class="col-span-1 p-2">
+        <span class="font-extralight mb-10 text-center" id="chartLabel" style="display: block;">Tackles</span>
+        <div class="justify-items-center h-36 relative">
           <canvas id="tacklesChart"></canvas>
-          <span class="font-extralight">Tackles</span>
+          <span class="absolute inset-0 flex items-center justify-center text-[#fae115] text-2xl"><%= stat.tackles_percentage %>%</span>
         </div>
       </div>
+
       <script>
           document.addEventListener('DOMContentLoaded', function() {
               // Get the context of the canvas element we want to select
               var ctx = document.getElementById('tacklesChart').getContext('2d');
               // Get the tackles percentage from the server-side variable
               var tacklesPercentage = <%= stat.tackles_percentage %>;
+              var playerName = "<%= @team.first_name %> <%= @team.last_name %>"; // Get the player's name
+              var label = document.getElementById('chartLabel').innerText; // Get the label text
 
               // Create a new Chart instance
               new Chart(ctx, {
@@ -109,14 +109,23 @@
                                   height = chart.height,
                                   ctx = chart.ctx;
                               ctx.restore();
-                              var fontSize = (height / 2).toFixed(2); // Calculate font size
+                              var fontSize = (height / 4).toFixed(2); // Calculate font size
                               ctx.font = fontSize + "em sans-serif"; // Set font style
                               ctx.textBaseline = "middle"; // Set text baseline
                               ctx.fillStyle = "white"; // Set text color to white
-                              var text = tacklesPercentage + "%", // Text to display
-                                  textX = Math.round((width - ctx.measureText(text).width) / 2), // Calculate X position
-                                  textY = height / 1; // Calculate Y position
-                              ctx.fillText(text, textX, textY); // Draw the text
+
+                              // Draw the percentage text
+                              var text = tacklesPercentage + "%",
+                                  textX = Math.round((width - ctx.measureText(text).width) / 2),
+                                  textY = height / 2 - 10;
+                              ctx.fillText(text, textX, textY);
+
+                              // Draw the label text
+                              ctx.font = (fontSize / 2) + "em sans-serif"; // Set smaller font size for the label
+                              var labelX = Math.round((width - ctx.measureText(label).width) / 2),
+                                  labelY = height / 2 + 10;
+                              ctx.fillText(label, labelX, labelY);
+
                               ctx.save();
                           }
                       }
@@ -148,6 +157,7 @@
     <% end %>
   </div>
 </div>
+
 <div id="Distribution" class="tabcontent">
   <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
     <% @statistic.each do |stat| %>
@@ -166,6 +176,7 @@
     <% end %>
   </div>
 </div>
+
 <div id="Attack" class="tabcontent">
   <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
     <% @statistic.each do |stat| %>
@@ -200,6 +211,7 @@
     <% end %>
   </div>
 </div>
+
 <div id="Discipline" class="tabcontent">
   <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
     <% @statistic.each do |stat| %>
@@ -240,143 +252,3 @@
     document.getElementById("defaultOpen").click();
 </script>
 
-
-
-
-<div class="container mx-auto p-4">
-  <div class="tabs">
-    <button class="tab-button active" onclick="openTab(event, 'general')">General</button>
-    <button class="tab-button" onclick="openTab(event, 'defence')">Defence</button>
-    <button class="tab-button" onclick="openTab(event, 'distribution')">Distribution</button>
-    <button class="tab-button" onclick="openTab(event, 'attack')">Attack</button>
-    <button class="tab-button" onclick="openTab(event, 'discipline')">Discipline</button>
-    <button class="tab-button" onclick="openTab(event, 'minutes')">Minutes played</button>
-  </div>
-
-  <div id="general" class="tab-content active">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 py-10">
-      <div class="text-center">
-        <h2 class="text-yellow-500 text-6xl">78</h2>
-        <p>Clearances</p>
-      </div>
-      <div class="text-center">
-        <h2 class="text-yellow-500 text-6xl">17</h2>
-        <p>Blocks</p>
-      </div>
-      <div class="text-center">
-        <h2 class="text-yellow-500 text-6xl">29</h2>
-        <p>Interceptions</p>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-      <div class="text-center">
-        <p class="font-bold mb-2">Tackles</p>
-        <div class="relative inline-block">
-          <svg class="w-40 h-40">
-            <circle class="text-gray-300" stroke-width="10" stroke="currentColor" fill="transparent" r="70" cx="80" cy="80"/>
-            <circle class="text-yellow-500" stroke-width="10" stroke-dasharray="440" stroke-dashoffset="160" stroke-linecap="round" fill="transparent" r="70" cx="80" cy="80"/>
-          </svg>
-          <span class="absolute inset-0 flex items-center justify-center text-yellow-500 text-2xl">63.4%</span>
-        </div>
-        <div class="mt-2">
-          <p>Success rate</p>
-          <i class="fas fa-info-circle text-gray-500 ml-2"></i>
-        </div>
-      </div>
-      <div class="text-center">
-        <p class="font-bold mb-2">Duels</p>
-        <div class="relative inline-block">
-          <svg class="w-40 h-40">
-            <circle class="text-gray-300" stroke-width="10" stroke="currentColor" fill="transparent" r="70" cx="80" cy="80"/>
-            <circle class="text-yellow-500" stroke-width="10" stroke-dasharray="440" stroke-dashoffset="176" stroke-linecap="round" fill="transparent" r="70" cx="80" cy="80"/>
-          </svg>
-          <span class="absolute inset-0 flex items-center justify-center text-yellow-500 text-2xl">59.7%</span>
-        </div>
-        <div class="mt-2">
-          <p>Success rate</p>
-          <i class="fas fa-info-circle text-gray-500 ml-2"></i>
-        </div>
-      </div>
-      <div class="text-center">
-        <p class="font-bold mb-2">Aerial duels</p>
-        <div class="relative inline-block">
-          <svg class="w-40 h-40">
-            <circle class="text-gray-300" stroke-width="10" stroke="currentColor" fill="transparent" r="70" cx="80" cy="80"/>
-            <circle class="text-yellow-500" stroke-width="10" stroke-dasharray="440" stroke-dashoffset="178" stroke-linecap="round" fill="transparent" r="70" cx="80" cy="80"/>
-          </svg>
-          <span class="absolute inset-0 flex items-center justify-center text-yellow-500 text-2xl">59.5%</span>
-        </div>
-        <div class="mt-2">
-          <p>Success rate</p>
-          <i class="fas fa-info-circle text-gray-500 ml-2"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="defence" class="tab-content">
-    <!-- Defence content goes here -->
-  </div>
-
-  <div id="distribution" class="tab-content">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-      <div class="text-center">
-        <div class="bg-white p-4 rounded shadow">
-          <h2 class="text-2xl">2</h2>
-          <p class="uppercase">Pass Completed</p>
-        </div>
-      </div>
-      <div class="text-center">
-        <div class="bg-white p-4 rounded shadow">
-          <h2 class="text-2xl">2</h2>
-          <p class="uppercase">Pass Attempted</p>
-        </div>
-      </div>
-      <div class="col-span-2 flex justify-center mt-6">
-        <div class="text-center">
-          <p class="font-bold mb-2">Pass %</p>
-          <div class="relative inline-block">
-            <svg class="w-40 h-40">
-              <circle class="text-gray-300" stroke-width="10" stroke="currentColor" fill="transparent" r="70" cx="80" cy="80"/>
-              <circle class="text-yellow-500" stroke-width="10" stroke-dasharray="440" stroke-dashoffset="178" stroke-linecap="round" fill="transparent" r="70" cx="80" cy="80"/>
-            </svg>
-            <span class="absolute inset-0 flex items-center justify-center text-yellow-500 text-2xl">59.5%</span>
-          </div>
-          <div class="mt-2">
-            <p>Success rate</p>
-            <i class="fas fa-info-circle text-gray-500 ml-2"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="attack" class="tab-content">
-    <!-- Attack content goes here -->
-  </div>
-
-  <div id="discipline" class="tab-content">
-    <!-- Discipline content goes here -->
-  </div>
-
-  <div id="minutes" class="tab-content">
-    <!-- Minutes played content goes here -->
-  </div>
-</div>
-
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tab-button");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    document.getElementsByClassName("tab-button")[0].click();
-</script>
