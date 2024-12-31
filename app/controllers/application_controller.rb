@@ -7,8 +7,16 @@ class ApplicationController < ActionController::Base
   before_action :set_render_cart
   before_action :initialize_cart
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, alert: exception.message
+  end
+
   def set_render_cart
     @render_cart = true
+  end
+
+  def redirect_to_root
+    redirect_to root_path, alert: 'The page you were looking for does not exist.'
   end
 
   def initialize_cart
