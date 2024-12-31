@@ -1,19 +1,39 @@
 <% @statistic.each do |stat| %>
-  <div class="col-span-1 text-center p-2">
+  <div class="col-span-1 text-center p-2 hidden md:block">
     <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
       <%= stat.tackles_won %></p>
     <span class="font-extralight">Tackles</span>
   </div>
-  <div class="col-span-1 text-center p-2">
+  <div class="col-span-1 text-center p-2 hidden md:block">
     <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
       <%= stat.duel_won %></p>
     <span class="font-extralight">Duels Won</span>
   </div>
-  <div class="col-span-1 text-center p-2">
+  <div class="col-span-1 text-center p-2 hidden md:block">
     <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
       <%= stat.interception_won %></p>
     <span class="font-extralight">Interceptions</span>
   </div>
+
+  <div class="md:hidden flex justify-center">
+    <div class="col-span-1 text-center p-2 ">
+      <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+        <%= stat.tackles_won %></p>
+      <span class="font-extralight">Tackles</span>
+    </div>
+    <div class="col-span-1 text-center p-2">
+      <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+        <%= stat.duel_won %></p>
+      <span class="font-extralight">Duels Won</span>
+    </div>
+    <div class="col-span-1 text-center p-2">
+      <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+        <%= stat.interception_won %></p>
+      <span class="font-extralight">Interceptions</span>
+    </div>
+  </div>
+
+
 
   <div class="col-span-1 p-2">
     <span class="font-extralight mb-10 text-center" id="tacklesLabel-<%= stat.id %>" style="display: block;">Tackles Percentage</span>

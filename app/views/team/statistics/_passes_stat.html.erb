@@ -1,0 +1,14 @@
+<% @statistic.each do |stat| %>
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_completed %></p>
+    <span class="font-extralight">Passes Completed</span>
+  </div>
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_attempted %></p>
+    <span class="font-extralight">Passes Attempted</span>
+  </div>
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_percentage %>%</p>
+    <span class="font-extralight">Pass Percentage</span>
+  </div>
+<% end %>

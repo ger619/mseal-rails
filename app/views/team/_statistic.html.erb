@@ -1,98 +1,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    /* Style the tab */
-    .tab {
-        overflow: hidden;
-        border-bottom: 1px solid #fae115;
-    }
 
-    /* Style the buttons inside the tab */
-    .tab button {
-        background-color: inherit;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 14px 16px;
-        transition: 0.3s;
-        font-size: 17px;
-        color: white;
-    }
 
-    /* Change background color of buttons on hover */
-    .tab button:hover {
-        color: #fae115;
-        text-underline: #fae115;
-    }
-
-    /* Create an active/current tablink class */
-    .tab button.active {
-        color: #fae115;
-    }
-
-    /* Style the tab content */
-    .tabcontent {
-        padding: 6px 12px;
-    }
-
-    /* Responsive design for mobile devices */
-    @media (max-width: 768px) {
-        .tab {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tab button {
-            width: 100%;
-            text-align: left;
-        }
-
-        .tabcontent {
-            padding: 10px;
-        }
-    }
-</style>
-
-<div class="tab flex flex-col md:flex-row gap-5 font-bold justify-between mt-4">
-  <button class="tablinks active text-white" onclick="openCity(event, 'General')" id="defaultOpen">General</button>
-  <button class="tablinks text-white" onclick="openCity(event, 'Defence')">Defence</button>
-  <button class="tablinks" onclick="openCity(event, 'Distribution')">Distribution</button>
-  <button class="tablinks" onclick="openCity(event, 'Attack')">Attack</button>
-  <button class="tablinks" onclick="openCity(event, 'Discipline')">Discipline</button>
+<div class="tab flex flex-row md:flex-row gap-2 md:gap-5 font-bold justify-between mt-4 border-b border-[#fae115]">
+  <button class="tablinks active bg-inherit float-left border-none outline-none cursor-pointer p-1 md:p-4 transition duration-300 text-xs md:text-lg text-white hover:text-[#fae115]" onclick="openCity(event, 'General')" id="defaultOpen">General</button>
+  <button class="tablinks bg-inherit float-left border-none outline-none cursor-pointer p-1 md:p-4 transition duration-300 text-xs md:text-lg text-white hover:text-[#fae115]" onclick="openCity(event, 'Defence')">Defence</button>
+  <button class="tablinks bg-inherit float-left border-none outline-none cursor-pointer p-1 md:p-4 transition duration-300 text-xs md:text-lg text-white hover:text-[#fae115]" onclick="openCity(event, 'Distribution')">Distribution</button>
+  <button class="tablinks bg-inherit float-left border-none outline-none cursor-pointer p-1 md:p-4 transition duration-300 text-xs md:text-lg text-white hover:text-[#fae115]" onclick="openCity(event, 'Attack')">Attack</button>
+  <button class="tablinks bg-inherit float-left border-none outline-none cursor-pointer p-1 md:p-4 transition duration-300 text-xs md:text-lg text-white hover:text-[#fae115]" onclick="openCity(event, 'Discipline')">Discipline</button>
 </div>
 
-<div id="General" class="tabcontent active">
-  <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
-   <%= render 'general_stats' %>
+<div id="General" class="tabcontent active p-3">
+  <div class="grid md:grid-cols-4 grid-cols-1 gap-4">
+    <%= render partial: 'team/statistics/general_stats' %>
   </div>
 </div>
 
-<div id="Defence" class="tabcontent">
+<div id="Defence" class="tabcontent p-3">
+  <div class="grid md:grid-cols-3 grid-cols-1 gap-4">
+    <%= render partial: 'team/statistics/defense_stat' %>
+  </div>
+</div>
+
+<div id="Distribution" class="tabcontent p-3">
   <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
-   <%= render 'defense_stat' %>
+    <%= render partial:  'team/statistics/passes_stat' %>
   </div>
 </div>
 
-<div id="Distribution" class="tabcontent">
-  <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
-    <% @statistic.each do |stat| %>
-      <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_completed %></p>
-        <span class="font-extralight">Passes Completed</span>
-      </div>
-      <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_attempted %></p>
-        <span class="font-extralight">Passes Attempted</span>
-      </div>
-      <div class="col-span-1 text-center p-2">
-        <p class="font-bold text-xl sm:text-2xl"><%= stat.passes_percentage %>%</p>
-        <span class="font-extralight">Pass Percentage</span>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div id="Attack" class="tabcontent">
+<div id="Attack" class="tabcontent p-3">
   <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
     <% @statistic.each do |stat| %>
       <div class="col-span-1 text-center p-2">
@@ -127,7 +62,7 @@
   </div>
 </div>
 
-<div id="Discipline" class="tabcontent">
+<div id="Discipline" class="tabcontent p-3">
   <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
     <% @statistic.each do |stat| %>
       <div class="col-span-1 text-center p-2">
