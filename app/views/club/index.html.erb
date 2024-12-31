@@ -7,18 +7,18 @@
 <div class="max-w-5xl mx-auto p-5 min-h-screen">
 
   <!-- Page Title -->
-  <h1 class="text-3xl font-bold text-center mb-10">Murang&#39;a Seal Story</h1>
+  <h2 class="text-2xl sm:text-3xl font-semibold text-center mb-10">MURANG'A SEAL STORY</h2>
 
   <!-- Tabs Section -->
   <div class="flex justify-center mb-10">
     <nav class="flex flex-wrap justify-center space-x-4">
-      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline"
+      <button class="text-lg tablinks hover:text-[#FAE115]hover:underline hover:underline-offset-4 hover:decoration-4 uppercase"
               id="tab-history"
               onclick="openCity(event, 'history')">History</button>
-      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline"
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline hover:underline-offset-4 hover:decoration-4 uppercase"
               id="tab-club-records"
               onclick="openCity(event, 'club-records')">Club Records</button>
-      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline"
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline hover:underline-offset-4 hover:decoration-4 uppercase"
               id="tab-management"
               onclick="openCity(event, 'management')">Management</button>
     </nav>
@@ -50,12 +50,12 @@
 
         // Remove active class from all tab links
         for (let i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("text-[#FAE115]", "underline");
+            tablinks[i].classList.remove("text-[#FAE115]", "underline-offset-4", "underline", "decoration-4");
         }
 
         // Show current tab content and add active class to clicked tab
         document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.classList.add("text-[#FAE115]", "underline");
+        evt.currentTarget.classList.add("text-[#FAE115]", "underline-offset-4", "underline", "decoration-4");
     }
 
     // Set default tab to open
