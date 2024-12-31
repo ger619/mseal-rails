@@ -10,9 +10,8 @@ class TeamController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @statistic = Statistic.all.where(team_id: @team.id)
-    @previous_team_member = Team.where("jersey_number < ?", @team.jersey_number).order(jersey_number: :desc).first
-    @next_team_member = Team.where("jersey_number > ?", @team.jersey_number).order(jersey_number: :asc).first
-
+    @previous_team_member = Team.where('jersey_number < ?', @team.jersey_number).order(jersey_number: :desc).first
+    @next_team_member = Team.where('jersey_number > ?', @team.jersey_number).order(jersey_number: :asc).first
   end
 
   def new
