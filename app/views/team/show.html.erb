@@ -1,5 +1,5 @@
 <div class="shadow-md">
-  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-[28px]">
+  <div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-7">
     <div class="pt-6 pb-6 flex flex-col sm:flex-row gap-4 bg-black">
       <div class="relative">
         <%= image_tag(@team.image, class: 'w-full h-auto') %>
@@ -22,7 +22,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div>
         <span class="text-gray-500">Squad number:</span>
-        <span class="font-bold block"> <% if @team.jersey_number.present? %>
+        <span class="font-bold block text-white"> <% if @team.jersey_number.present? %>
             <%= @team.jersey_number %>
           <% else %>
             None
@@ -30,7 +30,7 @@
       </div>
       <div>
         <span class="text-gray-500">Born:</span>
-        <span class="font-bold block">
+        <span class="font-bold block text-white">
         <% if @team.date_of_birth.present? %>
           <%= @team.date_of_birth.strftime("%B %d, %Y") %>
         <% else %>
@@ -40,13 +40,17 @@
       </div>
       <div>
         <span class="text-gray-500">Previous clubs:</span>
-        <span class="font-bold block">Saint-Etienne, Nice (loan)</span>
+        <span class="font-bold block text-white">
+          <% if @team.previous_club.present? %>
+            <%= @team.previous_club %>
+          <% else %>
+            None
+          <% end %>
+        </span>
       </div>
     </div>
 
-
     <%= render 'statistic' %>
-    <%= render 'player_profile' %>
 
     <div class="text-lg sm:text-xl font-bold mt-4 flex flex-col sm:flex-row justify-start gap-12 uppercase">
       <p>
@@ -61,8 +65,8 @@
     </div>
     <div class="flex flex-col sm:flex-row gap-2">
       <% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
-        <%= link_to "Edit", edit_team_path(@team.id), class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
-        <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-[#FAE115] p-3 rounded-lg mt-2 uppercase" %>
+        <%= link_to "Edit", edit_team_path(@team.id), class: "bg-yellow-500 p-3 rounded-lg mt-2 uppercase" %>
+        <%= button_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-yellow-500 p-3 rounded-lg mt-2 uppercase" %>
       <% end %>
     </div>
   </div>

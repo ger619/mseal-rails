@@ -4,7 +4,6 @@
     .tab {
         overflow: hidden;
         border-bottom: 1px solid #fae115;
-        #background-color: #e6e6e6;
     }
 
     /* Style the buttons inside the tab */
@@ -22,7 +21,6 @@
 
     /* Change background color of buttons on hover */
     .tab button:hover {
-        #background-color: #e6e6e6;
         color: #fae115;
         text-underline: #fae115;
     }
@@ -30,19 +28,30 @@
     /* Create an active/current tablink class */
     .tab button.active {
         color: #fae115;
-
     }
 
     /* Style the tab content */
     .tabcontent {
-        #display: none;
         padding: 6px 12px;
-        #border: 1px solid #ccc;
-        #border-top: none;
-        #border-right: 1px solid #ccc;
+    }
+
+    /* Responsive design for mobile devices */
+    @media (max-width: 768px) {
+        .tab {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab button {
+            width: 100%;
+            text-align: left;
+        }
+
+        .tabcontent {
+            padding: 10px;
+        }
     }
 </style>
-
 
 <div class="tab flex flex-col md:flex-row gap-5 font-bold justify-between mt-4">
   <button class="tablinks active text-white" onclick="openCity(event, 'General')" id="defaultOpen">General</button>
@@ -68,11 +77,13 @@
         <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl"><%= stat.goals_scored %></p>
         <span class="font-extralight">Goal Scored</span>
       </div>
+      <!-- Tab One -->
+
       <div class="col-span-1 p-2">
-        <span class="font-extralight mb-10 text-center" id="chartLabel" style="display: block;">Tackles</span>
-        <div class="justify-items-center h-36 relative">
+        <span class="font-extralight mb-10 text-center" id="chartLabel" style="display: block;">Tackles Percentage</span>
+        <div class="justify-items-center md:h-32 h-24  relative">
           <canvas id="tacklesChart"></canvas>
-          <span class="absolute inset-0 flex items-center justify-center text-[#fae115] text-2xl"><%= stat.tackles_percentage %>%</span>
+          <span class="absolute inset-0 flex items-center justify-center text-[#fae115] md:text-xl font-bold"><%= stat.tackles_percentage %>%</span>
         </div>
       </div>
 
@@ -133,9 +144,7 @@
               });
           });
       </script>
-
-
-  <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -251,4 +260,3 @@
     }
     document.getElementById("defaultOpen").click();
 </script>
-
