@@ -18,15 +18,15 @@
           <%= @news.content %>
         </p>
 
-        <% if current_user && current_user.role == 'moderator' %>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-2">
-            <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
-              <%= link_to "Edit", edit_news_path(@news.id), class: "w-full text-black text-sm sm:text-xs md:text-sm lg:text-base font-semibold py-1 px-2 rounded" %>
+        <% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-2">
+              <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+                <%= link_to "Edit", edit_news_path(@news.id), class: "w-full text-black text-sm sm:text-xs md:text-sm lg:text-base font-semibold py-1 px-2 rounded" %>
+              </div>
+              <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+                <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete }, class: "w-full text-black font-semibold" %>
+              </div>
             </div>
-            <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
-              <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete }, class: "w-full text-black font-semibold" %>
-            </div>
-          </div>
         <% end %>
         <div class="my-10">
           <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
