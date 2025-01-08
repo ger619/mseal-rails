@@ -1,8 +1,17 @@
-<% @adverts.limit(1).each do |advert| %>
+<% @adverts.each do |advert| %>
 
-  <%= image_tag(advert.mobile_image, class: "hidden sm:flex") %>
-  <%= image_tag(advert.desk_image, class: "lg:flex md:flex lg:h-40 lg:w-60 h-28 md:h-40 hidden") %>
-
-
+  <div class="flex items-center justify-evenly w-full  bg-gray-200">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">Advert Mobile</h1>
+      <p class="text-gray-800">This is for the mobile Advert.</p>
+      <%= image_tag(advert.mobile_image, class: "lg:flex md:flex lg:h-40 lg:w-60 h-28 md:h-40 hidden") %>
+    </div>
+    <div>
+`     <h1 class="text-2xl font-bold text-gray-800">Advert Desk</h1>
+      <p class="text-gray-800">This is for the Desktop Advert.</p>
+      <%= image_tag(advert.desk_image, class: "md:w-[300px]") %>
+    </div>
+  </div>
+    <%= button_to "Delete", advert, method: :delete, data: { turbo_method: :delete  },class: "ml-[50%] normal-case border-2 border-[#000] hover:bg-[#000] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-black hover:text-[#FAE115] p-2 rounded mb-2 mt-4" %>
 <% end %>
 

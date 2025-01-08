@@ -6,6 +6,6 @@
     <%= orderable.quantity %>
     <%= form_with(url: cart_remove_path) do |f| %>
       <%= f.hidden_field :id, value: orderable.id %>
-      <%= f.submit "X" %>
+      <%= f.submit "X", class: "font-semibold"%>
     <% end %>
 <% end %>

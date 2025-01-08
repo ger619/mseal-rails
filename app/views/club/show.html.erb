@@ -1,9 +1,32 @@
-<div class="p-8 bg-[#FAE115] font-bold uppercase text-5xl">
-  CLUB & HISTORY | <span class="text-3xl"><%= @club.header %></span>
+<div class="shadow-md">
+  <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between">
+    <h1 class="md:w-full w-[90%] truncate">CLUB & HISTORY</h1>
+  </div>
+
+  <div class="sm:w-full md:w-[60%] lg:max-w-full xl:max-w-full mx-auto md:mt-[28px] p-4">
+    <div class="mt-4 border-t-[8px] pt-6 pb-6 border-[#FAE115] flex flex-col md:flex-row gap-4 bg-[#FFF] justify-between">
+      <p class="text-2xl font-bold mt-4 mr-3 flex uppercase">
+        <%= @club.header %>
+      </p>
+      <p class="text-xs p-4">
+        <%= @club.created_at.strftime("%d.%m.%Y") %>
+      </p>
+    </div>
+    <div class="md:w-full w-full h-auto">
+      <%= image_tag(@club.photo) %>
+    </div>
+
+    <div class="p-4">
+      <p class="text-base font-light"><%= render html: raw(@club.content) %></p>
+    </div>
+
+    <% if current_user && current_user.role === 'moderator' %>
+      <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2">
+        <%= link_to "Edit", edit_club_path(@club.id), class: "w-full text-[#000] lg:text-base md:text-sm sm:text-xs md:font-bold sm:font-semibold md:py-2 sm:py-1 md:px-4 sm:px-2 p-1 rounded mt-2" %>
+      </div>
+      <div class="bg-[#FAE115] mt-2 p-2 md:mt-3 md:p-3 rounded-lg sm:mt-2 sm:p-2">
+        <%= button_to "Delete", @club, method: :delete, data: { turbo_method: :delete }, class: "w-full text-[#000] font-semibold" %>
+      </div>
+    <% end %>
+  </div>
 </div>
- <div>
-   <%= image_tag(@club.photo) %>
-   <%= @club.body %>
-
- </div>
-

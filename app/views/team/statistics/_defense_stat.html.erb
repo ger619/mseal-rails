@@ -1,0 +1,115 @@
+<% @statistic.each do |stat| %>
+  <div class="col-span-1 text-center p-2 hidden md:block">
+    <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+      <%= stat.tackles_won %></p>
+    <span class="font-extralight">Tackles</span>
+  </div>
+  <div class="col-span-1 text-center p-2 hidden md:block">
+    <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+      <%= stat.duel_won %></p>
+    <span class="font-extralight">Duels Won</span>
+  </div>
+  <div class="col-span-1 text-center p-2 hidden md:block">
+    <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+      <%= stat.interception_won %></p>
+    <span class="font-extralight">Interceptions</span>
+  </div>
+
+  <div class="md:hidden flex justify-center">
+    <div class="col-span-1 text-center p-2 ">
+      <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+        <%= stat.tackles_won %></p>
+      <span class="font-extralight">Tackles</span>
+    </div>
+    <div class="col-span-1 text-center p-2">
+      <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+        <%= stat.duel_won %></p>
+      <span class="font-extralight">Duels Won</span>
+    </div>
+    <div class="col-span-1 text-center p-2">
+      <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+        <%= stat.interception_won %></p>
+      <span class="font-extralight">Interceptions</span>
+    </div>
+  </div>
+
+
+
+  <div class="col-span-1 p-2">
+    <span class="font-extralight mb-10 text-center" id="tacklesLabel-<%= stat.id %>" style="display: block;">Tackles Percentage</span>
+    <div class="justify-items-center md:h-32 h-24 relative">
+      <canvas id="tacklesChart-<%= stat.id %>"></canvas>
+      <span class="absolute inset-0 flex items-center justify-center text-[#fae115] md:text-xl font-bold"><%= stat.tackles_percentage %>%</span>
+    </div>
+  </div>
+
+  <div class="col-span-1 p-2">
+    <span class="font-extralight mb-10 text-center" id="duelLabel-<%= stat.id %>" style="display: block;">Duels Percentage</span>
+    <div class="justify-items-center md:h-32 h-24 relative">
+      <canvas id="duelChart-<%= stat.id %>"></canvas>
+      <span class="absolute inset-0 flex items-center justify-center text-[#fae115] md:text-xl font-bold"><%= stat.duel_percentage %>%</span>
+    </div>
+  </div>
+
+  <div class="col-span-1 p-2">
+    <span class="font-extralight mb-10 text-center" id="interceptionLabel-<%= stat.id %>" style="display: block;">Interception Percentage</span>
+    <div class="justify-items-center md:h-32 h-24 relative">
+      <canvas id="interceptionChart-<%= stat.id %>"></canvas>
+      <span class="absolute inset-0 flex items-center justify-center text-[#fae115] md:text-xl font-bold"><%= stat.interception_percentage %>%</span>
+    </div>
+  </div>
+<% end %>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <% @statistic.each do |stat| %>
+        createChart('tacklesChart-<%= stat.id %>', <%= stat.tackles_percentage %>, 'Tackles Percentage');
+        createChart('duelChart-<%= stat.id %>', <%= stat.duel_percentage %>, 'Duels Percentage');
+        createChart('interceptionChart-<%= stat.id %>', <%= stat.interception_percentage %>, 'Interception Percentage');
+        <% end %>
+
+        function createChart(canvasId, percentage, label) {
+            var ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [percentage, 100 - percentage],
+                        backgroundColor: ['#FFD700', '#e6e6e6'],
+                    }],
+                },
+                options: {
+                    cutout: '85%',
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        tooltip: { enabled: false },
+                        legend: { display: false },
+                        beforeDraw: function(chart) {
+                            var width = chart.width,
+                                height = chart.height,
+                                ctx = chart.ctx;
+                            ctx.restore();
+                            var fontSize = (height / 4).toFixed(2);
+                            ctx.font = fontSize + "em sans-serif";
+                            ctx.textBaseline = "middle";
+                            ctx.fillStyle = "white";
+
+                            var text = percentage + "%",
+                                textX = Math.round((width - ctx.measureText(text).width) / 2),
+                                textY = height / 2 - 10;
+                            ctx.fillText(text, textX, textY);
+
+                            ctx.font = (fontSize / 2) + "em sans-serif";
+                            var labelX = Math.round((width - ctx.measureText(label).width) / 2),
+                                labelY = height / 2 + 10;
+                            ctx.fillText(label, labelX, labelY);
+
+                            ctx.save();
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>

@@ -1,0 +1,19 @@
+<%= form_with(model: @scorers) do |form| %>
+
+
+  <%= form.collection_select :opponent_id, Opponent.all, :id, :venue, {prompt: "Select Player"}  %>
+  <%= form.collection_select :team_id, Team.all, :id, :name, {prompt: "Select Player"}, class: "h-[50px] flex items-center p-2 w-[45%] border-b bg-[#F7F3ED] border-black focus:outline-none", :required => true %>
+
+
+  <%= form.label :text, "Text:" %>
+  <%= form.text_field :name %>
+  <%= form.label :goal, "Assist" %>
+  <%= form.number_field :goals %>
+  <%= form.label :assist, "Assist" %>
+  <%= form.number_field :assists %>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

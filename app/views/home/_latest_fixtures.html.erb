@@ -1,0 +1,64 @@
+<% @upcoming.limit(1).each do |opp| %>
+  <div class="bg-white shadow-md overflow-hidden w-full sm:w-1/3">
+    <div class="relative flex flex-row sm:flex-row items-center bg-gradient-to-r from-[#fae115] to-black p-4 shadow-lg">
+      <!-- Date Section -->
+      <div class="flex items-center justify-center text-white text-2xl sm:text-4xl font-bold pr-0 sm:pr-4">
+        <div class="text-center gap-1">
+          <p class="mr-1">
+            <%= opp.match_date.strftime("%d") %>
+          </p>
+        </div>
+        <div>
+          <p class="text-xs sm:text-sm font-light uppercase">
+            <%= opp.match_date.strftime("%A") %>
+          </p>
+          <p class="text-xs font-light uppercase text-slate-100">
+            <%= opp.match_date.strftime("%B") %>
+          </p>
+        </div>
+      </div>
+
+      <!-- Sponsor Logo -->
+      <div class="ml-auto mt-4 sm:mt-0">
+        <!-- Match Info Section -->
+        <div class="flex-grow pl-0 sm:pl-4">
+          <p class="text-slate-100 text-xl sm:text-2xl font-semibold uppercase italic">
+            Next Match
+          </p>
+          <div class="flex">
+            <p class="text-white text-xs border-r border-gray-700 mr-2">
+              Presented by
+            </p>
+            <img
+              src=""
+              class="h-3"
+              />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4">
+      <div class="flex flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 items-center gap-2">
+        <%= image_tag "logo.png", alt: "M-seals logo", class: "h-16 sm:h-24" %>
+        <span class="text-xl sm:text-3xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-[#fae115] to-yellow-700 font-bold">
+          <%= opp.match_time.strftime("%I:%M %p") %>
+        </span>
+        <% if opp.opponent_team.team_badge.attached? %>
+          <%= image_tag(opp.opponent_team.team_badge, class: "w-16 sm:w-24", alt: "Opponent Logo") %>
+        <% end %>
+      </div>
+      <p class="text-center mt-2 text-gray-700 capitalize">
+        Murang'a Seal vs <%= opp.opponent_team.name %>
+      </p>
+      <p class="text-center text-xs sm:text-sm text-gray-500 capitalize">
+        <%= opp.venue %>
+      </p>
+      <button
+        class="w-full bg-[#FAE115] text-white font-semibold py-2 mt-4 rounded-lg hover:bg-yellow-600"
+      >
+        TICKETS
+      </button>
+    </div>
+  </div>
+<% end %>

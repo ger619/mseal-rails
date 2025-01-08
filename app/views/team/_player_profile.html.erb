@@ -1,0 +1,80 @@
+<div class="max-w-screen-xl">
+<div class="w-full bg-black text-white mt-4 p-2">
+  <div class="p-4">
+    <div class="flex-col justify-self-center gap-4">
+      <label for="tackles_attempted" class="capitalize content-center font-extralight align-middle text-2xl underline underline-offset-8 mb-4">PLAYER PROFILE</label>
+    </div>
+    <div class="text-gray-100">
+    <div class="grid grid-cols-3 gap-4 mt-4">
+      <div class="col-span-1">
+        <p class="capitalize text-sm md:text-lg">Name</p>
+        <p class="capitalize text-sm md:text-lg">Squad Number</p>
+        <p class="capitalize text-sm md:text-lg">Date of Birth</p>
+        <p class="capitalize text-sm md:text-lg">Age</p>
+        <p class="capitalize text-sm md:text-lg">Seals Debut</p>
+        <p class="capitalize text-sm md:text-lg">First Goal</p>
+        <p class="capitalize text-sm md:text-lg">Previous Clubs</p>
+        <p class="capitalize text-sm md:text-lg">Twitter</p>
+        <p class="capitalize text-sm md:text-lg">Instagram</p>
+      </div>
+      <div class=" col-span-2 pl-10 font-extralight">
+        <p class="text-sm md:text-lg">
+          <%= @team.first_name %> <%= @team.second_name %> <%= @team.last_name %>
+        </p>
+        <p class="text-sm md:text-xl">
+          <% if @team.jersey_number.present? %>
+            <%= @team.jersey_number %>
+          <% else %>
+            None
+          <% end %>
+        </p>
+        <p class="text-sm md:text-lg">
+          <% if @team.date_of_birth.present? %>
+              <%= @team.date_of_birth.strftime("%b, %d %Y") %>
+            <% else %>
+              None
+          <% end %>
+        <p class="text-sm md:text-lg">
+          <% if @team.age.present? %>
+            <%= @team.age %>
+          <% else %>
+              0 yrs
+          <% end %>
+        </p>
+        <p class="text-sm md:text-lg">
+          <% if @team.mseal_debut.present? %>
+            <%= @team.mseal_debut %>
+            <% else %>
+            None
+          <% end %>
+        </p>
+        <p class="text-sm md:text-lg">
+          <% if @team.first_goal.present? %>
+            <%= @team.first_goal %>
+          <% else %>
+            None
+          <% end %>
+        </p>
+        <p class="text-sm md:text-lg">
+          <% if @team.previous_club.present? %>
+            <%= @team.previous_club %>
+            <% else %>
+          None
+          <% end %>
+        </p>
+        <p class="text-sm md:text-lg">
+          <%=link_to url_for(@team.twitter), :target => "_blank" do %>
+            <i class="fa-brands fa-twitter text-[#f4e721] "></i>
+          <% end %>
+        </p>
+        <p class="text-sm md:text-lg">
+          <%= link_to url_for(@team.instagram), :target => "_blank" do %>
+            <i class="fa-brands fa-instagram text-[#f4e721]"></i>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,131 @@
+<div class="md:p-0">
+    <div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+    <h1>
+      TEAM STATISTICS
+    </h1>
+        <div>
+          <% if current_user && current_user.role === 'moderator' or  current_user.role === 'admin' %>
+            <%=link_to "Add Statistic", new_statistic_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+            <%=link_to "Add Season", new_season_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded mb-2" %>
+        <% end %>
+        </div>
+    </div>
+
+    <div class="flex overflow-x-auto shadow-md sm:rounded-lg justify-center p-[28px]">
+        <table class=" justify-items-center text-sm text-left rtl:text-right text-gray-500 bg-white">
+            <thead class="text-xs text-gray-700 capitalize bg-gray-50 ">
+            <tr class="font-semibold text-sm w-full">
+              <th scope="col" class="px-6 py-3">
+
+              </th>
+                <th scope="col" class="px-6 py-3">
+                </th>
+                <th scope="col" class="px-6 py-3">
+
+                </th>
+                <th scope="col" class="px-6 py-3">
+
+                </th>
+                <th scope="col" class="px-6 py-3">
+
+                </th>
+              <th scope="col" class="px-6 py-3">
+
+              </th>
+            </tr>
+            <tr class="text-xs font-bold">
+                <th scope="col" class="px-6 py-3">
+                  Player Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Matches Played
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Minutes Played
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Matches Started
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Subs
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Tackles Won
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Tackles Attempted
+                </th>
+              <th scope="col" class="px-6 py-3">
+                Duel Won
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Interception Won
+              </th>
+              <th scope="col" class="px-6 py-3">
+              Interception Attempted
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Interception Won
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Interception Attempted
+              </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <% @statistic.each do |stat| %>
+              <tr class="odd:bg-white even:bg-gray-100 border-b ">
+                <th scope="row" class="px-6 py-4 ">
+                  <%= stat.team.name %>
+                </th>
+                <td class="px-6 py-4">
+                  <%= stat.matches_played %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.minutes_played %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.matches_started %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.subs %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.tackles_won %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.tackles_attempted %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.duel_won %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.interception_won %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.interception_attempted %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.passes_completed %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= stat.passes_attempted %>
+                </td>
+                <td class="px-6 py-4 flex gap-2 ">
+                  <% if current_user&.moderator? %><!--Link to edit page -->
+                    <%= link_to "Edit", edit_statistic_path(stat.id), class: "font-medium text-blue-600 hover:underline border border-[#f4e721]" %>
+                      <!--Link to delete page -->
+                    <%= button_to "Delete", stat, method: :delete, data: { turbo_method: :delete  }, class: "font-medium text-red-600 hover:underline border border-[#f4e721]" %>
+                  <% end %>
+
+                </td>
+              </tr>
+
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%#= line_chart Statistic.pluck(:shots_off_target, :shots_on_target), label: "Value", title: "Awesome chart" %>
+

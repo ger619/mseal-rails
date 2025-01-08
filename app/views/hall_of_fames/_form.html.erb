@@ -1,0 +1,28 @@
+<%= form_with(model: hall_of_fame, class: "contents") do |form| %>
+  <% if hall_of_fame.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(hall_of_fame.errors.count, "error") %> prohibited this hall_of_fame from being saved:</h2>
+
+      <ul>
+        <% hall_of_fame.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :team_id %>
+    <%= form.collection_select :team_id, Team.all, :id, :name, { prompt: "Select Player" }, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-full mb-4" %>
+    <%= form.label :Goals %>
+    <%= form.text_field :goals, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-[25%]" , placeholder: 'goals' %>
+    <%= form.label :Blocks %>
+    <%= form.text_field :blocks, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-[25%]", placeholder: 'blocks' %>
+    <%= form.label :Saves %>
+    <%= form.text_field :saves, class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-700 w-[25%]", placeholder: 'saves' %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

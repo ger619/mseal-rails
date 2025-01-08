@@ -1,0 +1,85 @@
+<section>
+  <!-- Players Section -->
+  <div class="py-16 relative overflow-hidden" style="background: linear-gradient(to bottom right, #fae115, #000000git)">
+    <div class="max-w-screen-lg mx-auto px-6 relative">
+      <!-- Title -->
+      <h1 class="text-center text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-10">
+        Players
+      </h1>
+
+      <!-- Carousel -->
+      <div class="relative">
+        <div id="carousel" class="flex space-x-4 sm:space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+          <!-- Player Cards -->
+          <% @teams.select { |team| team.active }.take(5).each do |team| %>
+            <div class="carousel-item flex-shrink-0 w-2/3 sm:w-1/3 snap-center">
+              <div class="rounded-md overflow-hidden">
+                <% if team.image.attached? %>
+                  <%= image_tag(team.image, class: 'w-full h-48 sm:h-full object-cover', alt: "Goal Kepper" )%>
+                <% end %>
+              </div>
+              <p class="text-center text-white mt-2">
+                <%= team.first_name %> <%= team.last_name %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button
+          class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-xl sm:text-2xl bg-transparent border-none focus:outline-none z-10"
+          onclick="scrollLeft()">
+          &larr;
+        </button>
+        <button
+          class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-xl sm:text-2xl bg-transparent border-none focus:outline-none z-10"
+          onclick="scrollRight()">
+          &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+    const carousel = document.getElementById('carousel');
+    const itemWidth = carousel.firstElementChild.offsetWidth;
+
+    function scrollLeft() {
+        // Move the last item to the front and adjust scroll instantly
+        const lastItem = carousel.lastElementChild;
+        carousel.prepend(lastItem);
+        carousel.scrollLeft += itemWidth;
+
+        // Smooth scroll to correct position
+        carousel.scrollBy({
+            left: -itemWidth,
+            behavior: 'smooth',
+        });
+    }
+
+    function scrollRight() {
+        // Smoothly scroll first
+        carousel.scrollBy({
+            left: itemWidth,
+            behavior: 'smooth',
+        });
+
+        // After the scroll finishes, move the first item to the end
+        setTimeout(() => {
+            const firstItem = carousel.firstElementChild;
+            carousel.appendChild(firstItem);
+            carousel.scrollLeft -= itemWidth;
+        }, 300); // Adjust the timing based on your needs
+    }
+</script>
+
+<style>
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>

@@ -1,0 +1,21 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <%= render @hall_of_fame %>
+
+    <% if current_user%>
+      <%= link_to "Edit this hall_of_fame", edit_hall_of_fame_path(@hall_of_fame), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this hall_of_fame", hall_of_fame_path(@hall_of_fame), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+
+    <%= link_to "Back to Hall Of Fame", hall_of_fame_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <% end %>
+  </div>
+</div>
+
+
+

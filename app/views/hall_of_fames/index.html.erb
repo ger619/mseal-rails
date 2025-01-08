@@ -1,0 +1,15 @@
+<div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
+  <h1>Hall of Fame</h1>
+  <div>
+    <% if current_user && current_user.role === 'moderator'  %>
+      <%=link_to "Add Hall Of Fame", new_hall_of_fame_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
+
+    <% end %>
+  </div>
+</div>
+<div class="w-full">
+
+  <div id="hall_of_fames" class="min-w-full">
+    <%= render @hall_of_fames %>
+  </div>
+</div>

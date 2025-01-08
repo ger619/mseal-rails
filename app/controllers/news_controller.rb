@@ -1,7 +1,22 @@
 class NewsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  load_and_authorize_resource except: %i[index show]
+
   def index
-    @pagy, @news = pagy_countless(News.all.order('created_at DESC'), items: 10)
+    # Adding a group by month on the news
+    #
+    @pagy, @news = if params[:query].present?
+                     pagy_countless(
+                       News.where('type_of_news ILIKE ?', "%#{params[:query]}%")
+                           .includes(image_attachment: :blob)
+                           .order('created_at DESC'), items: 8
+                     )
+                   else
+                     pagy_countless(
+                       News.includes(image_attachment: :blob)
+                           .order('created_at DESC'), items: 8
+                     )
+                   end
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -10,7 +25,8 @@ class NewsController < ApplicationController
   end
 
   def show
-    @news = News.find(params[:id])
+    @news = News.includes(image_attachment: :blob).find(params[:id])
+    @similar_news = News.includes(image_attachment: :blob).where(type_of_news: @news.type_of_news).where.not(id: @news.id).limit(5)
   end
 
   def new
@@ -56,6 +72,6 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:type_of_news, :header_news, :body, :image, :user_id)
+    params.require(:news).permit(:type_of_news, :header_news, :content, :image, :user_id)
   end
 end
