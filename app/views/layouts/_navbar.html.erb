@@ -1,126 +1,114 @@
- <!-- Header one with sponsors -->
- <div class="p-2 content-end bg-[#F6F6F6] border-b-4 border-[#f4e721] hidden md:block">
-   <ul class="flex justify-end gap-5 p-2 text-[#F6F6F6]">
-          <li>
-            <a target="_blank" rel="noreferrer" href="#">
-              <i class="fa-brands fa-instagram text-[#050505] hover:text-[#f4e721]"></i>
-            </a>
-          </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://twitter.com/Mseal_FC">
-                  <i class="fa-brands fa-twitter text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/msealfc/">
-                  <i class="fa-brands fa-facebook-f fa-lg text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@murangasealfc" >
-                  <i class="fa-brands fa-youtube text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="#">
-                  <i class="fa-brands fa-tiktok text-[#050505] hover:text-[#f4e721]"></i>
-                </a>
-            </li>
-
-
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-                    <%= image_tag "SP_logo-01.png", class: "w-[100px] text-[#F6F6F6]" %>
-                </a>
-            </li>
-            <li>
-                <a target="_blank" rel="noreferrer" href="https://www.ke.sportpesa.com/en/sports-betting/football-1/">
-                    <%= image_tag "finix-casino.png", class: "w-[100px] text-[#F6F6F6]" %>
-                </a>
-            </li>
-   </ul>
- </div>
-
-    <div class="bg-black w-full h-20 shadow-xl md:mt-0 z-[100] md:px-24 w-full h-20 z-[100] md:mt-0 md:px-24 hidden md:block">
-        <div class="flex justify-between md:justify-end items-center w-full md:mt-0 h-full  md:px-4 py-7 px-2 2xl:px-16 rounded">
-            <div>
-                <ul class="hidden items-center md:flex gap-5 uppercase">
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "NEWS", news_index_path %>
-                    </li>
-
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "TEAM", team_index_path %>
-                    </li>
-
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "FIXTURES" , fixture_index_path %>
-                    </li>
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "MEMBERSHIP", membership_index_path %>
-                    </li>
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                        <%= link_to "OUR CLUB", club_index_path %>
-                    </li>
-                    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
-                      <%= link_to "SHOP", product_index_path %>
-                    </li>
-                </ul>
-
+<header id="main-header" class="relative top-0 w-full z-50 bg-black md:border-b-8 border-b-4 border-[#fae115]">
+  <div class="relative md:pt-3 pt-6">
+    <div class="absolute md:top-1/2 transform -translate-y-1/2 z-15 md:m-0 mt-5">
+      <%= link_to root_path do %>
+        <%= image_tag('logo.png', class: "md:flex xl:none lg:h-[140px] md:h-[140px] sm:h-[120px] h-20") %>
+      <% end %>
+    </div>
+    <div>
+      <div class="container mx-auto flex justify-between items-center px-4 pb-4">
+        <!-- Logo on the Left -->
+        <div class="flex-grow"></div>
+        <!-- Spacer to push hamburger to the right -->
+        <div class="hidden md:flex items-center space-x-4">
+          <% if current_user %>
+            <!-- Show user's email and logout button if logged in -->
+            <div class="flex items-center space-x-4">
+              <span class="text-white font-medium"></span>
+              <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center hover:text-[#fae115] space-x-2" do %>
+                <span class="bg-[#fae115] text-white text-xs rounded-full p-2">
+                  <i class="fa fa-sign-out-alt"></i>
+                </span>
+                <span>Logout</span>
+              <% end %>
             </div>
+          <% end %>
         </div>
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden flex items-center pt-2 pr-2">
+          <button id="menu-button" class="text-white focus:outline-none">
+            <i class="fa fa-bars text-3xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="bg-black py-4 mr-4">
+      <div class="container mx-auto flex ml-14 justify-between items-center">
+        <!-- Main Navigation Links for Desktop -->
+        <nav class="hidden md:flex space-x-6 ml-16">
+          <ul class="hidden items-center md:flex gap-5 uppercase">
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+              <%= link_to 'HOME', root_path %>
+            </li>
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+              <%= link_to 'NEWS', news_index_path %>
+            </li>
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+              <%= link_to 'TEAM', team_index_path %>
+            </li>
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+              <%= link_to 'FIXTURE', opponent_index_path %>
+            </li>
+            <li class="hover:underline text-[#fae115] underline-offset-8 hover:text-[#fae115]">
+              <%= link_to 'OUR CLUB', club_index_path %>
+            </li>
+          </ul>
+        </nav>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="<%= product_index_path %>" class="flex items-center hover:text-[#fae115] space-x-2 text-white">
+            <span class="text-xl">
+              <i class="fa fa-shopping-cart"></i>
+            </span>
+            <span>SHOP</span>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="hidden md:flex md:top-0 bottom-0 left-2 md:absolute md:h-[140px] sm:h-[120px]">
-        <%= link_to(image_tag("logo.png"), root_path, class: "md:flex xl:none lg:h-[200px] md:h-[140px] sm:h-[120px] ") %>
+    <!-- Mobile Menu Modal -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-50 hidden">
+      <div class="flex flex-col items-center justify-center h-full">
+        <button id="close-menu" class="text-white text-2xl mb-8 focus:outline-none">
+          <i class="fa fa-times"></i>
+        </button>
+        <ul class="space-y-6 text-center text-white text-xl">
+          <li><%= link_to 'HOME', root_path, class: "hover:text-[#fae115]" %></li>
+          <li><%= link_to 'NEWS', news_index_path, class: "hover:text-[#fae115]" %></li>
+          <li><%= link_to 'TEAM', team_index_path, class: "hover:text-[#fae115]" %></li>
+          <li><%= link_to 'FIXTURE', opponent_index_path, class: "hover:text-[#fae115]" %></li>
+          <li><%= link_to 'OUR CLUB', club_index_path, class: "hover:text-[#fae115]" %></li>
+          <li><%= link_to 'SHOP', product_index_path, class: "hover:text-[#fae115]" %></li>
+        </ul>
+      </div>
     </div>
-
-
- <!-- Mobile menu -->
-<div class="content-end bg-black block md:hidden">
-  <ul class="flex justify-end gap-5 pt-4 bg-black">
-    <li class="absolute top-0 left-0">
-      <%= link_to(image_tag("logo.png", class: "w-[80px] text-[#F6F6F6]" ), root_path ) %>
-    </li>
-    <li id="menuToggle" class="grid mt-5 mr-3">
-      <i id="menuIcon" class="fa-sharp fa-solid fa-bars fa-flip-horizontal fa-xl mr-3 pb-4" style="color: #ffffff;"></i>
-    </li>
-  </ul>
-
-  <ul id="menu" class="hidden items-center md:flex gap-5 text-center mt-12 ml-5 pb-5 uppercase">
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "NEWS", news_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "TEAM", team_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "FIXTURES", fixture_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "MEMBERSHIP", membership_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-      <%= link_to "OUR CLUB", club_index_path %>
-    </li>
-    <li class="hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721] ">
-      <%= link_to "SHOP", product_index_path %>
-    </li>
-  </ul>
-</div>
+  </div>
+</header>
 
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const menu = document.getElementById('menu');
-  const menuIcon = document.getElementById('menuIcon');
+    document.getElementById('menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu').style.display = 'block';
+    });
 
-  menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-    menuIcon.classList.toggle('fa-bars');
-    menuIcon.classList.toggle('fa-times');
-  });
+    document.getElementById('close-menu').addEventListener('click', function() {
+        document.getElementById('mobile-menu').style.display = 'none';
+    });
+
+    window.addEventListener('scroll', function() {
+        var header = document.getElementById('main-header');
+        if (window.scrollY > 100) {
+            header.classList.add('fixed-header');
+        } else {
+            header.classList.remove('fixed-header');
+        }
+    });
 </script>
 
-
-
- 
+<style>
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: black;
+        z-index: 50;
+    }
+</style>

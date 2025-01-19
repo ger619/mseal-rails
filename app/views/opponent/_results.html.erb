@@ -1,0 +1,71 @@
+<div class="container mx-auto p-4">
+  <% @result.each do |month, matches| %>
+    <div class="mb-6">
+      <h2 class="text-white text-xl font-semibold mb-6 uppercase"><%= month.strftime("%B %Y") %></h2>
+      <% matches.each do |opp| %>
+        <%= link_to opponent_path(opp.id) do %>
+          <div class="container mx-auto p-4">
+            <div class="mb-6 rounded-lg overflow-hidden shadow-lg">
+              <div class="bg-gradient-to-r from-gray-900 to-gray-800 p-6 flex  flex-row justify-between items-center border-b-2 border-[#fae115]">
+                <div class="flex items-center space-x-4">
+                  <span class="text-4xl font-bold"><%= opp.match_date.strftime("%d") %></span>
+                  <div class="flex flex-col">
+                    <span class="text-gray-400 uppercase"><%= opp.match_date.strftime("%A") %></span>
+                    <span class="text-gray-400 uppercase text-sm"><%= opp.match_date.strftime("%B") %></span>
+                  </div>
+                </div>
+                <div class="text-right mt-4 md:mt-0">
+                  <span class="block text-yellow-400 text-lg font-semibold hidden md:block">NEXT MATCH</span>
+                    <span class="text-gray-400 text-sm text-center flex justify-center">
+                         <% if opp.tournament == "Kpl" %>
+                          <span class="text-white text-center ">
+                            <%= image_tag("kpl.png", class: "h-12", alt: 'KPL Logo') %>
+                            KPL
+                          </span>
+                      <% end %>
+                    </span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-3 justify-center items-center space-x-0 md:space-x-16 p-6">
+                <div class="flex flex-col items-center">
+                  <%= image_tag("logo.png", class: "h-24 mb-4 md:mb-0", alt: 'Mseals Logo') %>
+                  <span class="block text-[12px] md:text-lg font-semibold mb-2">
+                    Murang&apos;a Seal
+                  </span>
+                </div>
+                <div class="text-center">
+                  <span class="block text-gray-400 text-sm">EAT <%= opp.match_time.strftime("%I:%M %p") %></span>
+                  <h1 class="text-4xl font-bold bg-gradient-to-r from-[#fae115] to-[#f4e175] bg-clip-text text-transparent">
+                    <%= opp.score_one %> - <%= opp.score_two %>
+                  </h1>
+                  <span class="block text-lg font-semibold mb-2">vs</span>
+                  <span class="text-gray-400 text-sm capitalize"><%= opp.venue %></span>
+                </div>
+                <div class="flex flex-col items-center">
+                <% if opp.opponent_team.team_badge.attached? %>
+                  <%= image_tag(opp.opponent_team.team_badge, class: "h-24 mb-4 md:mt-0", alt: 'Other Team logo') %>
+                <% end %>
+                  <span class="block text-[12px] md:text-lg font-semibold mb-2 capitalize">
+                    <%= opp.opponent_team.name %>
+                  </span>
+                </div>
+              </div>
+              <div class="flex justify-center p-6 gap-2">
+                <span>
+                 <% if current_user && (current_user.role == 'admin' || current_user.role == 'moderator') %>
+                    <%= link_to 'Edit', edit_opponent_path(opp.id), class: 'bg-[#fae115] text-black font-semibold py-2 px-12 rounded hover:bg-yellow-500' %>
+                    <%= button_to 'Delete', opp,
+                                  method: :delete,
+                                  data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure you want to delete this item?' },
+                                  class: 'bg-red-500 text-white font-semibold py-2 px-12 rounded hover:bg-red-700' %>
+                  <% end %>
+              </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

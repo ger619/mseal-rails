@@ -26,7 +26,7 @@ git clone https://github.com/Lifeline-Solutions/mseal-rails.git <Your-Build-Dire
 
 
 ## Built with
-- Ruby 3.1.2 on Rails 7.0.3.1
+- Ruby 3.3.5 on Rails 7.2.1
 - PostgreSQL
 
 ## Prerequisites

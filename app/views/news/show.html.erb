@@ -1,17 +1,52 @@
-<div class="shadow-md">
-<div class="p-6 bg-[#FAE115] font-bold uppercase lg:text-3xl md:text-3xl text-2xl flex justify-between truncate ...">
-  <p>NEWS | <%= @news.header_news %></p>
-</div>
-<div class="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
-  <div>
-    <%= render "news/image_show" %>
-  </div>
-  <% if @news.type_of_news === "Match" %>
-    <h2 class="text-2xl font-bold mt-4 mr-3 m-4"><%= @news.type_of_news %></h2>
+<div class="shadow-md pl-4 pr-4 pt-8">
+  <div class="w-full text-white bg-black mx-auto mt-1.5 sm:w-[200px] md:w-full lg:max-w-full xl:max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-6 justify-between">
+      <div class="hidden md:block col-span-1">
+      </div>
+      <div class="col-span-1 md:col-span-4">
+        <div class="w-full mx-auto">
+          <% if @news.image.attached? %>
+            <%= image_tag(@news.image, class: "rounded  lg:h-[100%] sm:h-48 md:h-64 ") %>
+          <% end %>
+        </div>
 
-  <h3 class="text-xl font-semibold m-4"><%= @news.header_news %></h3>
-  <p class="text-lg mt-2 p-4"><%= raw @news.body %></p>
-  <p class="text-semibold text-white mt-2 bg-[#D9D9D9]"><%= @news.created_at.strftime("%d.%m.%Y") %></p>
-  <% end %>
-</div>
+        <p class="text-xl sm:text-2xl font-semibold w-full mt-4">
+          <%= @news.header_news %>
+        </p>
+
+        <p class="text-xl sm:text-2xl font-semibold w-full mt-4">
+          <%= @news.content %>
+        </p>
+
+        <% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-2">
+              <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+                <%= link_to "Edit", edit_news_path(@news.id), class: "w-full text-black text-sm sm:text-xs md:text-sm lg:text-base font-semibold py-1 px-2 rounded" %>
+              </div>
+              <div class="bg-yellow-400 mt-2 p-2 rounded-lg">
+                <%= button_to "Delete", @news, method: :delete, data: { turbo_method: :delete }, class: "w-full text-black font-semibold" %>
+              </div>
+            </div>
+        <% end %>
+        <div class="my-10">
+          <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
+            <p class="font-bold">SHARE ARTICLE</p>
+            <div class="flex space-x-4">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=<%= url_for(controller: 'news', action: 'show', id: @news.id, only_path: false) %>" target="_blank" rel="noopener noreferrer" class="text-[#fae115]">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+
+              <a href="https://twitter.com/intent/tweet?url=<%= url_for(controller: 'news', action: 'show', id: @news.id, only_path: false) %>" target="_blank" rel="noopener noreferrer" class="text-[#fae115]">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <%= render 'news/similar_news' %>
+      </div>
+      <div class="hidden md:block col-span-1">
+      </div>
+    </div>
+  </div>
 </div>

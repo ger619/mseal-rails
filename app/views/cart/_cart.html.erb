@@ -1,7 +1,7 @@
 <%= turbo_stream_from "cart" %>
 <%= turbo_frame_tag "cart" do %>
     <div class="text-sm border-white flex">
-    <a href="<%= cart_path %>" class="text-[#000] relative">
+    <a href="<%= cart_path %>" class="text-[#FAE115] relative">
       <i class="fas fa-shopping-cart text-4xl mt-3 mr-3"></i>
       <span class="absolute top-[0] right-0 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full text-xs">
         <%= @cart.orderables.sum(:quantity) %>

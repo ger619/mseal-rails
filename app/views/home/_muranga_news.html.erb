@@ -1,0 +1,51 @@
+<section class="bg-black py-4 text-gray-200">
+  <div class="container mx-auto px-4">
+    <div class="bg-white p-4">
+      <div class="flex flex-col items-center justify-center py-4 px-4 sm:px-8 bg-white">
+        <div class="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-2">
+          <h1 class="text-2xl sm:text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
+            Murang'a
+          </h1>
+          <span class="text-2xl sm:text-3xl font-semibold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700">
+            Seal News
+          </span>
+        </div>
+      </div>
+      <article class="flex flex-col sm:flex-row justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+        <% @news.limit(8).each_with_index do |news, index| %>
+          <% if index == 0 %>
+            <%# Handle the first item separately if needed %>
+          <% elsif index == 1 %>
+            <%# Handle the second item separately if needed %>
+          <% elsif index == 2 %>
+            <%# Handle the third item separately if needed %>
+          <% elsif index == 3 %>
+            <%# Handle the fourth item separately if needed %>
+          <% else %>
+            <a href="<%= news_path(news) %>">
+              <div class="bg-white shadow-lg overflow-hidden w-full sm:w-1/4">
+                <% if news.image.attached? %>
+                  <%= image_tag(news.image, class: "w-full h-32 sm:h-48 object-cover", alt: "Background Image") %>
+                <% end %>
+                <div class="flex">
+                  <!-- Text Section -->
+                  <div class="p-4">
+                    <p class="text-black text-left mt-2">
+                      <%= truncate(news.header_news, length: 25, separator: ' ') %>
+                    </p>
+                    <a href="#" class="mt-4 inline-flex text-xs sm:text-sm items-center text-black font-semibold">
+                      <span class="ml-1">&rarr;</span> <%= news.type_of_news %>
+                    </a>
+                    <a href="#" class="mt-4 inline-flex text-xs sm:text-sm items-center text-black font-semibold">
+                      <span class="ml-1">&rarr; <%= time_ago_in_words(news.created_at) %> ago</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </a>
+          <% end %>
+        <% end %>
+      </article>
+    </div>
+  </div>
+</section>

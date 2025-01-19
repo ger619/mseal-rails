@@ -1,0 +1,86 @@
+<div class="container mx-auto p-4">
+  <!-- Month Selector -->
+  <div class="flex overflow-x-auto space-x-4 mb-8">
+    <% @months.each_with_index do |month, index| %>
+      <div class="min-w-[100px] p-3 text-center cursor-pointer <%= 'border-b-2 border-blue-600' if index + 1 == @current_page %>">
+        <div class="text-sm text-gray-500"><%= month.strftime("%Y") %></div>
+        <div class="text-base font-semibold"><%= month.strftime("%b") %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Filters -->
+  <%= form_with url: opponent_index_path, method: :get, class: 'grid grid-cols-1 md:grid-cols-3 gap-4 mb-8' do |f| %>
+    <%= f.select :venue,
+                 options_for_select(Opponent.distinct.pluck(:tournament), params[:venue]),
+                 { include_blank: "COMPETITION - ALL" },
+                 class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
+    <%= f.select :venue,
+                 options_for_select(Opponent.distinct.pluck(:venue), params[:venue]),
+                 { include_blank: "LOCATION - ALL" },
+                 class: "w-full p-2 border rounded-md bg-gray-900 h-12" %>
+    <%= f.submit "Search", class: "mb-4 h-12 border border-[#fae115] text-[#fae115] border-b-4 border-r-2 p-2 font-semibold rounded" %>
+  <% end %>
+
+  <div class="space-y-4">
+    <!-- Match Card -->
+    <% if @current_matches %>
+      <div class="month-group">
+        <h4 class="text-xl font-semibold mb-6 uppercase">
+          <%= @current_month.strftime("%B %Y") %>
+        </h4>
+        <% @current_matches.each do |opp| %>
+          <div class="bg-gray-900 p-4 rounded-md border border-gray-200 shadow-md mb-6">
+            <div class="grid md:grid-cols-12 grid-cols-1 md:gap-4 gap-1 items-center">
+              <div class="col-span-2 md:text-center">
+                <div class="text-gray-500 uppercase text-xs">
+                  <%= opp.match_date.strftime("%a %d %b") %>
+                </div>
+                <div class="font-bold"><%= opp.match_time.strftime("%I:%M") %></div>
+              </div>
+              <div class="col-span-2 flex items-center space-x-2">
+                <%= image_tag('kpl.png', class: 'h-12', alt: 'Competition Logo') %>
+                <span class="text-sm text-gray-500">Matchday 4</span>
+              </div>
+              <div class="col-span-6 flex items-center md:justify-center">
+                <div class="flex flex-col md:flex-row-reverse items-center space-x-2 text-left">
+                  <%= image_tag("logo.png", class: "w-12 mb-2 md:mb-0") %>
+                  <span class="font-bold text-left">Murang&apos;a Seal</span>
+                </div>
+                <div class="mx-4 font-bold">vs</div>
+                <div class="flex flex-col md:flex-row items-center space-x-2 text-left">
+                  <% if opp.opponent_team.team_badge.attached? %>
+                    <%= image_tag (opp.opponent_team.team_badge), class: "w-12 mb-2 md:mb-0"  %>
+                  <% end %>
+                  <span class="font-bold text-left capitalize"><%= opp.opponent_team.name %></span>
+                </div>
+
+              </div>
+              <div class="md:col-span-1 col-span-6 flex gap-2 order-last md:order-none w-full">
+                <button class="bg-[#fae115] text-black px-4 py-2 rounded-md font-semibold w-full">TICKETS</button>
+
+                <% if current_user && (current_user.role == 'admin' || current_user.role == 'moderator') %>
+                  <%= link_to 'Edit', edit_opponent_path(opp.id), class: 'bg-[#fae115] text-black font-semibold py-2 px-2 rounded hover:bg-yellow-500 w-full text-center' %>
+                  <%= button_to 'Delete', opp,
+                                method: :delete,
+                                data: { 'turbo_method': :delete, 'turbo-confirm': 'Are you sure you want to delete this item?' },
+                                class: 'bg-red-500 text-white font-semibold py-2 px-2 rounded hover:bg-red-700 w-full' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls flex justify-between">
+    <% if @current_page > 1 %>
+      <%= link_to 'Previous', opponent_index_path(page: @current_page - 1), class: 'bg-gray-900 text-white px-4 py-2 rounded-md' %>
+    <% end %>
+    <% if @current_page < @total_pages %>
+      <%= link_to 'Next', opponent_index_path(page: @current_page + 1), class: 'bg-gray-900 text-white px-4 py-2 rounded-md' %>
+    <% end %>
+  </div>
+</div>

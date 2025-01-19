@@ -1,39 +1,63 @@
-
-  <div class="p-4 bg-[#FAE115] font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex justify-between">
-    CLUB & HISTORY  <% if current_user %>
-      <%=link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm sm:text-xl text-white hover:text-[#FAE115] p-2 rounded-full mb-2" %>
-      <% end %>
+<% if current_user&.role == 'moderator' || current_user&.role == 'admin' %>
+  <div class="p-6 bg-black font-bold uppercase lg:text-5xl md:text-4xl text-3xl flex flex-col md:flex-row justify-between">
+    <h1>CLUB & HISTORY</h1>
+    <%= link_to "Add Club & History", new_club_path, class: "normal-case border-2 border-[#fff] hover:bg-[#fff] font-normal lg:text-2xl md:text-xl sm:text-sm text-white hover:text-[#FAE115] p-2 rounded mb-2 mt-4 md:mt-0" %>
   </div>
-<% @club.each do |club| %>
-  <div class="flex flex-col gap-4 flex odd:flex-row-reverse md:flex-row  items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-10">
-    <div class="flex flex-col ">
-      <h1 class="md:text-4xl text-3xl uppercase mt-5 font-normal mb-8">
-        <%= club.header %>
-      </h1>
-      <p class="md:w-[500px] font-light text-xl truncate">
-        <%= club.body %>
-      </p>
-
-      <div class="flex">
-        <%= link_to club_path(club.id) do %>
-          <button class="w-[290px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl mr-3">
-            Read More
-          </button>
-        <% end %>
-        <% if current_user %>
-            <%= link_to edit_club_path(club.id) do %>
-              <button class="w-[90px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl">
-                Edit
-              </button>
-            <% end %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="">
-      <%= image_tag club.photo, class: "w-[800px] h-[400px] object-cover", alt: "This is text" if club.photo.present? %>
-    </div>
-  </div>
-
 <% end %>
+<div class="max-w-5xl mx-auto p-5 min-h-screen">
 
+  <!-- Page Title -->
+  <h2 class="text-2xl sm:text-3xl font-semibold text-center mb-10">MURANG'A SEAL STORY</h2>
+
+  <!-- Tabs Section -->
+  <div class="flex justify-center mb-10">
+    <nav class="flex flex-wrap justify-center space-x-4">
+      <button class="text-lg tablinks hover:text-[#FAE115]hover:underline hover:underline-offset-4 hover:decoration-4 uppercase"
+              id="tab-history"
+              onclick="openCity(event, 'history')">History</button>
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline hover:underline-offset-4 hover:decoration-4 uppercase"
+              id="tab-club-records"
+              onclick="openCity(event, 'club-records')">Club Records</button>
+      <button class="text-lg tablinks hover:text-[#FAE115] hover:underline hover:underline-offset-4 hover:decoration-4 uppercase"
+              id="tab-management"
+              onclick="openCity(event, 'management')">Management</button>
+    </nav>
+  </div>
+
+  <!-- Video Section -->
+  <div id="history" class="tabcontent active">
+    <%= render 'club/history' %>
+  </div>
+
+  <div id="club-records" class="tabcontent">
+    <%= render 'club/club-records' %>
+  </div>
+
+  <div id="management" class="tabcontent">
+    <%= render 'club/management' %>
+  </div>
+
+</div>
+<script>
+    function openCity(evt, cityName) {
+        const tabcontent = document.getElementsByClassName("tabcontent");
+        const tablinks = document.getElementsByClassName("tablinks");
+
+        // Hide all tab content
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove active class from all tab links
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("text-[#FAE115]", "underline-offset-4", "underline", "decoration-4");
+        }
+
+        // Show current tab content and add active class to clicked tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("text-[#FAE115]", "underline-offset-4", "underline", "decoration-4");
+    }
+
+    // Set default tab to open
+    document.getElementById("tab-history").click();
+</script>

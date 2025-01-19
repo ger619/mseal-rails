@@ -1,0 +1,26 @@
+<% @statistic.each do |stat| %>
+  <!-- General Stats -->
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+      <%= stat.matches_played %>
+    </p>
+    <span class="font-extralight">
+      Games played
+    </span>
+  </div>
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl">
+      <%= stat.minutes_played %>
+    </p>
+    <span class="font-extralight">
+      Minutes played</span>
+  </div>
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl"><%= stat.matches_started %></p>
+    <span class="font-extralight">Matches Started</span>
+  </div>
+  <div class="col-span-1 text-center p-2">
+    <p class="font-bold text-[#FAE115] md:text-6xl sm:text-2xl"><%= stat.subs %></p>
+    <span class="font-extralight">Subbed Off</span>
+  </div>
+<% end %>

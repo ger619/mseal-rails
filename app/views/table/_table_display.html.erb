@@ -1,0 +1,111 @@
+<div class="container mx-auto p-4">
+  <!-- Table Header -->
+  <div class="flex flex-col md:flex-row justify-between items-start mb-6 px-4">
+    <div class="text-2xl font-bold">STANDINGS</div>
+    <div class="text-right text-sm text-gray-600 mt-4 md:mt-0">
+      <div class="flex items-center space-x-2">
+        <span class="text-gray-400">BROUGHT TO YOU BY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub Header -->
+  <div class="text-center mb-6">
+    <%= image_tag('kpl.png', class: 'h-20 mx-auto mb-4', alt: 'Competition Logo') %>
+    <% selected_season = Season.find_by(id: params[:season_id]) %>
+    <div class="mb-4">
+      <span class="text-white font-semibold"><%= selected_season&.name || "All Seasons" %></span>
+    </div>
+  </div>
+
+  <%= form_with url: opponent_index_path, method: :get, local: true do %>
+    <div class="search-bar text-slate-100 mb-4 flex justify-end">
+      <%= hidden_field_tag :tab, 'Fixtures' %>
+      <%= select_tag :season_id, options_from_collection_for_select(Season.all, :id, :name, params[:season_id]), include_blank: false, class: "w-full md:w-1/3 p-2 border rounded-md bg-gray-900 h-12 mr-3" %>
+      <%= submit_tag "Search", name: nil, class: "bg-[#fae115] hover:bg-black border-2 hover:border-[#fae115] text-white hover:text-[#fae115] font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
+
+  <!-- Table -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full table-auto border-collapse border border-gray-300">
+      <thead class="bg-gray-200">
+      <tr>
+        <th class="p-3 text-left text-gray-700">Position</th>
+        <th class="p-3 text-left text-gray-700">Team</th>
+        <th class="p-3 text-center text-gray-700">Points</th>
+        <th class="p-3 text-center text-gray-700">Matches Played</th>
+        <th class="p-3 text-center text-gray-700">Wins</th>
+        <th class="p-3 text-center text-gray-700">Draws</th>
+        <th class="p-3 text-center text-gray-700">Losses</th>
+        <th class="p-3 text-center text-gray-700">Goals For</th>
+        <th class="p-3 text-center text-gray-700">Goals Against</th>
+        <th class="p-3 text-center text-gray-700">Goal Difference</th>
+        <!--
+          <th class="p-3 text-center text-gray-700">Form</th>
+        -->
+      </tr>
+      </thead>
+      <% @table.each do |table| %>
+        <% if table.opponent_team.name == "Murang'a Seals" %>
+          <tbody class="bg-[#FAE115] bg-opacity-70 border-b border-[#FAE115] text-base font-semibold text-black">
+          <tr class="hover:bg-gray-100 ">
+            <td class="p-3"><%= table.rank %></td>
+            <td class="p-3 flex items-center space-x-2">
+              <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
+              <span><%= table.opponent_team.name %></span>
+            </td>
+            <td class="p-3 text-center"><%= table.pts %></td>
+            <td class="p-3 text-center"><%= table.games_played %></td>
+            <td class="p-3 text-center"><%= table.w %></td>
+            <td class="p-3 text-center"><%= table.d %></td>
+            <td class="p-3 text-center"><%= table.l %></td>
+            <td class="p-3 text-center"><%= table.gf %></td>
+            <td class="p-3 text-center"><%= table.ga %></td>
+            <td class="p-3 text-center"><%= table.gd %></td>
+            <!--
+            <td class="p-3 text-center">
+              <div class="flex justify-center space-x-1">
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                <span class="block w-5 h-5 rounded-full bg-gray-500 text-white text-xs text-center">D</span>
+                <span class="block w-5 h-5 rounded-full bg-red-500 text-white text-xs text-center">L</span>
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+              </div>
+            </td> -->
+          </tr>
+          </tbody>
+        <% else %>
+          <tbody class="bg-black">
+          <tr class="hover:bg-gray-100 hover:text-black">
+            <td class="p-3"><%= table.rank %></td>
+            <td class="p-3 flex items-center space-x-2">
+              <%= image_tag(table.opponent_team.team_badge, class: "w-6 h-6") %>
+              <span><%= table.opponent_team.name %></span>
+            </td>
+            <td class="p-3 text-center"><%= table.pts %></td>
+            <td class="p-3 text-center"><%= table.games_played %></td>
+            <td class="p-3 text-center"><%= table.w %></td>
+            <td class="p-3 text-center"><%= table.d %></td>
+            <td class="p-3 text-center"><%= table.l %></td>
+            <td class="p-3 text-center"><%= table.gf %></td>
+            <td class="p-3 text-center"><%= table.ga %></td>
+            <td class="p-3 text-center"><%= table.gd %></td>
+            <!--
+            <td class="p-3 text-center">
+              <div class="flex justify-center space-x-1">
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+                <span class="block w-5 h-5 rounded-full bg-gray-500 text-white text-xs text-center">D</span>
+                <span class="block w-5 h-5 rounded-full bg-red-500 text-white text-xs text-center">L</span>
+                <span class="block w-5 h-5 rounded-full bg-green-500 text-white text-xs text-center">W</span>
+              </div>
+            </td>
+            -->
+          </tr>
+          </tbody>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>
