@@ -38,3 +38,6 @@
 /db/20240420044858_add_sign_in_count_to_user.rb
 /db/20230624071753_devise_create_users.rb
 /config/database.yml
+temp_auto_push.bat
+temp_interactive_push.bat
+branch_structure.json

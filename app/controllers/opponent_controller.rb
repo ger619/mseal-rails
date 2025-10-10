@@ -31,7 +31,7 @@ class OpponentController < ApplicationController
               end
 
     @latest_season = Season.order(created_at: :desc).first
-    params[:season_id] ||= @latest_season.id
+    params[:season_id] ||= @latest_season&.id
 
     @table = if params[:season_id].present?
                Table.includes(opponent_team: { team_badge_attachment: :blob })
